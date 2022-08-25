@@ -1,0 +1,38 @@
+{
+	"name": "Ruby",
+	"build": {
+    "context": "..",
+		"dockerfile": "Dockerfile",
+		"args": {
+			"VARIANT": "3",
+			"INSTALL_NODE": "false"
+		}
+	},
+	"mounts": [
+    "source=${localEnv:HOME}/.aws,target=/home/vscode/.aws,readonly,type=bind",
+    "target=/home/vscode/.aws/cli/cache,type=tmpfs,tmpfs-mode=1777",
+    "source=${localEnv:HOME}/.chef,target=/home/vscode/.chef,readonly,type=bind",
+    "target=/home/vscode/.chef/local-mode-cache,type=tmpfs,tmpfs-mode=1777",
+    "target=/home/vscode/.chef/ohai,type=tmpfs,tmpfs-mode=1777",
+    "target=/home/vscode/.chef/accepted_licenses,type=tmpfs,tmpfs-mode=1777"
+  ],
+	"extensions": [
+    "editorconfig.editorconfig",
+    "rebornix.ruby",
+    "redhat.vscode-yaml",
+    "VisualStudioExptTeam.vscodeintellicode",
+    "wingrunr21.vscode-ruby"
+	],
+  "remoteUser": "vscode",
+  "remoteEnv": {
+    "PATH": "/home/vscode/bin:/home/vscode/.local/bin:${containerEnv:PATH}",
+
+    "AWS_ACCESS_KEY_ID": "${localEnv:AWS_ACCESS_KEY_ID}",
+    "AWS_SECRET_ACCESS_KEY": "${localEnv:AWS_SECRET_ACCESS_KEY}",
+    "AWS_REGION": "${localEnv:AWS_REGION}",
+    "AWS_SESSION_TOKEN": "${localEnv:AWS_SESSION_TOKEN}",
+
+    "CHEF_LICENSE": "accept-silent"
+  },
+  "postAttachCommand": "sudo chown vscode:vscode /home/vscode/.chef/local-mode-cache/ /home/vscode/.chef/ohai/; bundle config set --local with 'development' && awsume-configure"
+}
