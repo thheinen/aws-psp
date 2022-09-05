@@ -16,10 +16,14 @@ property :column_names, Hash,
          callbacks: {
            "column_names is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "A list of columns to be included in this Data Cells Filter."
+         description: <<~'DESCRIPTION'
+           A list of columns to be included in this Data Cells Filter.
+         DESCRIPTION
 
 property :column_wildcard, Hash,
-         description: "An object representing the Data Cells Filter's Columns. Either Column Names or a Wildcard is required"
+         description: <<~'DESCRIPTION'
+           An object representing the Data Cells Filter's Columns. Either Column Names or a Wildcard is required
+         DESCRIPTION
 
 property :database_name, Hash,
          required: true,
@@ -27,7 +31,9 @@ property :database_name, Hash,
            "database_name is not a String" => lambda { |v| v.is_a? String },
            "database_name needs to be 1..255 characters" => lambda { |v| v.length >= 1 && v.length <= 255 },
          },
-         description: "The name of the Database that the Table resides in."
+         description: <<~'DESCRIPTION'
+           The name of the Database that the Table resides in.
+         DESCRIPTION
 
 property :name, Hash,
          name_property: true,
@@ -36,14 +42,18 @@ property :name, Hash,
            "name is not a String" => lambda { |v| v.is_a? String },
            "name needs to be 1..255 characters" => lambda { |v| v.length >= 1 && v.length <= 255 },
          },
-         description: "The desired name of the Data Cells Filter."
+         description: <<~'DESCRIPTION'
+           The desired name of the Data Cells Filter.
+         DESCRIPTION
 
 property :row_filter, Hash,
          callbacks: {
            "Subproperty `FilterExpression` is not a String" => lambda { |v| v[:FilterExpression].is_a? String },
            "Subproperty `AllRowsWildcard` is not a Object" => lambda { |v| v[:AllRowsWildcard].is_a? Object },
          },
-         description: "An object representing the Data Cells Filter's Row Filter. Either a Filter Expression or a Wildcard is required"
+         description: <<~'DESCRIPTION'
+           An object representing the Data Cells Filter's Row Filter. Either a Filter Expression or a Wildcard is required
+         DESCRIPTION
 
 property :table_catalog_id, Hash,
          required: true,
@@ -51,7 +61,9 @@ property :table_catalog_id, Hash,
            "table_catalog_id is not a String" => lambda { |v| v.is_a? String },
            "table_catalog_id needs to be 12..12 characters" => lambda { |v| v.length >= 12 && v.length <= 12 },
          },
-         description: "The Catalog Id of the Table on which to create a Data Cells Filter."
+         description: <<~'DESCRIPTION'
+           The Catalog Id of the Table on which to create a Data Cells Filter.
+         DESCRIPTION
 
 property :table_name, Hash,
          required: true,
@@ -59,7 +71,9 @@ property :table_name, Hash,
            "table_name is not a String" => lambda { |v| v.is_a? String },
            "table_name needs to be 1..255 characters" => lambda { |v| v.length >= 1 && v.length <= 255 },
          },
-         description: "The name of the Table to create a Data Cells Filter for."
+         description: <<~'DESCRIPTION'
+           The name of the Table to create a Data Cells Filter for.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::LakeFormation::DataCellsFilter"

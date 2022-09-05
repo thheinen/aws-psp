@@ -19,7 +19,9 @@ property :domain_name, String,
            "domain_name needs to be 1..64 characters" => lambda { |v| v.length >= 1 && v.length <= 64 },
            "domain_name must match pattern ^[a-zA-Z0-9_-]+$" => lambda { |v| v =~ Regexp.new("/^[a-zA-Z0-9_-]+$/") },
          },
-         description: "The unique name of the domain."
+         description: <<~'DESCRIPTION'
+           The unique name of the domain.
+         DESCRIPTION
 
 property :flow_definition, Hash,
          callbacks: {
@@ -41,26 +43,34 @@ property :object_type_name, String,
            "object_type_name needs to be 1..255 characters" => lambda { |v| v.length >= 1 && v.length <= 255 },
            "object_type_name must match pattern ^[a-zA-Z_][a-zA-Z_0-9-]*$" => lambda { |v| v =~ Regexp.new("/^[a-zA-Z_][a-zA-Z_0-9-]*$/") },
          },
-         description: "The name of the ObjectType defined for the 3rd party data in Profile Service"
+         description: <<~'DESCRIPTION'
+           The name of the ObjectType defined for the 3rd party data in Profile Service
+         DESCRIPTION
 
 property :object_type_names, Array,
          callbacks: {
            "object_type_names is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "The mapping between 3rd party event types and ObjectType names"
+         description: <<~'DESCRIPTION'
+           The mapping between 3rd party event types and ObjectType names
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "The tags (keys and values) associated with the integration"
+         description: <<~'DESCRIPTION'
+           The tags (keys and values) associated with the integration
+         DESCRIPTION
 
 property :uri, String,
          callbacks: {
            "uri is not a String" => lambda { |v| v.is_a? String },
            "uri needs to be 1..255 characters" => lambda { |v| v.length >= 1 && v.length <= 255 },
          },
-         description: "The URI of the S3 bucket or any other type of data source."
+         description: <<~'DESCRIPTION'
+           The URI of the S3 bucket or any other type of data source.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::CustomerProfiles::Integration"

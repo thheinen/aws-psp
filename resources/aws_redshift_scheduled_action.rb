@@ -16,32 +16,42 @@ property :enable, [TrueClass, FalseClass],
          callbacks: {
            "enable is not a Boolean" => lambda { |v| v.is_a? Boolean },
          },
-         description: "If true, the schedule is enabled. If false, the scheduled action does not trigger."
+         description: <<~'DESCRIPTION'
+           If true, the schedule is enabled. If false, the scheduled action does not trigger.
+         DESCRIPTION
 
 property :end_time, Hash,
          callbacks: {
            "end_time is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The end time in UTC of the scheduled action. After this time, the scheduled action does not trigger."
+         description: <<~'DESCRIPTION'
+           The end time in UTC of the scheduled action. After this time, the scheduled action does not trigger.
+         DESCRIPTION
 
 property :iam_role, String,
          callbacks: {
            "iam_role is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The IAM role to assume to run the target action."
+         description: <<~'DESCRIPTION'
+           The IAM role to assume to run the target action.
+         DESCRIPTION
 
 property :schedule, String,
          callbacks: {
            "schedule is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The schedule in `at( )` or `cron( )` format."
+         description: <<~'DESCRIPTION'
+           The schedule in `at( )` or `cron( )` format.
+         DESCRIPTION
 
 property :scheduled_action_description, String,
          callbacks: {
            "scheduled_action_description is not a String" => lambda { |v| v.is_a? String },
            "scheduled_action_description must match pattern ^(?=^[\x09\x0a\x0d\x20-\xff]*$).{1,255}$" => lambda { |v| v =~ Regexp.new("/^(?=^[\x09\x0a\x0d\x20-\xff]*$).{1,255}$/") },
          },
-         description: "The description of the scheduled action."
+         description: <<~'DESCRIPTION'
+           The description of the scheduled action.
+         DESCRIPTION
 
 property :scheduled_action_name, String,
          required: true,
@@ -49,16 +59,22 @@ property :scheduled_action_name, String,
            "scheduled_action_name is not a String" => lambda { |v| v.is_a? String },
            "scheduled_action_name must match pattern ^(?=^[a-z][a-z0-9]*(-[a-z0-9]+)*$).{1,60}$" => lambda { |v| v =~ Regexp.new("/^(?=^[a-z][a-z0-9]*(-[a-z0-9]+)*$).{1,60}$/") },
          },
-         description: "The name of the scheduled action. The name must be unique within an account."
+         description: <<~'DESCRIPTION'
+           The name of the scheduled action. The name must be unique within an account.
+         DESCRIPTION
 
 property :start_time, Hash,
          callbacks: {
            "start_time is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The start time in UTC of the scheduled action. Before this time, the scheduled action does not trigger."
+         description: <<~'DESCRIPTION'
+           The start time in UTC of the scheduled action. Before this time, the scheduled action does not trigger.
+         DESCRIPTION
 
 property :target_action, Hash,
-         description: "A JSON format string of the Amazon Redshift API operation with input parameters."
+         description: <<~'DESCRIPTION'
+           A JSON format string of the Amazon Redshift API operation with input parameters.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::Redshift::ScheduledAction"

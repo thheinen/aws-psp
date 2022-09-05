@@ -23,7 +23,9 @@ property :regions, Hash,
          callbacks: {
            "regions is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "The ReplicationSet configuration."
+         description: <<~'DESCRIPTION'
+           The ReplicationSet configuration.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::SSMIncidents::ReplicationSet"

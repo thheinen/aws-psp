@@ -17,20 +17,26 @@ property :local_gateway_route_table_id, String,
          callbacks: {
            "local_gateway_route_table_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The ID of the local gateway route table."
+         description: <<~'DESCRIPTION'
+           The ID of the local gateway route table.
+         DESCRIPTION
 
 property :tags, Hash,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "The tags for the association."
+         description: <<~'DESCRIPTION'
+           The tags for the association.
+         DESCRIPTION
 
 property :vpc_id, String,
          required: true,
          callbacks: {
            "vpc_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The ID of the VPC."
+         description: <<~'DESCRIPTION'
+           The ID of the VPC.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::EC2::LocalGatewayRouteTableVPCAssociation"

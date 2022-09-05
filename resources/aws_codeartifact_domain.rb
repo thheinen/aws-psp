@@ -19,19 +19,25 @@ property :domain_name, String,
            "domain_name needs to be 2..50 characters" => lambda { |v| v.length >= 2 && v.length <= 50 },
            "domain_name must match pattern ^([a-z][a-z0-9\-]{0,48}[a-z0-9])$" => lambda { |v| v =~ Regexp.new("/^([a-z][a-z0-9\-]{0,48}[a-z0-9])$/") },
          },
-         description: "The name of the domain."
+         description: <<~'DESCRIPTION'
+           The name of the domain.
+         DESCRIPTION
 
 property :permissions_policy_document, Hash,
          callbacks: {
            "permissions_policy_document is not a Object" => lambda { |v| v.is_a? Object },
          },
-         description: "The access control resource policy on the provided domain."
+         description: <<~'DESCRIPTION'
+           The access control resource policy on the provided domain.
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "An array of key-value pairs to apply to this resource."
+         description: <<~'DESCRIPTION'
+           An array of key-value pairs to apply to this resource.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::CodeArtifact::Domain"

@@ -18,7 +18,9 @@ property :options, Hash,
            "Subproperty `Ipv6Support` is not a String" => lambda { |v| v[:Ipv6Support].is_a? String },
            "Subproperty `ApplianceModeSupport` is not a String" => lambda { |v| v[:ApplianceModeSupport].is_a? String },
          },
-         description: "The options for the transit gateway vpc attachment."
+         description: <<~'DESCRIPTION'
+           The options for the transit gateway vpc attachment.
+         DESCRIPTION
 
 property :subnet_ids, Array,
          required: true,

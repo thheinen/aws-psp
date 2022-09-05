@@ -16,7 +16,9 @@ property :actions, Array,
          callbacks: {
            "actions is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "The list of actions."
+         description: <<~'DESCRIPTION'
+           The list of actions.
+         DESCRIPTION
 
 property :chat_channel, Hash,
          description: ""
@@ -26,13 +28,17 @@ property :display_name, String,
            "display_name is not a String" => lambda { |v| v.is_a? String },
            "display_name needs to be 1..200 characters" => lambda { |v| v.length >= 1 && v.length <= 200 },
          },
-         description: "The display name of the response plan."
+         description: <<~'DESCRIPTION'
+           The display name of the response plan.
+         DESCRIPTION
 
 property :engagements, Array,
          callbacks: {
            "engagements is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "The list of engagements to use."
+         description: <<~'DESCRIPTION'
+           The list of engagements to use.
+         DESCRIPTION
 
 property :incident_template, Hash,
          required: true,
@@ -56,13 +62,17 @@ property :name, String,
            "name needs to be 1..200 characters" => lambda { |v| v.length >= 1 && v.length <= 200 },
            "name must match pattern ^[a-zA-Z0-9_-]*$" => lambda { |v| v =~ Regexp.new("/^[a-zA-Z0-9_-]*$/") },
          },
-         description: "The name of the response plan."
+         description: <<~'DESCRIPTION'
+           The name of the response plan.
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "The tags to apply to the response plan."
+         description: <<~'DESCRIPTION'
+           The tags to apply to the response plan.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::SSMIncidents::ResponsePlan"

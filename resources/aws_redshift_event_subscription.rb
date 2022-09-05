@@ -16,39 +16,51 @@ property :enabled, [TrueClass, FalseClass],
          callbacks: {
            "enabled is not a Boolean" => lambda { |v| v.is_a? Boolean },
          },
-         description: "A boolean value; set to true to activate the subscription, and set to false to create the subscription but not activate it."
+         description: <<~'DESCRIPTION'
+           A boolean value; set to true to activate the subscription, and set to false to create the subscription but not activate it.
+         DESCRIPTION
 
 property :event_categories, Array,
          callbacks: {
            "event_categories is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "Specifies the Amazon Redshift event categories to be published by the event notification subscription."
+         description: <<~'DESCRIPTION'
+           Specifies the Amazon Redshift event categories to be published by the event notification subscription.
+         DESCRIPTION
 
 property :severity, String,
          callbacks: {
            "severity is not a String" => lambda { |v| v.is_a? String },
            "severityis not one of `ERROR`, `INFO`" => lambda { |v| %w{ERROR INFO}.include? v },
          },
-         description: "Specifies the Amazon Redshift event severity to be published by the event notification subscription."
+         description: <<~'DESCRIPTION'
+           Specifies the Amazon Redshift event severity to be published by the event notification subscription.
+         DESCRIPTION
 
 property :sns_topic_arn, String,
          callbacks: {
            "sns_topic_arn is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The Amazon Resource Name (ARN) of the Amazon SNS topic used to transmit the event notifications."
+         description: <<~'DESCRIPTION'
+           The Amazon Resource Name (ARN) of the Amazon SNS topic used to transmit the event notifications.
+         DESCRIPTION
 
 property :source_ids, Array,
          callbacks: {
            "source_ids is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "A list of one or more identifiers of Amazon Redshift source objects."
+         description: <<~'DESCRIPTION'
+           A list of one or more identifiers of Amazon Redshift source objects.
+         DESCRIPTION
 
 property :source_type, String,
          callbacks: {
            "source_type is not a String" => lambda { |v| v.is_a? String },
            "source_typeis not one of `cluster`, `cluster-parameter-group`, `cluster-security-group`, `cluster-snapshot`, `scheduled-action`" => lambda { |v| %w{cluster cluster-parameter-group cluster-security-group cluster-snapshot scheduled-action}.include? v },
          },
-         description: "The type of source that will be generating the events."
+         description: <<~'DESCRIPTION'
+           The type of source that will be generating the events.
+         DESCRIPTION
 
 property :subscription_name, String,
          required: true,
@@ -56,13 +68,17 @@ property :subscription_name, String,
            "subscription_name is not a String" => lambda { |v| v.is_a? String },
            "subscription_name must match pattern ^(?=^[a-z][a-z0-9]*(-[a-z0-9]+)*$).{1,255}$" => lambda { |v| v =~ Regexp.new("/^(?=^[a-z][a-z0-9]*(-[a-z0-9]+)*$).{1,255}$/") },
          },
-         description: "The name of the Amazon Redshift event notification subscription"
+         description: <<~'DESCRIPTION'
+           The name of the Amazon Redshift event notification subscription
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "An array of key-value pairs to apply to this resource."
+         description: <<~'DESCRIPTION'
+           An array of key-value pairs to apply to this resource.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::Redshift::EventSubscription"

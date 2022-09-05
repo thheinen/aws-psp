@@ -16,14 +16,18 @@ property :http_url_properties, Hash,
          callbacks: {
            "Subproperty `ConfirmationUrl` is not a String" => lambda { |v| v[:ConfirmationUrl].is_a? String },
          },
-         description: "HTTP URL destination properties."
+         description: <<~'DESCRIPTION'
+           HTTP URL destination properties.
+         DESCRIPTION
 
 property :status, Hash,
          callbacks: {
            "status is not a String" => lambda { |v| v.is_a? String },
            "statusis not one of `ENABLED`, `IN_PROGRESS`, `DISABLED`" => lambda { |v| %w{ENABLED IN_PROGRESS DISABLED}.include? v },
          },
-         description: "The status of the TopicRuleDestination."
+         description: <<~'DESCRIPTION'
+           The status of the TopicRuleDestination.
+         DESCRIPTION
 
 property :vpc_properties, Hash,
          callbacks: {
@@ -33,7 +37,9 @@ property :vpc_properties, Hash,
            "Subproperty `RoleArn` is not a String" => lambda { |v| v[:RoleArn].is_a? String },
            "Subproperty `RoleArn`is not a valid ARN" => lambda { |v| v[:RoleArn] =~ Regexp.new("^arn:aws(?:-cn|-us-gov)?:([^:]*:){3,}") },
          },
-         description: "VPC destination properties."
+         description: <<~'DESCRIPTION'
+           VPC destination properties.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::IoT::TopicRuleDestination"

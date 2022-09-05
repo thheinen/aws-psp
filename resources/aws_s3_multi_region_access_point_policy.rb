@@ -19,14 +19,18 @@ property :mrap_name, String,
            "mrap_name needs to be 3..50 characters" => lambda { |v| v.length >= 3 && v.length <= 50 },
            "mrap_name must match pattern ^[a-z0-9][-a-z0-9]{1,48}[a-z0-9]$" => lambda { |v| v =~ Regexp.new("/^[a-z0-9][-a-z0-9]{1,48}[a-z0-9]$/") },
          },
-         description: "The name of the Multi Region Access Point to apply policy"
+         description: <<~'DESCRIPTION'
+           The name of the Multi Region Access Point to apply policy
+         DESCRIPTION
 
 property :policy, Hash,
          required: true,
          callbacks: {
            "policy is not a Object" => lambda { |v| v.is_a? Object },
          },
-         description: "Policy document to apply to a Multi Region Access Point"
+         description: <<~'DESCRIPTION'
+           Policy document to apply to a Multi Region Access Point
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::S3::MultiRegionAccessPointPolicy"

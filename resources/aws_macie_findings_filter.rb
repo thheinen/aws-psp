@@ -17,17 +17,23 @@ property :action, Hash,
            "action is not a String" => lambda { |v| v.is_a? String },
            "actionis not one of `ARCHIVE`, `NOOP`" => lambda { |v| %w{ARCHIVE NOOP}.include? v },
          },
-         description: "Findings filter action."
+         description: <<~'DESCRIPTION'
+           Findings filter action.
+         DESCRIPTION
 
 property :description, String,
          callbacks: {
            "description is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "Findings filter description"
+         description: <<~'DESCRIPTION'
+           Findings filter description
+         DESCRIPTION
 
 property :finding_criteria, Hash,
          required: true,
-         description: "Findings filter criteria."
+         description: <<~'DESCRIPTION'
+           Findings filter criteria.
+         DESCRIPTION
 
 property :name, String,
          name_property: true,
@@ -35,13 +41,17 @@ property :name, String,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "Findings filter name"
+         description: <<~'DESCRIPTION'
+           Findings filter name
+         DESCRIPTION
 
 property :position, Integer,
          callbacks: {
            "position is not a Integer" => lambda { |v| v.is_a? Integer },
          },
-         description: "Findings filter position."
+         description: <<~'DESCRIPTION'
+           Findings filter position.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::Macie::FindingsFilter"

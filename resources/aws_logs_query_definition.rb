@@ -16,7 +16,9 @@ property :log_group_names, Array,
          callbacks: {
            "log_group_names is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "Optionally define specific log groups as part of your query definition"
+         description: <<~'DESCRIPTION'
+           Optionally define specific log groups as part of your query definition
+         DESCRIPTION
 
 property :name, String,
          name_property: true,
@@ -26,7 +28,9 @@ property :name, String,
            "name needs to be 1..255 characters" => lambda { |v| v.length >= 1 && v.length <= 255 },
            "name must match pattern ^([^:*\/]+\/?)*[^:*\/]+$" => lambda { |v| v =~ Regexp.new("/^([^:*\/]+\/?)*[^:*\/]+$/") },
          },
-         description: "A name for the saved query definition"
+         description: <<~'DESCRIPTION'
+           A name for the saved query definition
+         DESCRIPTION
 
 property :query_string, String,
          required: true,
@@ -34,7 +38,9 @@ property :query_string, String,
            "query_string is not a String" => lambda { |v| v.is_a? String },
            "query_string needs to be 1..10000 characters" => lambda { |v| v.length >= 1 && v.length <= 10000 },
          },
-         description: "The query string to use for this definition"
+         description: <<~'DESCRIPTION'
+           The query string to use for this definition
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::Logs::QueryDefinition"

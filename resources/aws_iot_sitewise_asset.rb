@@ -16,7 +16,9 @@ property :asset_description, String,
          callbacks: {
            "asset_description is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "A description for the asset"
+         description: <<~'DESCRIPTION'
+           A description for the asset
+         DESCRIPTION
 
 property :asset_hierarchies, Array,
          callbacks: {
@@ -29,14 +31,18 @@ property :asset_model_id, String,
          callbacks: {
            "asset_model_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The ID of the asset model from which to create the asset."
+         description: <<~'DESCRIPTION'
+           The ID of the asset model from which to create the asset.
+         DESCRIPTION
 
 property :asset_name, String,
          required: true,
          callbacks: {
            "asset_name is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "A unique, friendly name for the asset."
+         description: <<~'DESCRIPTION'
+           A unique, friendly name for the asset.
+         DESCRIPTION
 
 property :asset_properties, Array,
          callbacks: {
@@ -48,7 +54,9 @@ property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "A list of key-value pairs that contain metadata for the asset."
+         description: <<~'DESCRIPTION'
+           A list of key-value pairs that contain metadata for the asset.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::IoTSiteWise::Asset"

@@ -16,7 +16,9 @@ property :auto_build_bot_locales, [TrueClass, FalseClass],
          callbacks: {
            "auto_build_bot_locales is not a Boolean" => lambda { |v| v.is_a? Boolean },
          },
-         description: "Specifies whether to build the bot locales after bot creation completes."
+         description: <<~'DESCRIPTION'
+           Specifies whether to build the bot locales after bot creation completes.
+         DESCRIPTION
 
 property :bot_file_s3_location, Hash,
          callbacks: {
@@ -29,20 +31,26 @@ property :bot_locales, Array,
          callbacks: {
            "bot_locales is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "List of bot locales"
+         description: <<~'DESCRIPTION'
+           List of bot locales
+         DESCRIPTION
 
 property :bot_tags, Array,
          callbacks: {
            "bot_tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "A list of tags to add to the bot, which can only be added at bot creation."
+         description: <<~'DESCRIPTION'
+           A list of tags to add to the bot, which can only be added at bot creation.
+         DESCRIPTION
 
 property :data_privacy, Hash,
          required: true,
          callbacks: {
            "Subproperty `ChildDirected` is not a Boolean" => lambda { |v| v[:ChildDirected].is_a? Boolean },
          },
-         description: "Data privacy setting of the Bot."
+         description: <<~'DESCRIPTION'
+           Data privacy setting of the Bot.
+         DESCRIPTION
 
 property :description, Hash,
          callbacks: {
@@ -55,7 +63,9 @@ property :idle_session_ttl_in_seconds, Integer,
          callbacks: {
            "idle_session_ttl_in_seconds is not a Integer" => lambda { |v| v.is_a? Integer },
          },
-         description: "IdleSessionTTLInSeconds of the resource"
+         description: <<~'DESCRIPTION'
+           IdleSessionTTLInSeconds of the resource
+         DESCRIPTION
 
 property :name, Hash,
          name_property: true,
@@ -86,7 +96,9 @@ property :test_bot_alias_tags, Array,
          callbacks: {
            "test_bot_alias_tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "A list of tags to add to the test alias for a bot, , which can only be added at bot/bot alias creation."
+         description: <<~'DESCRIPTION'
+           A list of tags to add to the test alias for a bot, , which can only be added at bot/bot alias creation.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::Lex::Bot"

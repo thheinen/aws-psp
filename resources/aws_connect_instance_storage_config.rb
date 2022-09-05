@@ -18,7 +18,9 @@ property :instance_arn, String,
            "instance_arn is not a String" => lambda { |v| v.is_a? String },
            "instance_arn must match pattern ^arn:aws[-a-z0-9]*:connect:[-a-z0-9]*:[0-9]{12}:instance/[-a-zA-Z0-9]*$" => lambda { |v| v =~ Regexp.new("/^arn:aws[-a-z0-9]*:connect:[-a-z0-9]*:[0-9]{12}:instance/[-a-zA-Z0-9]*$/") },
          },
-         description: "Connect Instance ID with which the storage config will be associated"
+         description: <<~'DESCRIPTION'
+           Connect Instance ID with which the storage config will be associated
+         DESCRIPTION
 
 property :kinesis_firehose_config, Hash,
          description: ""

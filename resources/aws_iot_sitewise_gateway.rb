@@ -16,24 +16,32 @@ property :gateway_capability_summaries, Array,
          callbacks: {
            "gateway_capability_summaries is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "A list of gateway capability summaries that each contain a namespace and status."
+         description: <<~'DESCRIPTION'
+           A list of gateway capability summaries that each contain a namespace and status.
+         DESCRIPTION
 
 property :gateway_name, String,
          required: true,
          callbacks: {
            "gateway_name is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "A unique, friendly name for the gateway."
+         description: <<~'DESCRIPTION'
+           A unique, friendly name for the gateway.
+         DESCRIPTION
 
 property :gateway_platform, Hash,
          required: true,
-         description: "The gateway's platform. You can only specify one platform in a gateway."
+         description: <<~'DESCRIPTION'
+           The gateway's platform. You can only specify one platform in a gateway.
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "A list of key-value pairs that contain metadata for the gateway."
+         description: <<~'DESCRIPTION'
+           A list of key-value pairs that contain metadata for the gateway.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::IoTSiteWise::Gateway"

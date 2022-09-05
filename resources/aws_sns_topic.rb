@@ -23,17 +23,32 @@ property :content_based_deduplication, [TrueClass, FalseClass],
 
          DESCRIPTION
 
+property :data_protection_policy, Hash,
+         callbacks: {
+           "data_protection_policy is not a Object" => lambda { |v| v.is_a? Object },
+         },
+         description: <<~'DESCRIPTION'
+           The body of the policy document you want to use for this topic.
+            You can only add one policy per topic.
+            The policy must be in JSON string format.
+            Length Constraints: Maximum length of 30720
+         DESCRIPTION
+
 property :display_name, String,
          callbacks: {
            "display_name is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The display name to use for an Amazon SNS topic with SMS subscriptions."
+         description: <<~'DESCRIPTION'
+           The display name to use for an Amazon SNS topic with SMS subscriptions.
+         DESCRIPTION
 
 property :fifo_topic, [TrueClass, FalseClass],
          callbacks: {
            "fifo_topic is not a Boolean" => lambda { |v| v.is_a? Boolean },
          },
-         description: "Set to true to create a FIFO topic."
+         description: <<~'DESCRIPTION'
+           Set to true to create a FIFO topic.
+         DESCRIPTION
 
 property :kms_master_key_id, String,
          callbacks: {
@@ -48,7 +63,9 @@ property :subscription, Array,
          callbacks: {
            "subscription is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "The SNS subscriptions (endpoints) for this topic."
+         description: <<~'DESCRIPTION'
+           The SNS subscriptions (endpoints) for this topic.
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
@@ -71,6 +88,7 @@ rest_api_document "/AWS::SNS::Topic"
 
 rest_property_map({
   content_based_deduplication: "ContentBasedDeduplication",
+  data_protection_policy:      "DataProtectionPolicy",
   display_name:                "DisplayName",
   fifo_topic:                  "FifoTopic",
   kms_master_key_id:           "KmsMasterKeyId",

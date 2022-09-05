@@ -17,33 +17,43 @@ property :engine_name, String,
          callbacks: {
            "engine_name is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "Indicates the name of the engine that this option group can be applied to."
+         description: <<~'DESCRIPTION'
+           Indicates the name of the engine that this option group can be applied to.
+         DESCRIPTION
 
 property :major_engine_version, String,
          required: true,
          callbacks: {
            "major_engine_version is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "Indicates the major engine version associated with this option group."
+         description: <<~'DESCRIPTION'
+           Indicates the major engine version associated with this option group.
+         DESCRIPTION
 
 property :option_configurations, Array,
          callbacks: {
            "option_configurations is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "Indicates what options are available in the option group."
+         description: <<~'DESCRIPTION'
+           Indicates what options are available in the option group.
+         DESCRIPTION
 
 property :option_group_description, String,
          required: true,
          callbacks: {
            "option_group_description is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "Provides a description of the option group."
+         description: <<~'DESCRIPTION'
+           Provides a description of the option group.
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "An array of key-value pairs to apply to this resource."
+         description: <<~'DESCRIPTION'
+           An array of key-value pairs to apply to this resource.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::RDS::OptionGroup"

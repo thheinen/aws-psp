@@ -31,7 +31,9 @@ property :bot_alias_tags, Array,
          callbacks: {
            "bot_alias_tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "A list of tags to add to the bot alias."
+         description: <<~'DESCRIPTION'
+           A list of tags to add to the bot alias.
+         DESCRIPTION
 
 property :bot_id, Hash,
          required: true,
@@ -63,7 +65,9 @@ property :sentiment_analysis_settings, Hash,
          callbacks: {
            "Subproperty `DetectSentiment` is not a Boolean" => lambda { |v| v[:DetectSentiment].is_a? Boolean },
          },
-         description: "Determines whether Amazon Lex will use Amazon Comprehend to detect the sentiment of user utterances."
+         description: <<~'DESCRIPTION'
+           Determines whether Amazon Lex will use Amazon Comprehend to detect the sentiment of user utterances.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::Lex::BotAlias"

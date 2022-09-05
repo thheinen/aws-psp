@@ -28,7 +28,9 @@ property :description, String,
          callbacks: {
            "description is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "Description of the connection."
+         description: <<~'DESCRIPTION'
+           Description of the connection.
+         DESCRIPTION
 
 property :name, String,
          name_property: true,
@@ -36,7 +38,9 @@ property :name, String,
            "name is not a String" => lambda { |v| v.is_a? String },
            "name needs to be 1..64 characters" => lambda { |v| v.length >= 1 && v.length <= 64 },
          },
-         description: "Name of the connection."
+         description: <<~'DESCRIPTION'
+           Name of the connection.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::Events::Connection"

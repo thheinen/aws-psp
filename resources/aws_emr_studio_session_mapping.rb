@@ -17,7 +17,9 @@ property :identity_name, String,
          callbacks: {
            "identity_name is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The name of the user or group. For more information, see UserName and DisplayName in the AWS SSO Identity Store API Reference. Either IdentityName or IdentityId must be specified."
+         description: <<~'DESCRIPTION'
+           The name of the user or group. For more information, see UserName and DisplayName in the AWS SSO Identity Store API Reference. Either IdentityName or IdentityId must be specified.
+         DESCRIPTION
 
 property :identity_type, String,
          required: true,
@@ -25,7 +27,9 @@ property :identity_type, String,
            "identity_type is not a String" => lambda { |v| v.is_a? String },
            "identity_typeis not one of `USER`, `GROUP`" => lambda { |v| %w{USER GROUP}.include? v },
          },
-         description: "Specifies whether the identity to map to the Studio is a user or a group."
+         description: <<~'DESCRIPTION'
+           Specifies whether the identity to map to the Studio is a user or a group.
+         DESCRIPTION
 
 property :session_policy_arn, Hash,
          required: true,
@@ -33,7 +37,9 @@ property :session_policy_arn, Hash,
            "session_policy_arn is not a String" => lambda { |v| v.is_a? String },
            "session_policy_arn must match pattern ^arn:aws(-(cn|us-gov))?:iam::([0-9]{12})?:policy\/[^.]+$" => lambda { |v| v =~ Regexp.new("/^arn:aws(-(cn|us-gov))?:iam::([0-9]{12})?:policy\/[^.]+$/") },
          },
-         description: "The Amazon Resource Name (ARN) for the session policy that will be applied to the user or group. Session policies refine Studio user permissions without the need to use multiple IAM user roles."
+         description: <<~'DESCRIPTION'
+           The Amazon Resource Name (ARN) for the session policy that will be applied to the user or group. Session policies refine Studio user permissions without the need to use multiple IAM user roles.
+         DESCRIPTION
 
 property :studio_id, String,
          required: true,
@@ -42,7 +48,9 @@ property :studio_id, String,
            "studio_id needs to be 4..256 characters" => lambda { |v| v.length >= 4 && v.length <= 256 },
            "studio_id must match pattern ^es-[0-9A-Z]+" => lambda { |v| v =~ Regexp.new("/^es-[0-9A-Z]+/") },
          },
-         description: "The ID of the Amazon EMR Studio to which the user or group will be mapped."
+         description: <<~'DESCRIPTION'
+           The ID of the Amazon EMR Studio to which the user or group will be mapped.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::EMR::StudioSessionMapping"

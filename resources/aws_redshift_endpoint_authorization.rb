@@ -18,7 +18,9 @@ property :account, Hash,
            "account is not a String" => lambda { |v| v.is_a? String },
            "account must match pattern ^\d{12}$" => lambda { |v| v =~ Regexp.new("/^\d{12}$/") },
          },
-         description: "The target AWS account ID to grant or revoke access for."
+         description: <<~'DESCRIPTION'
+           The target AWS account ID to grant or revoke access for.
+         DESCRIPTION
 
 property :cluster_identifier, String,
          required: true,
@@ -26,19 +28,25 @@ property :cluster_identifier, String,
            "cluster_identifier is not a String" => lambda { |v| v.is_a? String },
            "cluster_identifier must match pattern ^(?=^[a-z][a-z0-9]*(-[a-z0-9]+)*$).{1,63}$" => lambda { |v| v =~ Regexp.new("/^(?=^[a-z][a-z0-9]*(-[a-z0-9]+)*$).{1,63}$/") },
          },
-         description: "The cluster identifier."
+         description: <<~'DESCRIPTION'
+           The cluster identifier.
+         DESCRIPTION
 
 property :force, [TrueClass, FalseClass],
          callbacks: {
            "force is not a Boolean" => lambda { |v| v.is_a? Boolean },
          },
-         description: " Indicates whether to force the revoke action. If true, the Redshift-managed VPC endpoints associated with the endpoint authorization are also deleted."
+         description: <<~'DESCRIPTION'
+           Indicates whether to force the revoke action. If true, the Redshift-managed VPC endpoints associated with the endpoint authorization are also deleted.
+         DESCRIPTION
 
 property :vpc_ids, Array,
          callbacks: {
            "vpc_ids is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "The virtual private cloud (VPC) identifiers to grant or revoke access to."
+         description: <<~'DESCRIPTION'
+           The virtual private cloud (VPC) identifiers to grant or revoke access to.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::Redshift::EndpointAuthorization"

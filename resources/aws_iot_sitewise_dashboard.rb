@@ -17,33 +17,43 @@ property :dashboard_definition, String,
          callbacks: {
            "dashboard_definition is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The dashboard definition specified in a JSON literal."
+         description: <<~'DESCRIPTION'
+           The dashboard definition specified in a JSON literal.
+         DESCRIPTION
 
 property :dashboard_description, String,
          required: true,
          callbacks: {
            "dashboard_description is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "A description for the dashboard."
+         description: <<~'DESCRIPTION'
+           A description for the dashboard.
+         DESCRIPTION
 
 property :dashboard_name, String,
          required: true,
          callbacks: {
            "dashboard_name is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "A friendly name for the dashboard."
+         description: <<~'DESCRIPTION'
+           A friendly name for the dashboard.
+         DESCRIPTION
 
 property :project_id, String,
          callbacks: {
            "project_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The ID of the project in which to create the dashboard."
+         description: <<~'DESCRIPTION'
+           The ID of the project in which to create the dashboard.
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "A list of key-value pairs that contain metadata for the dashboard."
+         description: <<~'DESCRIPTION'
+           A list of key-value pairs that contain metadata for the dashboard.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::IoTSiteWise::Dashboard"

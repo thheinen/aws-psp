@@ -23,7 +23,9 @@ property :description, String,
          callbacks: {
            "description is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The description of the attribute group. "
+         description: <<~'DESCRIPTION'
+           The description of the attribute group.
+         DESCRIPTION
 
 property :name, String,
          name_property: true,
@@ -33,7 +35,9 @@ property :name, String,
            "name needs to be 1..256 characters" => lambda { |v| v.length >= 1 && v.length <= 256 },
            "name must match pattern \w+" => lambda { |v| v =~ Regexp.new("/\w+/") },
          },
-         description: "The name of the attribute group. "
+         description: <<~'DESCRIPTION'
+           The name of the attribute group.
+         DESCRIPTION
 
 property :tags, Hash,
          callbacks: {

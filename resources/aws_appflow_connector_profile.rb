@@ -18,17 +18,23 @@ property :connection_mode, String,
            "connection_mode is not a String" => lambda { |v| v.is_a? String },
            "connection_modeis not one of `Public`, `Private`" => lambda { |v| %w{Public Private}.include? v },
          },
-         description: "Mode in which data transfer should be enabled. Private connection mode is currently enabled for Salesforce, Snowflake, Trendmicro and Singular"
+         description: <<~'DESCRIPTION'
+           Mode in which data transfer should be enabled. Private connection mode is currently enabled for Salesforce, Snowflake, Trendmicro and Singular
+         DESCRIPTION
 
 property :connector_label, String,
          callbacks: {
            "connector_label is not a String" => lambda { |v| v.is_a? String },
            "connector_label must match pattern [\w!@#.-]+" => lambda { |v| v =~ Regexp.new("/[\w!@#.-]+/") },
          },
-         description: "The label of the connector. The label is unique for each ConnectorRegistration in your AWS account. Only needed if calling for CUSTOMCONNECTOR connector type/."
+         description: <<~'DESCRIPTION'
+           The label of the connector. The label is unique for each ConnectorRegistration in your AWS account. Only needed if calling for CUSTOMCONNECTOR connector type/.
+         DESCRIPTION
 
 property :connector_profile_config, Hash,
-         description: "Connector specific configurations needed to create connector profile"
+         description: <<~'DESCRIPTION'
+           Connector specific configurations needed to create connector profile
+         DESCRIPTION
 
 property :connector_profile_name, String,
          required: true,
@@ -36,7 +42,9 @@ property :connector_profile_name, String,
            "connector_profile_name is not a String" => lambda { |v| v.is_a? String },
            "connector_profile_name must match pattern [\w/!@#+=.-]+" => lambda { |v| v =~ Regexp.new("/[\w/!@#+=.-]+/") },
          },
-         description: "The maximum number of items to retrieve in a single batch."
+         description: <<~'DESCRIPTION'
+           The maximum number of items to retrieve in a single batch.
+         DESCRIPTION
 
 property :connector_type, Hash,
          required: true,
@@ -44,7 +52,9 @@ property :connector_type, Hash,
            "connector_type is not a String" => lambda { |v| v.is_a? String },
            "connector_typeis not one of `Salesforce`, `Singular`, `Slack`, `Redshift`, `Marketo`, `Googleanalytics`, `Zendesk`, `Servicenow`, `SAPOData`, `Datadog`, `Trendmicro`, `Snowflake`, `Dynatrace`, `Infornexus`, `Amplitude`, `Veeva`, `CustomConnector`" => lambda { |v| %w{Salesforce Singular Slack Redshift Marketo Googleanalytics Zendesk Servicenow SAPOData Datadog Trendmicro Snowflake Dynatrace Infornexus Amplitude Veeva CustomConnector}.include? v },
          },
-         description: "List of Saas providers that need connector profile to be created"
+         description: <<~'DESCRIPTION'
+           List of Saas providers that need connector profile to be created
+         DESCRIPTION
 
 property :kms_arn, String,
          callbacks: {
@@ -52,7 +62,9 @@ property :kms_arn, String,
            "kms_arn needs to be 20..2048 characters" => lambda { |v| v.length >= 20 && v.length <= 2048 },
            "kms_arn must match pattern arn:aws:kms:.*:[0-9]+:.*" => lambda { |v| v =~ Regexp.new("/arn:aws:kms:.*:[0-9]+:.*/") },
          },
-         description: "The ARN of the AWS Key Management Service (AWS KMS) key that's used to encrypt your function's environment variables. If it's not provided, AWS Lambda uses a default service key."
+         description: <<~'DESCRIPTION'
+           The ARN of the AWS Key Management Service (AWS KMS) key that's used to encrypt your function's environment variables. If it's not provided, AWS Lambda uses a default service key.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::AppFlow::ConnectorProfile"

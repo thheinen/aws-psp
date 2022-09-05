@@ -17,21 +17,27 @@ property :subnet_id, String,
          callbacks: {
            "subnet_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The IDs of the subnets to associate with the transit gateway multicast domain."
+         description: <<~'DESCRIPTION'
+           The IDs of the subnets to associate with the transit gateway multicast domain.
+         DESCRIPTION
 
 property :transitgateway_attachment_id, String,
          required: true,
          callbacks: {
            "transitgateway_attachment_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The ID of the transit gateway attachment."
+         description: <<~'DESCRIPTION'
+           The ID of the transit gateway attachment.
+         DESCRIPTION
 
 property :transitgateway_multicast_domain_id, String,
          required: true,
          callbacks: {
            "transitgateway_multicast_domain_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The ID of the transit gateway multicast domain."
+         description: <<~'DESCRIPTION'
+           The ID of the transit gateway multicast domain.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::EC2::TransitGatewayMulticastDomainAssociation"

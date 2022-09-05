@@ -17,7 +17,9 @@ property :description, String,
            "description is not a String" => lambda { |v| v.is_a? String },
            "description needs to be 1..512 characters" => lambda { |v| v.length >= 1 && v.length <= 512 },
          },
-         description: "Findings filter description."
+         description: <<~'DESCRIPTION'
+           Findings filter description.
+         DESCRIPTION
 
 property :filter_action, Hash,
          required: true,
@@ -25,11 +27,15 @@ property :filter_action, Hash,
            "filter_action is not a String" => lambda { |v| v.is_a? String },
            "filter_actionis not one of `NONE`, `SUPPRESS`" => lambda { |v| %w{NONE SUPPRESS}.include? v },
          },
-         description: "Findings filter action."
+         description: <<~'DESCRIPTION'
+           Findings filter action.
+         DESCRIPTION
 
 property :filter_criteria, Hash,
          required: true,
-         description: "Findings filter criteria."
+         description: <<~'DESCRIPTION'
+           Findings filter criteria.
+         DESCRIPTION
 
 property :name, String,
          name_property: true,
@@ -38,7 +44,9 @@ property :name, String,
            "name is not a String" => lambda { |v| v.is_a? String },
            "name needs to be 1..128 characters" => lambda { |v| v.length >= 1 && v.length <= 128 },
          },
-         description: "Findings filter name."
+         description: <<~'DESCRIPTION'
+           Findings filter name.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::InspectorV2::Filter"
