@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_lex_bot
 provides :aws_lex_bot, target_mode: true, platform: "aws"
 
@@ -69,7 +70,6 @@ property :idle_session_ttl_in_seconds, Integer,
 
 property :name, Hash,
          name_property: true,
-         required: true,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
            "name needs to be 1..100 characters" => lambda { |v| v.length >= 1 && v.length <= 100 },

@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_lex_bot_alias
 provides :aws_lex_bot_alias, target_mode: true, platform: "aws"
 

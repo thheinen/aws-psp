@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_athena_prepared_statement
 provides :aws_athena_prepared_statement, target_mode: true, platform: "aws"
 
@@ -17,7 +18,9 @@ property :description, String,
            "description is not a String" => lambda { |v| v.is_a? String },
            "description needs to be 1..1024 characters" => lambda { |v| v.length >= 1 && v.length <= 1024 },
          },
-         description: "The description of the prepared statement."
+         description: <<~'DESCRIPTION'
+           The description of the prepared statement.
+         DESCRIPTION
 
 property :query_statement, String,
          required: true,
@@ -25,7 +28,9 @@ property :query_statement, String,
            "query_statement is not a String" => lambda { |v| v.is_a? String },
            "query_statement needs to be 1..262144 characters" => lambda { |v| v.length >= 1 && v.length <= 262144 },
          },
-         description: "The query string for the prepared statement."
+         description: <<~'DESCRIPTION'
+           The query string for the prepared statement.
+         DESCRIPTION
 
 property :statement_name, String,
          required: true,
@@ -33,7 +38,9 @@ property :statement_name, String,
            "statement_name is not a String" => lambda { |v| v.is_a? String },
            "statement_name needs to be 1..256 characters" => lambda { |v| v.length >= 1 && v.length <= 256 },
          },
-         description: "The name of the prepared statement."
+         description: <<~'DESCRIPTION'
+           The name of the prepared statement.
+         DESCRIPTION
 
 property :work_group, String,
          required: true,
@@ -41,7 +48,9 @@ property :work_group, String,
            "work_group is not a String" => lambda { |v| v.is_a? String },
            "work_group needs to be 1..128 characters" => lambda { |v| v.length >= 1 && v.length <= 128 },
          },
-         description: "The name of the workgroup to which the prepared statement belongs."
+         description: <<~'DESCRIPTION'
+           The name of the workgroup to which the prepared statement belongs.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::Athena::PreparedStatement"

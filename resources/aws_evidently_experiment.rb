@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_evidently_experiment
 provides :aws_evidently_experiment, target_mode: true, platform: "aws"
 
@@ -28,7 +29,6 @@ property :metric_goals, Array,
 
 property :name, String,
          name_property: true,
-         required: true,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
            "name needs to be 1..127 characters" => lambda { |v| v.length >= 1 && v.length <= 127 },
@@ -77,7 +77,9 @@ property :running_status, Hash,
            "Subproperty `DesiredState` is not a String" => lambda { |v| v[:DesiredState].is_a? String },
            "Subproperty `DesiredState` must match pattern ^(CANCELLED|COMPLETED)" => lambda { |v| v[:DesiredState] =~ Regexp.new("/^(CANCELLED|COMPLETED)/") },
          },
-         description: "Start Experiment. Default is False"
+         description: <<~'DESCRIPTION'
+           Start Experiment. Default is False
+         DESCRIPTION
 
 property :sampling_rate, Integer,
          callbacks: {
@@ -97,7 +99,9 @@ property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "An array of key-value pairs to apply to this resource."
+         description: <<~'DESCRIPTION'
+           An array of key-value pairs to apply to this resource.
+         DESCRIPTION
 
 property :treatments, Array,
          required: true,

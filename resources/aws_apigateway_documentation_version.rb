@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_apigateway_documentation_version
 provides :aws_apigateway_documentation_version, target_mode: true, platform: "aws"
 
@@ -16,21 +17,27 @@ property :description, String,
          callbacks: {
            "description is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The description of the API documentation snapshot."
+         description: <<~'DESCRIPTION'
+           The description of the API documentation snapshot.
+         DESCRIPTION
 
 property :documentation_version, String,
          required: true,
          callbacks: {
            "documentation_version is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The version identifier of the API documentation snapshot."
+         description: <<~'DESCRIPTION'
+           The version identifier of the API documentation snapshot.
+         DESCRIPTION
 
 property :rest_api_id, String,
          required: true,
          callbacks: {
            "rest_api_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The identifier of the API."
+         description: <<~'DESCRIPTION'
+           The identifier of the API.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::ApiGateway::DocumentationVersion"

@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_ssm_association
 provides :aws_ssm_association, target_mode: true, platform: "aws"
 
@@ -23,7 +24,9 @@ property :association_name, String,
            "association_name is not a String" => lambda { |v| v.is_a? String },
            "association_name must match pattern ^[a-zA-Z0-9_\-.]{3,128}$" => lambda { |v| v =~ Regexp.new("/^[a-zA-Z0-9_\-.]{3,128}$/") },
          },
-         description: "The name of the association."
+         description: <<~'DESCRIPTION'
+           The name of the association.
+         DESCRIPTION
 
 property :automation_target_parameter_name, String,
          callbacks: {
@@ -50,14 +53,18 @@ property :document_version, String,
            "document_version is not a String" => lambda { |v| v.is_a? String },
            "document_version must match pattern ([$]LATEST|[$]DEFAULT|^[1-9][0-9]*$)" => lambda { |v| v =~ Regexp.new("/([$]LATEST|[$]DEFAULT|^[1-9][0-9]*$)/") },
          },
-         description: "The version of the SSM document to associate with the target."
+         description: <<~'DESCRIPTION'
+           The version of the SSM document to associate with the target.
+         DESCRIPTION
 
 property :instance_id, String,
          callbacks: {
            "instance_id is not a String" => lambda { |v| v.is_a? String },
            "instance_id must match pattern (^i-(\w{8}|\w{17})$)|(^mi-\w{17}$)" => lambda { |v| v =~ Regexp.new("/(^i-(\w{8}|\w{17})$)|(^mi-\w{17}$)/") },
          },
-         description: "The ID of the instance that the SSM document is associated with."
+         description: <<~'DESCRIPTION'
+           The ID of the instance that the SSM document is associated with.
+         DESCRIPTION
 
 property :max_concurrency, String,
          callbacks: {
@@ -75,12 +82,13 @@ property :max_errors, String,
 
 property :name, String,
          name_property: true,
-         required: true,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
            "name must match pattern ^[a-zA-Z0-9_\-.:/]{3,200}$" => lambda { |v| v =~ Regexp.new("/^[a-zA-Z0-9_\-.:/]{3,200}$/") },
          },
-         description: "The name of the SSM document."
+         description: <<~'DESCRIPTION'
+           The name of the SSM document.
+         DESCRIPTION
 
 property :output_location, Hash,
          description: ""
@@ -89,14 +97,18 @@ property :parameters, Hash,
          callbacks: {
            "parameters is not a Object" => lambda { |v| v.is_a? Object },
          },
-         description: "Parameter values that the SSM document uses at runtime."
+         description: <<~'DESCRIPTION'
+           Parameter values that the SSM document uses at runtime.
+         DESCRIPTION
 
 property :schedule_expression, String,
          callbacks: {
            "schedule_expression is not a String" => lambda { |v| v.is_a? String },
            "schedule_expression needs to be 1..256 characters" => lambda { |v| v.length >= 1 && v.length <= 256 },
          },
-         description: "A Cron or Rate expression that specifies when the association is applied to the target."
+         description: <<~'DESCRIPTION'
+           A Cron or Rate expression that specifies when the association is applied to the target.
+         DESCRIPTION
 
 property :schedule_offset, Integer,
          callbacks: {
@@ -115,7 +127,9 @@ property :targets, Array,
          callbacks: {
            "targets is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "The targets that the SSM document sends commands to."
+         description: <<~'DESCRIPTION'
+           The targets that the SSM document sends commands to.
+         DESCRIPTION
 
 property :wait_for_success_timeout_seconds, Integer,
          callbacks: {

@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_iot_ca_certificate
 provides :aws_iot_ca_certificate, target_mode: true, platform: "aws"
 
@@ -62,7 +63,9 @@ property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "An array of key-value pairs to apply to this resource."
+         description: <<~'DESCRIPTION'
+           An array of key-value pairs to apply to this resource.
+         DESCRIPTION
 
 property :verification_certificate_pem, String,
          callbacks: {
@@ -70,7 +73,9 @@ property :verification_certificate_pem, String,
            "verification_certificate_pem needs to be 1..65536 characters" => lambda { |v| v.length >= 1 && v.length <= 65536 },
            "verification_certificate_pem must match pattern [\s\S]*" => lambda { |v| v =~ Regexp.new("/[\s\S]*/") },
          },
-         description: "The private key verification certificate."
+         description: <<~'DESCRIPTION'
+           The private key verification certificate.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::IoT::CACertificate"

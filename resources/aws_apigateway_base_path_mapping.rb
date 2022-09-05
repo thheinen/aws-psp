@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_apigateway_base_path_mapping
 provides :aws_apigateway_base_path_mapping, target_mode: true, platform: "aws"
 
@@ -16,14 +17,18 @@ property :base_path, String,
          callbacks: {
            "base_path is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The base path name that callers of the API must provide in the URL after the domain name."
+         description: <<~'DESCRIPTION'
+           The base path name that callers of the API must provide in the URL after the domain name.
+         DESCRIPTION
 
 property :domain_name, String,
          required: true,
          callbacks: {
            "domain_name is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The DomainName of an AWS::ApiGateway::DomainName resource."
+         description: <<~'DESCRIPTION'
+           The DomainName of an AWS::ApiGateway::DomainName resource.
+         DESCRIPTION
 
 property :id, String,
          callbacks: {
@@ -35,13 +40,17 @@ property :rest_api_id, String,
          callbacks: {
            "rest_api_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The ID of the API."
+         description: <<~'DESCRIPTION'
+           The ID of the API.
+         DESCRIPTION
 
 property :stage, String,
          callbacks: {
            "stage is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The name of the API's stage."
+         description: <<~'DESCRIPTION'
+           The name of the API's stage.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::ApiGateway::BasePathMapping"

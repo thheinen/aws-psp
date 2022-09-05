@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_sagemaker_app
 provides :aws_sagemaker_app, target_mode: true, platform: "aws"
 
@@ -19,7 +20,9 @@ property :app_name, String,
            "app_name needs to be 1..63 characters" => lambda { |v| v.length >= 1 && v.length <= 63 },
            "app_name must match pattern ^[a-zA-Z0-9](-*[a-zA-Z0-9]){0,62}" => lambda { |v| v =~ Regexp.new("/^[a-zA-Z0-9](-*[a-zA-Z0-9]){0,62}/") },
          },
-         description: "The name of the app."
+         description: <<~'DESCRIPTION'
+           The name of the app.
+         DESCRIPTION
 
 property :app_type, String,
          required: true,
@@ -27,7 +30,9 @@ property :app_type, String,
            "app_type is not a String" => lambda { |v| v.is_a? String },
            "app_typeis not one of `JupyterServer`, `KernelGateway`, `RStudioServerPro`, `RSessionGateway`, `Canvas`" => lambda { |v| %w{JupyterServer KernelGateway RStudioServerPro RSessionGateway Canvas}.include? v },
          },
-         description: "The type of app."
+         description: <<~'DESCRIPTION'
+           The type of app.
+         DESCRIPTION
 
 property :domain_id, String,
          required: true,
@@ -35,7 +40,9 @@ property :domain_id, String,
            "domain_id is not a String" => lambda { |v| v.is_a? String },
            "domain_id needs to be 1..63 characters" => lambda { |v| v.length >= 1 && v.length <= 63 },
          },
-         description: "The domain ID."
+         description: <<~'DESCRIPTION'
+           The domain ID.
+         DESCRIPTION
 
 property :resource_spec, Hash,
          callbacks: {
@@ -50,13 +57,17 @@ property :resource_spec, Hash,
            "Subproperty `SageMakerImageVersionArn` must match pattern ^arn:aws(-[\w]+)*:sagemaker:.+:[0-9]{12}:image-version/[a-z0-9]([-.]?[a-z0-9])*/[0-9]+$" => lambda { |v| v[:SageMakerImageVersionArn] =~ Regexp.new("/^arn:aws(-[\w]+)*:sagemaker:.+:[0-9]{12}:image-version/[a-z0-9]([-.]?[a-z0-9])*/[0-9]+$/") },
            "Subproperty `SageMakerImageVersionArn`is not a valid ARN" => lambda { |v| v[:SageMakerImageVersionArn] =~ Regexp.new("^arn:aws(?:-cn|-us-gov)?:([^:]*:){3,}") },
          },
-         description: "The instance type and the Amazon Resource Name (ARN) of the SageMaker image created on the instance."
+         description: <<~'DESCRIPTION'
+           The instance type and the Amazon Resource Name (ARN) of the SageMaker image created on the instance.
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "A list of tags to apply to the app."
+         description: <<~'DESCRIPTION'
+           A list of tags to apply to the app.
+         DESCRIPTION
 
 property :user_profile_name, String,
          required: true,
@@ -65,7 +76,9 @@ property :user_profile_name, String,
            "user_profile_name needs to be 1..63 characters" => lambda { |v| v.length >= 1 && v.length <= 63 },
            "user_profile_name must match pattern ^[a-zA-Z0-9](-*[a-zA-Z0-9]){0,62}" => lambda { |v| v =~ Regexp.new("/^[a-zA-Z0-9](-*[a-zA-Z0-9]){0,62}/") },
          },
-         description: "The user profile name."
+         description: <<~'DESCRIPTION'
+           The user profile name.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::SageMaker::App"

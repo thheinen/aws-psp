@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_personalize_solution
 provides :aws_personalize_solution, target_mode: true, platform: "aws"
 
@@ -18,42 +19,53 @@ property :dataset_group_arn, String,
            "dataset_group_arn is not a String" => lambda { |v| v.is_a? String },
            "dataset_group_arn must match pattern arn:([a-z\d-]+):personalize:.*:.*:.+" => lambda { |v| v =~ Regexp.new("/arn:([a-z\d-]+):personalize:.*:.*:.+/") },
          },
-         description: "The ARN of the dataset group that provides the training data."
+         description: <<~'DESCRIPTION'
+           The ARN of the dataset group that provides the training data.
+         DESCRIPTION
 
 property :event_type, String,
          callbacks: {
            "event_type is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "When your have multiple event types (using an EVENT_TYPE schema field), this parameter specifies which event type (for example, 'click' or 'like') is used for training the model. If you do not provide an eventType, Amazon Personalize will use all interactions for training with equal weight regardless of type."
+         description: <<~'DESCRIPTION'
+           When your have multiple event types (using an EVENT_TYPE schema field), this parameter specifies which event type (for example, 'click' or 'like') is used for training the model. If you do not provide an eventType, Amazon Personalize will use all interactions for training with equal weight regardless of type.
+         DESCRIPTION
 
 property :name, String,
          name_property: true,
-         required: true,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
            "name needs to be 1..63 characters" => lambda { |v| v.length >= 1 && v.length <= 63 },
            "name must match pattern ^[a-zA-Z0-9][a-zA-Z0-9\-_]*" => lambda { |v| v =~ Regexp.new("/^[a-zA-Z0-9][a-zA-Z0-9\-_]*/") },
          },
-         description: "The name for the solution"
+         description: <<~'DESCRIPTION'
+           The name for the solution
+         DESCRIPTION
 
 property :perform_auto_ml, [TrueClass, FalseClass],
          callbacks: {
            "perform_auto_ml is not a Boolean" => lambda { |v| v.is_a? Boolean },
          },
-         description: "Whether to perform automated machine learning (AutoML). The default is false. For this case, you must specify recipeArn."
+         description: <<~'DESCRIPTION'
+           Whether to perform automated machine learning (AutoML). The default is false. For this case, you must specify recipeArn.
+         DESCRIPTION
 
 property :perform_hpo, [TrueClass, FalseClass],
          callbacks: {
            "perform_hpo is not a Boolean" => lambda { |v| v.is_a? Boolean },
          },
-         description: "Whether to perform hyperparameter optimization (HPO) on the specified or selected recipe. The default is false. When performing AutoML, this parameter is always true and you should not set it to false."
+         description: <<~'DESCRIPTION'
+           Whether to perform hyperparameter optimization (HPO) on the specified or selected recipe. The default is false. When performing AutoML, this parameter is always true and you should not set it to false.
+         DESCRIPTION
 
 property :recipe_arn, String,
          callbacks: {
            "recipe_arn is not a String" => lambda { |v| v.is_a? String },
            "recipe_arn must match pattern arn:([a-z\d-]+):personalize:.*:.*:.+" => lambda { |v| v =~ Regexp.new("/arn:([a-z\d-]+):personalize:.*:.*:.+/") },
          },
-         description: "The ARN of the recipe to use for model training. Only specified when performAutoML is false."
+         description: <<~'DESCRIPTION'
+           The ARN of the recipe to use for model training. Only specified when performAutoML is false.
+         DESCRIPTION
 
 property :solution_config, Hash,
          callbacks: {

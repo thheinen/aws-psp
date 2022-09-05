@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_quicksight_data_set
 provides :aws_quicksight_data_set, target_mode: true, platform: "aws"
 
@@ -24,7 +25,9 @@ property :column_groups, Array,
          callbacks: {
            "column_groups is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "<p>Groupings of columns that work together in certain QuickSight features. Currently, only geospatial hierarchy is supported.</p>"
+         description: <<~'DESCRIPTION'
+           <p>Groupings of columns that work together in certain QuickSight features. Currently, only geospatial hierarchy is supported.</p>
+         DESCRIPTION
 
 property :column_level_permission_rules, Array,
          callbacks: {
@@ -77,13 +80,17 @@ property :name, String,
            "name is not a String" => lambda { |v| v.is_a? String },
            "name needs to be 1..128 characters" => lambda { |v| v.length >= 1 && v.length <= 128 },
          },
-         description: "<p>The display name for the dataset.</p>"
+         description: <<~'DESCRIPTION'
+           <p>The display name for the dataset.</p>
+         DESCRIPTION
 
 property :permissions, Array,
          callbacks: {
            "permissions is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "<p>A list of resource permissions on the dataset.</p>"
+         description: <<~'DESCRIPTION'
+           <p>A list of resource permissions on the dataset.</p>
+         DESCRIPTION
 
 property :physical_table_map, Hash,
          callbacks: {
@@ -105,7 +112,9 @@ property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "<p>Contains a map of the key-value pairs for the resource tag or tags assigned to the dataset.</p>"
+         description: <<~'DESCRIPTION'
+           <p>Contains a map of the key-value pairs for the resource tag or tags assigned to the dataset.</p>
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::QuickSight::DataSet"

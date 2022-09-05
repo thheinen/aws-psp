@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_datasync_location_s3
 provides :aws_datasync_location_s3, target_mode: true, platform: "aws"
 
@@ -18,7 +19,9 @@ property :s3_bucket_arn, String,
            "s3_bucket_arn is not a String" => lambda { |v| v.is_a? String },
            "s3_bucket_arn must match pattern ^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):s3:[a-z\-0-9]*:[0-9]*:.*$" => lambda { |v| v =~ Regexp.new("/^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):s3:[a-z\-0-9]*:[0-9]*:.*$/") },
          },
-         description: "The Amazon Resource Name (ARN) of the Amazon S3 bucket."
+         description: <<~'DESCRIPTION'
+           The Amazon Resource Name (ARN) of the Amazon S3 bucket.
+         DESCRIPTION
 
 property :s3_config, Hash,
          required: true,
@@ -34,20 +37,26 @@ property :s3_storage_class, String,
            "s3_storage_class is not a String" => lambda { |v| v.is_a? String },
            "s3_storage_classis not one of `STANDARD`, `STANDARD_IA`, `ONEZONE_IA`, `INTELLIGENT_TIERING`, `GLACIER`, `DEEP_ARCHIVE`" => lambda { |v| %w{STANDARD STANDARD_IA ONEZONE_IA INTELLIGENT_TIERING GLACIER DEEP_ARCHIVE}.include? v },
          },
-         description: "The Amazon S3 storage class you want to store your files in when this location is used as a task destination."
+         description: <<~'DESCRIPTION'
+           The Amazon S3 storage class you want to store your files in when this location is used as a task destination.
+         DESCRIPTION
 
 property :subdirectory, String,
          callbacks: {
            "subdirectory is not a String" => lambda { |v| v.is_a? String },
            "subdirectory must match pattern ^[\p{L}\p{M}\p{Z}\p{S}\p{N}\p{P}\p{C}]*$" => lambda { |v| v =~ Regexp.new("/^[\p{L}\p{M}\p{Z}\p{S}\p{N}\p{P}\p{C}]*$/") },
          },
-         description: "A subdirectory in the Amazon S3 bucket. This subdirectory in Amazon S3 is used to read data from the S3 source location or write data to the S3 destination."
+         description: <<~'DESCRIPTION'
+           A subdirectory in the Amazon S3 bucket. This subdirectory in Amazon S3 is used to read data from the S3 source location or write data to the S3 destination.
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "An array of key-value pairs to apply to this resource."
+         description: <<~'DESCRIPTION'
+           An array of key-value pairs to apply to this resource.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::DataSync::LocationS3"

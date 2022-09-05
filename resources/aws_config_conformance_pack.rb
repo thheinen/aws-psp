@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_config_conformance_pack
 provides :aws_config_conformance_pack, target_mode: true, platform: "aws"
 
@@ -16,7 +17,9 @@ property :conformance_pack_input_parameters, Array,
          callbacks: {
            "conformance_pack_input_parameters is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "A list of ConformancePackInputParameter objects."
+         description: <<~'DESCRIPTION'
+           A list of ConformancePackInputParameter objects.
+         DESCRIPTION
 
 property :conformance_pack_name, String,
          required: true,
@@ -25,28 +28,36 @@ property :conformance_pack_name, String,
            "conformance_pack_name needs to be 1..256 characters" => lambda { |v| v.length >= 1 && v.length <= 256 },
            "conformance_pack_name must match pattern [a-zA-Z][-a-zA-Z0-9]*" => lambda { |v| v =~ Regexp.new("/[a-zA-Z][-a-zA-Z0-9]*/") },
          },
-         description: "Name of the conformance pack which will be assigned as the unique identifier."
+         description: <<~'DESCRIPTION'
+           Name of the conformance pack which will be assigned as the unique identifier.
+         DESCRIPTION
 
 property :delivery_s3_bucket, String,
          callbacks: {
            "delivery_s3_bucket is not a String" => lambda { |v| v.is_a? String },
            "delivery_s3_bucket needs to be 0..63 characters" => lambda { |v| v.length >= 0 && v.length <= 63 },
          },
-         description: "AWS Config stores intermediate files while processing conformance pack template."
+         description: <<~'DESCRIPTION'
+           AWS Config stores intermediate files while processing conformance pack template.
+         DESCRIPTION
 
 property :delivery_s3_key_prefix, String,
          callbacks: {
            "delivery_s3_key_prefix is not a String" => lambda { |v| v.is_a? String },
            "delivery_s3_key_prefix needs to be 0..1024 characters" => lambda { |v| v.length >= 0 && v.length <= 1024 },
          },
-         description: "The prefix for delivery S3 bucket."
+         description: <<~'DESCRIPTION'
+           The prefix for delivery S3 bucket.
+         DESCRIPTION
 
 property :template_body, String,
          callbacks: {
            "template_body is not a String" => lambda { |v| v.is_a? String },
            "template_body needs to be 1..51200 characters" => lambda { |v| v.length >= 1 && v.length <= 51200 },
          },
-         description: "A string containing full conformance pack template body. You can only specify one of the template body or template S3Uri fields."
+         description: <<~'DESCRIPTION'
+           A string containing full conformance pack template body. You can only specify one of the template body or template S3Uri fields.
+         DESCRIPTION
 
 property :template_s3_uri, String,
          callbacks: {
@@ -54,7 +65,9 @@ property :template_s3_uri, String,
            "template_s3_uri needs to be 1..1024 characters" => lambda { |v| v.length >= 1 && v.length <= 1024 },
            "template_s3_uri must match pattern s3://.*" => lambda { |v| v =~ Regexp.new("/s3://.*/") },
          },
-         description: "Location of file containing the template body which points to the conformance pack template that is located in an Amazon S3 bucket. You can only specify one of the template body or template S3Uri fields."
+         description: <<~'DESCRIPTION'
+           Location of file containing the template body which points to the conformance pack template that is located in an Amazon S3 bucket. You can only specify one of the template body or template S3Uri fields.
+         DESCRIPTION
 
 property :template_ssm_document_details, Hash,
          callbacks: {
@@ -63,7 +76,9 @@ property :template_ssm_document_details, Hash,
            "Subproperty `DocumentVersion` is not a String" => lambda { |v| v[:DocumentVersion].is_a? String },
            "Subproperty `DocumentVersion` needs to be 1..128 characters" => lambda { |v| v[:DocumentVersion].length >= 1 && v[:DocumentVersion].length <= 128 },
          },
-         description: "The TemplateSSMDocumentDetails object contains the name of the SSM document and the version of the SSM document."
+         description: <<~'DESCRIPTION'
+           The TemplateSSMDocumentDetails object contains the name of the SSM document and the version of the SSM document.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::Config::ConformancePack"

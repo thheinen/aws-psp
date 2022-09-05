@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_ecs_primary_task_set
 provides :aws_ecs_primary_task_set, target_mode: true, platform: "aws"
 
@@ -17,21 +18,27 @@ property :cluster, String,
          callbacks: {
            "cluster is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The short name or full Amazon Resource Name (ARN) of the cluster that hosts the service to create the task set in."
+         description: <<~'DESCRIPTION'
+           The short name or full Amazon Resource Name (ARN) of the cluster that hosts the service to create the task set in.
+         DESCRIPTION
 
 property :service, String,
          required: true,
          callbacks: {
            "service is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The short name or full Amazon Resource Name (ARN) of the service to create the task set in."
+         description: <<~'DESCRIPTION'
+           The short name or full Amazon Resource Name (ARN) of the service to create the task set in.
+         DESCRIPTION
 
 property :task_set_id, String,
          required: true,
          callbacks: {
            "task_set_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The ID or full Amazon Resource Name (ARN) of the task set."
+         description: <<~'DESCRIPTION'
+           The ID or full Amazon Resource Name (ARN) of the task set.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::ECS::PrimaryTaskSet"

@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_apigateway_client_certificate
 provides :aws_apigateway_client_certificate, target_mode: true, platform: "aws"
 
@@ -16,13 +17,17 @@ property :description, String,
          callbacks: {
            "description is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "A description of the client certificate."
+         description: <<~'DESCRIPTION'
+           A description of the client certificate.
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "An array of arbitrary tags (key-value pairs) to associate with the client certificate."
+         description: <<~'DESCRIPTION'
+           An array of arbitrary tags (key-value pairs) to associate with the client certificate.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::ApiGateway::ClientCertificate"

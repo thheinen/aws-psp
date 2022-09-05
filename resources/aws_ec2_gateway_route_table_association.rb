@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_ec2_gateway_route_table_association
 provides :aws_ec2_gateway_route_table_association, target_mode: true, platform: "aws"
 
@@ -17,14 +18,18 @@ property :gateway_id, String,
          callbacks: {
            "gateway_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The ID of the gateway."
+         description: <<~'DESCRIPTION'
+           The ID of the gateway.
+         DESCRIPTION
 
 property :route_table_id, String,
          required: true,
          callbacks: {
            "route_table_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The ID of the route table."
+         description: <<~'DESCRIPTION'
+           The ID of the route table.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::EC2::GatewayRouteTableAssociation"

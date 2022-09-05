@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_apigateway_deployment
 provides :aws_apigateway_deployment, target_mode: true, platform: "aws"
 
@@ -18,20 +19,26 @@ property :deployment_canary_settings, Hash,
            "Subproperty `StageVariableOverrides` is not a Object" => lambda { |v| v[:StageVariableOverrides].is_a? Object },
            "Subproperty `UseStageCache` is not a Boolean" => lambda { |v| v[:UseStageCache].is_a? Boolean },
          },
-         description: "Specifies settings for the canary deployment."
+         description: <<~'DESCRIPTION'
+           Specifies settings for the canary deployment.
+         DESCRIPTION
 
 property :description, String,
          callbacks: {
            "description is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "A description of the purpose of the API Gateway deployment."
+         description: <<~'DESCRIPTION'
+           A description of the purpose of the API Gateway deployment.
+         DESCRIPTION
 
 property :rest_api_id, String,
          required: true,
          callbacks: {
            "rest_api_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The ID of the RestApi resource to deploy. "
+         description: <<~'DESCRIPTION'
+           The ID of the RestApi resource to deploy.
+         DESCRIPTION
 
 property :stage_description, Hash,
          callbacks: {
@@ -53,13 +60,17 @@ property :stage_description, Hash,
            "Subproperty `TracingEnabled` is not a Boolean" => lambda { |v| v[:TracingEnabled].is_a? Boolean },
            "Subproperty `Variables` is not a Object" => lambda { |v| v[:Variables].is_a? Object },
          },
-         description: "Configures the stage that API Gateway creates with this deployment."
+         description: <<~'DESCRIPTION'
+           Configures the stage that API Gateway creates with this deployment.
+         DESCRIPTION
 
 property :stage_name, String,
          callbacks: {
            "stage_name is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "A name for the stage that API Gateway creates with this deployment. Use only alphanumeric characters."
+         description: <<~'DESCRIPTION'
+           A name for the stage that API Gateway creates with this deployment. Use only alphanumeric characters.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::ApiGateway::Deployment"

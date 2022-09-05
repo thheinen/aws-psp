@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_datasync_location_efs
 provides :aws_datasync_location_efs, target_mode: true, platform: "aws"
 
@@ -17,7 +18,9 @@ property :access_point_arn, String,
            "access_point_arn is not a String" => lambda { |v| v.is_a? String },
            "access_point_arn must match pattern ^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):elasticfilesystem:[a-z\-0-9]+:[0-9]{12}:access-point/fsap-[0-9a-f]{8,40}$" => lambda { |v| v =~ Regexp.new("/^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):elasticfilesystem:[a-z\-0-9]+:[0-9]{12}:access-point/fsap-[0-9a-f]{8,40}$/") },
          },
-         description: "The Amazon Resource Name (ARN) for the Amazon EFS Access point that DataSync uses when accessing the EFS file system."
+         description: <<~'DESCRIPTION'
+           The Amazon Resource Name (ARN) for the Amazon EFS Access point that DataSync uses when accessing the EFS file system.
+         DESCRIPTION
 
 property :ec2_config, Hash,
          required: true,
@@ -35,34 +38,44 @@ property :efs_filesystem_arn, String,
            "efs_filesystem_arn is not a String" => lambda { |v| v.is_a? String },
            "efs_filesystem_arn must match pattern ^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):elasticfilesystem:[a-z\-0-9]*:[0-9]{12}:file-system/fs-.*$" => lambda { |v| v =~ Regexp.new("/^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):elasticfilesystem:[a-z\-0-9]*:[0-9]{12}:file-system/fs-.*$/") },
          },
-         description: "The Amazon Resource Name (ARN) for the Amazon EFS file system."
+         description: <<~'DESCRIPTION'
+           The Amazon Resource Name (ARN) for the Amazon EFS file system.
+         DESCRIPTION
 
 property :file_system_access_role_arn, String,
          callbacks: {
            "file_system_access_role_arn is not a String" => lambda { |v| v.is_a? String },
            "file_system_access_role_arn must match pattern ^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):iam::[0-9]{12}:role/.*$" => lambda { |v| v =~ Regexp.new("/^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):iam::[0-9]{12}:role/.*$/") },
          },
-         description: "The Amazon Resource Name (ARN) of the AWS IAM role that the DataSync will assume when mounting the EFS file system."
+         description: <<~'DESCRIPTION'
+           The Amazon Resource Name (ARN) of the AWS IAM role that the DataSync will assume when mounting the EFS file system.
+         DESCRIPTION
 
 property :in_transit_encryption, String,
          callbacks: {
            "in_transit_encryption is not a String" => lambda { |v| v.is_a? String },
            "in_transit_encryptionis not one of `NONE`, `TLS1_2`" => lambda { |v| %w{NONE TLS1_2}.include? v },
          },
-         description: "Protocol that is used for encrypting the traffic exchanged between the DataSync Agent and the EFS file system."
+         description: <<~'DESCRIPTION'
+           Protocol that is used for encrypting the traffic exchanged between the DataSync Agent and the EFS file system.
+         DESCRIPTION
 
 property :subdirectory, String,
          callbacks: {
            "subdirectory is not a String" => lambda { |v| v.is_a? String },
            "subdirectory must match pattern ^[a-zA-Z0-9_\-\+\./\(\)\$\p{Zs}]+$" => lambda { |v| v =~ Regexp.new("/^[a-zA-Z0-9_\-\+\./\(\)\$\p{Zs}]+$/") },
          },
-         description: "A subdirectory in the location's path. This subdirectory in the EFS file system is used to read data from the EFS source location or write data to the EFS destination."
+         description: <<~'DESCRIPTION'
+           A subdirectory in the location's path. This subdirectory in the EFS file system is used to read data from the EFS source location or write data to the EFS destination.
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "An array of key-value pairs to apply to this resource."
+         description: <<~'DESCRIPTION'
+           An array of key-value pairs to apply to this resource.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::DataSync::LocationEFS"

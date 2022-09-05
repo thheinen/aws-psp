@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_resiliencehub_app
 provides :aws_resiliencehub_app, target_mode: true, platform: "aws"
 
@@ -17,7 +18,9 @@ property :app_assessment_schedule, String,
            "app_assessment_schedule is not a String" => lambda { |v| v.is_a? String },
            "app_assessment_scheduleis not one of `Disabled`, `Daily`" => lambda { |v| %w{Disabled Daily}.include? v },
          },
-         description: "Assessment execution schedule."
+         description: <<~'DESCRIPTION'
+           Assessment execution schedule.
+         DESCRIPTION
 
 property :app_template_body, String,
          required: true,
@@ -26,37 +29,46 @@ property :app_template_body, String,
            "app_template_body needs to be 0..5000 characters" => lambda { |v| v.length >= 0 && v.length <= 5000 },
            "app_template_body must match pattern ^[\w\s:,-\.'{}\[\]:]+$" => lambda { |v| v =~ Regexp.new("/^[\w\s:,-\.'{}\[\]:]+$/") },
          },
-         description: "A string containing full ResilienceHub app template body."
+         description: <<~'DESCRIPTION'
+           A string containing full ResilienceHub app template body.
+         DESCRIPTION
 
 property :description, String,
          callbacks: {
            "description is not a String" => lambda { |v| v.is_a? String },
            "description needs to be 0..500 characters" => lambda { |v| v.length >= 0 && v.length <= 500 },
          },
-         description: "App description."
+         description: <<~'DESCRIPTION'
+           App description.
+         DESCRIPTION
 
 property :name, String,
          name_property: true,
-         required: true,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
            "name must match pattern ^[A-Za-z0-9][A-Za-z0-9_\-]{1,59}$" => lambda { |v| v =~ Regexp.new("/^[A-Za-z0-9][A-Za-z0-9_\-]{1,59}$/") },
          },
-         description: "Name of the app."
+         description: <<~'DESCRIPTION'
+           Name of the app.
+         DESCRIPTION
 
 property :resiliency_policy_arn, String,
          callbacks: {
            "resiliency_policy_arn is not a String" => lambda { |v| v.is_a? String },
            "resiliency_policy_arn must match pattern ^arn:(aws|aws-cn|aws-iso|aws-iso-[a-z]{1}|aws-us-gov):[A-Za-z0-9][A-Za-z0-9_/.-]{0,62}:([a-z]{2}-((iso[a-z]{0,1}-)|(gov-)){0,1}[a-z]+-[0-9]):[0-9]{12}:[A-Za-z0-9][A-Za-z0-9:_/+=,@.-]{0,1023}$" => lambda { |v| v =~ Regexp.new("/^arn:(aws|aws-cn|aws-iso|aws-iso-[a-z]{1}|aws-us-gov):[A-Za-z0-9][A-Za-z0-9_/.-]{0,62}:([a-z]{2}-((iso[a-z]{0,1}-)|(gov-)){0,1}[a-z]+-[0-9]):[0-9]{12}:[A-Za-z0-9][A-Za-z0-9:_/+=,@.-]{0,1023}$/") },
          },
-         description: "Amazon Resource Name (ARN) of the Resiliency Policy."
+         description: <<~'DESCRIPTION'
+           Amazon Resource Name (ARN) of the Resiliency Policy.
+         DESCRIPTION
 
 property :resource_mappings, Array,
          required: true,
          callbacks: {
            "resource_mappings is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "An array of ResourceMapping objects."
+         description: <<~'DESCRIPTION'
+           An array of ResourceMapping objects.
+         DESCRIPTION
 
 property :tags, Hash,
          callbacks: {

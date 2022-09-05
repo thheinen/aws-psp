@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_connect_user_hierarchy_group
 provides :aws_connect_user_hierarchy_group, target_mode: true, platform: "aws"
 
@@ -18,23 +19,28 @@ property :instance_arn, String,
            "instance_arn is not a String" => lambda { |v| v.is_a? String },
            "instance_arn must match pattern ^arn:aws[-a-z0-9]*:connect:[-a-z0-9]*:[0-9]{12}:instance/[-a-zA-Z0-9]*$" => lambda { |v| v =~ Regexp.new("/^arn:aws[-a-z0-9]*:connect:[-a-z0-9]*:[0-9]{12}:instance/[-a-zA-Z0-9]*$/") },
          },
-         description: "The identifier of the Amazon Connect instance."
+         description: <<~'DESCRIPTION'
+           The identifier of the Amazon Connect instance.
+         DESCRIPTION
 
 property :name, String,
          name_property: true,
-         required: true,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
            "name needs to be 1..100 characters" => lambda { |v| v.length >= 1 && v.length <= 100 },
          },
-         description: "The name of the user hierarchy group."
+         description: <<~'DESCRIPTION'
+           The name of the user hierarchy group.
+         DESCRIPTION
 
 property :parent_group_arn, Hash,
          callbacks: {
            "parent_group_arn is not a String" => lambda { |v| v.is_a? String },
            "parent_group_arn must match pattern ^arn:aws[-a-z0-9]*:connect:[-a-z0-9]*:[0-9]{12}:instance/[-a-zA-Z0-9]*/agent-group/[-a-zA-Z0-9]*$" => lambda { |v| v =~ Regexp.new("/^arn:aws[-a-z0-9]*:connect:[-a-z0-9]*:[0-9]{12}:instance/[-a-zA-Z0-9]*/agent-group/[-a-zA-Z0-9]*$/") },
          },
-         description: "The Amazon Resource Name (ARN) for the parent user hierarchy group."
+         description: <<~'DESCRIPTION'
+           The Amazon Resource Name (ARN) for the parent user hierarchy group.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::Connect::UserHierarchyGroup"

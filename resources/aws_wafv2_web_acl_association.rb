@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_wafv2_web_acl_association
 provides :aws_wafv2_web_acl_association, target_mode: true, platform: "aws"
 

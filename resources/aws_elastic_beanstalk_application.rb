@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_elastic_beanstalk_application
 provides :aws_elastic_beanstalk_application, target_mode: true, platform: "aws"
 
@@ -16,19 +17,25 @@ property :application_name, String,
          callbacks: {
            "application_name is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "A name for the Elastic Beanstalk application. If you don't specify a name, AWS CloudFormation generates a unique physical ID and uses that ID for the application name."
+         description: <<~'DESCRIPTION'
+           A name for the Elastic Beanstalk application. If you don't specify a name, AWS CloudFormation generates a unique physical ID and uses that ID for the application name.
+         DESCRIPTION
 
 property :description, String,
          callbacks: {
            "description is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "Your description of the application."
+         description: <<~'DESCRIPTION'
+           Your description of the application.
+         DESCRIPTION
 
 property :resource_lifecycle_config, Hash,
          callbacks: {
            "Subproperty `ServiceRole` is not a String" => lambda { |v| v[:ServiceRole].is_a? String },
          },
-         description: "Specifies an application resource lifecycle configuration to prevent your application from accumulating too many versions."
+         description: <<~'DESCRIPTION'
+           Specifies an application resource lifecycle configuration to prevent your application from accumulating too many versions.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::ElasticBeanstalk::Application"

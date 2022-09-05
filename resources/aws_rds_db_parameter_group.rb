@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_rds_db_parameter_group
 provides :aws_rds_db_parameter_group, target_mode: true, platform: "aws"
 

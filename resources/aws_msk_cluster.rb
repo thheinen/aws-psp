@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_msk_cluster
 provides :aws_msk_cluster, target_mode: true, platform: "aws"
 
@@ -47,7 +48,9 @@ property :current_version, String,
          callbacks: {
            "current_version is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The current version of the MSK cluster"
+         description: <<~'DESCRIPTION'
+           The current version of the MSK cluster
+         DESCRIPTION
 
 property :encryption_info, Hash,
          description: ""
@@ -85,7 +88,9 @@ property :tags, Hash,
          callbacks: {
            "tags is not a Object" => lambda { |v| v.is_a? Object },
          },
-         description: "A key-value pair to associate with a resource."
+         description: <<~'DESCRIPTION'
+           A key-value pair to associate with a resource.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::MSK::Cluster"

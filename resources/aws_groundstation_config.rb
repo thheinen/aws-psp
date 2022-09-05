@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_groundstation_config
 provides :aws_groundstation_config, target_mode: true, platform: "aws"
 
@@ -18,7 +19,6 @@ property :config_data, Hash,
 
 property :name, String,
          name_property: true,
-         required: true,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
            "name must match pattern ^[ a-zA-Z0-9_:-]{1,256}$" => lambda { |v| v =~ Regexp.new("/^[ a-zA-Z0-9_:-]{1,256}$/") },

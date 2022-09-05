@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_apigateway_documentation_part
 provides :aws_apigateway_documentation_part, target_mode: true, platform: "aws"
 
@@ -22,21 +23,27 @@ property :location, Hash,
            "Subproperty `Type` is not a String" => lambda { |v| v[:Type].is_a? String },
            "Subproperty `Type`is not one of `API`, `AUTHORIZER`, `MODEL`, `RESOURCE`, `METHOD`, `PATH_PARAMETER`, `QUERY_PARAMETER`, `REQUEST_HEADER`, `REQUEST_BODY`, `RESPONSE`, `RESPONSE_HEADER`, `RESPONSE_BODY`" => lambda { |v| %w{API AUTHORIZER MODEL RESOURCE METHOD PATH_PARAMETER QUERY_PARAMETER REQUEST_HEADER REQUEST_BODY RESPONSE RESPONSE_HEADER RESPONSE_BODY}.include? v[:Type] },
          },
-         description: "The location of the API entity that the documentation applies to."
+         description: <<~'DESCRIPTION'
+           The location of the API entity that the documentation applies to.
+         DESCRIPTION
 
 property :properties, String,
          required: true,
          callbacks: {
            "properties is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The documentation content map of the targeted API entity."
+         description: <<~'DESCRIPTION'
+           The documentation content map of the targeted API entity.
+         DESCRIPTION
 
 property :rest_api_id, String,
          required: true,
          callbacks: {
            "rest_api_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "Identifier of the targeted API entity"
+         description: <<~'DESCRIPTION'
+           Identifier of the targeted API entity
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::ApiGateway::DocumentationPart"

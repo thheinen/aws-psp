@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_memorydb_subnet_group
 provides :aws_memorydb_subnet_group, target_mode: true, platform: "aws"
 
@@ -16,7 +17,9 @@ property :description, String,
          callbacks: {
            "description is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "An optional description of the subnet group."
+         description: <<~'DESCRIPTION'
+           An optional description of the subnet group.
+         DESCRIPTION
 
 property :subnet_group_name, String,
          required: true,
@@ -24,20 +27,26 @@ property :subnet_group_name, String,
            "subnet_group_name is not a String" => lambda { |v| v.is_a? String },
            "subnet_group_name must match pattern [a-z][a-z0-9\-]*" => lambda { |v| v =~ Regexp.new("/[a-z][a-z0-9\-]*/") },
          },
-         description: "The name of the subnet group. This value must be unique as it also serves as the subnet group identifier."
+         description: <<~'DESCRIPTION'
+           The name of the subnet group. This value must be unique as it also serves as the subnet group identifier.
+         DESCRIPTION
 
 property :subnet_ids, Array,
          required: true,
          callbacks: {
            "subnet_ids is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "A list of VPC subnet IDs for the subnet group."
+         description: <<~'DESCRIPTION'
+           A list of VPC subnet IDs for the subnet group.
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "An array of key-value pairs to apply to this subnet group."
+         description: <<~'DESCRIPTION'
+           An array of key-value pairs to apply to this subnet group.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::MemoryDB::SubnetGroup"

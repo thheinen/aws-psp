@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_open_search_service_domain
 provides :aws_open_search_service_domain, target_mode: true, platform: "aws"
 
@@ -117,7 +118,9 @@ property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "An arbitrary set of tags (key-value pairs) for this Domain."
+         description: <<~'DESCRIPTION'
+           An arbitrary set of tags (key-value pairs) for this Domain.
+         DESCRIPTION
 
 property :vpc_options, Hash,
          callbacks: {

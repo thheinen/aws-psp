@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_acmpca_certificate
 provides :aws_acmpca_certificate, target_mode: true, platform: "aws"
 
@@ -13,34 +14,44 @@ property :name, String,
          description: "Name of the resource, not desired state"
 
 property :api_passthrough, Hash,
-         description: "These are fields to be overridden in a certificate at the time of issuance. These requires an API_Passthrough template be used or they will be ignored."
+         description: <<~'DESCRIPTION'
+           These are fields to be overridden in a certificate at the time of issuance. These requires an API_Passthrough template be used or they will be ignored.
+         DESCRIPTION
 
 property :certificate_authority_arn, Hash,
          required: true,
          callbacks: {
            "certificate_authority_arn is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The Amazon Resource Name (ARN) for the private CA to issue the certificate."
+         description: <<~'DESCRIPTION'
+           The Amazon Resource Name (ARN) for the private CA to issue the certificate.
+         DESCRIPTION
 
 property :certificate_signing_request, String,
          required: true,
          callbacks: {
            "certificate_signing_request is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The certificate signing request (CSR) for the Certificate."
+         description: <<~'DESCRIPTION'
+           The certificate signing request (CSR) for the Certificate.
+         DESCRIPTION
 
 property :signing_algorithm, String,
          required: true,
          callbacks: {
            "signing_algorithm is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The name of the algorithm that will be used to sign the Certificate."
+         description: <<~'DESCRIPTION'
+           The name of the algorithm that will be used to sign the Certificate.
+         DESCRIPTION
 
 property :template_arn, Hash,
          callbacks: {
            "template_arn is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "Specifies a custom configuration template to use when issuing a certificate. If this parameter is not provided, ACM Private CA defaults to the EndEntityCertificate/V1 template."
+         description: <<~'DESCRIPTION'
+           Specifies a custom configuration template to use when issuing a certificate. If this parameter is not provided, ACM Private CA defaults to the EndEntityCertificate/V1 template.
+         DESCRIPTION
 
 property :validity, Hash,
          required: true,
@@ -48,14 +59,18 @@ property :validity, Hash,
            "Subproperty `Value` is not a Number" => lambda { |v| v[:Value].is_a? Number },
            "Subproperty `Type` is not a String" => lambda { |v| v[:Type].is_a? String },
          },
-         description: "The time before which the Certificate will be valid."
+         description: <<~'DESCRIPTION'
+           The time before which the Certificate will be valid.
+         DESCRIPTION
 
 property :validity_not_before, Hash,
          callbacks: {
            "Subproperty `Value` is not a Number" => lambda { |v| v[:Value].is_a? Number },
            "Subproperty `Type` is not a String" => lambda { |v| v[:Type].is_a? String },
          },
-         description: "The time after which the Certificate will be valid."
+         description: <<~'DESCRIPTION'
+           The time after which the Certificate will be valid.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::ACMPCA::Certificate"

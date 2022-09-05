@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_mediaconnect_flow_source
 provides :aws_mediaconnect_flow_source, target_mode: true, platform: "aws"
 
@@ -28,77 +29,100 @@ property :decryption, Hash,
            "Subproperty `SecretArn`is not a valid ARN" => lambda { |v| v[:SecretArn] =~ Regexp.new("^arn:aws(?:-cn|-us-gov)?:([^:]*:){3,}") },
            "Subproperty `Url` is not a String" => lambda { |v| v[:Url].is_a? String },
          },
-         description: "The type of encryption that is used on the content ingested from this source."
+         description: <<~'DESCRIPTION'
+           The type of encryption that is used on the content ingested from this source.
+         DESCRIPTION
 
 property :description, String,
          required: true,
          callbacks: {
            "description is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "A description for the source. This value is not used or seen outside of the current AWS Elemental MediaConnect account."
+         description: <<~'DESCRIPTION'
+           A description for the source. This value is not used or seen outside of the current AWS Elemental MediaConnect account.
+         DESCRIPTION
 
 property :entitlement_arn, String,
          callbacks: {
            "entitlement_arn is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The ARN of the entitlement that allows you to subscribe to content that comes from another AWS account. The entitlement is set by the content originator and the ARN is generated as part of the originator's flow."
+         description: <<~'DESCRIPTION'
+           The ARN of the entitlement that allows you to subscribe to content that comes from another AWS account. The entitlement is set by the content originator and the ARN is generated as part of the originator's flow.
+         DESCRIPTION
 
 property :flow_arn, String,
          callbacks: {
            "flow_arn is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The ARN of the flow."
+         description: <<~'DESCRIPTION'
+           The ARN of the flow.
+         DESCRIPTION
 
 property :ingest_port, Integer,
          callbacks: {
            "ingest_port is not a Integer" => lambda { |v| v.is_a? Integer },
          },
-         description: "The port that the flow will be listening on for incoming content."
+         description: <<~'DESCRIPTION'
+           The port that the flow will be listening on for incoming content.
+         DESCRIPTION
 
 property :max_bitrate, Integer,
          callbacks: {
            "max_bitrate is not a Integer" => lambda { |v| v.is_a? Integer },
          },
-         description: "The smoothing max bitrate for RIST, RTP, and RTP-FEC streams."
+         description: <<~'DESCRIPTION'
+           The smoothing max bitrate for RIST, RTP, and RTP-FEC streams.
+         DESCRIPTION
 
 property :max_latency, Integer,
          callbacks: {
            "max_latency is not a Integer" => lambda { |v| v.is_a? Integer },
          },
-         description: "The maximum latency in milliseconds. This parameter applies only to RIST-based and Zixi-based streams."
+         description: <<~'DESCRIPTION'
+           The maximum latency in milliseconds. This parameter applies only to RIST-based and Zixi-based streams.
+         DESCRIPTION
 
 property :name, String,
          name_property: true,
-         required: true,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The name of the source."
+         description: <<~'DESCRIPTION'
+           The name of the source.
+         DESCRIPTION
 
 property :protocol, String,
          callbacks: {
            "protocol is not a String" => lambda { |v| v.is_a? String },
            "protocolis not one of `zixi-push`, `rtp-fec`, `rtp`, `rist`" => lambda { |v| %w{zixi-push rtp-fec rtp rist}.include? v },
          },
-         description: "The protocol that is used by the source."
+         description: <<~'DESCRIPTION'
+           The protocol that is used by the source.
+         DESCRIPTION
 
 property :stream_id, String,
          callbacks: {
            "stream_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The stream ID that you want to use for this transport. This parameter applies only to Zixi-based streams."
+         description: <<~'DESCRIPTION'
+           The stream ID that you want to use for this transport. This parameter applies only to Zixi-based streams.
+         DESCRIPTION
 
 property :vpc_interface_name, String,
          callbacks: {
            "vpc_interface_name is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The name of the VPC Interface this Source is configured with."
+         description: <<~'DESCRIPTION'
+           The name of the VPC Interface this Source is configured with.
+         DESCRIPTION
 
 property :whitelist_cidr, String,
          callbacks: {
            "whitelist_cidr is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The range of IP addresses that should be allowed to contribute content to your source. These IP addresses should be in the form of a Classless Inter-Domain Routing (CIDR) block; for example, 10.0.0.0/16."
+         description: <<~'DESCRIPTION'
+           The range of IP addresses that should be allowed to contribute content to your source. These IP addresses should be in the form of a Classless Inter-Domain Routing (CIDR) block; for example, 10.0.0.0/16.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::MediaConnect::FlowSource"

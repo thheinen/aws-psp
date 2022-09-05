@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_ses_configuration_set_event_destination
 provides :aws_ses_configuration_set_event_destination, target_mode: true, platform: "aws"
 
@@ -17,7 +18,9 @@ property :configuration_set_name, String,
          callbacks: {
            "configuration_set_name is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The name of the configuration set that contains the event destination."
+         description: <<~'DESCRIPTION'
+           The name of the configuration set that contains the event destination.
+         DESCRIPTION
 
 property :event_destination, Hash,
          required: true,
@@ -27,7 +30,9 @@ property :event_destination, Hash,
            "Subproperty `Enabled` is not a Boolean" => lambda { |v| v[:Enabled].is_a? Boolean },
            "Subproperty `MatchingEventTypes` is not a Array" => lambda { |v| v[:MatchingEventTypes].is_a? Array },
          },
-         description: "The event destination object."
+         description: <<~'DESCRIPTION'
+           The event destination object.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::SES::ConfigurationSetEventDestination"

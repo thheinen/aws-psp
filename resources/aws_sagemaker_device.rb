@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_sagemaker_device
 provides :aws_sagemaker_device, target_mode: true, platform: "aws"
 
@@ -23,7 +24,9 @@ property :device, Hash,
            "Subproperty `IotThingName` is not a String" => lambda { |v| v[:IotThingName].is_a? String },
            "Subproperty `IotThingName` must match pattern [a-zA-Z0-9:_-]+" => lambda { |v| v[:IotThingName] =~ Regexp.new("/[a-zA-Z0-9:_-]+/") },
          },
-         description: "The Edge Device you want to register against a device fleet"
+         description: <<~'DESCRIPTION'
+           The Edge Device you want to register against a device fleet
+         DESCRIPTION
 
 property :device_fleet_name, String,
          required: true,
@@ -32,13 +35,17 @@ property :device_fleet_name, String,
            "device_fleet_name needs to be 1..63 characters" => lambda { |v| v.length >= 1 && v.length <= 63 },
            "device_fleet_name must match pattern ^[a-zA-Z0-9](-*_*[a-zA-Z0-9])*$" => lambda { |v| v =~ Regexp.new("/^[a-zA-Z0-9](-*_*[a-zA-Z0-9])*$/") },
          },
-         description: "The name of the edge device fleet"
+         description: <<~'DESCRIPTION'
+           The name of the edge device fleet
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "Associate tags with the resource"
+         description: <<~'DESCRIPTION'
+           Associate tags with the resource
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::SageMaker::Device"

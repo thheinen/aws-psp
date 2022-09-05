@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_sagemaker_app_image_config
 provides :aws_sagemaker_app_image_config, target_mode: true, platform: "aws"
 
@@ -19,19 +20,25 @@ property :app_image_config_name, String,
            "app_image_config_name needs to be 1..63 characters" => lambda { |v| v.length >= 1 && v.length <= 63 },
            "app_image_config_name must match pattern ^[a-zA-Z0-9](-*[a-zA-Z0-9]){0,62}" => lambda { |v| v =~ Regexp.new("/^[a-zA-Z0-9](-*[a-zA-Z0-9]){0,62}/") },
          },
-         description: "The Name of the AppImageConfig."
+         description: <<~'DESCRIPTION'
+           The Name of the AppImageConfig.
+         DESCRIPTION
 
 property :kernel_gateway_image_config, Hash,
          callbacks: {
            "Subproperty `KernelSpecs` is not a Array" => lambda { |v| v[:KernelSpecs].is_a? Array },
          },
-         description: "The KernelGatewayImageConfig."
+         description: <<~'DESCRIPTION'
+           The KernelGatewayImageConfig.
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "A list of tags to apply to the AppImageConfig."
+         description: <<~'DESCRIPTION'
+           A list of tags to apply to the AppImageConfig.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::SageMaker::AppImageConfig"

@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_codestar_connections_connection
 provides :aws_codestar_connections_connection, target_mode: true, platform: "aws"
 

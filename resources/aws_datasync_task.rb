@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_datasync_task
 provides :aws_datasync_task, target_mode: true, platform: "aws"
 
@@ -17,7 +18,9 @@ property :cloudwatch_log_group_arn, String,
            "cloudwatch_log_group_arn is not a String" => lambda { |v| v.is_a? String },
            "cloudwatch_log_group_arn must match pattern ^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):logs:[a-z\-0-9]*:[0-9]{12}:log-group:([^:\*]*)(:\*)?$" => lambda { |v| v =~ Regexp.new("/^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):logs:[a-z\-0-9]*:[0-9]{12}:log-group:([^:\*]*)(:\*)?$/") },
          },
-         description: "The ARN of the Amazon CloudWatch log group that is used to monitor and log events in the task."
+         description: <<~'DESCRIPTION'
+           The ARN of the Amazon CloudWatch log group that is used to monitor and log events in the task.
+         DESCRIPTION
 
 property :destination_location_arn, String,
          required: true,
@@ -25,7 +28,9 @@ property :destination_location_arn, String,
            "destination_location_arn is not a String" => lambda { |v| v.is_a? String },
            "destination_location_arn must match pattern ^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):datasync:[a-z\-0-9]+:[0-9]{12}:location/loc-[0-9a-z]{17}$" => lambda { |v| v =~ Regexp.new("/^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):datasync:[a-z\-0-9]+:[0-9]{12}:location/loc-[0-9a-z]{17}$/") },
          },
-         description: "The ARN of an AWS storage resource's location."
+         description: <<~'DESCRIPTION'
+           The ARN of an AWS storage resource's location.
+         DESCRIPTION
 
 property :excludes, Array,
          callbacks: {
@@ -46,7 +51,9 @@ property :name, String,
            "name needs to be 1..256 characters" => lambda { |v| v.length >= 1 && v.length <= 256 },
            "name must match pattern ^[a-zA-Z0-9\s+=._:@/-]+$" => lambda { |v| v =~ Regexp.new("/^[a-zA-Z0-9\s+=._:@/-]+$/") },
          },
-         description: "The name of a task. This value is a text reference that is used to identify the task in the console."
+         description: <<~'DESCRIPTION'
+           The name of a task. This value is a text reference that is used to identify the task in the console.
+         DESCRIPTION
 
 property :options, Hash,
          callbacks: {
@@ -95,13 +102,17 @@ property :source_location_arn, String,
            "source_location_arn is not a String" => lambda { |v| v.is_a? String },
            "source_location_arn must match pattern ^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):datasync:[a-z\-0-9]+:[0-9]{12}:location/loc-[0-9a-z]{17}$" => lambda { |v| v =~ Regexp.new("/^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):datasync:[a-z\-0-9]+:[0-9]{12}:location/loc-[0-9a-z]{17}$/") },
          },
-         description: "The ARN of the source location for the task."
+         description: <<~'DESCRIPTION'
+           The ARN of the source location for the task.
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "An array of key-value pairs to apply to this resource."
+         description: <<~'DESCRIPTION'
+           An array of key-value pairs to apply to this resource.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::DataSync::Task"

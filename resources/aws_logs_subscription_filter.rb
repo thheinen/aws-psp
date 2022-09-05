@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_logs_subscription_filter
 provides :aws_logs_subscription_filter, target_mode: true, platform: "aws"
 
@@ -17,27 +18,35 @@ property :destination_arn, String,
          callbacks: {
            "destination_arn is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The Amazon Resource Name (ARN) of the destination."
+         description: <<~'DESCRIPTION'
+           The Amazon Resource Name (ARN) of the destination.
+         DESCRIPTION
 
 property :filter_pattern, String,
          required: true,
          callbacks: {
            "filter_pattern is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The filtering expressions that restrict what gets delivered to the destination AWS resource."
+         description: <<~'DESCRIPTION'
+           The filtering expressions that restrict what gets delivered to the destination AWS resource.
+         DESCRIPTION
 
 property :log_group_name, String,
          required: true,
          callbacks: {
            "log_group_name is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "Existing log group that you want to associate with this filter."
+         description: <<~'DESCRIPTION'
+           Existing log group that you want to associate with this filter.
+         DESCRIPTION
 
 property :role_arn, String,
          callbacks: {
            "role_arn is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The ARN of an IAM role that grants CloudWatch Logs permissions to deliver ingested log events to the destination stream. You don't need to provide the ARN when you are working with a logical destination for cross-account delivery."
+         description: <<~'DESCRIPTION'
+           The ARN of an IAM role that grants CloudWatch Logs permissions to deliver ingested log events to the destination stream. You don't need to provide the ARN when you are working with a logical destination for cross-account delivery.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::Logs::SubscriptionFilter"

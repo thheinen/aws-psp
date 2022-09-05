@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_wafv2_ip_set
 provides :aws_wafv2_ip_set, target_mode: true, platform: "aws"
 
@@ -17,7 +18,9 @@ property :addresses, Array,
          callbacks: {
            "addresses is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "List of IPAddresses."
+         description: <<~'DESCRIPTION'
+           List of IPAddresses.
+         DESCRIPTION
 
 property :description, Hash,
          callbacks: {

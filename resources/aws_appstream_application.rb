@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_appstream_application
 provides :aws_appstream_application, target_mode: true, platform: "aws"
 
@@ -67,7 +68,6 @@ property :launch_path, String,
 
 property :name, String,
          name_property: true,
-         required: true,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
          },

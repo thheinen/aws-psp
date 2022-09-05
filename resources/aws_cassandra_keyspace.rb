@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_cassandra_keyspace
 provides :aws_cassandra_keyspace, target_mode: true, platform: "aws"
 
@@ -17,7 +18,9 @@ property :keyspace_name, String,
            "keyspace_name is not a String" => lambda { |v| v.is_a? String },
            "keyspace_name must match pattern ^[a-zA-Z0-9][a-zA-Z0-9_]{1,47}$" => lambda { |v| v =~ Regexp.new("/^[a-zA-Z0-9][a-zA-Z0-9_]{1,47}$/") },
          },
-         description: "Name for Cassandra keyspace"
+         description: <<~'DESCRIPTION'
+           Name for Cassandra keyspace
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {

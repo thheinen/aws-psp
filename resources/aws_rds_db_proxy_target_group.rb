@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_rds_db_proxy_target_group
 provides :aws_rds_db_proxy_target_group, target_mode: true, platform: "aws"
 
@@ -40,7 +41,9 @@ property :db_proxy_name, String,
            "db_proxy_name is not a String" => lambda { |v| v.is_a? String },
            "db_proxy_name must match pattern [A-z][0-z]*" => lambda { |v| v =~ Regexp.new("/[A-z][0-z]*/") },
          },
-         description: "The identifier for the proxy."
+         description: <<~'DESCRIPTION'
+           The identifier for the proxy.
+         DESCRIPTION
 
 property :target_group_name, String,
          required: true,
@@ -48,7 +51,9 @@ property :target_group_name, String,
            "target_group_name is not a String" => lambda { |v| v.is_a? String },
            "target_group_nameis not one of `default`" => lambda { |v| %w{default}.include? v },
          },
-         description: "The identifier for the DBProxyTargetGroup"
+         description: <<~'DESCRIPTION'
+           The identifier for the DBProxyTargetGroup
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::RDS::DBProxyTargetGroup"

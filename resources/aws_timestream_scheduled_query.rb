@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_timestream_scheduled_query
 provides :aws_timestream_scheduled_query, target_mode: true, platform: "aws"
 

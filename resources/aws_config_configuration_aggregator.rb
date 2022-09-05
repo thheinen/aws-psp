@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_config_configuration_aggregator
 provides :aws_config_configuration_aggregator, target_mode: true, platform: "aws"
 
@@ -24,7 +25,9 @@ property :configuration_aggregator_name, String,
            "configuration_aggregator_name needs to be 1..256 characters" => lambda { |v| v.length >= 1 && v.length <= 256 },
            "configuration_aggregator_name must match pattern [\w\-]+" => lambda { |v| v =~ Regexp.new("/[\w\-]+/") },
          },
-         description: "The name of the aggregator."
+         description: <<~'DESCRIPTION'
+           The name of the aggregator.
+         DESCRIPTION
 
 property :organization_aggregation_source, Hash,
          callbacks: {
@@ -39,7 +42,9 @@ property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "The tags for the configuration aggregator."
+         description: <<~'DESCRIPTION'
+           The tags for the configuration aggregator.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::Config::ConfigurationAggregator"

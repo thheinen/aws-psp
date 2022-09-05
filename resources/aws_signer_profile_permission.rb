@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_signer_profile_permission
 provides :aws_signer_profile_permission, target_mode: true, platform: "aws"
 

@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_glue_schema_version
 provides :aws_glue_schema_version, target_mode: true, platform: "aws"
 
@@ -31,7 +32,9 @@ property :schema_definition, String,
            "schema_definition is not a String" => lambda { |v| v.is_a? String },
            "schema_definition needs to be 1..170000 characters" => lambda { |v| v.length >= 1 && v.length <= 170000 },
          },
-         description: "Complete definition of the schema in plain-text."
+         description: <<~'DESCRIPTION'
+           Complete definition of the schema in plain-text.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::Glue::SchemaVersion"

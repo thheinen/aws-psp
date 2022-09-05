@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_personalize_schema
 provides :aws_personalize_schema, target_mode: true, platform: "aws"
 
@@ -17,24 +18,29 @@ property :domain, String,
            "domain is not a String" => lambda { |v| v.is_a? String },
            "domainis not one of `ECOMMERCE`, `VIDEO_ON_DEMAND`" => lambda { |v| %w{ECOMMERCE VIDEO_ON_DEMAND}.include? v },
          },
-         description: "The domain of a Domain dataset group."
+         description: <<~'DESCRIPTION'
+           The domain of a Domain dataset group.
+         DESCRIPTION
 
 property :name, String,
          name_property: true,
-         required: true,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
            "name needs to be 1..63 characters" => lambda { |v| v.length >= 1 && v.length <= 63 },
            "name must match pattern ^[a-zA-Z0-9][a-zA-Z0-9\-_]*" => lambda { |v| v =~ Regexp.new("/^[a-zA-Z0-9][a-zA-Z0-9\-_]*/") },
          },
-         description: "Name for the schema."
+         description: <<~'DESCRIPTION'
+           Name for the schema.
+         DESCRIPTION
 
 property :schema, String,
          required: true,
          callbacks: {
            "schema is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "A schema in Avro JSON format."
+         description: <<~'DESCRIPTION'
+           A schema in Avro JSON format.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::Personalize::Schema"

@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_cloudformation_module_version
 provides :aws_cloudformation_module_version, target_mode: true, platform: "aws"
 
@@ -28,7 +29,9 @@ property :module_package, String,
          callbacks: {
            "module_package is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The url to the S3 bucket containing the schema and template fragment for the module you want to register."
+         description: <<~'DESCRIPTION'
+           The url to the S3 bucket containing the schema and template fragment for the module you want to register.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::CloudFormation::ModuleVersion"

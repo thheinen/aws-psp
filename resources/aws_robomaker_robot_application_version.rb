@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_robomaker_robot_application_version
 provides :aws_robomaker_robot_application_version, target_mode: true, platform: "aws"
 
@@ -26,7 +27,9 @@ property :current_revision_id, String,
            "current_revision_id needs to be 1..40 characters" => lambda { |v| v.length >= 1 && v.length <= 40 },
            "current_revision_id must match pattern [a-zA-Z0-9_.\-]*" => lambda { |v| v =~ Regexp.new("/[a-zA-Z0-9_.\-]*/") },
          },
-         description: "The revision ID of robot application."
+         description: <<~'DESCRIPTION'
+           The revision ID of robot application.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::RoboMaker::RobotApplicationVersion"

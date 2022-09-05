@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_quicksight_analysis
 provides :aws_quicksight_analysis, target_mode: true, platform: "aws"
 
@@ -34,7 +35,9 @@ property :errors, Array,
          callbacks: {
            "errors is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "<p>Errors associated with the analysis.</p>"
+         description: <<~'DESCRIPTION'
+           <p>Errors associated with the analysis.</p>
+         DESCRIPTION
 
 property :name, String,
          name_property: true,
@@ -43,7 +46,9 @@ property :name, String,
            "name needs to be 1..2048 characters" => lambda { |v| v.length >= 1 && v.length <= 2048 },
            "name must match pattern [\u0020-\u00FF]+" => lambda { |v| v =~ Regexp.new("/[\u0020-\u00FF]+/") },
          },
-         description: "<p>The descriptive name of the analysis.</p>"
+         description: <<~'DESCRIPTION'
+           <p>The descriptive name of the analysis.</p>
+         DESCRIPTION
 
 property :parameters, Hash,
          callbacks: {
@@ -83,7 +88,9 @@ property :theme_arn, String,
          callbacks: {
            "theme_arn is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "<p>The ARN of the theme of the analysis.</p>"
+         description: <<~'DESCRIPTION'
+           <p>The ARN of the theme of the analysis.</p>
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::QuickSight::Analysis"

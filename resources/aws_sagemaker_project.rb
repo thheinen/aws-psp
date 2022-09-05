@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_sagemaker_project
 provides :aws_sagemaker_project, target_mode: true, platform: "aws"
 
@@ -33,13 +34,17 @@ property :servicecatalog_provisioning_details, Hash,
          callbacks: {
            "Subproperty `ProvisioningParameters` is not a Array" => lambda { |v| v[:ProvisioningParameters].is_a? Array },
          },
-         description: "Input ServiceCatalog Provisioning Details"
+         description: <<~'DESCRIPTION'
+           Input ServiceCatalog Provisioning Details
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "An array of key-value pairs to apply to this resource."
+         description: <<~'DESCRIPTION'
+           An array of key-value pairs to apply to this resource.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::SageMaker::Project"

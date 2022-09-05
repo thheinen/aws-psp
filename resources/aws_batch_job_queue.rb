@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_batch_job_queue
 provides :aws_batch_job_queue, target_mode: true, platform: "aws"
 
@@ -51,7 +52,9 @@ property :tags, Hash,
          callbacks: {
            "tags is not a Object" => lambda { |v| v.is_a? Object },
          },
-         description: "A key-value pair to associate with a resource."
+         description: <<~'DESCRIPTION'
+           A key-value pair to associate with a resource.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::Batch::JobQueue"

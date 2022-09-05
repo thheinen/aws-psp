@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_amplify_branch
 provides :aws_amplify_branch, target_mode: true, platform: "aws"
 

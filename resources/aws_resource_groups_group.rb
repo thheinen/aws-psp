@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_resource_groups_group
 provides :aws_resource_groups_group, target_mode: true, platform: "aws"
 
@@ -22,15 +23,18 @@ property :description, String,
          callbacks: {
            "description is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The description of the resource group"
+         description: <<~'DESCRIPTION'
+           The description of the resource group
+         DESCRIPTION
 
 property :name, String,
          name_property: true,
-         required: true,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The name of the resource group"
+         description: <<~'DESCRIPTION'
+           The name of the resource group
+         DESCRIPTION
 
 property :resource_query, Hash,
          callbacks: {

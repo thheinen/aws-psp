@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_networkmanager_link
 provides :aws_networkmanager_link, target_mode: true, platform: "aws"
 
@@ -18,45 +19,59 @@ property :bandwidth, Hash,
            "Subproperty `DownloadSpeed` is not a Integer" => lambda { |v| v[:DownloadSpeed].is_a? Integer },
            "Subproperty `UploadSpeed` is not a Integer" => lambda { |v| v[:UploadSpeed].is_a? Integer },
          },
-         description: "The Bandwidth for the link."
+         description: <<~'DESCRIPTION'
+           The Bandwidth for the link.
+         DESCRIPTION
 
 property :description, String,
          callbacks: {
            "description is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The description of the link."
+         description: <<~'DESCRIPTION'
+           The description of the link.
+         DESCRIPTION
 
 property :global_network_id, String,
          required: true,
          callbacks: {
            "global_network_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The ID of the global network."
+         description: <<~'DESCRIPTION'
+           The ID of the global network.
+         DESCRIPTION
 
 property :provider, String,
          callbacks: {
            "provider is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The provider of the link."
+         description: <<~'DESCRIPTION'
+           The provider of the link.
+         DESCRIPTION
 
 property :site_id, String,
          required: true,
          callbacks: {
            "site_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The ID of the site"
+         description: <<~'DESCRIPTION'
+           The ID of the site
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "The tags for the link."
+         description: <<~'DESCRIPTION'
+           The tags for the link.
+         DESCRIPTION
 
 property :type, String,
          callbacks: {
            "type is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The type of the link."
+         description: <<~'DESCRIPTION'
+           The type of the link.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::NetworkManager::Link"

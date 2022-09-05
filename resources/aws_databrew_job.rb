@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_databrew_job
 provides :aws_databrew_job, target_mode: true, platform: "aws"
 
@@ -29,52 +30,67 @@ property :dataset_name, String,
            "dataset_name is not a String" => lambda { |v| v.is_a? String },
            "dataset_name needs to be 1..255 characters" => lambda { |v| v.length >= 1 && v.length <= 255 },
          },
-         description: "Dataset name"
+         description: <<~'DESCRIPTION'
+           Dataset name
+         DESCRIPTION
 
 property :encryption_key_arn, String,
          callbacks: {
            "encryption_key_arn is not a String" => lambda { |v| v.is_a? String },
            "encryption_key_arn needs to be 20..2048 characters" => lambda { |v| v.length >= 20 && v.length <= 2048 },
          },
-         description: "Encryption Key Arn"
+         description: <<~'DESCRIPTION'
+           Encryption Key Arn
+         DESCRIPTION
 
 property :encryption_mode, String,
          callbacks: {
            "encryption_mode is not a String" => lambda { |v| v.is_a? String },
            "encryption_modeis not one of `SSE-KMS`, `SSE-S3`" => lambda { |v| %w{SSE-KMS SSE-S3}.include? v },
          },
-         description: "Encryption mode"
+         description: <<~'DESCRIPTION'
+           Encryption mode
+         DESCRIPTION
 
 property :job_sample, Hash,
-         description: "Job Sample"
+         description: <<~'DESCRIPTION'
+           Job Sample
+         DESCRIPTION
 
 property :log_subscription, String,
          callbacks: {
            "log_subscription is not a String" => lambda { |v| v.is_a? String },
            "log_subscriptionis not one of `ENABLE`, `DISABLE`" => lambda { |v| %w{ENABLE DISABLE}.include? v },
          },
-         description: "Log subscription"
+         description: <<~'DESCRIPTION'
+           Log subscription
+         DESCRIPTION
 
 property :max_capacity, Integer,
          callbacks: {
            "max_capacity is not a Integer" => lambda { |v| v.is_a? Integer },
          },
-         description: "Max capacity"
+         description: <<~'DESCRIPTION'
+           Max capacity
+         DESCRIPTION
 
 property :max_retries, Integer,
          callbacks: {
            "max_retries is not a Integer" => lambda { |v| v.is_a? Integer },
          },
-         description: "Max retries"
+         description: <<~'DESCRIPTION'
+           Max retries
+         DESCRIPTION
 
 property :name, String,
          name_property: true,
-         required: true,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
            "name needs to be 1..255 characters" => lambda { |v| v.length >= 1 && v.length <= 255 },
          },
-         description: "Job name"
+         description: <<~'DESCRIPTION'
+           Job name
+         DESCRIPTION
 
 property :output_location, Hash,
          callbacks: {
@@ -83,7 +99,9 @@ property :output_location, Hash,
            "Subproperty `BucketOwner` is not a String" => lambda { |v| v[:BucketOwner].is_a? String },
            "Subproperty `BucketOwner` needs to be 12..12 characters" => lambda { |v| v[:BucketOwner].length >= 12 && v[:BucketOwner].length <= 12 },
          },
-         description: "Output location"
+         description: <<~'DESCRIPTION'
+           Output location
+         DESCRIPTION
 
 property :outputs, Array,
          callbacks: {
@@ -96,14 +114,18 @@ property :profile_configuration, Hash,
            "Subproperty `ProfileColumns` is not a Array" => lambda { |v| v[:ProfileColumns].is_a? Array },
            "Subproperty `ColumnStatisticsConfigurations` is not a Array" => lambda { |v| v[:ColumnStatisticsConfigurations].is_a? Array },
          },
-         description: "Profile Job configuration"
+         description: <<~'DESCRIPTION'
+           Profile Job configuration
+         DESCRIPTION
 
 property :project_name, String,
          callbacks: {
            "project_name is not a String" => lambda { |v| v.is_a? String },
            "project_name needs to be 1..255 characters" => lambda { |v| v.length >= 1 && v.length <= 255 },
          },
-         description: "Project name"
+         description: <<~'DESCRIPTION'
+           Project name
+         DESCRIPTION
 
 property :recipe, Hash,
          callbacks: {
@@ -117,7 +139,9 @@ property :role_arn, String,
          callbacks: {
            "role_arn is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "Role arn"
+         description: <<~'DESCRIPTION'
+           Role arn
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
@@ -129,7 +153,9 @@ property :timeout, Integer,
          callbacks: {
            "timeout is not a Integer" => lambda { |v| v.is_a? Integer },
          },
-         description: "Timeout"
+         description: <<~'DESCRIPTION'
+           Timeout
+         DESCRIPTION
 
 property :type, String,
          required: true,
@@ -137,13 +163,17 @@ property :type, String,
            "type is not a String" => lambda { |v| v.is_a? String },
            "typeis not one of `PROFILE`, `RECIPE`" => lambda { |v| %w{PROFILE RECIPE}.include? v },
          },
-         description: "Job type"
+         description: <<~'DESCRIPTION'
+           Job type
+         DESCRIPTION
 
 property :validation_configurations, Array,
          callbacks: {
            "validation_configurations is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "Data quality rules configuration"
+         description: <<~'DESCRIPTION'
+           Data quality rules configuration
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::DataBrew::Job"

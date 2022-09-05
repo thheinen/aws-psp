@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_iot_mitigation_action
 provides :aws_iot_mitigation_action, target_mode: true, platform: "aws"
 
@@ -18,7 +19,9 @@ property :action_name, String,
            "action_name needs to be 1..128 characters" => lambda { |v| v.length >= 1 && v.length <= 128 },
            "action_name must match pattern [a-zA-Z0-9:_-]+" => lambda { |v| v =~ Regexp.new("/[a-zA-Z0-9:_-]+/") },
          },
-         description: "A unique identifier for the mitigation action."
+         description: <<~'DESCRIPTION'
+           A unique identifier for the mitigation action.
+         DESCRIPTION
 
 property :action_params, Hash,
          required: true,
@@ -35,7 +38,9 @@ property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "An array of key-value pairs to apply to this resource."
+         description: <<~'DESCRIPTION'
+           An array of key-value pairs to apply to this resource.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::IoT::MitigationAction"

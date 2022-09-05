@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_memorydb_user
 provides :aws_memorydb_user, target_mode: true, platform: "aws"
 
@@ -17,7 +18,9 @@ property :access_string, String,
          callbacks: {
            "access_string is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "Access permissions string used for this user account."
+         description: <<~'DESCRIPTION'
+           Access permissions string used for this user account.
+         DESCRIPTION
 
 property :authentication_mode, Hash,
          required: true,
@@ -32,7 +35,9 @@ property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "An array of key-value pairs to apply to this user."
+         description: <<~'DESCRIPTION'
+           An array of key-value pairs to apply to this user.
+         DESCRIPTION
 
 property :user_name, String,
          required: true,
@@ -40,7 +45,9 @@ property :user_name, String,
            "user_name is not a String" => lambda { |v| v.is_a? String },
            "user_name must match pattern [a-z][a-z0-9\\-]*" => lambda { |v| v =~ Regexp.new("/[a-z][a-z0-9\\-]*/") },
          },
-         description: "The name of the user."
+         description: <<~'DESCRIPTION'
+           The name of the user.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::MemoryDB::User"

@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_iam_saml_provider
 provides :aws_iam_saml_provider, target_mode: true, platform: "aws"
 

@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_redshift_scheduled_action
 provides :aws_redshift_scheduled_action, target_mode: true, platform: "aws"
 

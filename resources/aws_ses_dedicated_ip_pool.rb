@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_ses_dedicated_ip_pool
 provides :aws_ses_dedicated_ip_pool, target_mode: true, platform: "aws"
 
@@ -17,7 +18,9 @@ property :pool_name, String,
            "pool_name is not a String" => lambda { |v| v.is_a? String },
            "pool_name must match pattern ^[a-z0-9_-]{0,64}$" => lambda { |v| v =~ Regexp.new("/^[a-z0-9_-]{0,64}$/") },
          },
-         description: "The name of the dedicated IP pool."
+         description: <<~'DESCRIPTION'
+           The name of the dedicated IP pool.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::SES::DedicatedIpPool"

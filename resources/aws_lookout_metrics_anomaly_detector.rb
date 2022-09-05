@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_lookout_metrics_anomaly_detector
 provides :aws_lookout_metrics_anomaly_detector, target_mode: true, platform: "aws"
 

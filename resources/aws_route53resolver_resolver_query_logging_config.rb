@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_route53resolver_resolver_query_logging_config
 provides :aws_route53resolver_resolver_query_logging_config, target_mode: true, platform: "aws"
 

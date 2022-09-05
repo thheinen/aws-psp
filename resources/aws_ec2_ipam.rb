@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_ec2_ipam
 provides :aws_ec2_ipam, target_mode: true, platform: "aws"
 
@@ -22,13 +23,17 @@ property :operating_regions, Array,
          callbacks: {
            "operating_regions is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "The regions IPAM is enabled for. Allows pools to be created in these regions, as well as enabling monitoring"
+         description: <<~'DESCRIPTION'
+           The regions IPAM is enabled for. Allows pools to be created in these regions, as well as enabling monitoring
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "An array of key-value pairs to apply to this resource."
+         description: <<~'DESCRIPTION'
+           An array of key-value pairs to apply to this resource.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::EC2::IPAM"

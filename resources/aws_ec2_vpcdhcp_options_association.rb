@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_ec2_vpcdhcp_options_association
 provides :aws_ec2_vpcdhcp_options_association, target_mode: true, platform: "aws"
 
@@ -17,14 +18,18 @@ property :dhcp_options_id, String,
          callbacks: {
            "dhcp_options_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The ID of the DHCP options set, or default to associate no DHCP options with the VPC."
+         description: <<~'DESCRIPTION'
+           The ID of the DHCP options set, or default to associate no DHCP options with the VPC.
+         DESCRIPTION
 
 property :vpc_id, String,
          required: true,
          callbacks: {
            "vpc_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The ID of the VPC."
+         description: <<~'DESCRIPTION'
+           The ID of the VPC.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::EC2::VPCDHCPOptionsAssociation"

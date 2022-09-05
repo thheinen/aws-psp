@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_robomaker_fleet
 provides :aws_robomaker_fleet, target_mode: true, platform: "aws"
 
@@ -19,7 +20,9 @@ property :name, String,
            "name needs to be 1..255 characters" => lambda { |v| v.length >= 1 && v.length <= 255 },
            "name must match pattern [a-zA-Z0-9_\-]{1,255}$" => lambda { |v| v =~ Regexp.new("/[a-zA-Z0-9_\-]{1,255}$/") },
          },
-         description: "The name of the fleet."
+         description: <<~'DESCRIPTION'
+           The name of the fleet.
+         DESCRIPTION
 
 property :tags, Hash,
          callbacks: {

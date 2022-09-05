@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_iot_logging
 provides :aws_iot_logging, target_mode: true, platform: "aws"
 
@@ -19,7 +20,9 @@ property :account_id, String,
            "account_id needs to be 12..12 characters" => lambda { |v| v.length >= 12 && v.length <= 12 },
            "account_id must match pattern ^[0-9]{12}$" => lambda { |v| v =~ Regexp.new("/^[0-9]{12}$/") },
          },
-         description: "Your 12-digit account ID (used as the primary identifier for the CloudFormation resource)."
+         description: <<~'DESCRIPTION'
+           Your 12-digit account ID (used as the primary identifier for the CloudFormation resource).
+         DESCRIPTION
 
 property :default_log_level, String,
          required: true,
@@ -27,7 +30,9 @@ property :default_log_level, String,
            "default_log_level is not a String" => lambda { |v| v.is_a? String },
            "default_log_levelis not one of `ERROR`, `WARN`, `INFO`, `DEBUG`, `DISABLED`" => lambda { |v| %w{ERROR WARN INFO DEBUG DISABLED}.include? v },
          },
-         description: "The log level to use. Valid values are: ERROR, WARN, INFO, DEBUG, or DISABLED."
+         description: <<~'DESCRIPTION'
+           The log level to use. Valid values are: ERROR, WARN, INFO, DEBUG, or DISABLED.
+         DESCRIPTION
 
 property :role_arn, String,
          required: true,
@@ -35,7 +40,9 @@ property :role_arn, String,
            "role_arn is not a String" => lambda { |v| v.is_a? String },
            "role_arn needs to be 20..2048 characters" => lambda { |v| v.length >= 20 && v.length <= 2048 },
          },
-         description: "The ARN of the role that allows IoT to write to Cloudwatch logs."
+         description: <<~'DESCRIPTION'
+           The ARN of the role that allows IoT to write to Cloudwatch logs.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::IoT::Logging"

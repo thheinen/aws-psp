@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_eks_identity_provider_config
 provides :aws_eks_identity_provider_config, target_mode: true, platform: "aws"
 
@@ -17,13 +18,17 @@ property :cluster_name, String,
          callbacks: {
            "cluster_name is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The name of the identity provider configuration."
+         description: <<~'DESCRIPTION'
+           The name of the identity provider configuration.
+         DESCRIPTION
 
 property :identity_provider_config_name, String,
          callbacks: {
            "identity_provider_config_name is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The name of the OIDC provider configuration."
+         description: <<~'DESCRIPTION'
+           The name of the OIDC provider configuration.
+         DESCRIPTION
 
 property :oidc, Hash,
          callbacks: {
@@ -41,7 +46,9 @@ property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "An array of key-value pairs to apply to this resource."
+         description: <<~'DESCRIPTION'
+           An array of key-value pairs to apply to this resource.
+         DESCRIPTION
 
 property :type, String,
          required: true,
@@ -49,7 +56,9 @@ property :type, String,
            "type is not a String" => lambda { |v| v.is_a? String },
            "typeis not one of `oidc`" => lambda { |v| %w{oidc}.include? v },
          },
-         description: "The type of the identity provider configuration."
+         description: <<~'DESCRIPTION'
+           The type of the identity provider configuration.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::EKS::IdentityProviderConfig"

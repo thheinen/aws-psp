@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_cloudformation_resource_version
 provides :aws_cloudformation_resource_version, target_mode: true, platform: "aws"
 
@@ -16,7 +17,9 @@ property :execution_role_arn, String,
          callbacks: {
            "execution_role_arn is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The Amazon Resource Name (ARN) of the IAM execution role to use to register the type. If your resource type calls AWS APIs in any of its handlers, you must create an IAM execution role that includes the necessary permissions to call those AWS APIs, and provision that execution role in your account. CloudFormation then assumes that execution role to provide your resource type with the appropriate credentials."
+         description: <<~'DESCRIPTION'
+           The Amazon Resource Name (ARN) of the IAM execution role to use to register the type. If your resource type calls AWS APIs in any of its handlers, you must create an IAM execution role that includes the necessary permissions to call those AWS APIs, and provision that execution role in your account. CloudFormation then assumes that execution role to provide your resource type with the appropriate credentials.
+         DESCRIPTION
 
 property :logging_config, Hash,
          callbacks: {
@@ -27,7 +30,9 @@ property :logging_config, Hash,
            "Subproperty `LogRoleArn` needs to be 1..256 characters" => lambda { |v| v[:LogRoleArn].length >= 1 && v[:LogRoleArn].length <= 256 },
            "Subproperty `LogRoleArn`is not a valid ARN" => lambda { |v| v[:LogRoleArn] =~ Regexp.new("^arn:aws(?:-cn|-us-gov)?:([^:]*:){3,}") },
          },
-         description: "Specifies logging configuration information for a type."
+         description: <<~'DESCRIPTION'
+           Specifies logging configuration information for a type.
+         DESCRIPTION
 
 property :schema_handler_package, String,
          required: true,

@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_networkmanager_customer_gateway_association
 provides :aws_networkmanager_customer_gateway_association, target_mode: true, platform: "aws"
 
@@ -17,27 +18,35 @@ property :customer_gateway_arn, String,
          callbacks: {
            "customer_gateway_arn is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The Amazon Resource Name (ARN) of the customer gateway."
+         description: <<~'DESCRIPTION'
+           The Amazon Resource Name (ARN) of the customer gateway.
+         DESCRIPTION
 
 property :device_id, String,
          required: true,
          callbacks: {
            "device_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The ID of the device"
+         description: <<~'DESCRIPTION'
+           The ID of the device
+         DESCRIPTION
 
 property :global_network_id, String,
          required: true,
          callbacks: {
            "global_network_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The ID of the global network."
+         description: <<~'DESCRIPTION'
+           The ID of the global network.
+         DESCRIPTION
 
 property :link_id, String,
          callbacks: {
            "link_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The ID of the link"
+         description: <<~'DESCRIPTION'
+           The ID of the link
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::NetworkManager::CustomerGatewayAssociation"

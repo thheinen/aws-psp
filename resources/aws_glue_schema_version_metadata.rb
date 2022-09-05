@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_glue_schema_version_metadata
 provides :aws_glue_schema_version_metadata, target_mode: true, platform: "aws"
 
@@ -18,7 +19,9 @@ property :key, String,
            "key is not a String" => lambda { |v| v.is_a? String },
            "key needs to be 1..128 characters" => lambda { |v| v.length >= 1 && v.length <= 128 },
          },
-         description: "Metadata key"
+         description: <<~'DESCRIPTION'
+           Metadata key
+         DESCRIPTION
 
 property :schema_version_id, String,
          required: true,
@@ -26,7 +29,9 @@ property :schema_version_id, String,
            "schema_version_id is not a String" => lambda { |v| v.is_a? String },
            "schema_version_id must match pattern [a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}" => lambda { |v| v =~ Regexp.new("/[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}/") },
          },
-         description: "Represents the version ID associated with the schema version."
+         description: <<~'DESCRIPTION'
+           Represents the version ID associated with the schema version.
+         DESCRIPTION
 
 property :value, String,
          required: true,
@@ -34,7 +39,9 @@ property :value, String,
            "value is not a String" => lambda { |v| v.is_a? String },
            "value needs to be 1..256 characters" => lambda { |v| v.length >= 1 && v.length <= 256 },
          },
-         description: "Metadata value"
+         description: <<~'DESCRIPTION'
+           Metadata value
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::Glue::SchemaVersionMetadata"

@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_sagemaker_feature_group
 provides :aws_sagemaker_feature_group, target_mode: true, platform: "aws"
 
@@ -16,7 +17,9 @@ property :description, String,
          callbacks: {
            "description is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "Description about the FeatureGroup."
+         description: <<~'DESCRIPTION'
+           Description about the FeatureGroup.
+         DESCRIPTION
 
 property :event_time_feature_name, String,
          required: true,
@@ -25,14 +28,18 @@ property :event_time_feature_name, String,
            "event_time_feature_name needs to be 1..64 characters" => lambda { |v| v.length >= 1 && v.length <= 64 },
            "event_time_feature_name must match pattern ^[a-zA-Z0-9](-*[a-zA-Z0-9]){0,63}" => lambda { |v| v =~ Regexp.new("/^[a-zA-Z0-9](-*[a-zA-Z0-9]){0,63}/") },
          },
-         description: "The Event Time Feature Name."
+         description: <<~'DESCRIPTION'
+           The Event Time Feature Name.
+         DESCRIPTION
 
 property :feature_definitions, Array,
          required: true,
          callbacks: {
            "feature_definitions is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "An Array of Feature Definition"
+         description: <<~'DESCRIPTION'
+           An Array of Feature Definition
+         DESCRIPTION
 
 property :feature_group_name, String,
          required: true,
@@ -41,7 +48,9 @@ property :feature_group_name, String,
            "feature_group_name needs to be 1..64 characters" => lambda { |v| v.length >= 1 && v.length <= 64 },
            "feature_group_name must match pattern ^[a-zA-Z0-9](-*[a-zA-Z0-9]){0,63}" => lambda { |v| v =~ Regexp.new("/^[a-zA-Z0-9](-*[a-zA-Z0-9]){0,63}/") },
          },
-         description: "The Name of the FeatureGroup."
+         description: <<~'DESCRIPTION'
+           The Name of the FeatureGroup.
+         DESCRIPTION
 
 property :offline_store_config, Hash,
          callbacks: {
@@ -62,7 +71,9 @@ property :record_identifier_feature_name, String,
            "record_identifier_feature_name needs to be 1..64 characters" => lambda { |v| v.length >= 1 && v.length <= 64 },
            "record_identifier_feature_name must match pattern ^[a-zA-Z0-9](-*[a-zA-Z0-9]){0,63}" => lambda { |v| v =~ Regexp.new("/^[a-zA-Z0-9](-*[a-zA-Z0-9]){0,63}/") },
          },
-         description: "The Record Identifier Feature Name."
+         description: <<~'DESCRIPTION'
+           The Record Identifier Feature Name.
+         DESCRIPTION
 
 property :role_arn, String,
          callbacks: {
@@ -70,13 +81,17 @@ property :role_arn, String,
            "role_arn needs to be 20..2048 characters" => lambda { |v| v.length >= 20 && v.length <= 2048 },
            "role_arn must match pattern ^arn:aws[a-z\-]*:iam::\d{12}:role/?[a-zA-Z_0-9+=,.@\-_/]+$" => lambda { |v| v =~ Regexp.new("/^arn:aws[a-z\-]*:iam::\d{12}:role/?[a-zA-Z_0-9+=,.@\-_/]+$/") },
          },
-         description: "Role Arn"
+         description: <<~'DESCRIPTION'
+           Role Arn
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "An array of key-value pair to apply to this resource."
+         description: <<~'DESCRIPTION'
+           An array of key-value pair to apply to this resource.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::SageMaker::FeatureGroup"

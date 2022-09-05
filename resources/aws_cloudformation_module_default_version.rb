@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_cloudformation_module_default_version
 provides :aws_cloudformation_module_default_version, target_mode: true, platform: "aws"
 
@@ -17,21 +18,27 @@ property :arn, String,
            "arn is not a String" => lambda { |v| v.is_a? String },
            "arn must match pattern ^arn:aws[A-Za-z0-9-]{0,64}:cloudformation:[A-Za-z0-9-]{1,64}:([0-9]{12})?:type/module/.+/[0-9]{8}$" => lambda { |v| v =~ Regexp.new("/^arn:aws[A-Za-z0-9-]{0,64}:cloudformation:[A-Za-z0-9-]{1,64}:([0-9]{12})?:type/module/.+/[0-9]{8}$/") },
          },
-         description: "The Amazon Resource Name (ARN) of the module version to set as the default version."
+         description: <<~'DESCRIPTION'
+           The Amazon Resource Name (ARN) of the module version to set as the default version.
+         DESCRIPTION
 
 property :module_name, String,
          callbacks: {
            "module_name is not a String" => lambda { |v| v.is_a? String },
            "module_name must match pattern ^[A-Za-z0-9]{2,64}::[A-Za-z0-9]{2,64}::[A-Za-z0-9]{2,64}::MODULE" => lambda { |v| v =~ Regexp.new("/^[A-Za-z0-9]{2,64}::[A-Za-z0-9]{2,64}::[A-Za-z0-9]{2,64}::MODULE/") },
          },
-         description: "The name of a module existing in the registry."
+         description: <<~'DESCRIPTION'
+           The name of a module existing in the registry.
+         DESCRIPTION
 
 property :version_id, String,
          callbacks: {
            "version_id is not a String" => lambda { |v| v.is_a? String },
            "version_id must match pattern ^[0-9]{8}$" => lambda { |v| v =~ Regexp.new("/^[0-9]{8}$/") },
          },
-         description: "The ID of an existing version of the named module to set as the default."
+         description: <<~'DESCRIPTION'
+           The ID of an existing version of the named module to set as the default.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::CloudFormation::ModuleDefaultVersion"

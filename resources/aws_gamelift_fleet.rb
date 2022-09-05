@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_gamelift_fleet
 provides :aws_gamelift_fleet, target_mode: true, platform: "aws"
 

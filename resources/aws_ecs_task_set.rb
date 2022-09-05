@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_ecs_task_set
 provides :aws_ecs_task_set, target_mode: true, platform: "aws"
 
@@ -17,20 +18,26 @@ property :cluster, String,
          callbacks: {
            "cluster is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The short name or full Amazon Resource Name (ARN) of the cluster that hosts the service to create the task set in."
+         description: <<~'DESCRIPTION'
+           The short name or full Amazon Resource Name (ARN) of the cluster that hosts the service to create the task set in.
+         DESCRIPTION
 
 property :external_id, String,
          callbacks: {
            "external_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "An optional non-unique tag that identifies this task set in external systems. If the task set is associated with a service discovery registry, the tasks in this task set will have the ECS_TASK_SET_EXTERNAL_ID AWS Cloud Map attribute set to the provided value. "
+         description: <<~'DESCRIPTION'
+           An optional non-unique tag that identifies this task set in external systems. If the task set is associated with a service discovery registry, the tasks in this task set will have the ECS_TASK_SET_EXTERNAL_ID AWS Cloud Map attribute set to the provided value.
+         DESCRIPTION
 
 property :launch_type, String,
          callbacks: {
            "launch_type is not a String" => lambda { |v| v.is_a? String },
            "launch_typeis not one of `EC2`, `FARGATE`" => lambda { |v| %w{EC2 FARGATE}.include? v },
          },
-         description: "The launch type that new tasks in the task set will use. For more information, see https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html in the Amazon Elastic Container Service Developer Guide. "
+         description: <<~'DESCRIPTION'
+           The launch type that new tasks in the task set will use. For more information, see https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html in the Amazon Elastic Container Service Developer Guide.
+         DESCRIPTION
 
 property :load_balancers, Array,
          callbacks: {
@@ -45,7 +52,9 @@ property :platform_version, String,
          callbacks: {
            "platform_version is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The platform version that the tasks in the task set should use. A platform version is specified only for tasks using the Fargate launch type. If one isn't specified, the LATEST platform version is used by default."
+         description: <<~'DESCRIPTION'
+           The platform version that the tasks in the task set should use. A platform version is specified only for tasks using the Fargate launch type. If one isn't specified, the LATEST platform version is used by default.
+         DESCRIPTION
 
 property :scale, Hash,
          callbacks: {
@@ -53,27 +62,35 @@ property :scale, Hash,
            "Subproperty `Unit`is not one of `PERCENT`" => lambda { |v| %w{PERCENT}.include? v[:Unit] },
            "Subproperty `Value` is not a Number" => lambda { |v| v[:Value].is_a? Number },
          },
-         description: "A floating-point percentage of the desired number of tasks to place and keep running in the task set."
+         description: <<~'DESCRIPTION'
+           A floating-point percentage of the desired number of tasks to place and keep running in the task set.
+         DESCRIPTION
 
 property :service, String,
          required: true,
          callbacks: {
            "service is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The short name or full Amazon Resource Name (ARN) of the service to create the task set in."
+         description: <<~'DESCRIPTION'
+           The short name or full Amazon Resource Name (ARN) of the service to create the task set in.
+         DESCRIPTION
 
 property :service_registries, Array,
          callbacks: {
            "service_registries is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "The details of the service discovery registries to assign to this task set. For more information, see https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html."
+         description: <<~'DESCRIPTION'
+           The details of the service discovery registries to assign to this task set. For more information, see https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html.
+         DESCRIPTION
 
 property :task_definition, String,
          required: true,
          callbacks: {
            "task_definition is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The short name or full Amazon Resource Name (ARN) of the task definition for the tasks in the task set to use."
+         description: <<~'DESCRIPTION'
+           The short name or full Amazon Resource Name (ARN) of the task definition for the tasks in the task set to use.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::ECS::TaskSet"

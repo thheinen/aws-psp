@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_forecast_dataset
 provides :aws_forecast_dataset, target_mode: true, platform: "aws"
 
@@ -17,7 +18,9 @@ property :data_frequency, String,
            "data_frequency is not a String" => lambda { |v| v.is_a? String },
            "data_frequency must match pattern ^Y|M|W|D|H|30min|15min|10min|5min|1min$" => lambda { |v| v =~ Regexp.new("/^Y|M|W|D|H|30min|15min|10min|5min|1min$/") },
          },
-         description: "Frequency of data collection. This parameter is required for RELATED_TIME_SERIES"
+         description: <<~'DESCRIPTION'
+           Frequency of data collection. This parameter is required for RELATED_TIME_SERIES
+         DESCRIPTION
 
 property :dataset_name, String,
          required: true,
@@ -26,7 +29,9 @@ property :dataset_name, String,
            "dataset_name needs to be 1..63 characters" => lambda { |v| v.length >= 1 && v.length <= 63 },
            "dataset_name must match pattern ^[a-zA-Z][a-zA-Z0-9_]*" => lambda { |v| v =~ Regexp.new("/^[a-zA-Z][a-zA-Z0-9_]*/") },
          },
-         description: "A name for the dataset"
+         description: <<~'DESCRIPTION'
+           A name for the dataset
+         DESCRIPTION
 
 property :dataset_type, String,
          required: true,
@@ -34,7 +39,9 @@ property :dataset_type, String,
            "dataset_type is not a String" => lambda { |v| v.is_a? String },
            "dataset_typeis not one of `TARGET_TIME_SERIES`, `RELATED_TIME_SERIES`, `ITEM_METADATA`" => lambda { |v| %w{TARGET_TIME_SERIES RELATED_TIME_SERIES ITEM_METADATA}.include? v },
          },
-         description: "The dataset type"
+         description: <<~'DESCRIPTION'
+           The dataset type
+         DESCRIPTION
 
 property :domain, String,
          required: true,
@@ -42,7 +49,9 @@ property :domain, String,
            "domain is not a String" => lambda { |v| v.is_a? String },
            "domainis not one of `RETAIL`, `CUSTOM`, `INVENTORY_PLANNING`, `EC2_CAPACITY`, `WORK_FORCE`, `WEB_TRAFFIC`, `METRICS`" => lambda { |v| %w{RETAIL CUSTOM INVENTORY_PLANNING EC2_CAPACITY WORK_FORCE WEB_TRAFFIC METRICS}.include? v },
          },
-         description: "The domain associated with the dataset"
+         description: <<~'DESCRIPTION'
+           The domain associated with the dataset
+         DESCRIPTION
 
 property :encryption_config, Hash,
          description: ""

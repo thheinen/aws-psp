@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_acmpca_permission
 provides :aws_acmpca_permission, target_mode: true, platform: "aws"
 
@@ -17,27 +18,35 @@ property :actions, Array,
          callbacks: {
            "actions is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "The actions that the specified AWS service principal can use. Actions IssueCertificate, GetCertificate and ListPermissions must be provided."
+         description: <<~'DESCRIPTION'
+           The actions that the specified AWS service principal can use. Actions IssueCertificate, GetCertificate and ListPermissions must be provided.
+         DESCRIPTION
 
 property :certificate_authority_arn, String,
          required: true,
          callbacks: {
            "certificate_authority_arn is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The Amazon Resource Name (ARN) of the Private Certificate Authority that grants the permission."
+         description: <<~'DESCRIPTION'
+           The Amazon Resource Name (ARN) of the Private Certificate Authority that grants the permission.
+         DESCRIPTION
 
 property :principal, String,
          required: true,
          callbacks: {
            "principal is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The AWS service or identity that receives the permission. At this time, the only valid principal is acm.amazonaws.com."
+         description: <<~'DESCRIPTION'
+           The AWS service or identity that receives the permission. At this time, the only valid principal is acm.amazonaws.com.
+         DESCRIPTION
 
 property :source_account, String,
          callbacks: {
            "source_account is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The ID of the calling account."
+         description: <<~'DESCRIPTION'
+           The ID of the calling account.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::ACMPCA::Permission"

@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_iot_account_audit_configuration
 provides :aws_iot_account_audit_configuration, target_mode: true, platform: "aws"
 
@@ -18,7 +19,9 @@ property :account_id, String,
            "account_id is not a String" => lambda { |v| v.is_a? String },
            "account_id needs to be 12..12 characters" => lambda { |v| v.length >= 12 && v.length <= 12 },
          },
-         description: "Your 12-digit account ID (used as the primary identifier for the CloudFormation resource)."
+         description: <<~'DESCRIPTION'
+           Your 12-digit account ID (used as the primary identifier for the CloudFormation resource).
+         DESCRIPTION
 
 property :audit_check_configurations, Hash,
          required: true,
@@ -33,7 +36,9 @@ property :role_arn, String,
            "role_arn is not a String" => lambda { |v| v.is_a? String },
            "role_arn needs to be 20..2048 characters" => lambda { |v| v.length >= 20 && v.length <= 2048 },
          },
-         description: "The ARN of the role that grants permission to AWS IoT to access information about your devices, policies, certificates and other items as required when performing an audit."
+         description: <<~'DESCRIPTION'
+           The ARN of the role that grants permission to AWS IoT to access information about your devices, policies, certificates and other items as required when performing an audit.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::IoT::AccountAuditConfiguration"

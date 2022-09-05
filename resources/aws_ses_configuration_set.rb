@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_ses_configuration_set
 provides :aws_ses_configuration_set, target_mode: true, platform: "aws"
 
@@ -26,7 +27,9 @@ property :name, String,
            "name is not a String" => lambda { |v| v.is_a? String },
            "name must match pattern ^[a-zA-Z0-9_-]{1,64}$" => lambda { |v| v =~ Regexp.new("/^[a-zA-Z0-9_-]{1,64}$/") },
          },
-         description: "The name of the configuration set."
+         description: <<~'DESCRIPTION'
+           The name of the configuration set.
+         DESCRIPTION
 
 property :reputation_options, Hash,
          callbacks: {

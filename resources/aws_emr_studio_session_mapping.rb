@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_emr_studio_session_mapping
 provides :aws_emr_studio_session_mapping, target_mode: true, platform: "aws"
 

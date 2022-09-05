@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_cloudwatch_composite_alarm
 provides :aws_cloudwatch_composite_alarm, target_mode: true, platform: "aws"
 
@@ -16,39 +17,51 @@ property :actions_enabled, [TrueClass, FalseClass],
          callbacks: {
            "actions_enabled is not a Boolean" => lambda { |v| v.is_a? Boolean },
          },
-         description: "Indicates whether actions should be executed during any changes to the alarm state. The default is TRUE."
+         description: <<~'DESCRIPTION'
+           Indicates whether actions should be executed during any changes to the alarm state. The default is TRUE.
+         DESCRIPTION
 
 property :actions_suppressor, String,
          callbacks: {
            "actions_suppressor is not a String" => lambda { |v| v.is_a? String },
            "actions_suppressor needs to be 1..1600 characters" => lambda { |v| v.length >= 1 && v.length <= 1600 },
          },
-         description: "Actions will be suppressed if the suppressor alarm is in the ALARM state. ActionsSuppressor can be an AlarmName or an Amazon Resource Name (ARN) from an existing alarm. "
+         description: <<~'DESCRIPTION'
+           Actions will be suppressed if the suppressor alarm is in the ALARM state. ActionsSuppressor can be an AlarmName or an Amazon Resource Name (ARN) from an existing alarm.
+         DESCRIPTION
 
 property :actions_suppressor_extension_period, Integer,
          callbacks: {
            "actions_suppressor_extension_period is not a Integer" => lambda { |v| v.is_a? Integer },
          },
-         description: "Actions will be suppressed if WaitPeriod is active. The length of time that actions are suppressed is in seconds."
+         description: <<~'DESCRIPTION'
+           Actions will be suppressed if WaitPeriod is active. The length of time that actions are suppressed is in seconds.
+         DESCRIPTION
 
 property :actions_suppressor_wait_period, Integer,
          callbacks: {
            "actions_suppressor_wait_period is not a Integer" => lambda { |v| v.is_a? Integer },
          },
-         description: "Actions will be suppressed if ExtensionPeriod is active. The length of time that actions are suppressed is in seconds."
+         description: <<~'DESCRIPTION'
+           Actions will be suppressed if ExtensionPeriod is active. The length of time that actions are suppressed is in seconds.
+         DESCRIPTION
 
 property :alarm_actions, Array,
          callbacks: {
            "alarm_actions is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "The list of actions to execute when this alarm transitions into an ALARM state from any other state. Specify each action as an Amazon Resource Name (ARN)."
+         description: <<~'DESCRIPTION'
+           The list of actions to execute when this alarm transitions into an ALARM state from any other state. Specify each action as an Amazon Resource Name (ARN).
+         DESCRIPTION
 
 property :alarm_description, String,
          callbacks: {
            "alarm_description is not a String" => lambda { |v| v.is_a? String },
            "alarm_description needs to be 0..1024 characters" => lambda { |v| v.length >= 0 && v.length <= 1024 },
          },
-         description: "The description of the alarm"
+         description: <<~'DESCRIPTION'
+           The description of the alarm
+         DESCRIPTION
 
 property :alarm_name, String,
          required: true,
@@ -56,7 +69,9 @@ property :alarm_name, String,
            "alarm_name is not a String" => lambda { |v| v.is_a? String },
            "alarm_name needs to be 1..255 characters" => lambda { |v| v.length >= 1 && v.length <= 255 },
          },
-         description: "The name of the Composite Alarm"
+         description: <<~'DESCRIPTION'
+           The name of the Composite Alarm
+         DESCRIPTION
 
 property :alarm_rule, String,
          required: true,
@@ -64,19 +79,25 @@ property :alarm_rule, String,
            "alarm_rule is not a String" => lambda { |v| v.is_a? String },
            "alarm_rule needs to be 1..10240 characters" => lambda { |v| v.length >= 1 && v.length <= 10240 },
          },
-         description: "Expression which aggregates the state of other Alarms (Metric or Composite Alarms)"
+         description: <<~'DESCRIPTION'
+           Expression which aggregates the state of other Alarms (Metric or Composite Alarms)
+         DESCRIPTION
 
 property :insufficient_data_actions, Array,
          callbacks: {
            "insufficient_data_actions is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "The actions to execute when this alarm transitions to the INSUFFICIENT_DATA state from any other state. Each action is specified as an Amazon Resource Name (ARN)."
+         description: <<~'DESCRIPTION'
+           The actions to execute when this alarm transitions to the INSUFFICIENT_DATA state from any other state. Each action is specified as an Amazon Resource Name (ARN).
+         DESCRIPTION
 
 property :ok_actions, Array,
          callbacks: {
            "ok_actions is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "The actions to execute when this alarm transitions to the OK state from any other state. Each action is specified as an Amazon Resource Name (ARN)."
+         description: <<~'DESCRIPTION'
+           The actions to execute when this alarm transitions to the OK state from any other state. Each action is specified as an Amazon Resource Name (ARN).
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::CloudWatch::CompositeAlarm"

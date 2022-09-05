@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_ec2_egress_only_internet_gateway
 provides :aws_ec2_egress_only_internet_gateway, target_mode: true, platform: "aws"
 
@@ -17,7 +18,9 @@ property :vpc_id, String,
          callbacks: {
            "vpc_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The ID of the VPC for which to create the egress-only internet gateway."
+         description: <<~'DESCRIPTION'
+           The ID of the VPC for which to create the egress-only internet gateway.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::EC2::EgressOnlyInternetGateway"

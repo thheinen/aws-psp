@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_ec2_dhcp_options
 provides :aws_ec2_dhcp_options, target_mode: true, platform: "aws"
 
@@ -16,37 +17,49 @@ property :domain_name, String,
          callbacks: {
            "domain_name is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "This value is used to complete unqualified DNS hostnames."
+         description: <<~'DESCRIPTION'
+           This value is used to complete unqualified DNS hostnames.
+         DESCRIPTION
 
 property :domain_name_servers, Array,
          callbacks: {
            "domain_name_servers is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "The IPv4 addresses of up to four domain name servers, or AmazonProvidedDNS."
+         description: <<~'DESCRIPTION'
+           The IPv4 addresses of up to four domain name servers, or AmazonProvidedDNS.
+         DESCRIPTION
 
 property :netbios_name_servers, Array,
          callbacks: {
            "netbios_name_servers is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "The IPv4 addresses of up to four NetBIOS name servers."
+         description: <<~'DESCRIPTION'
+           The IPv4 addresses of up to four NetBIOS name servers.
+         DESCRIPTION
 
 property :netbios_node_type, Integer,
          callbacks: {
            "netbios_node_type is not a Integer" => lambda { |v| v.is_a? Integer },
          },
-         description: "The NetBIOS node type (1, 2, 4, or 8)."
+         description: <<~'DESCRIPTION'
+           The NetBIOS node type (1, 2, 4, or 8).
+         DESCRIPTION
 
 property :ntp_servers, Array,
          callbacks: {
            "ntp_servers is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "The IPv4 addresses of up to four Network Time Protocol (NTP) servers."
+         description: <<~'DESCRIPTION'
+           The IPv4 addresses of up to four Network Time Protocol (NTP) servers.
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "Any tags assigned to the DHCP options set."
+         description: <<~'DESCRIPTION'
+           Any tags assigned to the DHCP options set.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::EC2::DHCPOptions"

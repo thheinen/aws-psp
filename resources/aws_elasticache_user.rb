@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_elasticache_user
 provides :aws_elasticache_user, target_mode: true, platform: "aws"
 
@@ -16,7 +17,9 @@ property :access_string, String,
          callbacks: {
            "access_string is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "Access permissions string used for this user account."
+         description: <<~'DESCRIPTION'
+           Access permissions string used for this user account.
+         DESCRIPTION
 
 property :engine, String,
          required: true,
@@ -24,19 +27,25 @@ property :engine, String,
            "engine is not a String" => lambda { |v| v.is_a? String },
            "engineis not one of `redis`" => lambda { |v| %w{redis}.include? v },
          },
-         description: "Must be redis."
+         description: <<~'DESCRIPTION'
+           Must be redis.
+         DESCRIPTION
 
 property :no_password_required, [TrueClass, FalseClass],
          callbacks: {
            "no_password_required is not a Boolean" => lambda { |v| v.is_a? Boolean },
          },
-         description: "Indicates a password is not required for this user account."
+         description: <<~'DESCRIPTION'
+           Indicates a password is not required for this user account.
+         DESCRIPTION
 
 property :passwords, Array,
          callbacks: {
            "passwords is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "Passwords used for this user account. You can create up to two passwords for each user."
+         description: <<~'DESCRIPTION'
+           Passwords used for this user account. You can create up to two passwords for each user.
+         DESCRIPTION
 
 property :user_id, String,
          required: true,
@@ -44,14 +53,18 @@ property :user_id, String,
            "user_id is not a String" => lambda { |v| v.is_a? String },
            "user_id must match pattern [a-z][a-z0-9\\-]*" => lambda { |v| v =~ Regexp.new("/[a-z][a-z0-9\\-]*/") },
          },
-         description: "The ID of the user."
+         description: <<~'DESCRIPTION'
+           The ID of the user.
+         DESCRIPTION
 
 property :user_name, String,
          required: true,
          callbacks: {
            "user_name is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The username of the user."
+         description: <<~'DESCRIPTION'
+           The username of the user.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::ElastiCache::User"

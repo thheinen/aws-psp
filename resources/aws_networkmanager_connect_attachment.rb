@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_networkmanager_connect_attachment
 provides :aws_networkmanager_connect_attachment, target_mode: true, platform: "aws"
 
@@ -16,31 +17,41 @@ property :core_network_id, String,
          callbacks: {
            "core_network_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "ID of the CoreNetwork that the attachment will be attached to."
+         description: <<~'DESCRIPTION'
+           ID of the CoreNetwork that the attachment will be attached to.
+         DESCRIPTION
 
 property :edge_location, String,
          callbacks: {
            "edge_location is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "Edge location of the attachment."
+         description: <<~'DESCRIPTION'
+           Edge location of the attachment.
+         DESCRIPTION
 
 property :options, Hash,
          callbacks: {
            "Subproperty `Protocol` is not a String" => lambda { |v| v[:Protocol].is_a? String },
          },
-         description: "Protocol options for connect attachment"
+         description: <<~'DESCRIPTION'
+           Protocol options for connect attachment
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "Tags for the attachment."
+         description: <<~'DESCRIPTION'
+           Tags for the attachment.
+         DESCRIPTION
 
 property :transport_attachment_id, String,
          callbacks: {
            "transport_attachment_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "Id of transport attachment"
+         description: <<~'DESCRIPTION'
+           Id of transport attachment
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::NetworkManager::ConnectAttachment"

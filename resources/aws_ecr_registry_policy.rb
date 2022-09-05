@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_ecr_registry_policy
 provides :aws_ecr_registry_policy, target_mode: true, platform: "aws"
 
@@ -17,7 +18,9 @@ property :policy_text, Hash,
          callbacks: {
            "policy_text is not a Object" => lambda { |v| v.is_a? Object },
          },
-         description: "The JSON policy text to apply to your registry. The policy text follows the same format as IAM policy text. For more information, see Registry permissions (https://docs.aws.amazon.com/AmazonECR/latest/userguide/registry-permissions.html) in the Amazon Elastic Container Registry User Guide."
+         description: <<~'DESCRIPTION'
+           The JSON policy text to apply to your registry. The policy text follows the same format as IAM policy text. For more information, see Registry permissions (https://docs.aws.amazon.com/AmazonECR/latest/userguide/registry-permissions.html) in the Amazon Elastic Container Registry User Guide.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::ECR::RegistryPolicy"

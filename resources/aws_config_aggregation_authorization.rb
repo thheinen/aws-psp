@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_config_aggregation_authorization
 provides :aws_config_aggregation_authorization, target_mode: true, platform: "aws"
 
@@ -18,7 +19,9 @@ property :authorized_account_id, String,
            "authorized_account_id is not a String" => lambda { |v| v.is_a? String },
            "authorized_account_id must match pattern ^\d{12}$" => lambda { |v| v =~ Regexp.new("/^\d{12}$/") },
          },
-         description: "The 12-digit account ID of the account authorized to aggregate data."
+         description: <<~'DESCRIPTION'
+           The 12-digit account ID of the account authorized to aggregate data.
+         DESCRIPTION
 
 property :authorized_aws_region, String,
          required: true,
@@ -26,13 +29,17 @@ property :authorized_aws_region, String,
            "authorized_aws_region is not a String" => lambda { |v| v.is_a? String },
            "authorized_aws_region needs to be 1..64 characters" => lambda { |v| v.length >= 1 && v.length <= 64 },
          },
-         description: "The region authorized to collect aggregated data."
+         description: <<~'DESCRIPTION'
+           The region authorized to collect aggregated data.
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "The tags for the AggregationAuthorization."
+         description: <<~'DESCRIPTION'
+           The tags for the AggregationAuthorization.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::Config::AggregationAuthorization"

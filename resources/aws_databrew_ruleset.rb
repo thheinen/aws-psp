@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_databrew_ruleset
 provides :aws_databrew_ruleset, target_mode: true, platform: "aws"
 
@@ -16,23 +17,28 @@ property :description, String,
          callbacks: {
            "description is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "Description of the Ruleset"
+         description: <<~'DESCRIPTION'
+           Description of the Ruleset
+         DESCRIPTION
 
 property :name, String,
          name_property: true,
-         required: true,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
            "name needs to be 1..255 characters" => lambda { |v| v.length >= 1 && v.length <= 255 },
          },
-         description: "Name of the Ruleset"
+         description: <<~'DESCRIPTION'
+           Name of the Ruleset
+         DESCRIPTION
 
 property :rules, Array,
          required: true,
          callbacks: {
            "rules is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "List of the data quality rules in the ruleset"
+         description: <<~'DESCRIPTION'
+           List of the data quality rules in the ruleset
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
@@ -46,7 +52,9 @@ property :target_arn, String,
            "target_arn is not a String" => lambda { |v| v.is_a? String },
            "target_arn needs to be 20..2048 characters" => lambda { |v| v.length >= 20 && v.length <= 2048 },
          },
-         description: "Arn of the target resource (dataset) to apply the ruleset to"
+         description: <<~'DESCRIPTION'
+           Arn of the target resource (dataset) to apply the ruleset to
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::DataBrew::Ruleset"

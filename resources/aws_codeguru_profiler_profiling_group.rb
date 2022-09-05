@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_codeguru_profiler_profiling_group
 provides :aws_codeguru_profiler_profiling_group, target_mode: true, platform: "aws"
 
@@ -16,20 +17,26 @@ property :agent_permissions, Hash,
          callbacks: {
            "Subproperty `Principals` is not a Array" => lambda { |v| v[:Principals].is_a? Array },
          },
-         description: "The agent permissions attached to this profiling group."
+         description: <<~'DESCRIPTION'
+           The agent permissions attached to this profiling group.
+         DESCRIPTION
 
 property :anomaly_detection_notification_configuration, Array,
          callbacks: {
            "anomaly_detection_notification_configuration is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "Configuration for Notification Channels for Anomaly Detection feature in CodeGuru Profiler which enables customers to detect anomalies in the application profile for those methods that represent the highest proportion of CPU time or latency"
+         description: <<~'DESCRIPTION'
+           Configuration for Notification Channels for Anomaly Detection feature in CodeGuru Profiler which enables customers to detect anomalies in the application profile for those methods that represent the highest proportion of CPU time or latency
+         DESCRIPTION
 
 property :compute_platform, String,
          callbacks: {
            "compute_platform is not a String" => lambda { |v| v.is_a? String },
            "compute_platformis not one of `Default`, `AWSLambda`" => lambda { |v| %w{Default AWSLambda}.include? v },
          },
-         description: "The compute platform of the profiling group."
+         description: <<~'DESCRIPTION'
+           The compute platform of the profiling group.
+         DESCRIPTION
 
 property :profiling_group_name, String,
          required: true,
@@ -38,13 +45,17 @@ property :profiling_group_name, String,
            "profiling_group_name needs to be 1..255 characters" => lambda { |v| v.length >= 1 && v.length <= 255 },
            "profiling_group_name must match pattern ^[\w-]+$" => lambda { |v| v =~ Regexp.new("/^[\w-]+$/") },
          },
-         description: "The name of the profiling group."
+         description: <<~'DESCRIPTION'
+           The name of the profiling group.
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "The tags associated with a profiling group."
+         description: <<~'DESCRIPTION'
+           The tags associated with a profiling group.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::CodeGuruProfiler::ProfilingGroup"

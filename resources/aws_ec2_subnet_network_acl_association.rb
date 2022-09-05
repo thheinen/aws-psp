@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_ec2_subnet_network_acl_association
 provides :aws_ec2_subnet_network_acl_association, target_mode: true, platform: "aws"
 
@@ -17,14 +18,18 @@ property :network_acl_id, String,
          callbacks: {
            "network_acl_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The ID of the network ACL"
+         description: <<~'DESCRIPTION'
+           The ID of the network ACL
+         DESCRIPTION
 
 property :subnet_id, String,
          required: true,
          callbacks: {
            "subnet_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The ID of the subnet"
+         description: <<~'DESCRIPTION'
+           The ID of the subnet
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::EC2::SubnetNetworkAclAssociation"

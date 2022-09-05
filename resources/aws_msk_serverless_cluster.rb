@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_msk_serverless_cluster
 provides :aws_msk_serverless_cluster, target_mode: true, platform: "aws"
 
@@ -28,7 +29,9 @@ property :tags, Hash,
          callbacks: {
            "tags is not a Object" => lambda { |v| v.is_a? Object },
          },
-         description: "A key-value pair to associate with a resource."
+         description: <<~'DESCRIPTION'
+           A key-value pair to associate with a resource.
+         DESCRIPTION
 
 property :vpc_configs, Array,
          required: true,

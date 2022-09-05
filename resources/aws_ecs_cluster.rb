@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_ecs_cluster
 provides :aws_ecs_cluster, target_mode: true, platform: "aws"
 
@@ -22,7 +23,9 @@ property :cluster_name, String,
          callbacks: {
            "cluster_name is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "A user-generated string that you use to identify your cluster. If you don't specify a name, AWS CloudFormation generates a unique physical ID for the name."
+         description: <<~'DESCRIPTION'
+           A user-generated string that you use to identify your cluster. If you don't specify a name, AWS CloudFormation generates a unique physical ID for the name.
+         DESCRIPTION
 
 property :cluster_settings, Array,
          callbacks: {

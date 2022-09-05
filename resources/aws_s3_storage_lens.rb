@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_s3_storage_lens
 provides :aws_s3_storage_lens, target_mode: true, platform: "aws"
 
@@ -25,7 +26,9 @@ property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "A set of tags (key-value pairs) for this Amazon S3 Storage Lens configuration."
+         description: <<~'DESCRIPTION'
+           A set of tags (key-value pairs) for this Amazon S3 Storage Lens configuration.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::S3::StorageLens"

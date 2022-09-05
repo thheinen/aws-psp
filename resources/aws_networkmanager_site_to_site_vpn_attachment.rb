@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_networkmanager_site_to_site_vpn_attachment
 provides :aws_networkmanager_site_to_site_vpn_attachment, target_mode: true, platform: "aws"
 
@@ -16,19 +17,25 @@ property :core_network_id, String,
          callbacks: {
            "core_network_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The ID of a core network where you're creating a site-to-site VPN attachment."
+         description: <<~'DESCRIPTION'
+           The ID of a core network where you're creating a site-to-site VPN attachment.
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "Tags for the attachment."
+         description: <<~'DESCRIPTION'
+           Tags for the attachment.
+         DESCRIPTION
 
 property :vpn_connection_arn, String,
          callbacks: {
            "vpn_connection_arn is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The ARN of the site-to-site VPN attachment."
+         description: <<~'DESCRIPTION'
+           The ARN of the site-to-site VPN attachment.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::NetworkManager::SiteToSiteVpnAttachment"

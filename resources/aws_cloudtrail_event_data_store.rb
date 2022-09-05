@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_cloudtrail_event_data_store
 provides :aws_cloudtrail_event_data_store, target_mode: true, platform: "aws"
 
@@ -16,32 +17,42 @@ property :advanced_event_selectors, Array,
          callbacks: {
            "advanced_event_selectors is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "The advanced event selectors that were used to select events for the data store."
+         description: <<~'DESCRIPTION'
+           The advanced event selectors that were used to select events for the data store.
+         DESCRIPTION
 
 property :multi_region_enabled, [TrueClass, FalseClass],
          callbacks: {
            "multi_region_enabled is not a Boolean" => lambda { |v| v.is_a? Boolean },
          },
-         description: "Indicates whether the event data store includes events from all regions, or only from the region in which it was created."
+         description: <<~'DESCRIPTION'
+           Indicates whether the event data store includes events from all regions, or only from the region in which it was created.
+         DESCRIPTION
 
 property :name, String,
          name_property: true,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The name of the event data store."
+         description: <<~'DESCRIPTION'
+           The name of the event data store.
+         DESCRIPTION
 
 property :organization_enabled, [TrueClass, FalseClass],
          callbacks: {
            "organization_enabled is not a Boolean" => lambda { |v| v.is_a? Boolean },
          },
-         description: "Indicates that an event data store is collecting logged events for an organization."
+         description: <<~'DESCRIPTION'
+           Indicates that an event data store is collecting logged events for an organization.
+         DESCRIPTION
 
 property :retention_period, Integer,
          callbacks: {
            "retention_period is not a Integer" => lambda { |v| v.is_a? Integer },
          },
-         description: "The retention period, in days."
+         description: <<~'DESCRIPTION'
+           The retention period, in days.
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
@@ -53,7 +64,9 @@ property :termination_protection_enabled, [TrueClass, FalseClass],
          callbacks: {
            "termination_protection_enabled is not a Boolean" => lambda { |v| v.is_a? Boolean },
          },
-         description: "Indicates whether the event data store is protected from termination."
+         description: <<~'DESCRIPTION'
+           Indicates whether the event data store is protected from termination.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::CloudTrail::EventDataStore"

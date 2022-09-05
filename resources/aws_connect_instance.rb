@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_connect_instance
 provides :aws_connect_instance, target_mode: true, platform: "aws"
 

@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_lightsail_load_balancer_tls_certificate
 provides :aws_lightsail_load_balancer_tls_certificate, target_mode: true, platform: "aws"
 
@@ -16,33 +17,43 @@ property :certificate_alternative_names, Array,
          callbacks: {
            "certificate_alternative_names is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "An array of strings listing alternative domains and subdomains for your SSL/TLS certificate."
+         description: <<~'DESCRIPTION'
+           An array of strings listing alternative domains and subdomains for your SSL/TLS certificate.
+         DESCRIPTION
 
 property :certificate_domain_name, String,
          required: true,
          callbacks: {
            "certificate_domain_name is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The domain name (e.g., example.com ) for your SSL/TLS certificate."
+         description: <<~'DESCRIPTION'
+           The domain name (e.g., example.com ) for your SSL/TLS certificate.
+         DESCRIPTION
 
 property :certificate_name, String,
          required: true,
          callbacks: {
            "certificate_name is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The SSL/TLS certificate name."
+         description: <<~'DESCRIPTION'
+           The SSL/TLS certificate name.
+         DESCRIPTION
 
 property :https_redirection_enabled, [TrueClass, FalseClass],
          callbacks: {
            "https_redirection_enabled is not a Boolean" => lambda { |v| v.is_a? Boolean },
          },
-         description: "A Boolean value that indicates whether HTTPS redirection is enabled for the load balancer."
+         description: <<~'DESCRIPTION'
+           A Boolean value that indicates whether HTTPS redirection is enabled for the load balancer.
+         DESCRIPTION
 
 property :is_attached, [TrueClass, FalseClass],
          callbacks: {
            "is_attached is not a Boolean" => lambda { |v| v.is_a? Boolean },
          },
-         description: "When true, the SSL/TLS certificate is attached to the Lightsail load balancer."
+         description: <<~'DESCRIPTION'
+           When true, the SSL/TLS certificate is attached to the Lightsail load balancer.
+         DESCRIPTION
 
 property :load_balancer_name, String,
          required: true,
@@ -50,7 +61,9 @@ property :load_balancer_name, String,
            "load_balancer_name is not a String" => lambda { |v| v.is_a? String },
            "load_balancer_name must match pattern \w[\w\-]*\w" => lambda { |v| v =~ Regexp.new("/\w[\w\-]*\w/") },
          },
-         description: "The name of your load balancer."
+         description: <<~'DESCRIPTION'
+           The name of your load balancer.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::Lightsail::LoadBalancerTlsCertificate"

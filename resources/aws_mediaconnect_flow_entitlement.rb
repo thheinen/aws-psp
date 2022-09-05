@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_mediaconnect_flow_entitlement
 provides :aws_mediaconnect_flow_entitlement, target_mode: true, platform: "aws"
 
@@ -16,14 +17,18 @@ property :data_transfer_subscriber_fee_percent, Integer,
          callbacks: {
            "data_transfer_subscriber_fee_percent is not a Integer" => lambda { |v| v.is_a? Integer },
          },
-         description: "Percentage from 0-100 of the data transfer cost to be billed to the subscriber."
+         description: <<~'DESCRIPTION'
+           Percentage from 0-100 of the data transfer cost to be billed to the subscriber.
+         DESCRIPTION
 
 property :description, String,
          required: true,
          callbacks: {
            "description is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "A description of the entitlement."
+         description: <<~'DESCRIPTION'
+           A description of the entitlement.
+         DESCRIPTION
 
 property :encryption, Hash,
          callbacks: {
@@ -41,36 +46,45 @@ property :encryption, Hash,
            "Subproperty `SecretArn`is not a valid ARN" => lambda { |v| v[:SecretArn] =~ Regexp.new("^arn:aws(?:-cn|-us-gov)?:([^:]*:){3,}") },
            "Subproperty `Url` is not a String" => lambda { |v| v[:Url].is_a? String },
          },
-         description: "The type of encryption that will be used on the output that is associated with this entitlement."
+         description: <<~'DESCRIPTION'
+           The type of encryption that will be used on the output that is associated with this entitlement.
+         DESCRIPTION
 
 property :entitlement_status, String,
          callbacks: {
            "entitlement_status is not a String" => lambda { |v| v.is_a? String },
            "entitlement_statusis not one of `ENABLED`, `DISABLED`" => lambda { |v| %w{ENABLED DISABLED}.include? v },
          },
-         description: " An indication of whether the entitlement is enabled."
+         description: <<~'DESCRIPTION'
+           An indication of whether the entitlement is enabled.
+         DESCRIPTION
 
 property :flow_arn, String,
          required: true,
          callbacks: {
            "flow_arn is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The ARN of the flow."
+         description: <<~'DESCRIPTION'
+           The ARN of the flow.
+         DESCRIPTION
 
 property :name, String,
          name_property: true,
-         required: true,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The name of the entitlement."
+         description: <<~'DESCRIPTION'
+           The name of the entitlement.
+         DESCRIPTION
 
 property :subscribers, Array,
          required: true,
          callbacks: {
            "subscribers is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "The AWS account IDs that you want to share your content with. The receiving accounts (subscribers) will be allowed to create their own flow using your content as the source."
+         description: <<~'DESCRIPTION'
+           The AWS account IDs that you want to share your content with. The receiving accounts (subscribers) will be allowed to create their own flow using your content as the source.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::MediaConnect::FlowEntitlement"

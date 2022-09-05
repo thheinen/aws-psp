@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_iot_fleet_hub_application
 provides :aws_iot_fleet_hub_application, target_mode: true, platform: "aws"
 
@@ -18,7 +19,9 @@ property :application_description, String,
            "application_description needs to be 1..2048 characters" => lambda { |v| v.length >= 1 && v.length <= 2048 },
            "application_description must match pattern ^[ -~]*$" => lambda { |v| v =~ Regexp.new("/^[ -~]*$/") },
          },
-         description: "Application Description, should be between 1 and 2048 characters."
+         description: <<~'DESCRIPTION'
+           Application Description, should be between 1 and 2048 characters.
+         DESCRIPTION
 
 property :application_name, String,
          required: true,
@@ -27,7 +30,9 @@ property :application_name, String,
            "application_name needs to be 1..256 characters" => lambda { |v| v.length >= 1 && v.length <= 256 },
            "application_name must match pattern ^[ -~]*$" => lambda { |v| v =~ Regexp.new("/^[ -~]*$/") },
          },
-         description: "Application Name, should be between 1 and 256 characters."
+         description: <<~'DESCRIPTION'
+           Application Name, should be between 1 and 256 characters.
+         DESCRIPTION
 
 property :role_arn, String,
          required: true,
@@ -36,13 +41,17 @@ property :role_arn, String,
            "role_arn needs to be 1..1600 characters" => lambda { |v| v.length >= 1 && v.length <= 1600 },
            "role_arn must match pattern ^arn:[!-~]+$" => lambda { |v| v =~ Regexp.new("/^arn:[!-~]+$/") },
          },
-         description: "The ARN of the role that the web application assumes when it interacts with AWS IoT Core. For more info on configuring this attribute, see https://docs.aws.amazon.com/iot/latest/apireference/API_iotfleethub_CreateApplication.html#API_iotfleethub_CreateApplication_RequestSyntax"
+         description: <<~'DESCRIPTION'
+           The ARN of the role that the web application assumes when it interacts with AWS IoT Core. For more info on configuring this attribute, see https://docs.aws.amazon.com/iot/latest/apireference/API_iotfleethub_CreateApplication.html#API_iotfleethub_CreateApplication_RequestSyntax
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "A list of key-value pairs that contain metadata for the application."
+         description: <<~'DESCRIPTION'
+           A list of key-value pairs that contain metadata for the application.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::IoTFleetHub::Application"

@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_kinesis_stream
 provides :aws_kinesis_stream, target_mode: true, platform: "aws"
 
@@ -19,19 +20,25 @@ property :name, String,
            "name needs to be 1..128 characters" => lambda { |v| v.length >= 1 && v.length <= 128 },
            "name must match pattern ^[a-zA-Z0-9_.-]+$" => lambda { |v| v =~ Regexp.new("/^[a-zA-Z0-9_.-]+$/") },
          },
-         description: "The name of the Kinesis stream."
+         description: <<~'DESCRIPTION'
+           The name of the Kinesis stream.
+         DESCRIPTION
 
 property :retention_period_hours, Integer,
          callbacks: {
            "retention_period_hours is not a Integer" => lambda { |v| v.is_a? Integer },
          },
-         description: "The number of hours for the data records that are stored in shards to remain accessible."
+         description: <<~'DESCRIPTION'
+           The number of hours for the data records that are stored in shards to remain accessible.
+         DESCRIPTION
 
 property :shard_count, Integer,
          callbacks: {
            "shard_count is not a Integer" => lambda { |v| v.is_a? Integer },
          },
-         description: "The number of shards that the stream uses. Required when StreamMode = PROVISIONED is passed."
+         description: <<~'DESCRIPTION'
+           The number of shards that the stream uses. Required when StreamMode = PROVISIONED is passed.
+         DESCRIPTION
 
 property :stream_encryption, Hash,
          callbacks: {
@@ -40,20 +47,26 @@ property :stream_encryption, Hash,
            "Subproperty `KeyId` is not a String" => lambda { |v| v[:KeyId].is_a? String },
            "Subproperty `KeyId` needs to be 1..2048 characters" => lambda { |v| v[:KeyId].length >= 1 && v[:KeyId].length <= 2048 },
          },
-         description: "When specified, enables or updates server-side encryption using an AWS KMS key for a specified stream."
+         description: <<~'DESCRIPTION'
+           When specified, enables or updates server-side encryption using an AWS KMS key for a specified stream.
+         DESCRIPTION
 
 property :stream_mode_details, Hash,
          callbacks: {
            "Subproperty `StreamMode` is not a String" => lambda { |v| v[:StreamMode].is_a? String },
            "Subproperty `StreamMode`is not one of `ON_DEMAND`, `PROVISIONED`" => lambda { |v| %w{ON_DEMAND PROVISIONED}.include? v[:StreamMode] },
          },
-         description: "The mode in which the stream is running."
+         description: <<~'DESCRIPTION'
+           The mode in which the stream is running.
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "An arbitrary set of tags (key–value pairs) to associate with the Kinesis stream."
+         description: <<~'DESCRIPTION'
+           An arbitrary set of tags (key–value pairs) to associate with the Kinesis stream.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::Kinesis::Stream"

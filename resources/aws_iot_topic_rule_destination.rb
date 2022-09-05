@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_iot_topic_rule_destination
 provides :aws_iot_topic_rule_destination, target_mode: true, platform: "aws"
 

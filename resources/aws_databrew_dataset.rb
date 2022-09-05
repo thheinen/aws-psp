@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_databrew_dataset
 provides :aws_databrew_dataset, target_mode: true, platform: "aws"
 
@@ -17,29 +18,38 @@ property :format, String,
            "format is not a String" => lambda { |v| v.is_a? String },
            "formatis not one of `CSV`, `JSON`, `PARQUET`, `EXCEL`, `ORC`" => lambda { |v| %w{CSV JSON PARQUET EXCEL ORC}.include? v },
          },
-         description: "Dataset format"
+         description: <<~'DESCRIPTION'
+           Dataset format
+         DESCRIPTION
 
 property :format_options, Hash,
-         description: "Format options for dataset"
+         description: <<~'DESCRIPTION'
+           Format options for dataset
+         DESCRIPTION
 
 property :input, Hash,
          required: true,
-         description: "Input"
+         description: <<~'DESCRIPTION'
+           Input
+         DESCRIPTION
 
 property :name, String,
          name_property: true,
-         required: true,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
            "name needs to be 1..255 characters" => lambda { |v| v.length >= 1 && v.length <= 255 },
          },
-         description: "Dataset name"
+         description: <<~'DESCRIPTION'
+           Dataset name
+         DESCRIPTION
 
 property :path_options, Hash,
          callbacks: {
            "Subproperty `Parameters` is not a Array" => lambda { |v| v[:Parameters].is_a? Array },
          },
-         description: "PathOptions"
+         description: <<~'DESCRIPTION'
+           PathOptions
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
