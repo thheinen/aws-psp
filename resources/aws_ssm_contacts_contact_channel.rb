@@ -22,7 +22,7 @@ property :channel_name, String,
          callbacks: {
            "channel_name is not a String" => lambda { |v| v.is_a? String },
            "channel_name needs to be 1..255 characters" => lambda { |v| v.length >= 1 && v.length <= 255 },
-           "channel_name must match pattern [a-zA-Z 0-9_\-+'&amp;\uD83C-\uDBFF\uDC00-\uDFFF\u2000-\u3300]+" => lambda { |v| v =~ Regexp.new("/[a-zA-Z 0-9_\-+'&amp;\uD83C-\uDBFF\uDC00-\uDFFF\u2000-\u3300]+/") },
+           "channel_name must match pattern [a-zA-Z 0-9_\-+'&amp;\u2000-\u3300]+" => lambda { |v| v =~ Regexp.new("/[a-zA-Z 0-9_\-+'&amp;\u2000-\u3300]+/") },
          },
          description: "The device name. String of 6 to 50 alphabetical, numeric, dash, and underscore characters."
 

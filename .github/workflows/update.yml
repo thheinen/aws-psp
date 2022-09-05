@@ -1,3 +1,4 @@
+---
 name: Update Resources
 
 on:
@@ -8,13 +9,13 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Set up Ruby 3.0
-        uses: actions/setup-ruby@v1
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.0.x
+          ruby-version: '3.0'
 
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           submodules: false
           fetch-depth: 0
@@ -28,39 +29,53 @@ jobs:
           bundle config set https://rubygems.pkg.github.com/tecracer-theinen "${GENERATOR_USER}:${GENERATOR_PAT}"
           bundle install
 
-      - name: Run PSP generator and bump version, if needed
+      - name: Determine version and updates
+        id: info
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: ${{ secrets.AWS_REGION }}
         run: |
+          echo "::set-output name=new-version::$(bump show-next patch)"
           aws-psp-generator changelog --newer-than $(date --date="00:00" --iso-8601=seconds) > updates.tmp
-          if [ -s updates.tmp ]; then
-            (
-              NEW=$(bump patch --no-commit)
-              DATE=$(date +%Y-%m-%d)
-              echo -e "# CHANGELOG\n"
-              echo -e "## v$NEW ($DATE)\n\n"
-              cat updates.tmp
-              cat CHANGELOG.md | tail -n +2
-            ) > CHANGELOG.new
-            mv CHANGELOG.new CHANGELOG.md
-            aws-psp-generator generate-all --newer-than $(date --date="00:00" --iso-8601=seconds)
-          fi
+          echo "::set-output name=num-changes::$(wc -l updates.tmp | cut -d\  -f1)"
 
+      - name: Run PSP generator and bump version, if needed
+        if: ${{ steps.info.outputs.num-changes > 0 }}
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+        run: |
+          (
+            NEW=$(bump patch --no-commit)
+            DATE=$(date +%Y-%m-%d)
+            echo -e "# CHANGELOG\n"
+            echo -e "## v$NEW ($DATE)\n\n"
+            cat updates.tmp
+            cat CHANGELOG.md | tail -n +2
+          ) > CHANGELOG.new
+          mv CHANGELOG.new CHANGELOG.md
+          aws-psp-generator generate-all --newer-than $(date --date="00:00" --iso-8601=seconds)
+
+      - name: Update statistics
+        if: ${{ steps.info.outputs.num-changes > 0 }}
+        run: |
           export NUM_RESOURCES=$(ls resources/aws_*.rb | wc -l)
           export LAST_BUILD=$(date +%Y%m%d)
           sed --in-place README.md --file - <<SED
-          s/AWS%20Resources-.*$/AWS%20Resources-${NUM_RESOURCES}-orange)/;
-          s/Last%20build-.*$/Last%20build-${LAST_BUILD}-grey)/;
+            s/AWS%20Resources-.*$/AWS%20Resources-${NUM_RESOURCES}-orange)/;
+            s/Last%20build-.*$/Last%20build-${LAST_BUILD}-grey)/;
           SED
 
       - name: Commit changes
+        if: ${{ steps.info.outputs.num-changes > 0 }}
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Automated Change
           file_pattern: resources/*.rb CHANGELOG.md README.md metadata.rb
           repository: .
+          tagging_message: v${{ steps.info.outputs.new-version }}
           commit_user_name: AWSome Bot
           commit_user_email: opensource@tecracer.de
           commit_author: AWSome Bot <opensource@tecracer.de>

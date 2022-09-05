@@ -1,0 +1,15 @@
+---
+name: Release PSP
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  chef-cookbook-supermarket-upload:
+    uses: tecracer-chef/.github/.github/workflows/chef-cookbook-supermarket-upload.yml@master
+    secrets:
+      PUBLIC_CHEF_SUPERMARKET_URL: ${{ secrets.PUBLIC_CHEF_SUPERMARKET_URL }}
+      PUBLIC_CHEF_SUPERMARKET_USER: ${{ secrets.PUBLIC_CHEF_SUPERMARKET_USER }}
+      PUBLIC_CHEF_SUPERMARKET_USER_SSHKEY: ${{ secrets.PUBLIC_CHEF_SUPERMARKET_USER_SSHKEY }}

@@ -19,14 +19,18 @@ property :object_lambda_access_point, String,
            "object_lambda_access_point needs to be 3..45 characters" => lambda { |v| v.length >= 3 && v.length <= 45 },
            "object_lambda_access_point must match pattern ^[a-z0-9]([a-z0-9\-]*[a-z0-9])?$" => lambda { |v| v =~ Regexp.new("/^[a-z0-9]([a-z0-9\-]*[a-z0-9])?$/") },
          },
-         description: "The name of the Amazon S3 ObjectLambdaAccessPoint to which the policy applies."
+         description: <<~'DESCRIPTION'
+           The name of the Amazon S3 ObjectLambdaAccessPoint to which the policy applies.
+         DESCRIPTION
 
 property :policy_document, Hash,
          required: true,
          callbacks: {
            "policy_document is not a Object" => lambda { |v| v.is_a? Object },
          },
-         description: "A policy document containing permissions to add to the specified ObjectLambdaAccessPoint. For more information, see Access Policy Language Overview (https://docs.aws.amazon.com/AmazonS3/latest/dev/access-policy-language-overview.html) in the Amazon Simple Storage Service Developer Guide. "
+         description: <<~'DESCRIPTION'
+           A policy document containing permissions to add to the specified ObjectLambdaAccessPoint. For more information, see Access Policy Language Overview (https://docs.aws.amazon.com/AmazonS3/latest/dev/access-policy-language-overview.html) in the Amazon Simple Storage Service Developer Guide.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::S3ObjectLambda::AccessPointPolicy"
