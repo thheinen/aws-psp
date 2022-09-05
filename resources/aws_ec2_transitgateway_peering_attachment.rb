@@ -17,34 +17,44 @@ property :peer_account_id, String,
          callbacks: {
            "peer_account_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The ID of the peer account"
+         description: <<~'DESCRIPTION'
+           The ID of the peer account
+         DESCRIPTION
 
 property :peer_region, String,
          required: true,
          callbacks: {
            "peer_region is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "Peer Region"
+         description: <<~'DESCRIPTION'
+           Peer Region
+         DESCRIPTION
 
 property :peer_transitgateway_id, String,
          required: true,
          callbacks: {
            "peer_transitgateway_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The ID of the peer transit gateway."
+         description: <<~'DESCRIPTION'
+           The ID of the peer transit gateway.
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "The tags for the transit gateway peering attachment."
+         description: <<~'DESCRIPTION'
+           The tags for the transit gateway peering attachment.
+         DESCRIPTION
 
 property :transitgateway_id, String,
          required: true,
          callbacks: {
            "transitgateway_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The ID of the transit gateway."
+         description: <<~'DESCRIPTION'
+           The ID of the transit gateway.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::EC2::TransitGatewayPeeringAttachment"

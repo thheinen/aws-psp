@@ -16,25 +16,33 @@ property :description, String,
          callbacks: {
            "description is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "Description of custom data identifier."
+         description: <<~'DESCRIPTION'
+           Description of custom data identifier.
+         DESCRIPTION
 
 property :ignore_words, Array,
          callbacks: {
            "ignore_words is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "Words to be ignored."
+         description: <<~'DESCRIPTION'
+           Words to be ignored.
+         DESCRIPTION
 
 property :keywords, Array,
          callbacks: {
            "keywords is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "Keywords to be matched against."
+         description: <<~'DESCRIPTION'
+           Keywords to be matched against.
+         DESCRIPTION
 
 property :maximum_match_distance, Integer,
          callbacks: {
            "maximum_match_distance is not a Integer" => lambda { |v| v.is_a? Integer },
          },
-         description: "Maximum match distance."
+         description: <<~'DESCRIPTION'
+           Maximum match distance.
+         DESCRIPTION
 
 property :name, String,
          name_property: true,
@@ -42,14 +50,18 @@ property :name, String,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "Name of custom data identifier."
+         description: <<~'DESCRIPTION'
+           Name of custom data identifier.
+         DESCRIPTION
 
 property :regex, String,
          required: true,
          callbacks: {
            "regex is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "Regular expression for custom data identifier."
+         description: <<~'DESCRIPTION'
+           Regular expression for custom data identifier.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::Macie::CustomDataIdentifier"

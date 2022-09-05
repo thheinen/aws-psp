@@ -18,7 +18,9 @@ property :hosted_zone_id, String,
            "hosted_zone_id is not a String" => lambda { |v| v.is_a? String },
            "hosted_zone_id must match pattern ^[A-Z0-9]{1,32}$" => lambda { |v| v =~ Regexp.new("/^[A-Z0-9]{1,32}$/") },
          },
-         description: "The unique string (ID) used to identify a hosted zone."
+         description: <<~'DESCRIPTION'
+           The unique string (ID) used to identify a hosted zone.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::Route53::DNSSEC"

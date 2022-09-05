@@ -18,20 +18,26 @@ property :options, Hash,
            "Subproperty `Igmpv2Support` is not a String" => lambda { |v| v[:Igmpv2Support].is_a? String },
            "Subproperty `StaticSourcesSupport` is not a String" => lambda { |v| v[:StaticSourcesSupport].is_a? String },
          },
-         description: "The options for the transit gateway multicast domain."
+         description: <<~'DESCRIPTION'
+           The options for the transit gateway multicast domain.
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "The tags for the transit gateway multicast domain."
+         description: <<~'DESCRIPTION'
+           The tags for the transit gateway multicast domain.
+         DESCRIPTION
 
 property :transitgateway_id, String,
          required: true,
          callbacks: {
            "transitgateway_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The ID of the transit gateway."
+         description: <<~'DESCRIPTION'
+           The ID of the transit gateway.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::EC2::TransitGatewayMulticastDomain"

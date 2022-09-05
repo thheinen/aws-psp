@@ -14,14 +14,18 @@ property :name, String,
 
 property :anomaly_detector_config, Hash,
          required: true,
-         description: "Configuration options for the AnomalyDetector"
+         description: <<~'DESCRIPTION'
+           Configuration options for the AnomalyDetector
+         DESCRIPTION
 
 property :anomaly_detector_description, String,
          callbacks: {
            "anomaly_detector_description is not a String" => lambda { |v| v.is_a? String },
            "anomaly_detector_description must match pattern .*\S.*" => lambda { |v| v =~ Regexp.new("/.*\S.*/") },
          },
-         description: "A description for the AnomalyDetector."
+         description: <<~'DESCRIPTION'
+           A description for the AnomalyDetector.
+         DESCRIPTION
 
 property :anomaly_detector_name, String,
          callbacks: {
@@ -29,7 +33,9 @@ property :anomaly_detector_name, String,
            "anomaly_detector_name needs to be 1..63 characters" => lambda { |v| v.length >= 1 && v.length <= 63 },
            "anomaly_detector_name must match pattern ^[a-zA-Z0-9][a-zA-Z0-9\-_]*" => lambda { |v| v =~ Regexp.new("/^[a-zA-Z0-9][a-zA-Z0-9\-_]*/") },
          },
-         description: "Name for the Amazon Lookout for Metrics Anomaly Detector"
+         description: <<~'DESCRIPTION'
+           Name for the Amazon Lookout for Metrics Anomaly Detector
+         DESCRIPTION
 
 property :kms_key_arn, String,
          callbacks: {
@@ -37,14 +43,18 @@ property :kms_key_arn, String,
            "kms_key_arn needs to be 20..2048 characters" => lambda { |v| v.length >= 20 && v.length <= 2048 },
            "kms_key_arn must match pattern arn:aws.*:kms:.*:[0-9]{12}:key/.*" => lambda { |v| v =~ Regexp.new("/arn:aws.*:kms:.*:[0-9]{12}:key/.*/") },
          },
-         description: "KMS key used to encrypt the AnomalyDetector data"
+         description: <<~'DESCRIPTION'
+           KMS key used to encrypt the AnomalyDetector data
+         DESCRIPTION
 
 property :metric_set_list, Array,
          required: true,
          callbacks: {
            "metric_set_list is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "List of metric sets for anomaly detection"
+         description: <<~'DESCRIPTION'
+           List of metric sets for anomaly detection
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::LookoutMetrics::AnomalyDetector"

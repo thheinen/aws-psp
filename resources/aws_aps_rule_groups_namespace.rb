@@ -17,7 +17,9 @@ property :data, String,
          callbacks: {
            "data is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The RuleGroupsNamespace data."
+         description: <<~'DESCRIPTION'
+           The RuleGroupsNamespace data.
+         DESCRIPTION
 
 property :name, String,
          name_property: true,
@@ -26,13 +28,17 @@ property :name, String,
            "name is not a String" => lambda { |v| v.is_a? String },
            "name needs to be 1..64 characters" => lambda { |v| v.length >= 1 && v.length <= 64 },
          },
-         description: "The RuleGroupsNamespace name."
+         description: <<~'DESCRIPTION'
+           The RuleGroupsNamespace name.
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "An array of key-value pairs to apply to this resource."
+         description: <<~'DESCRIPTION'
+           An array of key-value pairs to apply to this resource.
+         DESCRIPTION
 
 property :workspace, String,
          required: true,
@@ -40,7 +46,9 @@ property :workspace, String,
            "workspace is not a String" => lambda { |v| v.is_a? String },
            "workspace must match pattern ^arn:(aws|aws-us-gov|aws-cn):aps:[a-z0-9-]+:[0-9]+:workspace/[a-zA-Z0-9-]+$" => lambda { |v| v =~ Regexp.new("/^arn:(aws|aws-us-gov|aws-cn):aps:[a-z0-9-]+:[0-9]+:workspace/[a-zA-Z0-9-]+$/") },
          },
-         description: "Required to identify a specific APS Workspace associated with this RuleGroupsNamespace."
+         description: <<~'DESCRIPTION'
+           Required to identify a specific APS Workspace associated with this RuleGroupsNamespace.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::APS::RuleGroupsNamespace"

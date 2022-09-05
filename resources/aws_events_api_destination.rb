@@ -17,7 +17,9 @@ property :connection_arn, String,
          callbacks: {
            "connection_arn is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The arn of the connection."
+         description: <<~'DESCRIPTION'
+           The arn of the connection.
+         DESCRIPTION
 
 property :description, String,
          callbacks: {
@@ -38,7 +40,9 @@ property :invocation_endpoint, String,
          callbacks: {
            "invocation_endpoint is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "Url endpoint to invoke."
+         description: <<~'DESCRIPTION'
+           Url endpoint to invoke.
+         DESCRIPTION
 
 property :invocation_rate_limit_per_second, Integer,
          callbacks: {
@@ -52,7 +56,9 @@ property :name, String,
            "name is not a String" => lambda { |v| v.is_a? String },
            "name needs to be 1..64 characters" => lambda { |v| v.length >= 1 && v.length <= 64 },
          },
-         description: "Name of the apiDestination."
+         description: <<~'DESCRIPTION'
+           Name of the apiDestination.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::Events::ApiDestination"

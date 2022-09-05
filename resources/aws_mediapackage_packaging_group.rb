@@ -18,7 +18,9 @@ property :authorization, Hash,
            "Subproperty `SecretsRoleArn` is not a String" => lambda { |v| v[:SecretsRoleArn].is_a? String },
            "Subproperty `SecretsRoleArn`is not a valid ARN" => lambda { |v| v[:SecretsRoleArn] =~ Regexp.new("^arn:aws(?:-cn|-us-gov)?:([^:]*:){3,}") },
          },
-         description: "CDN Authorization"
+         description: <<~'DESCRIPTION'
+           CDN Authorization
+         DESCRIPTION
 
 property :egress_access_logs, Hash,
          callbacks: {
@@ -26,7 +28,9 @@ property :egress_access_logs, Hash,
            "Subproperty `LogGroupName` needs to be 1..512 characters" => lambda { |v| v[:LogGroupName].length >= 1 && v[:LogGroupName].length <= 512 },
            "Subproperty `LogGroupName` must match pattern \A\/aws\/MediaPackage\/[0-9a-zA-Z-_\/\.#]+\Z" => lambda { |v| v[:LogGroupName] =~ Regexp.new("/\A\/aws\/MediaPackage\/[0-9a-zA-Z-_\/\.#]+\Z/") },
          },
-         description: "The configuration parameters for egress access logging."
+         description: <<~'DESCRIPTION'
+           The configuration parameters for egress access logging.
+         DESCRIPTION
 
 property :id, String,
          required: true,
@@ -35,13 +39,17 @@ property :id, String,
            "id needs to be 1..256 characters" => lambda { |v| v.length >= 1 && v.length <= 256 },
            "id must match pattern \A[0-9a-zA-Z-_]+\Z" => lambda { |v| v =~ Regexp.new("/\A[0-9a-zA-Z-_]+\Z/") },
          },
-         description: "The ID of the PackagingGroup."
+         description: <<~'DESCRIPTION'
+           The ID of the PackagingGroup.
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "A collection of tags associated with a resource"
+         description: <<~'DESCRIPTION'
+           A collection of tags associated with a resource
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::MediaPackage::PackagingGroup"

@@ -16,7 +16,9 @@ property :allow_version_upgrade, [TrueClass, FalseClass],
          callbacks: {
            "allow_version_upgrade is not a Boolean" => lambda { |v| v.is_a? Boolean },
          },
-         description: "Major version upgrades can be applied during the maintenance window to the Amazon Redshift engine that is running on the cluster. Default value is True"
+         description: <<~'DESCRIPTION'
+           Major version upgrades can be applied during the maintenance window to the Amazon Redshift engine that is running on the cluster. Default value is True
+         DESCRIPTION
 
 property :aqua_configuration_status, String,
          callbacks: {
@@ -34,117 +36,155 @@ property :automated_snapshot_retention_period, Integer,
          callbacks: {
            "automated_snapshot_retention_period is not a Integer" => lambda { |v| v.is_a? Integer },
          },
-         description: "The number of days that automated snapshots are retained. If the value is 0, automated snapshots are disabled. Default value is 1"
+         description: <<~'DESCRIPTION'
+           The number of days that automated snapshots are retained. If the value is 0, automated snapshots are disabled. Default value is 1
+         DESCRIPTION
 
 property :availability_zone, String,
          callbacks: {
            "availability_zone is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The EC2 Availability Zone (AZ) in which you want Amazon Redshift to provision the cluster. Default: A random, system-chosen Availability Zone in the region that is specified by the endpoint"
+         description: <<~'DESCRIPTION'
+           The EC2 Availability Zone (AZ) in which you want Amazon Redshift to provision the cluster. Default: A random, system-chosen Availability Zone in the region that is specified by the endpoint
+         DESCRIPTION
 
 property :availability_zone_relocation, [TrueClass, FalseClass],
          callbacks: {
            "availability_zone_relocation is not a Boolean" => lambda { |v| v.is_a? Boolean },
          },
-         description: "The option to enable relocation for an Amazon Redshift cluster between Availability Zones after the cluster modification is complete."
+         description: <<~'DESCRIPTION'
+           The option to enable relocation for an Amazon Redshift cluster between Availability Zones after the cluster modification is complete.
+         DESCRIPTION
 
 property :availability_zone_relocation_status, String,
          callbacks: {
            "availability_zone_relocation_status is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The availability zone relocation status of the cluster"
+         description: <<~'DESCRIPTION'
+           The availability zone relocation status of the cluster
+         DESCRIPTION
 
 property :classic, [TrueClass, FalseClass],
          callbacks: {
            "classic is not a Boolean" => lambda { |v| v.is_a? Boolean },
          },
-         description: "A boolean value indicating whether the resize operation is using the classic resize process. If you don't provide this parameter or set the value to false , the resize type is elastic."
+         description: <<~'DESCRIPTION'
+           A boolean value indicating whether the resize operation is using the classic resize process. If you don't provide this parameter or set the value to false , the resize type is elastic.
+         DESCRIPTION
 
 property :cluster_identifier, String,
          callbacks: {
            "cluster_identifier is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "A unique identifier for the cluster. You use this identifier to refer to the cluster for any subsequent cluster operations such as deleting or modifying. All alphabetical characters must be lower case, no hypens at the end, no two consecutive hyphens. Cluster name should be unique for all clusters within an AWS account"
+         description: <<~'DESCRIPTION'
+           A unique identifier for the cluster. You use this identifier to refer to the cluster for any subsequent cluster operations such as deleting or modifying. All alphabetical characters must be lower case, no hypens at the end, no two consecutive hyphens. Cluster name should be unique for all clusters within an AWS account
+         DESCRIPTION
 
 property :cluster_parameter_group_name, String,
          callbacks: {
            "cluster_parameter_group_name is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The name of the parameter group to be associated with this cluster."
+         description: <<~'DESCRIPTION'
+           The name of the parameter group to be associated with this cluster.
+         DESCRIPTION
 
 property :cluster_security_groups, Array,
          callbacks: {
            "cluster_security_groups is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "A list of security groups to be associated with this cluster."
+         description: <<~'DESCRIPTION'
+           A list of security groups to be associated with this cluster.
+         DESCRIPTION
 
 property :cluster_subnet_group_name, String,
          callbacks: {
            "cluster_subnet_group_name is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The name of a cluster subnet group to be associated with this cluster."
+         description: <<~'DESCRIPTION'
+           The name of a cluster subnet group to be associated with this cluster.
+         DESCRIPTION
 
 property :cluster_type, String,
          required: true,
          callbacks: {
            "cluster_type is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The type of the cluster. When cluster type is specified as single-node, the NumberOfNodes parameter is not required and if multi-node, the NumberOfNodes parameter is required"
+         description: <<~'DESCRIPTION'
+           The type of the cluster. When cluster type is specified as single-node, the NumberOfNodes parameter is not required and if multi-node, the NumberOfNodes parameter is required
+         DESCRIPTION
 
 property :cluster_version, String,
          callbacks: {
            "cluster_version is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The version of the Amazon Redshift engine software that you want to deploy on the cluster.The version selected runs on all the nodes in the cluster."
+         description: <<~'DESCRIPTION'
+           The version of the Amazon Redshift engine software that you want to deploy on the cluster.The version selected runs on all the nodes in the cluster.
+         DESCRIPTION
 
 property :db_name, String,
          required: true,
          callbacks: {
            "db_name is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The name of the first database to be created when the cluster is created. To create additional databases after the cluster is created, connect to the cluster with a SQL client and use SQL commands to create a database."
+         description: <<~'DESCRIPTION'
+           The name of the first database to be created when the cluster is created. To create additional databases after the cluster is created, connect to the cluster with a SQL client and use SQL commands to create a database.
+         DESCRIPTION
 
 property :defer_maintenance, [TrueClass, FalseClass],
          callbacks: {
            "defer_maintenance is not a Boolean" => lambda { |v| v.is_a? Boolean },
          },
-         description: "A boolean indicating whether to enable the deferred maintenance window."
+         description: <<~'DESCRIPTION'
+           A boolean indicating whether to enable the deferred maintenance window.
+         DESCRIPTION
 
 property :defer_maintenance_duration, Integer,
          callbacks: {
            "defer_maintenance_duration is not a Integer" => lambda { |v| v.is_a? Integer },
          },
-         description: "An integer indicating the duration of the maintenance window in days. If you specify a duration, you can't specify an end time. The duration must be 45 days or less."
+         description: <<~'DESCRIPTION'
+           An integer indicating the duration of the maintenance window in days. If you specify a duration, you can't specify an end time. The duration must be 45 days or less.
+         DESCRIPTION
 
 property :defer_maintenance_end_time, String,
          callbacks: {
            "defer_maintenance_end_time is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "A timestamp indicating end time for the deferred maintenance window. If you specify an end time, you can't specify a duration."
+         description: <<~'DESCRIPTION'
+           A timestamp indicating end time for the deferred maintenance window. If you specify an end time, you can't specify a duration.
+         DESCRIPTION
 
 property :defer_maintenance_start_time, String,
          callbacks: {
            "defer_maintenance_start_time is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "A timestamp indicating the start time for the deferred maintenance window."
+         description: <<~'DESCRIPTION'
+           A timestamp indicating the start time for the deferred maintenance window.
+         DESCRIPTION
 
 property :destination_region, String,
          callbacks: {
            "destination_region is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The destination AWS Region that you want to copy snapshots to. Constraints: Must be the name of a valid AWS Region. For more information, see Regions and Endpoints in the Amazon Web Services [https://docs.aws.amazon.com/general/latest/gr/rande.html#redshift_region] General Reference"
+         description: <<~'DESCRIPTION'
+           The destination AWS Region that you want to copy snapshots to. Constraints: Must be the name of a valid AWS Region. For more information, see Regions and Endpoints in the Amazon Web Services [https://docs.aws.amazon.com/general/latest/gr/rande.html#redshift_region] General Reference
+         DESCRIPTION
 
 property :elastic_ip, String,
          callbacks: {
            "elastic_ip is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The Elastic IP (EIP) address for the cluster."
+         description: <<~'DESCRIPTION'
+           The Elastic IP (EIP) address for the cluster.
+         DESCRIPTION
 
 property :encrypted, [TrueClass, FalseClass],
          callbacks: {
            "encrypted is not a Boolean" => lambda { |v| v.is_a? Boolean },
          },
-         description: "If true, the data in the cluster is encrypted at rest."
+         description: <<~'DESCRIPTION'
+           If true, the data in the cluster is encrypted at rest.
+         DESCRIPTION
 
 property :endpoint, Hash,
          callbacks: {
@@ -167,25 +207,33 @@ property :hsm_client_certificate_identifier, String,
          callbacks: {
            "hsm_client_certificate_identifier is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "Specifies the name of the HSM client certificate the Amazon Redshift cluster uses to retrieve the data encryption keys stored in an HSM"
+         description: <<~'DESCRIPTION'
+           Specifies the name of the HSM client certificate the Amazon Redshift cluster uses to retrieve the data encryption keys stored in an HSM
+         DESCRIPTION
 
 property :hsm_configuration_identifier, String,
          callbacks: {
            "hsm_configuration_identifier is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "Specifies the name of the HSM configuration that contains the information the Amazon Redshift cluster can use to retrieve and store keys in an HSM."
+         description: <<~'DESCRIPTION'
+           Specifies the name of the HSM configuration that contains the information the Amazon Redshift cluster can use to retrieve and store keys in an HSM.
+         DESCRIPTION
 
 property :iam_roles, Array,
          callbacks: {
            "iam_roles is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "A list of AWS Identity and Access Management (IAM) roles that can be used by the cluster to access other AWS services. You must supply the IAM roles in their Amazon Resource Name (ARN) format. You can supply up to 10 IAM roles in a single request"
+         description: <<~'DESCRIPTION'
+           A list of AWS Identity and Access Management (IAM) roles that can be used by the cluster to access other AWS services. You must supply the IAM roles in their Amazon Resource Name (ARN) format. You can supply up to 10 IAM roles in a single request
+         DESCRIPTION
 
 property :kms_key_id, String,
          callbacks: {
            "kms_key_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The AWS Key Management Service (KMS) key ID of the encryption key that you want to use to encrypt data in the cluster."
+         description: <<~'DESCRIPTION'
+           The AWS Key Management Service (KMS) key ID of the encryption key that you want to use to encrypt data in the cluster.
+         DESCRIPTION
 
 property :logging_properties, Hash,
          callbacks: {
@@ -198,7 +246,9 @@ property :maintenance_track_name, String,
          callbacks: {
            "maintenance_track_name is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The name for the maintenance track that you want to assign for the cluster. This name change is asynchronous. The new track name stays in the PendingModifiedValues for the cluster until the next maintenance window. When the maintenance track changes, the cluster is switched to the latest cluster release available for the maintenance track. At this point, the maintenance track name is applied."
+         description: <<~'DESCRIPTION'
+           The name for the maintenance track that you want to assign for the cluster. This name change is asynchronous. The new track name stays in the PendingModifiedValues for the cluster until the next maintenance window. When the maintenance track changes, the cluster is switched to the latest cluster release available for the maintenance track. At this point, the maintenance track name is applied.
+         DESCRIPTION
 
 property :manual_snapshot_retention_period, Integer,
          callbacks: {
@@ -214,27 +264,35 @@ property :master_user_password, String,
          callbacks: {
            "master_user_password is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The password associated with the master user account for the cluster that is being created. Password must be between 8 and 64 characters in length, should have at least one uppercase letter.Must contain at least one lowercase letter.Must contain one number.Can be any printable ASCII character."
+         description: <<~'DESCRIPTION'
+           The password associated with the master user account for the cluster that is being created. Password must be between 8 and 64 characters in length, should have at least one uppercase letter.Must contain at least one lowercase letter.Must contain one number.Can be any printable ASCII character.
+         DESCRIPTION
 
 property :master_username, String,
          required: true,
          callbacks: {
            "master_username is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The user name associated with the master user account for the cluster that is being created. The user name can't be PUBLIC and first character must be a letter."
+         description: <<~'DESCRIPTION'
+           The user name associated with the master user account for the cluster that is being created. The user name can't be PUBLIC and first character must be a letter.
+         DESCRIPTION
 
 property :node_type, String,
          required: true,
          callbacks: {
            "node_type is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The node type to be provisioned for the cluster.Valid Values: ds2.xlarge | ds2.8xlarge | dc1.large | dc1.8xlarge | dc2.large | dc2.8xlarge | ra3.4xlarge | ra3.16xlarge"
+         description: <<~'DESCRIPTION'
+           The node type to be provisioned for the cluster.Valid Values: ds2.xlarge | ds2.8xlarge | dc1.large | dc1.8xlarge | dc2.large | dc2.8xlarge | ra3.4xlarge | ra3.16xlarge
+         DESCRIPTION
 
 property :number_of_nodes, Integer,
          callbacks: {
            "number_of_nodes is not a Integer" => lambda { |v| v.is_a? Integer },
          },
-         description: "The number of compute nodes in the cluster. This parameter is required when the ClusterType parameter is specified as multi-node."
+         description: <<~'DESCRIPTION'
+           The number of compute nodes in the cluster. This parameter is required when the ClusterType parameter is specified as multi-node.
+         DESCRIPTION
 
 property :owner_account, String,
          callbacks: {
@@ -246,55 +304,73 @@ property :port, Integer,
          callbacks: {
            "port is not a Integer" => lambda { |v| v.is_a? Integer },
          },
-         description: "The port number on which the cluster accepts incoming connections. The cluster is accessible only via the JDBC and ODBC connection strings"
+         description: <<~'DESCRIPTION'
+           The port number on which the cluster accepts incoming connections. The cluster is accessible only via the JDBC and ODBC connection strings
+         DESCRIPTION
 
 property :preferred_maintenance_window, String,
          callbacks: {
            "preferred_maintenance_window is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The weekly time range (in UTC) during which automated cluster maintenance can occur."
+         description: <<~'DESCRIPTION'
+           The weekly time range (in UTC) during which automated cluster maintenance can occur.
+         DESCRIPTION
 
 property :publicly_accessible, [TrueClass, FalseClass],
          callbacks: {
            "publicly_accessible is not a Boolean" => lambda { |v| v.is_a? Boolean },
          },
-         description: "If true, the cluster can be accessed from a public network."
+         description: <<~'DESCRIPTION'
+           If true, the cluster can be accessed from a public network.
+         DESCRIPTION
 
 property :resource_action, String,
          callbacks: {
            "resource_action is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The Redshift operation to be performed. Resource Action supports pause-cluster, resume-cluster APIs"
+         description: <<~'DESCRIPTION'
+           The Redshift operation to be performed. Resource Action supports pause-cluster, resume-cluster APIs
+         DESCRIPTION
 
 property :revision_target, String,
          callbacks: {
            "revision_target is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The identifier of the database revision. You can retrieve this value from the response to the DescribeClusterDbRevisions request."
+         description: <<~'DESCRIPTION'
+           The identifier of the database revision. You can retrieve this value from the response to the DescribeClusterDbRevisions request.
+         DESCRIPTION
 
 property :rotate_encryption_key, [TrueClass, FalseClass],
          callbacks: {
            "rotate_encryption_key is not a Boolean" => lambda { |v| v.is_a? Boolean },
          },
-         description: "A boolean indicating if we want to rotate Encryption Keys."
+         description: <<~'DESCRIPTION'
+           A boolean indicating if we want to rotate Encryption Keys.
+         DESCRIPTION
 
 property :snapshot_cluster_identifier, String,
          callbacks: {
            "snapshot_cluster_identifier is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The name of the cluster the source snapshot was created from. This parameter is required if your IAM user has a policy containing a snapshot resource element that specifies anything other than * for the cluster name."
+         description: <<~'DESCRIPTION'
+           The name of the cluster the source snapshot was created from. This parameter is required if your IAM user has a policy containing a snapshot resource element that specifies anything other than * for the cluster name.
+         DESCRIPTION
 
 property :snapshot_copy_grant_name, String,
          callbacks: {
            "snapshot_copy_grant_name is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The name of the snapshot copy grant to use when snapshots of an AWS KMS-encrypted cluster are copied to the destination region."
+         description: <<~'DESCRIPTION'
+           The name of the snapshot copy grant to use when snapshots of an AWS KMS-encrypted cluster are copied to the destination region.
+         DESCRIPTION
 
 property :snapshot_copy_manual, [TrueClass, FalseClass],
          callbacks: {
            "snapshot_copy_manual is not a Boolean" => lambda { |v| v.is_a? Boolean },
          },
-         description: "Indicates whether to apply the snapshot retention period to newly copied manual snapshots instead of automated snapshots."
+         description: <<~'DESCRIPTION'
+           Indicates whether to apply the snapshot retention period to newly copied manual snapshots instead of automated snapshots.
+         DESCRIPTION
 
 property :snapshot_copy_retention_period, Integer,
          callbacks: {
@@ -310,19 +386,25 @@ property :snapshot_identifier, String,
          callbacks: {
            "snapshot_identifier is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The name of the snapshot from which to create the new cluster. This parameter isn't case sensitive."
+         description: <<~'DESCRIPTION'
+           The name of the snapshot from which to create the new cluster. This parameter isn't case sensitive.
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "The list of tags for the cluster parameter group."
+         description: <<~'DESCRIPTION'
+           The list of tags for the cluster parameter group.
+         DESCRIPTION
 
 property :vpc_security_group_ids, Array,
          callbacks: {
            "vpc_security_group_ids is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "A list of Virtual Private Cloud (VPC) security groups to be associated with the cluster."
+         description: <<~'DESCRIPTION'
+           A list of Virtual Private Cloud (VPC) security groups to be associated with the cluster.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::Redshift::Cluster"

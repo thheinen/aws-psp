@@ -17,26 +17,34 @@ property :description, String,
          callbacks: {
            "description is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "Provides the customer-specified description for this DB parameter group."
+         description: <<~'DESCRIPTION'
+           Provides the customer-specified description for this DB parameter group.
+         DESCRIPTION
 
 property :family, String,
          required: true,
          callbacks: {
            "family is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The DB parameter group family name."
+         description: <<~'DESCRIPTION'
+           The DB parameter group family name.
+         DESCRIPTION
 
 property :parameters, Hash,
          callbacks: {
            "parameters is not a Object" => lambda { |v| v.is_a? Object },
          },
-         description: "An array of parameter names and values for the parameter update."
+         description: <<~'DESCRIPTION'
+           An array of parameter names and values for the parameter update.
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "An array of key-value pairs to apply to this resource."
+         description: <<~'DESCRIPTION'
+           An array of key-value pairs to apply to this resource.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::RDS::DBParameterGroup"

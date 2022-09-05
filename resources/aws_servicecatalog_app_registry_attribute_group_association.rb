@@ -19,7 +19,9 @@ property :application, String,
            "application needs to be 1..256 characters" => lambda { |v| v.length >= 1 && v.length <= 256 },
            "application must match pattern \w+|[a-z0-9]{12}" => lambda { |v| v =~ Regexp.new("/\w+|[a-z0-9]{12}/") },
          },
-         description: "The name or the Id of the Application."
+         description: <<~'DESCRIPTION'
+           The name or the Id of the Application.
+         DESCRIPTION
 
 property :attribute_group, String,
          required: true,
@@ -28,7 +30,9 @@ property :attribute_group, String,
            "attribute_group needs to be 1..256 characters" => lambda { |v| v.length >= 1 && v.length <= 256 },
            "attribute_group must match pattern \w+|[a-z0-9]{12}" => lambda { |v| v =~ Regexp.new("/\w+|[a-z0-9]{12}/") },
          },
-         description: "The name or the Id of the AttributeGroup."
+         description: <<~'DESCRIPTION'
+           The name or the Id of the AttributeGroup.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::ServiceCatalogAppRegistry::AttributeGroupAssociation"

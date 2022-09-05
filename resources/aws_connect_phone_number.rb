@@ -18,27 +18,35 @@ property :country_code, String,
            "country_code is not a String" => lambda { |v| v.is_a? String },
            "country_code must match pattern ^[A-Z]{2}" => lambda { |v| v =~ Regexp.new("/^[A-Z]{2}/") },
          },
-         description: "The phone number country code."
+         description: <<~'DESCRIPTION'
+           The phone number country code.
+         DESCRIPTION
 
 property :description, String,
          callbacks: {
            "description is not a String" => lambda { |v| v.is_a? String },
            "description needs to be 1..500 characters" => lambda { |v| v.length >= 1 && v.length <= 500 },
          },
-         description: "The description of the phone number."
+         description: <<~'DESCRIPTION'
+           The description of the phone number.
+         DESCRIPTION
 
 property :prefix, String,
          callbacks: {
            "prefix is not a String" => lambda { |v| v.is_a? String },
            "prefix must match pattern ^\+[0-9]{1,15}" => lambda { |v| v =~ Regexp.new("/^\+[0-9]{1,15}/") },
          },
-         description: "The phone number prefix."
+         description: <<~'DESCRIPTION'
+           The phone number prefix.
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "One or more tags."
+         description: <<~'DESCRIPTION'
+           One or more tags.
+         DESCRIPTION
 
 property :target_arn, String,
          required: true,
@@ -46,7 +54,9 @@ property :target_arn, String,
            "target_arn is not a String" => lambda { |v| v.is_a? String },
            "target_arn must match pattern ^arn:aws[-a-z0-9]*:connect:[-a-z0-9]*:[0-9]{12}:instance/[-a-zA-Z0-9]*$" => lambda { |v| v =~ Regexp.new("/^arn:aws[-a-z0-9]*:connect:[-a-z0-9]*:[0-9]{12}:instance/[-a-zA-Z0-9]*$/") },
          },
-         description: "The ARN of the Amazon Connect instance the phone number is claimed to."
+         description: <<~'DESCRIPTION'
+           The ARN of the Amazon Connect instance the phone number is claimed to.
+         DESCRIPTION
 
 property :type, String,
          required: true,
@@ -54,7 +64,9 @@ property :type, String,
            "type is not a String" => lambda { |v| v.is_a? String },
            "type must match pattern TOLL_FREE|DID" => lambda { |v| v =~ Regexp.new("/TOLL_FREE|DID/") },
          },
-         description: "The phone number type, either TOLL_FREE or DID."
+         description: <<~'DESCRIPTION'
+           The phone number type, either TOLL_FREE or DID.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::Connect::PhoneNumber"

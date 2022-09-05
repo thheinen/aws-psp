@@ -17,21 +17,27 @@ property :group_ip_address, String,
          callbacks: {
            "group_ip_address is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The IP address assigned to the transit gateway multicast group."
+         description: <<~'DESCRIPTION'
+           The IP address assigned to the transit gateway multicast group.
+         DESCRIPTION
 
 property :network_interface_id, String,
          required: true,
          callbacks: {
            "network_interface_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The ID of the transit gateway attachment."
+         description: <<~'DESCRIPTION'
+           The ID of the transit gateway attachment.
+         DESCRIPTION
 
 property :transitgateway_multicast_domain_id, String,
          required: true,
          callbacks: {
            "transitgateway_multicast_domain_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The ID of the transit gateway multicast domain."
+         description: <<~'DESCRIPTION'
+           The ID of the transit gateway multicast domain.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::EC2::TransitGatewayMulticastGroupMember"

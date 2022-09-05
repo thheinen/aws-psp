@@ -17,7 +17,9 @@ property :kms_key_id, String,
            "kms_key_id is not a String" => lambda { |v| v.is_a? String },
            "kms_key_id must match pattern ^arn:[a-z0-9-]+:kms:[a-z0-9-]+:\d{12}:(key|alias)/.+\Z" => lambda { |v| v =~ Regexp.new("/^arn:[a-z0-9-]+:kms:[a-z0-9-]+:\d{12}:(key|alias)/.+\Z/") },
          },
-         description: "The Amazon Resource Name (ARN) of the CMK to use when encrypting log data."
+         description: <<~'DESCRIPTION'
+           The Amazon Resource Name (ARN) of the CMK to use when encrypting log data.
+         DESCRIPTION
 
 property :log_group_name, String,
          callbacks: {
@@ -25,19 +27,25 @@ property :log_group_name, String,
            "log_group_name needs to be 1..512 characters" => lambda { |v| v.length >= 1 && v.length <= 512 },
            "log_group_name must match pattern ^[.\-_/#A-Za-z0-9]{1,512}\Z" => lambda { |v| v =~ Regexp.new("/^[.\-_/#A-Za-z0-9]{1,512}\Z/") },
          },
-         description: "The name of the log group. If you don't specify a name, AWS CloudFormation generates a unique ID for the log group."
+         description: <<~'DESCRIPTION'
+           The name of the log group. If you don't specify a name, AWS CloudFormation generates a unique ID for the log group.
+         DESCRIPTION
 
 property :retention_in_days, Integer,
          callbacks: {
            "retention_in_days is not a Integer" => lambda { |v| v.is_a? Integer },
          },
-         description: "The number of days to retain the log events in the specified log group. Possible values are: 1, 3, 5, 7, 14, 30, 60, 90, 120, 150, 180, 365, 400, 545, 731, 1827, and 3653."
+         description: <<~'DESCRIPTION'
+           The number of days to retain the log events in the specified log group. Possible values are: 1, 3, 5, 7, 14, 30, 60, 90, 120, 150, 180, 365, 400, 545, 731, 1827, and 3653.
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "An array of key-value pairs to apply to this resource."
+         description: <<~'DESCRIPTION'
+           An array of key-value pairs to apply to this resource.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::Logs::LogGroup"

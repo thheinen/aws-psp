@@ -17,14 +17,18 @@ property :finding_publishing_frequency, String,
            "finding_publishing_frequency is not a String" => lambda { |v| v.is_a? String },
            "finding_publishing_frequencyis not one of `FIFTEEN_MINUTES`, `ONE_HOUR`, `SIX_HOURS`" => lambda { |v| %w{FIFTEEN_MINUTES ONE_HOUR SIX_HOURS}.include? v },
          },
-         description: "A enumeration value that specifies how frequently finding updates are published."
+         description: <<~'DESCRIPTION'
+           A enumeration value that specifies how frequently finding updates are published.
+         DESCRIPTION
 
 property :status, String,
          callbacks: {
            "status is not a String" => lambda { |v| v.is_a? String },
            "statusis not one of `ENABLED`, `PAUSED`" => lambda { |v| %w{ENABLED PAUSED}.include? v },
          },
-         description: "A enumeration value that specifies the status of the Macie Session."
+         description: <<~'DESCRIPTION'
+           A enumeration value that specifies the status of the Macie Session.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::Macie::Session"

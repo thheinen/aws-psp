@@ -17,7 +17,9 @@ property :default_value, String,
            "default_value is not a String" => lambda { |v| v.is_a? String },
            "default_value needs to be 1..50 characters" => lambda { |v| v.length >= 1 && v.length <= 50 },
          },
-         description: "The default value for the cost category"
+         description: <<~'DESCRIPTION'
+           The default value for the cost category
+         DESCRIPTION
 
 property :name, String,
          name_property: true,
@@ -41,13 +43,17 @@ property :rules, String,
          callbacks: {
            "rules is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "JSON array format of Expression in Billing and Cost Management API"
+         description: <<~'DESCRIPTION'
+           JSON array format of Expression in Billing and Cost Management API
+         DESCRIPTION
 
 property :split_charge_rules, String,
          callbacks: {
            "split_charge_rules is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "Json array format of CostCategorySplitChargeRule in Billing and Cost Management API"
+         description: <<~'DESCRIPTION'
+           Json array format of CostCategorySplitChargeRule in Billing and Cost Management API
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::CE::CostCategory"

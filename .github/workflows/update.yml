@@ -1,8 +1,8 @@
 name: Update Resources
 
-on: workflow_dispatch
-#  schedule:
-#    - cron: 55 23 * * *
+on:
+  schedule:
+    - cron: 55 23 * * *
 
 jobs:
   deploy:
@@ -38,8 +38,9 @@ jobs:
           if [ -s updates.tmp ]; then
             (
               NEW=$(bump patch --no-commit)
+              DATE=$(date +%Y-%m-%d)
               echo -e "# CHANGELOG\n"
-              echo -e "## v$NEW\n\n"
+              echo -e "## v$NEW ($DATE)\n\n"
               cat updates.tmp
               cat CHANGELOG.md | tail -n +2
             ) > CHANGELOG.new

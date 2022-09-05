@@ -16,14 +16,18 @@ property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "The tags to assign to the network ACL."
+         description: <<~'DESCRIPTION'
+           The tags to assign to the network ACL.
+         DESCRIPTION
 
 property :vpc_id, String,
          required: true,
          callbacks: {
            "vpc_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The ID of the VPC."
+         description: <<~'DESCRIPTION'
+           The ID of the VPC.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::EC2::NetworkAcl"

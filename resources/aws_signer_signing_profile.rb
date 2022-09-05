@@ -18,7 +18,9 @@ property :platform_id, Hash,
            "platform_id is not a String" => lambda { |v| v.is_a? String },
            "platform_idis not one of `AWSLambda-SHA384-ECDSA`" => lambda { |v| %w{AWSLambda-SHA384-ECDSA}.include? v },
          },
-         description: "The ID of the target signing platform."
+         description: <<~'DESCRIPTION'
+           The ID of the target signing platform.
+         DESCRIPTION
 
 property :signature_validity_period, Hash,
          callbacks: {
@@ -26,13 +28,17 @@ property :signature_validity_period, Hash,
            "Subproperty `Type` is not a String" => lambda { |v| v[:Type].is_a? String },
            "Subproperty `Type`is not one of `DAYS`, `MONTHS`, `YEARS`" => lambda { |v| %w{DAYS MONTHS YEARS}.include? v[:Type] },
          },
-         description: "Signature validity period of the profile."
+         description: <<~'DESCRIPTION'
+           Signature validity period of the profile.
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "A list of tags associated with the signing profile."
+         description: <<~'DESCRIPTION'
+           A list of tags associated with the signing profile.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::Signer::SigningProfile"

@@ -136,7 +136,9 @@ property :tags, Hash,
          callbacks: {
            "tags is not a Object" => lambda { |v| v.is_a? Object },
          },
-         description: "A map of tags for the environment."
+         description: <<~'DESCRIPTION'
+           A map of tags for the environment.
+         DESCRIPTION
 
 property :webserver_access_mode, Hash,
          callbacks: {

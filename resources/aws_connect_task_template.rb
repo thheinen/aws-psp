@@ -20,33 +20,43 @@ property :client_token, Hash,
          description: ""
 
 property :constraints, Hash,
-         description: "The constraints for the task template"
+         description: <<~'DESCRIPTION'
+           The constraints for the task template
+         DESCRIPTION
 
 property :contact_flow_arn, String,
          callbacks: {
            "contact_flow_arn is not a String" => lambda { |v| v.is_a? String },
            "contact_flow_arn must match pattern ^arn:aws[-a-z0-9]*:connect:[-a-z0-9]*:[0-9]{12}:instance/[-a-zA-Z0-9]*/contact-flow/[-a-zA-Z0-9]*$" => lambda { |v| v =~ Regexp.new("/^arn:aws[-a-z0-9]*:connect:[-a-z0-9]*:[0-9]{12}:instance/[-a-zA-Z0-9]*/contact-flow/[-a-zA-Z0-9]*$/") },
          },
-         description: "The identifier of the contact flow."
+         description: <<~'DESCRIPTION'
+           The identifier of the contact flow.
+         DESCRIPTION
 
 property :defaults, Array,
          callbacks: {
            "defaults is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: ""
+         description: <<~'DESCRIPTION'
+
+         DESCRIPTION
 
 property :description, String,
          callbacks: {
            "description is not a String" => lambda { |v| v.is_a? String },
            "description needs to be 0..255 characters" => lambda { |v| v.length >= 0 && v.length <= 255 },
          },
-         description: "The description of the task template."
+         description: <<~'DESCRIPTION'
+           The description of the task template.
+         DESCRIPTION
 
 property :fields, Array,
          callbacks: {
            "fields is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "The list of task template's fields"
+         description: <<~'DESCRIPTION'
+           The list of task template's fields
+         DESCRIPTION
 
 property :instance_arn, String,
          required: true,
@@ -54,7 +64,9 @@ property :instance_arn, String,
            "instance_arn is not a String" => lambda { |v| v.is_a? String },
            "instance_arn must match pattern ^arn:aws[-a-z0-9]*:connect:[-a-z0-9]*:[0-9]{12}:instance/[-a-zA-Z0-9]*$" => lambda { |v| v =~ Regexp.new("/^arn:aws[-a-z0-9]*:connect:[-a-z0-9]*:[0-9]{12}:instance/[-a-zA-Z0-9]*$/") },
          },
-         description: "The identifier (arn) of the instance."
+         description: <<~'DESCRIPTION'
+           The identifier (arn) of the instance.
+         DESCRIPTION
 
 property :name, String,
          name_property: true,
@@ -62,7 +74,9 @@ property :name, String,
            "name is not a String" => lambda { |v| v.is_a? String },
            "name needs to be 1..100 characters" => lambda { |v| v.length >= 1 && v.length <= 100 },
          },
-         description: "The name of the task template."
+         description: <<~'DESCRIPTION'
+           The name of the task template.
+         DESCRIPTION
 
 property :status, Hash,
          callbacks: {
@@ -75,7 +89,9 @@ property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "One or more tags."
+         description: <<~'DESCRIPTION'
+           One or more tags.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::Connect::TaskTemplate"

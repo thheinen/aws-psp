@@ -17,21 +17,27 @@ property :destination_cidr_block, String,
          callbacks: {
            "destination_cidr_block is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The CIDR block used for destination matches."
+         description: <<~'DESCRIPTION'
+           The CIDR block used for destination matches.
+         DESCRIPTION
 
 property :local_gateway_route_table_id, String,
          required: true,
          callbacks: {
            "local_gateway_route_table_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The ID of the local gateway route table."
+         description: <<~'DESCRIPTION'
+           The ID of the local gateway route table.
+         DESCRIPTION
 
 property :local_gateway_virtual_interface_group_id, String,
          required: true,
          callbacks: {
            "local_gateway_virtual_interface_group_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The ID of the virtual interface group."
+         description: <<~'DESCRIPTION'
+           The ID of the virtual interface group.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::EC2::LocalGatewayRoute"

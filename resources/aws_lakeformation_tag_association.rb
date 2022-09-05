@@ -17,11 +17,15 @@ property :lf_tags, Hash,
          callbacks: {
            "lf_tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "List of Lake Formation Tags to associate with the Lake Formation Resource"
+         description: <<~'DESCRIPTION'
+           List of Lake Formation Tags to associate with the Lake Formation Resource
+         DESCRIPTION
 
 property :resource, Hash,
          required: true,
-         description: "Resource to tag with the Lake Formation Tags"
+         description: <<~'DESCRIPTION'
+           Resource to tag with the Lake Formation Tags
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::LakeFormation::TagAssociation"

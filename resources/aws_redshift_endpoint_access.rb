@@ -17,7 +17,9 @@ property :cluster_identifier, String,
          callbacks: {
            "cluster_identifier is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "A unique identifier for the cluster. You use this identifier to refer to the cluster for any subsequent cluster operations such as deleting or modifying. All alphabetical characters must be lower case, no hypens at the end, no two consecutive hyphens. Cluster name should be unique for all clusters within an AWS account"
+         description: <<~'DESCRIPTION'
+           A unique identifier for the cluster. You use this identifier to refer to the cluster for any subsequent cluster operations such as deleting or modifying. All alphabetical characters must be lower case, no hypens at the end, no two consecutive hyphens. Cluster name should be unique for all clusters within an AWS account
+         DESCRIPTION
 
 property :endpoint_name, String,
          required: true,
@@ -25,14 +27,18 @@ property :endpoint_name, String,
            "endpoint_name is not a String" => lambda { |v| v.is_a? String },
            "endpoint_name must match pattern ^(?=^[a-z][a-z0-9]*(-[a-z0-9]+)*$).{1,30}$" => lambda { |v| v =~ Regexp.new("/^(?=^[a-z][a-z0-9]*(-[a-z0-9]+)*$).{1,30}$/") },
          },
-         description: "The name of the endpoint."
+         description: <<~'DESCRIPTION'
+           The name of the endpoint.
+         DESCRIPTION
 
 property :resource_owner, String,
          callbacks: {
            "resource_owner is not a String" => lambda { |v| v.is_a? String },
            "resource_owner must match pattern ^\d{12}$" => lambda { |v| v =~ Regexp.new("/^\d{12}$/") },
          },
-         description: "The AWS account ID of the owner of the cluster."
+         description: <<~'DESCRIPTION'
+           The AWS account ID of the owner of the cluster.
+         DESCRIPTION
 
 property :subnet_group_name, String,
          required: true,
@@ -40,14 +46,18 @@ property :subnet_group_name, String,
            "subnet_group_name is not a String" => lambda { |v| v.is_a? String },
            "subnet_group_name must match pattern ^(?=^[a-zA-Z0-9-]+$).{1,255}$" => lambda { |v| v =~ Regexp.new("/^(?=^[a-zA-Z0-9-]+$).{1,255}$/") },
          },
-         description: "The subnet group name where Amazon Redshift chooses to deploy the endpoint."
+         description: <<~'DESCRIPTION'
+           The subnet group name where Amazon Redshift chooses to deploy the endpoint.
+         DESCRIPTION
 
 property :vpc_security_group_ids, Array,
          required: true,
          callbacks: {
            "vpc_security_group_ids is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "A list of vpc security group ids to apply to the created endpoint access."
+         description: <<~'DESCRIPTION'
+           A list of vpc security group ids to apply to the created endpoint access.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::Redshift::EndpointAccess"

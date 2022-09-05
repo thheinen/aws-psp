@@ -17,20 +17,26 @@ property :dead_letter_queue_url, String,
            "dead_letter_queue_url is not a String" => lambda { |v| v.is_a? String },
            "dead_letter_queue_url needs to be 0..255 characters" => lambda { |v| v.length >= 0 && v.length <= 255 },
          },
-         description: "The URL of the SQS dead letter queue"
+         description: <<~'DESCRIPTION'
+           The URL of the SQS dead letter queue
+         DESCRIPTION
 
 property :default_encryption_key, String,
          callbacks: {
            "default_encryption_key is not a String" => lambda { |v| v.is_a? String },
            "default_encryption_key needs to be 0..255 characters" => lambda { |v| v.length >= 0 && v.length <= 255 },
          },
-         description: "The default encryption key"
+         description: <<~'DESCRIPTION'
+           The default encryption key
+         DESCRIPTION
 
 property :default_expiration_days, Integer,
          callbacks: {
            "default_expiration_days is not a Integer" => lambda { |v| v.is_a? Integer },
          },
-         description: "The default number of days until the data within the domain expires."
+         description: <<~'DESCRIPTION'
+           The default number of days until the data within the domain expires.
+         DESCRIPTION
 
 property :domain_name, String,
          required: true,
@@ -39,13 +45,17 @@ property :domain_name, String,
            "domain_name needs to be 1..64 characters" => lambda { |v| v.length >= 1 && v.length <= 64 },
            "domain_name must match pattern ^[a-zA-Z0-9_-]+$" => lambda { |v| v =~ Regexp.new("/^[a-zA-Z0-9_-]+$/") },
          },
-         description: "The unique name of the domain."
+         description: <<~'DESCRIPTION'
+           The unique name of the domain.
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "The tags (keys and values) associated with the domain"
+         description: <<~'DESCRIPTION'
+           The tags (keys and values) associated with the domain
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::CustomerProfiles::Domain"

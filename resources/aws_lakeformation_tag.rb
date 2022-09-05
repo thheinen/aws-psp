@@ -17,7 +17,9 @@ property :catalog_id, Hash,
            "catalog_id is not a String" => lambda { |v| v.is_a? String },
            "catalog_id needs to be 12..12 characters" => lambda { |v| v.length >= 12 && v.length <= 12 },
          },
-         description: "The identifier for the Data Catalog. By default, the account ID. The Data Catalog is the persistent metadata store. It contains database definitions, table definitions, and other control information to manage your Lake Formation environment."
+         description: <<~'DESCRIPTION'
+           The identifier for the Data Catalog. By default, the account ID. The Data Catalog is the persistent metadata store. It contains database definitions, table definitions, and other control information to manage your Lake Formation environment.
+         DESCRIPTION
 
 property :tag_key, Hash,
          required: true,
@@ -26,14 +28,18 @@ property :tag_key, Hash,
            "tag_key needs to be 1..128 characters" => lambda { |v| v.length >= 1 && v.length <= 128 },
            "tag_key must match pattern ^([{a-zA-Z}{\s}{0-9}_.:\/=+\-@%]*)$" => lambda { |v| v =~ Regexp.new("/^([{a-zA-Z}{\s}{0-9}_.:\/=+\-@%]*)$/") },
          },
-         description: "The key-name for the LF-tag."
+         description: <<~'DESCRIPTION'
+           The key-name for the LF-tag.
+         DESCRIPTION
 
 property :tag_values, Hash,
          required: true,
          callbacks: {
            "tag_values is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "A list of possible values an attribute can take."
+         description: <<~'DESCRIPTION'
+           A list of possible values an attribute can take.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::LakeFormation::Tag"

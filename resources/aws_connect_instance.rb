@@ -14,7 +14,9 @@ property :name, String,
 
 property :attributes, Hash,
          required: true,
-         description: "The attributes for the instance."
+         description: <<~'DESCRIPTION'
+           The attributes for the instance.
+         DESCRIPTION
 
 property :directory_id, String,
          callbacks: {
@@ -22,7 +24,9 @@ property :directory_id, String,
            "directory_id needs to be 12..12 characters" => lambda { |v| v.length >= 12 && v.length <= 12 },
            "directory_id must match pattern ^d-[0-9a-f]{10}$" => lambda { |v| v =~ Regexp.new("/^d-[0-9a-f]{10}$/") },
          },
-         description: "Existing directoryId user wants to map to the new Connect instance."
+         description: <<~'DESCRIPTION'
+           Existing directoryId user wants to map to the new Connect instance.
+         DESCRIPTION
 
 property :identity_management_type, String,
          required: true,
@@ -30,7 +34,9 @@ property :identity_management_type, String,
            "identity_management_type is not a String" => lambda { |v| v.is_a? String },
            "identity_management_typeis not one of `SAML`, `CONNECT_MANAGED`, `EXISTING_DIRECTORY`" => lambda { |v| %w{SAML CONNECT_MANAGED EXISTING_DIRECTORY}.include? v },
          },
-         description: "Specifies the type of directory integration for new instance."
+         description: <<~'DESCRIPTION'
+           Specifies the type of directory integration for new instance.
+         DESCRIPTION
 
 property :instance_alias, String,
          callbacks: {
@@ -38,7 +44,9 @@ property :instance_alias, String,
            "instance_alias needs to be 1..62 characters" => lambda { |v| v.length >= 1 && v.length <= 62 },
            "instance_alias must match pattern ^(?!d-)([\da-zA-Z]+)([-]*[\da-zA-Z])*$" => lambda { |v| v =~ Regexp.new("/^(?!d-)([\da-zA-Z]+)([-]*[\da-zA-Z])*$/") },
          },
-         description: "Alias of the new directory created as part of new instance creation."
+         description: <<~'DESCRIPTION'
+           Alias of the new directory created as part of new instance creation.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::Connect::Instance"

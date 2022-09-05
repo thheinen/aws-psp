@@ -17,27 +17,35 @@ property :description, String,
          callbacks: {
            "description is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "A friendly description for this DB cluster parameter group."
+         description: <<~'DESCRIPTION'
+           A friendly description for this DB cluster parameter group.
+         DESCRIPTION
 
 property :family, String,
          required: true,
          callbacks: {
            "family is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The DB cluster parameter group family name. A DB cluster parameter group can be associated with one and only one DB cluster parameter group family, and can be applied only to a DB cluster running a DB engine and engine version compatible with that DB cluster parameter group family."
+         description: <<~'DESCRIPTION'
+           The DB cluster parameter group family name. A DB cluster parameter group can be associated with one and only one DB cluster parameter group family, and can be applied only to a DB cluster running a DB engine and engine version compatible with that DB cluster parameter group family.
+         DESCRIPTION
 
 property :parameters, Hash,
          required: true,
          callbacks: {
            "parameters is not a Object" => lambda { |v| v.is_a? Object },
          },
-         description: "An array of parameters to be modified. A maximum of 20 parameters can be modified in a single request."
+         description: <<~'DESCRIPTION'
+           An array of parameters to be modified. A maximum of 20 parameters can be modified in a single request.
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "The list of tags for the cluster parameter group."
+         description: <<~'DESCRIPTION'
+           The list of tags for the cluster parameter group.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::RDS::DBClusterParameterGroup"

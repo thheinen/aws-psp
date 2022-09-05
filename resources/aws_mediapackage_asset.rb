@@ -17,40 +17,52 @@ property :id, String,
          callbacks: {
            "id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The unique identifier for the Asset."
+         description: <<~'DESCRIPTION'
+           The unique identifier for the Asset.
+         DESCRIPTION
 
 property :packaging_group_id, String,
          required: true,
          callbacks: {
            "packaging_group_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The ID of the PackagingGroup for the Asset."
+         description: <<~'DESCRIPTION'
+           The ID of the PackagingGroup for the Asset.
+         DESCRIPTION
 
 property :resource_id, String,
          callbacks: {
            "resource_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The resource ID to include in SPEKE key requests."
+         description: <<~'DESCRIPTION'
+           The resource ID to include in SPEKE key requests.
+         DESCRIPTION
 
 property :source_arn, String,
          required: true,
          callbacks: {
            "source_arn is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "ARN of the source object in S3."
+         description: <<~'DESCRIPTION'
+           ARN of the source object in S3.
+         DESCRIPTION
 
 property :source_role_arn, String,
          required: true,
          callbacks: {
            "source_role_arn is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The IAM role_arn used to access the source S3 bucket."
+         description: <<~'DESCRIPTION'
+           The IAM role_arn used to access the source S3 bucket.
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "A collection of tags associated with a resource"
+         description: <<~'DESCRIPTION'
+           A collection of tags associated with a resource
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::MediaPackage::Asset"

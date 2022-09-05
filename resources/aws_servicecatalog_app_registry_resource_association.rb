@@ -19,7 +19,9 @@ property :application, String,
            "application needs to be 1..256 characters" => lambda { |v| v.length >= 1 && v.length <= 256 },
            "application must match pattern \w+|[a-z0-9]{12}" => lambda { |v| v =~ Regexp.new("/\w+|[a-z0-9]{12}/") },
          },
-         description: "The name or the Id of the Application."
+         description: <<~'DESCRIPTION'
+           The name or the Id of the Application.
+         DESCRIPTION
 
 property :resource, String,
          required: true,
@@ -27,7 +29,9 @@ property :resource, String,
            "resource is not a String" => lambda { |v| v.is_a? String },
            "resource must match pattern \w+|arn:aws[-a-z]*:cloudformation:[a-z]{2}(-gov)?-[a-z]+-\d:\d{12}:stack/[a-zA-Z][-A-Za-z0-9]{0,127}/[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}" => lambda { |v| v =~ Regexp.new("/\w+|arn:aws[-a-z]*:cloudformation:[a-z]{2}(-gov)?-[a-z]+-\d:\d{12}:stack/[a-zA-Z][-A-Za-z0-9]{0,127}/[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/") },
          },
-         description: "The name or the Id of the Resource."
+         description: <<~'DESCRIPTION'
+           The name or the Id of the Resource.
+         DESCRIPTION
 
 property :resource_type, String,
          required: true,
@@ -35,7 +39,9 @@ property :resource_type, String,
            "resource_type is not a String" => lambda { |v| v.is_a? String },
            "resource_typeis not one of `CFN_STACK`" => lambda { |v| %w{CFN_STACK}.include? v },
          },
-         description: "The type of the CFN Resource for now it's enum CFN_STACK."
+         description: <<~'DESCRIPTION'
+           The type of the CFN Resource for now it's enum CFN_STACK.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::ServiceCatalogAppRegistry::ResourceAssociation"

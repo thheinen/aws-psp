@@ -37,7 +37,9 @@ property :name, String,
            "name needs to be 1..100 characters" => lambda { |v| v.length >= 1 && v.length <= 100 },
            "name must match pattern ^[0-9A-Za-z][A-Za-z0-9\-_]*" => lambda { |v| v =~ Regexp.new("/^[0-9A-Za-z][A-Za-z0-9\-_]*/") },
          },
-         description: "The unique name to give to your cluster."
+         description: <<~'DESCRIPTION'
+           The unique name to give to your cluster.
+         DESCRIPTION
 
 property :resources_vpc_config, Hash,
          required: true,
@@ -55,20 +57,26 @@ property :role_arn, String,
          callbacks: {
            "role_arn is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The Amazon Resource Name (ARN) of the IAM role that provides permissions for the Kubernetes control plane to make calls to AWS API operations on your behalf."
+         description: <<~'DESCRIPTION'
+           The Amazon Resource Name (ARN) of the IAM role that provides permissions for the Kubernetes control plane to make calls to AWS API operations on your behalf.
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "An array of key-value pairs to apply to this resource."
+         description: <<~'DESCRIPTION'
+           An array of key-value pairs to apply to this resource.
+         DESCRIPTION
 
 property :version, String,
          callbacks: {
            "version is not a String" => lambda { |v| v.is_a? String },
            "version must match pattern 1\.\d\d" => lambda { |v| v =~ Regexp.new("/1\.\d\d/") },
          },
-         description: "The desired Kubernetes version for your cluster. If you don't specify a value here, the latest version available in Amazon EKS is used."
+         description: <<~'DESCRIPTION'
+           The desired Kubernetes version for your cluster. If you don't specify a value here, the latest version available in Amazon EKS is used.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::EKS::Cluster"

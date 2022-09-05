@@ -16,20 +16,26 @@ property :instance_profile_name, String,
          callbacks: {
            "instance_profile_name is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The name of the instance profile to create."
+         description: <<~'DESCRIPTION'
+           The name of the instance profile to create.
+         DESCRIPTION
 
 property :path, String,
          callbacks: {
            "path is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The path to the instance profile."
+         description: <<~'DESCRIPTION'
+           The path to the instance profile.
+         DESCRIPTION
 
 property :roles, Array,
          required: true,
          callbacks: {
            "roles is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "The name of the role to associate with the instance profile. Only one role can be assigned to an EC2 instance at a time, and all applications on the instance share the same role and permissions."
+         description: <<~'DESCRIPTION'
+           The name of the role to associate with the instance profile. Only one role can be assigned to an EC2 instance at a time, and all applications on the instance share the same role and permissions.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::IAM::InstanceProfile"

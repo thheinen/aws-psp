@@ -28,7 +28,9 @@ property :cw_log_enabled, [TrueClass, FalseClass],
          callbacks: {
            "cw_log_enabled is not a Boolean" => lambda { |v| v.is_a? Boolean },
          },
-         description: "Data collected by RUM is kept by RUM for 30 days and then deleted. This parameter specifies whether RUM sends a copy of this telemetry data to CWLlong in your account. This enables you to keep the telemetry data for more than 30 days, but it does incur CWLlong charges. If you omit this parameter, the default is false"
+         description: <<~'DESCRIPTION'
+           Data collected by RUM is kept by RUM for 30 days and then deleted. This parameter specifies whether RUM sends a copy of this telemetry data to CWLlong in your account. This enables you to keep the telemetry data for more than 30 days, but it does incur CWLlong charges. If you omit this parameter, the default is false
+         DESCRIPTION
 
 property :domain, String,
          required: true,
@@ -37,7 +39,9 @@ property :domain, String,
            "domain needs to be 1..253 characters" => lambda { |v| v.length >= 1 && v.length <= 253 },
            "domain must match pattern ^(localhost)|^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$|^(?![-.])([A-Za-z0-9-\.\-]{0,63})((?![-])([a-zA-Z0-9]{1}|^[a-zA-Z0-9]{0,1}))\.(?![-])[A-Za-z-0-9]{1,63}((?![-])([a-zA-Z0-9]{1}|^[a-zA-Z0-9]{0,1}))|^(\*\.)(?![-.])([A-Za-z0-9-\.\-]{0,63})((?![-])([a-zA-Z0-9]{1}|^[a-zA-Z0-9]{0,1}))\.(?![-])[A-Za-z-0-9]{1,63}((?![-])([a-zA-Z0-9]{1}|^[a-zA-Z0-9]{0,1}))" => lambda { |v| v =~ Regexp.new("/^(localhost)|^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$|^(?![-.])([A-Za-z0-9-\.\-]{0,63})((?![-])([a-zA-Z0-9]{1}|^[a-zA-Z0-9]{0,1}))\.(?![-])[A-Za-z-0-9]{1,63}((?![-])([a-zA-Z0-9]{1}|^[a-zA-Z0-9]{0,1}))|^(\*\.)(?![-.])([A-Za-z0-9-\.\-]{0,63})((?![-])([a-zA-Z0-9]{1}|^[a-zA-Z0-9]{0,1}))\.(?![-])[A-Za-z-0-9]{1,63}((?![-])([a-zA-Z0-9]{1}|^[a-zA-Z0-9]{0,1}))/") },
          },
-         description: "The top-level internet domain name for which your application has administrative authority."
+         description: <<~'DESCRIPTION'
+           The top-level internet domain name for which your application has administrative authority.
+         DESCRIPTION
 
 property :name, String,
          name_property: true,
@@ -47,7 +51,9 @@ property :name, String,
            "name needs to be 1..255 characters" => lambda { |v| v.length >= 1 && v.length <= 255 },
            "name must match pattern [\.\-_/#A-Za-z0-9]+" => lambda { |v| v =~ Regexp.new("/[\.\-_/#A-Za-z0-9]+/") },
          },
-         description: "A name for the app monitor"
+         description: <<~'DESCRIPTION'
+           A name for the app monitor
+         DESCRIPTION
 
 property :tags, Hash,
          callbacks: {

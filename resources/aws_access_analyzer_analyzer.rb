@@ -17,7 +17,9 @@ property :analyzer_name, String,
            "analyzer_name is not a String" => lambda { |v| v.is_a? String },
            "analyzer_name needs to be 1..1024 characters" => lambda { |v| v.length >= 1 && v.length <= 1024 },
          },
-         description: "Analyzer name"
+         description: <<~'DESCRIPTION'
+           Analyzer name
+         DESCRIPTION
 
 property :archive_rules, Array,
          callbacks: {
@@ -29,7 +31,9 @@ property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "An array of key-value pairs to apply to this resource."
+         description: <<~'DESCRIPTION'
+           An array of key-value pairs to apply to this resource.
+         DESCRIPTION
 
 property :type, String,
          required: true,
@@ -37,7 +41,9 @@ property :type, String,
            "type is not a String" => lambda { |v| v.is_a? String },
            "type needs to be 0..1024 characters" => lambda { |v| v.length >= 0 && v.length <= 1024 },
          },
-         description: "The type of the analyzer, must be ACCOUNT or ORGANIZATION"
+         description: <<~'DESCRIPTION'
+           The type of the analyzer, must be ACCOUNT or ORGANIZATION
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::AccessAnalyzer::Analyzer"

@@ -17,14 +17,18 @@ property :accelerator_arn, String,
          callbacks: {
            "accelerator_arn is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The Amazon Resource Name (ARN) of the accelerator."
+         description: <<~'DESCRIPTION'
+           The Amazon Resource Name (ARN) of the accelerator.
+         DESCRIPTION
 
 property :client_affinity, String,
          callbacks: {
            "client_affinity is not a String" => lambda { |v| v.is_a? String },
            "client_affinityis not one of `NONE`, `SOURCE_IP`" => lambda { |v| %w{NONE SOURCE_IP}.include? v },
          },
-         description: "Client affinity lets you direct all requests from a user to the same endpoint."
+         description: <<~'DESCRIPTION'
+           Client affinity lets you direct all requests from a user to the same endpoint.
+         DESCRIPTION
 
 property :port_ranges, Array,
          required: true,
@@ -39,7 +43,9 @@ property :protocol, String,
            "protocol is not a String" => lambda { |v| v.is_a? String },
            "protocolis not one of `TCP`, `UDP`" => lambda { |v| %w{TCP UDP}.include? v },
          },
-         description: "The protocol for the listener."
+         description: <<~'DESCRIPTION'
+           The protocol for the listener.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::GlobalAccelerator::Listener"

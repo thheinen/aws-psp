@@ -25,7 +25,9 @@ property :channel_id, String,
          callbacks: {
            "channel_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The ID of the Channel the OriginEndpoint is associated with."
+         description: <<~'DESCRIPTION'
+           The ID of the Channel the OriginEndpoint is associated with.
+         DESCRIPTION
 
 property :cmaf_package, Hash,
          callbacks: {
@@ -61,7 +63,9 @@ property :description, String,
          callbacks: {
            "description is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "A short text description of the OriginEndpoint."
+         description: <<~'DESCRIPTION'
+           A short text description of the OriginEndpoint.
+         DESCRIPTION
 
 property :hls_package, Hash,
          callbacks: {
@@ -85,13 +89,17 @@ property :id, String,
            "id needs to be 1..256 characters" => lambda { |v| v.length >= 1 && v.length <= 256 },
            "id must match pattern \A[0-9a-zA-Z-_]+\Z" => lambda { |v| v =~ Regexp.new("/\A[0-9a-zA-Z-_]+\Z/") },
          },
-         description: "The ID of the OriginEndpoint."
+         description: <<~'DESCRIPTION'
+           The ID of the OriginEndpoint.
+         DESCRIPTION
 
 property :manifest_name, String,
          callbacks: {
            "manifest_name is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "A short string appended to the end of the OriginEndpoint URL."
+         description: <<~'DESCRIPTION'
+           A short string appended to the end of the OriginEndpoint URL.
+         DESCRIPTION
 
 property :mss_package, Hash,
          callbacks: {
@@ -105,31 +113,41 @@ property :origination, String,
            "origination is not a String" => lambda { |v| v.is_a? String },
            "originationis not one of `ALLOW`, `DENY`" => lambda { |v| %w{ALLOW DENY}.include? v },
          },
-         description: "Control whether origination of video is allowed for this OriginEndpoint. If set to ALLOW, the OriginEndpoint may by requested, pursuant to any other form of access control. If set to DENY, the OriginEndpoint may not be requested. This can be helpful for Live to VOD harvesting, or for temporarily disabling origination"
+         description: <<~'DESCRIPTION'
+           Control whether origination of video is allowed for this OriginEndpoint. If set to ALLOW, the OriginEndpoint may by requested, pursuant to any other form of access control. If set to DENY, the OriginEndpoint may not be requested. This can be helpful for Live to VOD harvesting, or for temporarily disabling origination
+         DESCRIPTION
 
 property :startover_window_seconds, Integer,
          callbacks: {
            "startover_window_seconds is not a Integer" => lambda { |v| v.is_a? Integer },
          },
-         description: "Maximum duration (seconds) of content to retain for startover playback. If not specified, startover playback will be disabled for the OriginEndpoint."
+         description: <<~'DESCRIPTION'
+           Maximum duration (seconds) of content to retain for startover playback. If not specified, startover playback will be disabled for the OriginEndpoint.
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "A collection of tags associated with a resource"
+         description: <<~'DESCRIPTION'
+           A collection of tags associated with a resource
+         DESCRIPTION
 
 property :time_delay_seconds, Integer,
          callbacks: {
            "time_delay_seconds is not a Integer" => lambda { |v| v.is_a? Integer },
          },
-         description: "Amount of delay (seconds) to enforce on the playback of live content. If not specified, there will be no time delay in effect for the OriginEndpoint."
+         description: <<~'DESCRIPTION'
+           Amount of delay (seconds) to enforce on the playback of live content. If not specified, there will be no time delay in effect for the OriginEndpoint.
+         DESCRIPTION
 
 property :whitelist, Array,
          callbacks: {
            "whitelist is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "A list of source IP CIDR blocks that will be allowed to access the OriginEndpoint."
+         description: <<~'DESCRIPTION'
+           A list of source IP CIDR blocks that will be allowed to access the OriginEndpoint.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::MediaPackage::OriginEndpoint"

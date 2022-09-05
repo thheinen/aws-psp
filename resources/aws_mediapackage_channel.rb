@@ -16,7 +16,9 @@ property :description, String,
          callbacks: {
            "description is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "A short text description of the Channel."
+         description: <<~'DESCRIPTION'
+           A short text description of the Channel.
+         DESCRIPTION
 
 property :egress_access_logs, Hash,
          callbacks: {
@@ -24,7 +26,9 @@ property :egress_access_logs, Hash,
            "Subproperty `LogGroupName` needs to be 1..256 characters" => lambda { |v| v[:LogGroupName].length >= 1 && v[:LogGroupName].length <= 256 },
            "Subproperty `LogGroupName` must match pattern \A^(\/aws\/MediaPackage\/)[a-zA-Z0-9_-]+\Z" => lambda { |v| v[:LogGroupName] =~ Regexp.new("/\A^(\/aws\/MediaPackage\/)[a-zA-Z0-9_-]+\Z/") },
          },
-         description: "The configuration parameters for egress access logging."
+         description: <<~'DESCRIPTION'
+           The configuration parameters for egress access logging.
+         DESCRIPTION
 
 property :id, String,
          required: true,
@@ -33,7 +37,9 @@ property :id, String,
            "id needs to be 1..256 characters" => lambda { |v| v.length >= 1 && v.length <= 256 },
            "id must match pattern \A[0-9a-zA-Z-_]+\Z" => lambda { |v| v =~ Regexp.new("/\A[0-9a-zA-Z-_]+\Z/") },
          },
-         description: "The ID of the Channel."
+         description: <<~'DESCRIPTION'
+           The ID of the Channel.
+         DESCRIPTION
 
 property :ingress_access_logs, Hash,
          callbacks: {
@@ -41,13 +47,17 @@ property :ingress_access_logs, Hash,
            "Subproperty `LogGroupName` needs to be 1..256 characters" => lambda { |v| v[:LogGroupName].length >= 1 && v[:LogGroupName].length <= 256 },
            "Subproperty `LogGroupName` must match pattern \A^(\/aws\/MediaPackage\/)[a-zA-Z0-9_-]+\Z" => lambda { |v| v[:LogGroupName] =~ Regexp.new("/\A^(\/aws\/MediaPackage\/)[a-zA-Z0-9_-]+\Z/") },
          },
-         description: "The configuration parameters for egress access logging."
+         description: <<~'DESCRIPTION'
+           The configuration parameters for egress access logging.
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "A collection of tags associated with a resource"
+         description: <<~'DESCRIPTION'
+           A collection of tags associated with a resource
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::MediaPackage::Channel"

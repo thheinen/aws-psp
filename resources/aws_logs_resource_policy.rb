@@ -19,7 +19,9 @@ property :policy_document, String,
            "policy_document needs to be 1..5120 characters" => lambda { |v| v.length >= 1 && v.length <= 5120 },
            "policy_document must match pattern [\u0009\u000A\u000D\u0020-\u00FF]+" => lambda { |v| v =~ Regexp.new("/[\u0009\u000A\u000D\u0020-\u00FF]+/") },
          },
-         description: "The policy document"
+         description: <<~'DESCRIPTION'
+           The policy document
+         DESCRIPTION
 
 property :policy_name, String,
          required: true,
@@ -28,7 +30,9 @@ property :policy_name, String,
            "policy_name needs to be 1..255 characters" => lambda { |v| v.length >= 1 && v.length <= 255 },
            "policy_name must match pattern ^([^:*\/]+\/?)*[^:*\/]+$" => lambda { |v| v =~ Regexp.new("/^([^:*\/]+\/?)*[^:*\/]+$/") },
          },
-         description: "A name for resource policy"
+         description: <<~'DESCRIPTION'
+           A name for resource policy
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::Logs::ResourcePolicy"

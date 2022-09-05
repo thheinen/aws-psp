@@ -17,7 +17,9 @@ property :cmaf_package, Hash,
            "Subproperty `HlsManifests` is not a Array" => lambda { |v| v[:HlsManifests].is_a? Array },
            "Subproperty `IncludeEncoderConfigurationInSegments` is not a Boolean" => lambda { |v| v[:IncludeEncoderConfigurationInSegments].is_a? Boolean },
          },
-         description: "A CMAF packaging configuration."
+         description: <<~'DESCRIPTION'
+           A CMAF packaging configuration.
+         DESCRIPTION
 
 property :dash_package, Hash,
          callbacks: {
@@ -27,40 +29,52 @@ property :dash_package, Hash,
            "Subproperty `SegmentTemplateFormat`is not one of `NUMBER_WITH_TIMELINE`, `TIME_WITH_TIMELINE`, `NUMBER_WITH_DURATION`" => lambda { |v| %w{NUMBER_WITH_TIMELINE TIME_WITH_TIMELINE NUMBER_WITH_DURATION}.include? v[:SegmentTemplateFormat] },
            "Subproperty `IncludeEncoderConfigurationInSegments` is not a Boolean" => lambda { |v| v[:IncludeEncoderConfigurationInSegments].is_a? Boolean },
          },
-         description: "A Dynamic Adaptive Streaming over HTTP (DASH) packaging configuration."
+         description: <<~'DESCRIPTION'
+           A Dynamic Adaptive Streaming over HTTP (DASH) packaging configuration.
+         DESCRIPTION
 
 property :hls_package, Hash,
          callbacks: {
            "Subproperty `HlsManifests` is not a Array" => lambda { |v| v[:HlsManifests].is_a? Array },
            "Subproperty `UseAudioRenditionGroup` is not a Boolean" => lambda { |v| v[:UseAudioRenditionGroup].is_a? Boolean },
          },
-         description: "An HTTP Live Streaming (HLS) packaging configuration."
+         description: <<~'DESCRIPTION'
+           An HTTP Live Streaming (HLS) packaging configuration.
+         DESCRIPTION
 
 property :id, String,
          required: true,
          callbacks: {
            "id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The ID of the PackagingConfiguration."
+         description: <<~'DESCRIPTION'
+           The ID of the PackagingConfiguration.
+         DESCRIPTION
 
 property :mss_package, Hash,
          callbacks: {
            "Subproperty `MssManifests` is not a Array" => lambda { |v| v[:MssManifests].is_a? Array },
          },
-         description: "A Microsoft Smooth Streaming (MSS) PackagingConfiguration."
+         description: <<~'DESCRIPTION'
+           A Microsoft Smooth Streaming (MSS) PackagingConfiguration.
+         DESCRIPTION
 
 property :packaging_group_id, String,
          required: true,
          callbacks: {
            "packaging_group_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The ID of a PackagingGroup."
+         description: <<~'DESCRIPTION'
+           The ID of a PackagingGroup.
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "A collection of tags associated with a resource"
+         description: <<~'DESCRIPTION'
+           A collection of tags associated with a resource
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::MediaPackage::PackagingConfiguration"

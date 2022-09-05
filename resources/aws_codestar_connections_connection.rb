@@ -18,7 +18,9 @@ property :connection_name, String,
            "connection_name is not a String" => lambda { |v| v.is_a? String },
            "connection_name needs to be 1..32 characters" => lambda { |v| v.length >= 1 && v.length <= 32 },
          },
-         description: "The name of the connection. Connection names must be unique in an AWS user account."
+         description: <<~'DESCRIPTION'
+           The name of the connection. Connection names must be unique in an AWS user account.
+         DESCRIPTION
 
 property :host_arn, String,
          callbacks: {
@@ -26,19 +28,25 @@ property :host_arn, String,
            "host_arn needs to be 0..256 characters" => lambda { |v| v.length >= 0 && v.length <= 256 },
            "host_arn must match pattern arn:aws(-[\w]+)*:.+:.+:[0-9]{12}:.+" => lambda { |v| v =~ Regexp.new("/arn:aws(-[\w]+)*:.+:.+:[0-9]{12}:.+/") },
          },
-         description: "The host arn configured to represent the infrastructure where your third-party provider is installed. You must specify either a ProviderType or a HostArn."
+         description: <<~'DESCRIPTION'
+           The host arn configured to represent the infrastructure where your third-party provider is installed. You must specify either a ProviderType or a HostArn.
+         DESCRIPTION
 
 property :provider_type, String,
          callbacks: {
            "provider_type is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The name of the external provider where your third-party code repository is configured. You must specify either a ProviderType or a HostArn."
+         description: <<~'DESCRIPTION'
+           The name of the external provider where your third-party code repository is configured. You must specify either a ProviderType or a HostArn.
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "Specifies the tags applied to a connection."
+         description: <<~'DESCRIPTION'
+           Specifies the tags applied to a connection.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::CodeStarConnections::Connection"

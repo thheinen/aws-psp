@@ -17,20 +17,26 @@ property :options, Hash,
          callbacks: {
            "Subproperty `Protocol` is not a String" => lambda { |v| v[:Protocol].is_a? String },
          },
-         description: "The Connect attachment options."
+         description: <<~'DESCRIPTION'
+           The Connect attachment options.
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "The tags for the attachment."
+         description: <<~'DESCRIPTION'
+           The tags for the attachment.
+         DESCRIPTION
 
 property :transport_transitgateway_attachment_id, String,
          required: true,
          callbacks: {
            "transport_transitgateway_attachment_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The ID of the attachment from which the Connect attachment was created."
+         description: <<~'DESCRIPTION'
+           The ID of the attachment from which the Connect attachment was created.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::EC2::TransitGatewayConnect"

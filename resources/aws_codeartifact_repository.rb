@@ -16,19 +16,25 @@ property :description, String,
          callbacks: {
            "description is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "A text description of the repository."
+         description: <<~'DESCRIPTION'
+           A text description of the repository.
+         DESCRIPTION
 
 property :external_connections, Array,
          callbacks: {
            "external_connections is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "A list of external connections associated with the repository."
+         description: <<~'DESCRIPTION'
+           A list of external connections associated with the repository.
+         DESCRIPTION
 
 property :permissions_policy_document, Hash,
          callbacks: {
            "permissions_policy_document is not a Object" => lambda { |v| v.is_a? Object },
          },
-         description: "The access control resource policy on the provided repository."
+         description: <<~'DESCRIPTION'
+           The access control resource policy on the provided repository.
+         DESCRIPTION
 
 property :repository_name, String,
          required: true,
@@ -37,19 +43,25 @@ property :repository_name, String,
            "repository_name needs to be 2..100 characters" => lambda { |v| v.length >= 2 && v.length <= 100 },
            "repository_name must match pattern ^([A-Za-z0-9][A-Za-z0-9._\-]{1,99})$" => lambda { |v| v =~ Regexp.new("/^([A-Za-z0-9][A-Za-z0-9._\-]{1,99})$/") },
          },
-         description: "The name of the repository."
+         description: <<~'DESCRIPTION'
+           The name of the repository.
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "An array of key-value pairs to apply to this resource."
+         description: <<~'DESCRIPTION'
+           An array of key-value pairs to apply to this resource.
+         DESCRIPTION
 
 property :upstreams, Array,
          callbacks: {
            "upstreams is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "A list of upstream repositories associated with the repository."
+         description: <<~'DESCRIPTION'
+           A list of upstream repositories associated with the repository.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::CodeArtifact::Repository"
