@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_app_integrations_event_integration
 provides :aws_app_integrations_event_integration, target_mode: true, platform: "aws"
 
@@ -17,7 +18,9 @@ property :description, String,
            "description is not a String" => lambda { |v| v.is_a? String },
            "description needs to be 1..1000 characters" => lambda { |v| v.length >= 1 && v.length <= 1000 },
          },
-         description: "The event integration description."
+         description: <<~'DESCRIPTION'
+           The event integration description.
+         DESCRIPTION
 
 property :event_bridge_bus, String,
          required: true,
@@ -26,7 +29,9 @@ property :event_bridge_bus, String,
            "event_bridge_bus needs to be 1..255 characters" => lambda { |v| v.length >= 1 && v.length <= 255 },
            "event_bridge_bus must match pattern ^[a-zA-Z0-9/\._\-]+$" => lambda { |v| v =~ Regexp.new("/^[a-zA-Z0-9/\._\-]+$/") },
          },
-         description: "The Amazon Eventbridge bus for the event integration."
+         description: <<~'DESCRIPTION'
+           The Amazon Eventbridge bus for the event integration.
+         DESCRIPTION
 
 property :event_filter, Hash,
          required: true,
@@ -35,23 +40,28 @@ property :event_filter, Hash,
            "Subproperty `Source` needs to be 1..256 characters" => lambda { |v| v[:Source].length >= 1 && v[:Source].length <= 256 },
            "Subproperty `Source` must match pattern ^aws\.partner\/.*$" => lambda { |v| v[:Source] =~ Regexp.new("/^aws\.partner\/.*$/") },
          },
-         description: "The EventFilter (source) associated with the event integration."
+         description: <<~'DESCRIPTION'
+           The EventFilter (source) associated with the event integration.
+         DESCRIPTION
 
 property :name, String,
          name_property: true,
-         required: true,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
            "name needs to be 1..255 characters" => lambda { |v| v.length >= 1 && v.length <= 255 },
            "name must match pattern ^[a-zA-Z0-9/\._\-]+$" => lambda { |v| v =~ Regexp.new("/^[a-zA-Z0-9/\._\-]+$/") },
          },
-         description: "The name of the event integration."
+         description: <<~'DESCRIPTION'
+           The name of the event integration.
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "The tags (keys and values) associated with the event integration."
+         description: <<~'DESCRIPTION'
+           The tags (keys and values) associated with the event integration.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::AppIntegrations::EventIntegration"

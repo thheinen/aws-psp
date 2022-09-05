@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_imagebuilder_distribution_configuration
 provides :aws_imagebuilder_distribution_configuration, target_mode: true, platform: "aws"
 
@@ -16,28 +17,35 @@ property :description, String,
          callbacks: {
            "description is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The description of the distribution configuration."
+         description: <<~'DESCRIPTION'
+           The description of the distribution configuration.
+         DESCRIPTION
 
 property :distributions, Array,
          required: true,
          callbacks: {
            "distributions is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "The distributions of the distribution configuration."
+         description: <<~'DESCRIPTION'
+           The distributions of the distribution configuration.
+         DESCRIPTION
 
 property :name, String,
          name_property: true,
-         required: true,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The name of the distribution configuration."
+         description: <<~'DESCRIPTION'
+           The name of the distribution configuration.
+         DESCRIPTION
 
 property :tags, Hash,
          callbacks: {
            "tags is not a Object" => lambda { |v| v.is_a? Object },
          },
-         description: "The tags associated with the component."
+         description: <<~'DESCRIPTION'
+           The tags associated with the component.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::ImageBuilder::DistributionConfiguration"

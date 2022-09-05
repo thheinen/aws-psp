@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_mediaconnect_flow_vpc_interface
 provides :aws_mediaconnect_flow_vpc_interface, target_mode: true, platform: "aws"
 
@@ -17,36 +18,45 @@ property :flow_arn, String,
          callbacks: {
            "flow_arn is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The Amazon Resource Name (ARN), a unique identifier for any AWS resource, of the flow."
+         description: <<~'DESCRIPTION'
+           The Amazon Resource Name (ARN), a unique identifier for any AWS resource, of the flow.
+         DESCRIPTION
 
 property :name, String,
          name_property: true,
-         required: true,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "Immutable and has to be a unique against other VpcInterfaces in this Flow."
+         description: <<~'DESCRIPTION'
+           Immutable and has to be a unique against other VpcInterfaces in this Flow.
+         DESCRIPTION
 
 property :role_arn, String,
          required: true,
          callbacks: {
            "role_arn is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "Role Arn MediaConnect can assumes to create ENIs in customer's account."
+         description: <<~'DESCRIPTION'
+           Role Arn MediaConnect can assumes to create ENIs in customer's account.
+         DESCRIPTION
 
 property :security_group_ids, Array,
          required: true,
          callbacks: {
            "security_group_ids is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "Security Group IDs to be used on ENI."
+         description: <<~'DESCRIPTION'
+           Security Group IDs to be used on ENI.
+         DESCRIPTION
 
 property :subnet_id, String,
          required: true,
          callbacks: {
            "subnet_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "Subnet must be in the AZ of the Flow"
+         description: <<~'DESCRIPTION'
+           Subnet must be in the AZ of the Flow
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::MediaConnect::FlowVpcInterface"

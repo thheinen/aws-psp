@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_s3outposts_access_point
 provides :aws_s3outposts_access_point, target_mode: true, platform: "aws"
 
@@ -25,7 +26,6 @@ property :bucket, String,
 
 property :name, String,
          name_property: true,
-         required: true,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
            "name needs to be 3..50 characters" => lambda { |v| v.length >= 3 && v.length <= 50 },

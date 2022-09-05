@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_wafv2_web_acl
 provides :aws_wafv2_web_acl, target_mode: true, platform: "aws"
 
@@ -44,7 +45,9 @@ property :rules, Array,
          callbacks: {
            "rules is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "Collection of Rules."
+         description: <<~'DESCRIPTION'
+           Collection of Rules.
+         DESCRIPTION
 
 property :scope, Hash,
          required: true,

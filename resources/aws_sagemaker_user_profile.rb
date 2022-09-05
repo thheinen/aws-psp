@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_sagemaker_user_profile
 provides :aws_sagemaker_user_profile, target_mode: true, platform: "aws"
 

@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_sagemaker_model_package
 provides :aws_sagemaker_model_package, target_mode: true, platform: "aws"
 
@@ -198,7 +199,9 @@ property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "An array of key-value pairs to apply to this resource."
+         description: <<~'DESCRIPTION'
+           An array of key-value pairs to apply to this resource.
+         DESCRIPTION
 
 property :task, Hash,
          callbacks: {

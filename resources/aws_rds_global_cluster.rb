@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_rds_global_cluster
 provides :aws_rds_global_cluster, target_mode: true, platform: "aws"
 
@@ -16,7 +17,9 @@ property :deletion_protection, [TrueClass, FalseClass],
          callbacks: {
            "deletion_protection is not a Boolean" => lambda { |v| v.is_a? Boolean },
          },
-         description: "The deletion protection setting for the new global database. The global database can't be deleted when deletion protection is enabled."
+         description: <<~'DESCRIPTION'
+           The deletion protection setting for the new global database. The global database can't be deleted when deletion protection is enabled.
+         DESCRIPTION
 
 property :engine, String,
          callbacks: {
@@ -32,17 +35,23 @@ property :engine_version, String,
          callbacks: {
            "engine_version is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The version number of the database engine to use. If you specify the SourceDBClusterIdentifier property, don't specify this property. The value is inherited from the cluster."
+         description: <<~'DESCRIPTION'
+           The version number of the database engine to use. If you specify the SourceDBClusterIdentifier property, don't specify this property. The value is inherited from the cluster.
+         DESCRIPTION
 
 property :global_cluster_identifier, String,
          callbacks: {
            "global_cluster_identifier is not a String" => lambda { |v| v.is_a? String },
            "global_cluster_identifier must match pattern ^[a-zA-Z]{1}(?:-?[a-zA-Z0-9]){0,62}$" => lambda { |v| v =~ Regexp.new("/^[a-zA-Z]{1}(?:-?[a-zA-Z0-9]){0,62}$/") },
          },
-         description: "The cluster identifier of the new global database cluster. This parameter is stored as a lowercase string."
+         description: <<~'DESCRIPTION'
+           The cluster identifier of the new global database cluster. This parameter is stored as a lowercase string.
+         DESCRIPTION
 
 property :source_db_cluster_identifier, String,
-         description: "The Amazon Resource Name (ARN) to use as the primary cluster of the global database. This parameter is optional. This parameter is stored as a lowercase string."
+         description: <<~'DESCRIPTION'
+           The Amazon Resource Name (ARN) to use as the primary cluster of the global database. This parameter is optional. This parameter is stored as a lowercase string.
+         DESCRIPTION
 
 property :storage_encrypted, [TrueClass, FalseClass],
          callbacks: {

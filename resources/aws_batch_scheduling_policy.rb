@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_batch_scheduling_policy
 provides :aws_batch_scheduling_policy, target_mode: true, platform: "aws"
 
@@ -26,13 +27,17 @@ property :name, String,
            "name is not a String" => lambda { |v| v.is_a? String },
            "name must match pattern " => lambda { |v| v =~ Regexp.new("//") },
          },
-         description: "Name of Scheduling Policy."
+         description: <<~'DESCRIPTION'
+           Name of Scheduling Policy.
+         DESCRIPTION
 
 property :tags, Hash,
          callbacks: {
            "tags is not a Object" => lambda { |v| v.is_a? Object },
          },
-         description: "A key-value pair to associate with a resource."
+         description: <<~'DESCRIPTION'
+           A key-value pair to associate with a resource.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::Batch::SchedulingPolicy"

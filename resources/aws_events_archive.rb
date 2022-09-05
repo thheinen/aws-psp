@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_events_archive
 provides :aws_events_archive, target_mode: true, platform: "aws"
 

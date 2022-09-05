@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_quicksight_data_source
 provides :aws_quicksight_data_source, target_mode: true, platform: "aws"
 
@@ -65,13 +66,17 @@ property :name, String,
            "name is not a String" => lambda { |v| v.is_a? String },
            "name needs to be 1..128 characters" => lambda { |v| v.length >= 1 && v.length <= 128 },
          },
-         description: "<p>A display name for the data source.</p>"
+         description: <<~'DESCRIPTION'
+           <p>A display name for the data source.</p>
+         DESCRIPTION
 
 property :permissions, Array,
          callbacks: {
            "permissions is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "<p>A list of resource permissions on the data source.</p>"
+         description: <<~'DESCRIPTION'
+           <p>A list of resource permissions on the data source.</p>
+         DESCRIPTION
 
 property :ssl_properties, Hash,
          callbacks: {
@@ -83,7 +88,9 @@ property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "<p>Contains a map of the key-value pairs for the resource tag or tags assigned to the data source.</p>"
+         description: <<~'DESCRIPTION'
+           <p>Contains a map of the key-value pairs for the resource tag or tags assigned to the data source.</p>
+         DESCRIPTION
 
 property :type, Hash,
          callbacks: {

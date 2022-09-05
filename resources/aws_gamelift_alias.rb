@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_gamelift_alias
 provides :aws_gamelift_alias, target_mode: true, platform: "aws"
 
@@ -17,17 +18,20 @@ property :description, String,
            "description is not a String" => lambda { |v| v.is_a? String },
            "description needs to be 1..1024 characters" => lambda { |v| v.length >= 1 && v.length <= 1024 },
          },
-         description: "A human-readable description of the alias."
+         description: <<~'DESCRIPTION'
+           A human-readable description of the alias.
+         DESCRIPTION
 
 property :name, String,
          name_property: true,
-         required: true,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
            "name needs to be 1..1024 characters" => lambda { |v| v.length >= 1 && v.length <= 1024 },
            "name must match pattern .*\S.*" => lambda { |v| v =~ Regexp.new("/.*\S.*/") },
          },
-         description: "A descriptive label that is associated with an alias. Alias names do not need to be unique."
+         description: <<~'DESCRIPTION'
+           A descriptive label that is associated with an alias. Alias names do not need to be unique.
+         DESCRIPTION
 
 property :routing_strategy, Hash,
          required: true,
@@ -38,7 +42,9 @@ property :routing_strategy, Hash,
            "Subproperty `Type` is not a String" => lambda { |v| v[:Type].is_a? String },
            "Subproperty `Type`is not one of `SIMPLE`, `TERMINAL`" => lambda { |v| %w{SIMPLE TERMINAL}.include? v[:Type] },
          },
-         description: "A routing configuration that specifies where traffic is directed for this alias, such as to a fleet or to a message."
+         description: <<~'DESCRIPTION'
+           A routing configuration that specifies where traffic is directed for this alias, such as to a fleet or to a message.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::GameLift::Alias"

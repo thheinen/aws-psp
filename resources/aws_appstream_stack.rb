@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_appstream_stack
 provides :aws_appstream_stack, target_mode: true, platform: "aws"
 

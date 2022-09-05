@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_acmpca_certificate_authority_activation
 provides :aws_acmpca_certificate_authority_activation, target_mode: true, platform: "aws"
 
@@ -17,26 +18,34 @@ property :certificate, String,
          callbacks: {
            "certificate is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "Certificate Authority certificate that will be installed in the Certificate Authority."
+         description: <<~'DESCRIPTION'
+           Certificate Authority certificate that will be installed in the Certificate Authority.
+         DESCRIPTION
 
 property :certificate_authority_arn, String,
          required: true,
          callbacks: {
            "certificate_authority_arn is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "Arn of the Certificate Authority."
+         description: <<~'DESCRIPTION'
+           Arn of the Certificate Authority.
+         DESCRIPTION
 
 property :certificate_chain, String,
          callbacks: {
            "certificate_chain is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "Certificate chain for the Certificate Authority certificate."
+         description: <<~'DESCRIPTION'
+           Certificate chain for the Certificate Authority certificate.
+         DESCRIPTION
 
 property :status, String,
          callbacks: {
            "status is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The status of the Certificate Authority."
+         description: <<~'DESCRIPTION'
+           The status of the Certificate Authority.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::ACMPCA::CertificateAuthorityActivation"

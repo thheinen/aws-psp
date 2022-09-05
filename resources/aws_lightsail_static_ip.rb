@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_lightsail_static_ip
 provides :aws_lightsail_static_ip, target_mode: true, platform: "aws"
 
@@ -16,14 +17,18 @@ property :attached_to, String,
          callbacks: {
            "attached_to is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The instance where the static IP is attached."
+         description: <<~'DESCRIPTION'
+           The instance where the static IP is attached.
+         DESCRIPTION
 
 property :static_ip_name, String,
          required: true,
          callbacks: {
            "static_ip_name is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The name of the static IP address."
+         description: <<~'DESCRIPTION'
+           The name of the static IP address.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::Lightsail::StaticIp"

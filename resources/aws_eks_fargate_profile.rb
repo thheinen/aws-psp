@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_eks_fargate_profile
 provides :aws_eks_fargate_profile, target_mode: true, platform: "aws"
 
@@ -17,20 +18,26 @@ property :cluster_name, String,
          callbacks: {
            "cluster_name is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "Name of the Cluster"
+         description: <<~'DESCRIPTION'
+           Name of the Cluster
+         DESCRIPTION
 
 property :fargate_profile_name, String,
          callbacks: {
            "fargate_profile_name is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "Name of FargateProfile"
+         description: <<~'DESCRIPTION'
+           Name of FargateProfile
+         DESCRIPTION
 
 property :pod_execution_role_arn, String,
          required: true,
          callbacks: {
            "pod_execution_role_arn is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The IAM policy arn for pods"
+         description: <<~'DESCRIPTION'
+           The IAM policy arn for pods
+         DESCRIPTION
 
 property :selectors, Array,
          required: true,
@@ -49,7 +56,9 @@ property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "An array of key-value pairs to apply to this resource."
+         description: <<~'DESCRIPTION'
+           An array of key-value pairs to apply to this resource.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::EKS::FargateProfile"

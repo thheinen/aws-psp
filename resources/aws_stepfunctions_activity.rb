@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_stepfunctions_activity
 provides :aws_stepfunctions_activity, target_mode: true, platform: "aws"
 
@@ -14,7 +15,6 @@ property :name, String,
 
 property :name, String,
          name_property: true,
-         required: true,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
            "name needs to be 1..80 characters" => lambda { |v| v.length >= 1 && v.length <= 80 },

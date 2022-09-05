@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_sso_permission_set
 provides :aws_sso_permission_set, target_mode: true, platform: "aws"
 
@@ -24,10 +25,14 @@ property :description, String,
            "description needs to be 1..700 characters" => lambda { |v| v.length >= 1 && v.length <= 700 },
            "description must match pattern [\u0009\u000A\u000D\u0020-\u007E\u00A0-\u00FF]*" => lambda { |v| v =~ Regexp.new("/[\u0009\u000A\u000D\u0020-\u007E\u00A0-\u00FF]*/") },
          },
-         description: "The permission set description."
+         description: <<~'DESCRIPTION'
+           The permission set description.
+         DESCRIPTION
 
 property :inline_policy, [Hash, String],
-         description: "The inline policy to put in permission set."
+         description: <<~'DESCRIPTION'
+           The inline policy to put in permission set.
+         DESCRIPTION
 
 property :instance_arn, String,
          required: true,
@@ -36,7 +41,9 @@ property :instance_arn, String,
            "instance_arn needs to be 10..1224 characters" => lambda { |v| v.length >= 10 && v.length <= 1224 },
            "instance_arn must match pattern arn:(aws|aws-us-gov|aws-cn|aws-iso|aws-iso-b):sso:::instance/(sso)?ins-[a-zA-Z0-9-.]{16}" => lambda { |v| v =~ Regexp.new("/arn:(aws|aws-us-gov|aws-cn|aws-iso|aws-iso-b):sso:::instance/(sso)?ins-[a-zA-Z0-9-.]{16}/") },
          },
-         description: "The sso instance arn that the permission set is owned."
+         description: <<~'DESCRIPTION'
+           The sso instance arn that the permission set is owned.
+         DESCRIPTION
 
 property :managed_policies, Array,
          callbacks: {
@@ -46,13 +53,14 @@ property :managed_policies, Array,
 
 property :name, String,
          name_property: true,
-         required: true,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
            "name needs to be 1..32 characters" => lambda { |v| v.length >= 1 && v.length <= 32 },
            "name must match pattern [\w+=,.@-]+" => lambda { |v| v =~ Regexp.new("/[\w+=,.@-]+/") },
          },
-         description: "The name you want to assign to this permission set."
+         description: <<~'DESCRIPTION'
+           The name you want to assign to this permission set.
+         DESCRIPTION
 
 property :permissions_boundary, Hash,
          description: ""
@@ -63,7 +71,9 @@ property :relay_state_type, String,
            "relay_state_type needs to be 1..240 characters" => lambda { |v| v.length >= 1 && v.length <= 240 },
            "relay_state_type must match pattern [a-zA-Z0-9&amp;$@#\/%?=~\-_'&quot;|!:,.;*+\[\]\ \(\)\{\}]+" => lambda { |v| v =~ Regexp.new("/[a-zA-Z0-9&amp;$@#\/%?=~\-_'&quot;|!:,.;*+\[\]\ \(\)\{\}]+/") },
          },
-         description: "The relay state URL that redirect links to any service in the AWS Management Console."
+         description: <<~'DESCRIPTION'
+           The relay state URL that redirect links to any service in the AWS Management Console.
+         DESCRIPTION
 
 property :session_duration, String,
          callbacks: {
@@ -71,7 +81,9 @@ property :session_duration, String,
            "session_duration needs to be 1..100 characters" => lambda { |v| v.length >= 1 && v.length <= 100 },
            "session_duration must match pattern ^(-?)P(?=\d|T\d)(?:(\d+)Y)?(?:(\d+)M)?(?:(\d+)([DW]))?(?:T(?:(\d+)H)?(?:(\d+)M)?(?:(\d+(?:\.\d+)?)S)?)?$" => lambda { |v| v =~ Regexp.new("/^(-?)P(?=\d|T\d)(?:(\d+)Y)?(?:(\d+)M)?(?:(\d+)([DW]))?(?:T(?:(\d+)H)?(?:(\d+)M)?(?:(\d+(?:\.\d+)?)S)?)?$/") },
          },
-         description: "The length of time that a user can be signed in to an AWS account."
+         description: <<~'DESCRIPTION'
+           The length of time that a user can be signed in to an AWS account.
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {

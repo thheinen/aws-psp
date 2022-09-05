@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_iot_twinmaker_scene
 provides :aws_iot_twinmaker_scene, target_mode: true, platform: "aws"
 
@@ -16,7 +17,9 @@ property :capabilities, Array,
          callbacks: {
            "capabilities is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "A list of capabilities that the scene uses to render."
+         description: <<~'DESCRIPTION'
+           A list of capabilities that the scene uses to render.
+         DESCRIPTION
 
 property :content_location, String,
          required: true,
@@ -25,14 +28,18 @@ property :content_location, String,
            "content_location needs to be 0..256 characters" => lambda { |v| v.length >= 0 && v.length <= 256 },
            "content_location must match pattern [sS]3://[A-Za-z0-9._/-]+" => lambda { |v| v =~ Regexp.new("/[sS]3://[A-Za-z0-9._/-]+/") },
          },
-         description: "The relative path that specifies the location of the content definition file."
+         description: <<~'DESCRIPTION'
+           The relative path that specifies the location of the content definition file.
+         DESCRIPTION
 
 property :description, String,
          callbacks: {
            "description is not a String" => lambda { |v| v.is_a? String },
            "description needs to be 0..512 characters" => lambda { |v| v.length >= 0 && v.length <= 512 },
          },
-         description: "The description of the scene."
+         description: <<~'DESCRIPTION'
+           The description of the scene.
+         DESCRIPTION
 
 property :scene_id, String,
          required: true,
@@ -41,13 +48,17 @@ property :scene_id, String,
            "scene_id needs to be 1..128 characters" => lambda { |v| v.length >= 1 && v.length <= 128 },
            "scene_id must match pattern [a-zA-Z_0-9][a-zA-Z_\-0-9]*[a-zA-Z0-9]+" => lambda { |v| v =~ Regexp.new("/[a-zA-Z_0-9][a-zA-Z_\-0-9]*[a-zA-Z0-9]+/") },
          },
-         description: "The ID of the scene."
+         description: <<~'DESCRIPTION'
+           The ID of the scene.
+         DESCRIPTION
 
 property :tags, Hash,
          callbacks: {
            "tags is not a Object" => lambda { |v| v.is_a? Object },
          },
-         description: "A key-value pair to associate with a resource."
+         description: <<~'DESCRIPTION'
+           A key-value pair to associate with a resource.
+         DESCRIPTION
 
 property :workspace_id, String,
          required: true,
@@ -56,7 +67,9 @@ property :workspace_id, String,
            "workspace_id needs to be 1..128 characters" => lambda { |v| v.length >= 1 && v.length <= 128 },
            "workspace_id must match pattern [a-zA-Z_0-9][a-zA-Z_\-0-9]*[a-zA-Z0-9]+" => lambda { |v| v =~ Regexp.new("/[a-zA-Z_0-9][a-zA-Z_\-0-9]*[a-zA-Z0-9]+/") },
          },
-         description: "The ID of the scene."
+         description: <<~'DESCRIPTION'
+           The ID of the scene.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::IoTTwinMaker::Scene"

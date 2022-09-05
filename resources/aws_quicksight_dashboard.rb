@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_quicksight_dashboard
 provides :aws_quicksight_dashboard, target_mode: true, platform: "aws"
 
@@ -40,7 +41,9 @@ property :name, String,
            "name needs to be 1..2048 characters" => lambda { |v| v.length >= 1 && v.length <= 2048 },
            "name must match pattern [\u0020-\u00FF]+" => lambda { |v| v =~ Regexp.new("/[\u0020-\u00FF]+/") },
          },
-         description: "<p>The display name of the dashboard.</p>"
+         description: <<~'DESCRIPTION'
+           <p>The display name of the dashboard.</p>
+         DESCRIPTION
 
 property :parameters, Hash,
          callbacks: {
@@ -91,7 +94,9 @@ property :version_description, String,
            "version_description is not a String" => lambda { |v| v.is_a? String },
            "version_description needs to be 1..512 characters" => lambda { |v| v.length >= 1 && v.length <= 512 },
          },
-         description: "<p>A description for the first version of the dashboard being created.</p>"
+         description: <<~'DESCRIPTION'
+           <p>A description for the first version of the dashboard being created.</p>
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::QuickSight::Dashboard"

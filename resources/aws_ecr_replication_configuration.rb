@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_ecr_replication_configuration
 provides :aws_ecr_replication_configuration, target_mode: true, platform: "aws"
 

@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_location_tracker_consumer
 provides :aws_location_tracker_consumer, target_mode: true, platform: "aws"
 

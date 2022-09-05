@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_iot_events_input
 provides :aws_iot_events_input, target_mode: true, platform: "aws"
 
@@ -24,7 +25,9 @@ property :input_description, String,
            "input_description is not a String" => lambda { |v| v.is_a? String },
            "input_description needs to be 1..128 characters" => lambda { |v| v.length >= 1 && v.length <= 128 },
          },
-         description: "A brief description of the input."
+         description: <<~'DESCRIPTION'
+           A brief description of the input.
+         DESCRIPTION
 
 property :input_name, String,
          callbacks: {
@@ -32,7 +35,9 @@ property :input_name, String,
            "input_name needs to be 1..128 characters" => lambda { |v| v.length >= 1 && v.length <= 128 },
            "input_name must match pattern ^[a-zA-Z][a-zA-Z0-9_]*$" => lambda { |v| v =~ Regexp.new("/^[a-zA-Z][a-zA-Z0-9_]*$/") },
          },
-         description: "The name of the input."
+         description: <<~'DESCRIPTION'
+           The name of the input.
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {

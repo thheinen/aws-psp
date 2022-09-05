@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_apigateway_account
 provides :aws_apigateway_account, target_mode: true, platform: "aws"
 
@@ -16,7 +17,9 @@ property :cloudwatch_role_arn, String,
          callbacks: {
            "cloudwatch_role_arn is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The Amazon Resource Name (ARN) of an IAM role that has write access to CloudWatch Logs in your account."
+         description: <<~'DESCRIPTION'
+           The Amazon Resource Name (ARN) of an IAM role that has write access to CloudWatch Logs in your account.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::ApiGateway::Account"

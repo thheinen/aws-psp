@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_kinesis_firehose_delivery_stream
 provides :aws_kinesis_firehose_delivery_stream, target_mode: true, platform: "aws"
 

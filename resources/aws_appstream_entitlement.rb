@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_appstream_entitlement
 provides :aws_appstream_entitlement, target_mode: true, platform: "aws"
 
@@ -34,7 +35,6 @@ property :description, String,
 
 property :name, String,
          name_property: true,
-         required: true,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
          },

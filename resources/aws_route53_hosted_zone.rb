@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_route53_hosted_zone
 provides :aws_route53_hosted_zone, target_mode: true, platform: "aws"
 
@@ -48,7 +49,9 @@ property :vp_cs, Array,
          callbacks: {
            "vp_cs is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "A complex type that contains information about the VPCs that are associated with the specified hosted zone."
+         description: <<~'DESCRIPTION'
+           A complex type that contains information about the VPCs that are associated with the specified hosted zone.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::Route53::HostedZone"

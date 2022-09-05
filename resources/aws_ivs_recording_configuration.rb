@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_ivs_recording_configuration
 provides :aws_ivs_recording_configuration, target_mode: true, platform: "aws"
 
@@ -23,13 +24,17 @@ property :name, String,
            "name needs to be 0..128 characters" => lambda { |v| v.length >= 0 && v.length <= 128 },
            "name must match pattern ^[a-zA-Z0-9-_]*$" => lambda { |v| v =~ Regexp.new("/^[a-zA-Z0-9-_]*$/") },
          },
-         description: "Recording Configuration Name."
+         description: <<~'DESCRIPTION'
+           Recording Configuration Name.
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "A list of key-value pairs that contain metadata for the asset model."
+         description: <<~'DESCRIPTION'
+           A list of key-value pairs that contain metadata for the asset model.
+         DESCRIPTION
 
 property :thumbnail_configuration, Hash,
          callbacks: {

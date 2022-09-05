@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_datasync_location_f_sx_windows
 provides :aws_datasync_location_f_sx_windows, target_mode: true, platform: "aws"
 
@@ -17,7 +18,9 @@ property :domain, String,
            "domain is not a String" => lambda { |v| v.is_a? String },
            "domain must match pattern ^([A-Za-z0-9]+[A-Za-z0-9-.]*)*[A-Za-z0-9-]*[A-Za-z0-9]$" => lambda { |v| v =~ Regexp.new("/^([A-Za-z0-9]+[A-Za-z0-9-.]*)*[A-Za-z0-9-]*[A-Za-z0-9]$/") },
          },
-         description: "The name of the Windows domain that the FSx for Windows server belongs to."
+         description: <<~'DESCRIPTION'
+           The name of the Windows domain that the FSx for Windows server belongs to.
+         DESCRIPTION
 
 property :fsx_filesystem_arn, String,
          required: true,
@@ -25,7 +28,9 @@ property :fsx_filesystem_arn, String,
            "fsx_filesystem_arn is not a String" => lambda { |v| v.is_a? String },
            "fsx_filesystem_arn must match pattern ^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):fsx:[a-z\-0-9]*:[0-9]{12}:file-system/fs-.*$" => lambda { |v| v =~ Regexp.new("/^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):fsx:[a-z\-0-9]*:[0-9]{12}:file-system/fs-.*$/") },
          },
-         description: "The Amazon Resource Name (ARN) for the FSx for Windows file system."
+         description: <<~'DESCRIPTION'
+           The Amazon Resource Name (ARN) for the FSx for Windows file system.
+         DESCRIPTION
 
 property :password, String,
          required: true,
@@ -33,27 +38,35 @@ property :password, String,
            "password is not a String" => lambda { |v| v.is_a? String },
            "password must match pattern ^.{0,104}$" => lambda { |v| v =~ Regexp.new("/^.{0,104}$/") },
          },
-         description: "The password of the user who has the permissions to access files and folders in the FSx for Windows file system."
+         description: <<~'DESCRIPTION'
+           The password of the user who has the permissions to access files and folders in the FSx for Windows file system.
+         DESCRIPTION
 
 property :security_group_arns, Array,
          required: true,
          callbacks: {
            "security_group_arns is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "The ARNs of the security groups that are to use to configure the FSx for Windows file system."
+         description: <<~'DESCRIPTION'
+           The ARNs of the security groups that are to use to configure the FSx for Windows file system.
+         DESCRIPTION
 
 property :subdirectory, String,
          callbacks: {
            "subdirectory is not a String" => lambda { |v| v.is_a? String },
            "subdirectory must match pattern ^[a-zA-Z0-9_\-\+\./\(\)\$\p{Zs}]+$" => lambda { |v| v =~ Regexp.new("/^[a-zA-Z0-9_\-\+\./\(\)\$\p{Zs}]+$/") },
          },
-         description: "A subdirectory in the location's path."
+         description: <<~'DESCRIPTION'
+           A subdirectory in the location's path.
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "An array of key-value pairs to apply to this resource."
+         description: <<~'DESCRIPTION'
+           An array of key-value pairs to apply to this resource.
+         DESCRIPTION
 
 property :user, String,
          required: true,
@@ -61,7 +74,9 @@ property :user, String,
            "user is not a String" => lambda { |v| v.is_a? String },
            "user must match pattern ^[^\x5B\x5D\\/:;|=,+*?]{1,104}$" => lambda { |v| v =~ Regexp.new("/^[^\x5B\x5D\\/:;|=,+*?]{1,104}$/") },
          },
-         description: "The user who has the permissions to access files and folders in the FSx for Windows file system."
+         description: <<~'DESCRIPTION'
+           The user who has the permissions to access files and folders in the FSx for Windows file system.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::DataSync::LocationFSxWindows"

@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_quicksight_theme
 provides :aws_quicksight_theme, target_mode: true, platform: "aws"
 
@@ -43,7 +44,9 @@ property :name, String,
            "name is not a String" => lambda { |v| v.is_a? String },
            "name needs to be 1..2048 characters" => lambda { |v| v.length >= 1 && v.length <= 2048 },
          },
-         description: "<p>A display name for the theme.</p>"
+         description: <<~'DESCRIPTION'
+           <p>A display name for the theme.</p>
+         DESCRIPTION
 
 property :permissions, Array,
          callbacks: {

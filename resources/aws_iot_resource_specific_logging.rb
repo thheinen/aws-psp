@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_iot_resource_specific_logging
 provides :aws_iot_resource_specific_logging, target_mode: true, platform: "aws"
 
@@ -18,7 +19,9 @@ property :log_level, String,
            "log_level is not a String" => lambda { |v| v.is_a? String },
            "log_levelis not one of `ERROR`, `WARN`, `INFO`, `DEBUG`, `DISABLED`" => lambda { |v| %w{ERROR WARN INFO DEBUG DISABLED}.include? v },
          },
-         description: "The log level for a specific target. Valid values are: ERROR, WARN, INFO, DEBUG, or DISABLED."
+         description: <<~'DESCRIPTION'
+           The log level for a specific target. Valid values are: ERROR, WARN, INFO, DEBUG, or DISABLED.
+         DESCRIPTION
 
 property :target_name, String,
          required: true,
@@ -27,7 +30,9 @@ property :target_name, String,
            "target_name needs to be 1..128 characters" => lambda { |v| v.length >= 1 && v.length <= 128 },
            "target_name must match pattern [a-zA-Z0-9.:_-]+" => lambda { |v| v =~ Regexp.new("/[a-zA-Z0-9.:_-]+/") },
          },
-         description: "The target name."
+         description: <<~'DESCRIPTION'
+           The target name.
+         DESCRIPTION
 
 property :target_type, String,
          required: true,
@@ -35,7 +40,9 @@ property :target_type, String,
            "target_type is not a String" => lambda { |v| v.is_a? String },
            "target_typeis not one of `THING_GROUP`, `CLIENT_ID`, `SOURCE_IP`, `PRINCIPAL_ID`" => lambda { |v| %w{THING_GROUP CLIENT_ID SOURCE_IP PRINCIPAL_ID}.include? v },
          },
-         description: "The target type. Value must be THING_GROUP, CLIENT_ID, SOURCE_IP, PRINCIPAL_ID."
+         description: <<~'DESCRIPTION'
+           The target type. Value must be THING_GROUP, CLIENT_ID, SOURCE_IP, PRINCIPAL_ID.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::IoT::ResourceSpecificLogging"

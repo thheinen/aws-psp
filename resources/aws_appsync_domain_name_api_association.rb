@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_appsync_domain_name_api_association
 provides :aws_appsync_domain_name_api_association, target_mode: true, platform: "aws"
 

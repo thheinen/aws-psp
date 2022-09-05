@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_databrew_schedule
 provides :aws_databrew_schedule, target_mode: true, platform: "aws"
 
@@ -18,7 +19,9 @@ property :cron_expression, String,
            "cron_expression is not a String" => lambda { |v| v.is_a? String },
            "cron_expression needs to be 1..512 characters" => lambda { |v| v.length >= 1 && v.length <= 512 },
          },
-         description: "Schedule cron"
+         description: <<~'DESCRIPTION'
+           Schedule cron
+         DESCRIPTION
 
 property :job_names, Array,
          callbacks: {
@@ -28,12 +31,13 @@ property :job_names, Array,
 
 property :name, String,
          name_property: true,
-         required: true,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
            "name needs to be 1..255 characters" => lambda { |v| v.length >= 1 && v.length <= 255 },
          },
-         description: "Schedule Name"
+         description: <<~'DESCRIPTION'
+           Schedule Name
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {

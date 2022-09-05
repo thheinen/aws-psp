@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_networkmanager_link_association
 provides :aws_networkmanager_link_association, target_mode: true, platform: "aws"
 
@@ -17,21 +18,27 @@ property :device_id, String,
          callbacks: {
            "device_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The ID of the device"
+         description: <<~'DESCRIPTION'
+           The ID of the device
+         DESCRIPTION
 
 property :global_network_id, String,
          required: true,
          callbacks: {
            "global_network_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The ID of the global network."
+         description: <<~'DESCRIPTION'
+           The ID of the global network.
+         DESCRIPTION
 
 property :link_id, String,
          required: true,
          callbacks: {
            "link_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The ID of the link"
+         description: <<~'DESCRIPTION'
+           The ID of the link
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::NetworkManager::LinkAssociation"

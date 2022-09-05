@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_iot_twinmaker_workspace
 provides :aws_iot_twinmaker_workspace, target_mode: true, platform: "aws"
 
@@ -17,7 +18,9 @@ property :description, String,
            "description is not a String" => lambda { |v| v.is_a? String },
            "description needs to be 0..512 characters" => lambda { |v| v.length >= 0 && v.length <= 512 },
          },
-         description: "The description of the workspace."
+         description: <<~'DESCRIPTION'
+           The description of the workspace.
+         DESCRIPTION
 
 property :role, String,
          required: true,
@@ -26,20 +29,26 @@ property :role, String,
            "role needs to be 20..2048 characters" => lambda { |v| v.length >= 20 && v.length <= 2048 },
            "role must match pattern arn:((aws)|(aws-cn)|(aws-us-gov)):iam::[0-9]{12}:role/.*" => lambda { |v| v =~ Regexp.new("/arn:((aws)|(aws-cn)|(aws-us-gov)):iam::[0-9]{12}:role/.*/") },
          },
-         description: "The ARN of the execution role associated with the workspace."
+         description: <<~'DESCRIPTION'
+           The ARN of the execution role associated with the workspace.
+         DESCRIPTION
 
 property :s3_location, String,
          required: true,
          callbacks: {
            "s3_location is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The ARN of the S3 bucket where resources associated with the workspace are stored."
+         description: <<~'DESCRIPTION'
+           The ARN of the S3 bucket where resources associated with the workspace are stored.
+         DESCRIPTION
 
 property :tags, Hash,
          callbacks: {
            "tags is not a Object" => lambda { |v| v.is_a? Object },
          },
-         description: "A map of key-value pairs to associate with a resource."
+         description: <<~'DESCRIPTION'
+           A map of key-value pairs to associate with a resource.
+         DESCRIPTION
 
 property :workspace_id, String,
          required: true,
@@ -48,7 +57,9 @@ property :workspace_id, String,
            "workspace_id needs to be 1..128 characters" => lambda { |v| v.length >= 1 && v.length <= 128 },
            "workspace_id must match pattern [a-zA-Z_0-9][a-zA-Z_\-0-9]*[a-zA-Z0-9]+" => lambda { |v| v =~ Regexp.new("/[a-zA-Z_0-9][a-zA-Z_\-0-9]*[a-zA-Z0-9]+/") },
          },
-         description: "The ID of the workspace."
+         description: <<~'DESCRIPTION'
+           The ID of the workspace.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::IoTTwinMaker::Workspace"

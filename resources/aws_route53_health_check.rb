@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_route53_health_check
 provides :aws_route53_health_check, target_mode: true, platform: "aws"
 
@@ -37,13 +38,17 @@ property :health_check_config, Hash,
            "Subproperty `Type` is not a String" => lambda { |v| v[:Type].is_a? String },
            "Subproperty `Type`is not one of `CALCULATED`, `CLOUDWATCH_METRIC`, `HTTP`, `HTTP_STR_MATCH`, `HTTPS`, `HTTPS_STR_MATCH`, `TCP`, `RECOVERY_CONTROL`" => lambda { |v| %w{CALCULATED CLOUDWATCH_METRIC HTTP HTTP_STR_MATCH HTTPS HTTPS_STR_MATCH TCP RECOVERY_CONTROL}.include? v[:Type] },
          },
-         description: "A complex type that contains information about the health check."
+         description: <<~'DESCRIPTION'
+           A complex type that contains information about the health check.
+         DESCRIPTION
 
 property :health_check_tags, Array,
          callbacks: {
            "health_check_tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "An array of key-value pairs to apply to this resource."
+         description: <<~'DESCRIPTION'
+           An array of key-value pairs to apply to this resource.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::Route53::HealthCheck"

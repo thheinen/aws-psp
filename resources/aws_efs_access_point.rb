@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_efs_access_point
 provides :aws_efs_access_point, target_mode: true, platform: "aws"
 
@@ -22,14 +23,18 @@ property :client_token, String,
          callbacks: {
            "client_token is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "(optional) A string of up to 64 ASCII characters that Amazon EFS uses to ensure idempotent creation."
+         description: <<~'DESCRIPTION'
+           (optional) A string of up to 64 ASCII characters that Amazon EFS uses to ensure idempotent creation.
+         DESCRIPTION
 
 property :file_system_id, String,
          required: true,
          callbacks: {
            "file_system_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The ID of the EFS file system that the access point provides access to."
+         description: <<~'DESCRIPTION'
+           The ID of the EFS file system that the access point provides access to.
+         DESCRIPTION
 
 property :posix_user, Hash,
          callbacks: {
@@ -37,14 +42,18 @@ property :posix_user, Hash,
            "Subproperty `Gid` is not a String" => lambda { |v| v[:Gid].is_a? String },
            "Subproperty `SecondaryGids` is not a Array" => lambda { |v| v[:SecondaryGids].is_a? Array },
          },
-         description: "The operating system user and group applied to all file system requests made using the access point."
+         description: <<~'DESCRIPTION'
+           The operating system user and group applied to all file system requests made using the access point.
+         DESCRIPTION
 
 property :root_directory, Hash,
          callbacks: {
            "Subproperty `Path` is not a String" => lambda { |v| v[:Path].is_a? String },
            "Subproperty `Path` needs to be 1..100 characters" => lambda { |v| v[:Path].length >= 1 && v[:Path].length <= 100 },
          },
-         description: "Specifies the directory on the Amazon EFS file system that the access point exposes as the root directory of your file system to NFS clients using the access point. The clients using the access point can only access the root directory and below. If the RootDirectory>Path specified does not exist, EFS creates it and applies the CreationInfo settings when a client connects to an access point. When specifying a RootDirectory, you need to provide the Path, and the CreationInfo is optional."
+         description: <<~'DESCRIPTION'
+           Specifies the directory on the Amazon EFS file system that the access point exposes as the root directory of your file system to NFS clients using the access point. The clients using the access point can only access the root directory and below. If the RootDirectory>Path specified does not exist, EFS creates it and applies the CreationInfo settings when a client connects to an access point. When specifying a RootDirectory, you need to provide the Path, and the CreationInfo is optional.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::EFS::AccessPoint"

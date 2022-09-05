@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_ec2_transitgateway_multicast_domain_association
 provides :aws_ec2_transitgateway_multicast_domain_association, target_mode: true, platform: "aws"
 

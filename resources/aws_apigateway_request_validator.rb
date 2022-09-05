@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_apigateway_request_validator
 provides :aws_apigateway_request_validator, target_mode: true, platform: "aws"
 
@@ -17,26 +18,34 @@ property :name, String,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "Name of the request validator."
+         description: <<~'DESCRIPTION'
+           Name of the request validator.
+         DESCRIPTION
 
 property :rest_api_id, String,
          required: true,
          callbacks: {
            "rest_api_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The identifier of the targeted API entity."
+         description: <<~'DESCRIPTION'
+           The identifier of the targeted API entity.
+         DESCRIPTION
 
 property :validate_request_body, [TrueClass, FalseClass],
          callbacks: {
            "validate_request_body is not a Boolean" => lambda { |v| v.is_a? Boolean },
          },
-         description: "Indicates whether to validate the request body according to the configured schema for the targeted API and method. "
+         description: <<~'DESCRIPTION'
+           Indicates whether to validate the request body according to the configured schema for the targeted API and method.
+         DESCRIPTION
 
 property :validate_request_parameters, [TrueClass, FalseClass],
          callbacks: {
            "validate_request_parameters is not a Boolean" => lambda { |v| v.is_a? Boolean },
          },
-         description: "Indicates whether to validate request parameters."
+         description: <<~'DESCRIPTION'
+           Indicates whether to validate request parameters.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::ApiGateway::RequestValidator"

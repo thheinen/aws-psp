@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_lightsail_certificate
 provides :aws_lightsail_certificate, target_mode: true, platform: "aws"
 
@@ -17,26 +18,34 @@ property :certificate_name, String,
          callbacks: {
            "certificate_name is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The name for the certificate."
+         description: <<~'DESCRIPTION'
+           The name for the certificate.
+         DESCRIPTION
 
 property :domain_name, String,
          required: true,
          callbacks: {
            "domain_name is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The domain name (e.g., example.com ) for the certificate."
+         description: <<~'DESCRIPTION'
+           The domain name (e.g., example.com ) for the certificate.
+         DESCRIPTION
 
 property :subject_alternative_names, Array,
          callbacks: {
            "subject_alternative_names is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "An array of strings that specify the alternate domains (e.g., example2.com) and subdomains (e.g., blog.example.com) for the certificate."
+         description: <<~'DESCRIPTION'
+           An array of strings that specify the alternate domains (e.g., example2.com) and subdomains (e.g., blog.example.com) for the certificate.
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "An array of key-value pairs to apply to this resource."
+         description: <<~'DESCRIPTION'
+           An array of key-value pairs to apply to this resource.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::Lightsail::Certificate"

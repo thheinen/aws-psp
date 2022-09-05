@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_eks_nodegroup
 provides :aws_eks_nodegroup, target_mode: true, platform: "aws"
 
@@ -16,44 +17,58 @@ property :ami_type, String,
          callbacks: {
            "ami_type is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The AMI type for your node group."
+         description: <<~'DESCRIPTION'
+           The AMI type for your node group.
+         DESCRIPTION
 
 property :capacity_type, String,
          callbacks: {
            "capacity_type is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The capacity type of your managed node group."
+         description: <<~'DESCRIPTION'
+           The capacity type of your managed node group.
+         DESCRIPTION
 
 property :cluster_name, String,
          required: true,
          callbacks: {
            "cluster_name is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "Name of the cluster to create the node group in."
+         description: <<~'DESCRIPTION'
+           Name of the cluster to create the node group in.
+         DESCRIPTION
 
 property :disk_size, Integer,
          callbacks: {
            "disk_size is not a Integer" => lambda { |v| v.is_a? Integer },
          },
-         description: "The root device disk size (in GiB) for your node group instances."
+         description: <<~'DESCRIPTION'
+           The root device disk size (in GiB) for your node group instances.
+         DESCRIPTION
 
 property :force_update_enabled, [TrueClass, FalseClass],
          callbacks: {
            "force_update_enabled is not a Boolean" => lambda { |v| v.is_a? Boolean },
          },
-         description: "Force the update if the existing node group's pods are unable to be drained due to a pod disruption budget issue."
+         description: <<~'DESCRIPTION'
+           Force the update if the existing node group's pods are unable to be drained due to a pod disruption budget issue.
+         DESCRIPTION
 
 property :instance_types, Array,
          callbacks: {
            "instance_types is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "Specify the instance types for a node group."
+         description: <<~'DESCRIPTION'
+           Specify the instance types for a node group.
+         DESCRIPTION
 
 property :labels, Hash,
          callbacks: {
            "labels is not a Object" => lambda { |v| v.is_a? Object },
          },
-         description: "The Kubernetes labels to be applied to the nodes in the node group when they are created."
+         description: <<~'DESCRIPTION'
+           The Kubernetes labels to be applied to the nodes in the node group when they are created.
+         DESCRIPTION
 
 property :launch_template, Hash,
          callbacks: {
@@ -61,33 +76,43 @@ property :launch_template, Hash,
            "Subproperty `Version` is not a String" => lambda { |v| v[:Version].is_a? String },
            "Subproperty `Name` is not a String" => lambda { |v| v[:Name].is_a? String },
          },
-         description: "An object representing a node group's launch template specification."
+         description: <<~'DESCRIPTION'
+           An object representing a node group's launch template specification.
+         DESCRIPTION
 
 property :node_role, String,
          required: true,
          callbacks: {
            "node_role is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The Amazon Resource Name (ARN) of the IAM role to associate with your node group."
+         description: <<~'DESCRIPTION'
+           The Amazon Resource Name (ARN) of the IAM role to associate with your node group.
+         DESCRIPTION
 
 property :nodegroup_name, String,
          callbacks: {
            "nodegroup_name is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The unique name to give your node group."
+         description: <<~'DESCRIPTION'
+           The unique name to give your node group.
+         DESCRIPTION
 
 property :release_version, String,
          callbacks: {
            "release_version is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The AMI version of the Amazon EKS-optimized AMI to use with your node group."
+         description: <<~'DESCRIPTION'
+           The AMI version of the Amazon EKS-optimized AMI to use with your node group.
+         DESCRIPTION
 
 property :remote_access, Hash,
          callbacks: {
            "Subproperty `SourceSecurityGroups` is not a Array" => lambda { |v| v[:SourceSecurityGroups].is_a? Array },
            "Subproperty `Ec2SshKey` is not a String" => lambda { |v| v[:Ec2SshKey].is_a? String },
          },
-         description: "The remote access (SSH) configuration to use with your node group."
+         description: <<~'DESCRIPTION'
+           The remote access (SSH) configuration to use with your node group.
+         DESCRIPTION
 
 property :scaling_config, Hash,
          callbacks: {
@@ -95,39 +120,51 @@ property :scaling_config, Hash,
            "Subproperty `DesiredSize` is not a Integer" => lambda { |v| v[:DesiredSize].is_a? Integer },
            "Subproperty `MaxSize` is not a Integer" => lambda { |v| v[:MaxSize].is_a? Integer },
          },
-         description: "The scaling configuration details for the Auto Scaling group that is created for your node group."
+         description: <<~'DESCRIPTION'
+           The scaling configuration details for the Auto Scaling group that is created for your node group.
+         DESCRIPTION
 
 property :subnets, Array,
          required: true,
          callbacks: {
            "subnets is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "The subnets to use for the Auto Scaling group that is created for your node group."
+         description: <<~'DESCRIPTION'
+           The subnets to use for the Auto Scaling group that is created for your node group.
+         DESCRIPTION
 
 property :tags, Hash,
          callbacks: {
            "tags is not a Object" => lambda { |v| v.is_a? Object },
          },
-         description: "The metadata, as key-value pairs, to apply to the node group to assist with categorization and organization. Follows same schema as Labels for consistency."
+         description: <<~'DESCRIPTION'
+           The metadata, as key-value pairs, to apply to the node group to assist with categorization and organization. Follows same schema as Labels for consistency.
+         DESCRIPTION
 
 property :taints, Array,
          callbacks: {
            "taints is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "The Kubernetes taints to be applied to the nodes in the node group when they are created."
+         description: <<~'DESCRIPTION'
+           The Kubernetes taints to be applied to the nodes in the node group when they are created.
+         DESCRIPTION
 
 property :update_config, Hash,
          callbacks: {
            "Subproperty `MaxUnavailable` is not a Number" => lambda { |v| v[:MaxUnavailable].is_a? Number },
            "Subproperty `MaxUnavailablePercentage` is not a Number" => lambda { |v| v[:MaxUnavailablePercentage].is_a? Number },
          },
-         description: "The node group update configuration."
+         description: <<~'DESCRIPTION'
+           The node group update configuration.
+         DESCRIPTION
 
 property :version, String,
          callbacks: {
            "version is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The Kubernetes version to use for your managed nodes."
+         description: <<~'DESCRIPTION'
+           The Kubernetes version to use for your managed nodes.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::EKS::Nodegroup"

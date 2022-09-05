@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_sso_assignment
 provides :aws_sso_assignment, target_mode: true, platform: "aws"
 
@@ -19,7 +20,9 @@ property :instance_arn, String,
            "instance_arn needs to be 10..1224 characters" => lambda { |v| v.length >= 10 && v.length <= 1224 },
            "instance_arn must match pattern arn:(aws|aws-us-gov|aws-cn|aws-iso|aws-iso-b):sso:::instance/(sso)?ins-[a-zA-Z0-9-.]{16}" => lambda { |v| v =~ Regexp.new("/arn:(aws|aws-us-gov|aws-cn|aws-iso|aws-iso-b):sso:::instance/(sso)?ins-[a-zA-Z0-9-.]{16}/") },
          },
-         description: "The sso instance that the permission set is owned."
+         description: <<~'DESCRIPTION'
+           The sso instance that the permission set is owned.
+         DESCRIPTION
 
 property :permission_set_arn, String,
          required: true,
@@ -28,7 +31,9 @@ property :permission_set_arn, String,
            "permission_set_arn needs to be 10..1224 characters" => lambda { |v| v.length >= 10 && v.length <= 1224 },
            "permission_set_arn must match pattern arn:(aws|aws-us-gov|aws-cn|aws-iso|aws-iso-b):sso:::permissionSet/(sso)?ins-[a-zA-Z0-9-.]{16}/ps-[a-zA-Z0-9-./]{16}" => lambda { |v| v =~ Regexp.new("/arn:(aws|aws-us-gov|aws-cn|aws-iso|aws-iso-b):sso:::permissionSet/(sso)?ins-[a-zA-Z0-9-.]{16}/ps-[a-zA-Z0-9-./]{16}/") },
          },
-         description: "The permission set that the assignemt will be assigned"
+         description: <<~'DESCRIPTION'
+           The permission set that the assignemt will be assigned
+         DESCRIPTION
 
 property :principal_id, String,
          required: true,
@@ -37,7 +42,9 @@ property :principal_id, String,
            "principal_id needs to be 1..47 characters" => lambda { |v| v.length >= 1 && v.length <= 47 },
            "principal_id must match pattern ^([0-9a-f]{10}-|)[A-Fa-f0-9]{8}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{12}$" => lambda { |v| v =~ Regexp.new("/^([0-9a-f]{10}-|)[A-Fa-f0-9]{8}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{12}$/") },
          },
-         description: "The assignee's identifier, user id/group id"
+         description: <<~'DESCRIPTION'
+           The assignee's identifier, user id/group id
+         DESCRIPTION
 
 property :principal_type, String,
          required: true,
@@ -45,7 +52,9 @@ property :principal_type, String,
            "principal_type is not a String" => lambda { |v| v.is_a? String },
            "principal_typeis not one of `USER`, `GROUP`" => lambda { |v| %w{USER GROUP}.include? v },
          },
-         description: "The assignee's type, user/group"
+         description: <<~'DESCRIPTION'
+           The assignee's type, user/group
+         DESCRIPTION
 
 property :target_id, String,
          required: true,
@@ -53,7 +62,9 @@ property :target_id, String,
            "target_id is not a String" => lambda { |v| v.is_a? String },
            "target_id must match pattern \d{12}" => lambda { |v| v =~ Regexp.new("/\d{12}/") },
          },
-         description: "The account id to be provisioned."
+         description: <<~'DESCRIPTION'
+           The account id to be provisioned.
+         DESCRIPTION
 
 property :target_type, String,
          required: true,
@@ -61,7 +72,9 @@ property :target_type, String,
            "target_type is not a String" => lambda { |v| v.is_a? String },
            "target_typeis not one of `AWS_ACCOUNT`" => lambda { |v| %w{AWS_ACCOUNT}.include? v },
          },
-         description: "The type of resource to be provsioned to, only aws account now"
+         description: <<~'DESCRIPTION'
+           The type of resource to be provsioned to, only aws account now
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::SSO::Assignment"

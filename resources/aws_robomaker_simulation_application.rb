@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_robomaker_simulation_application
 provides :aws_robomaker_simulation_application, target_mode: true, platform: "aws"
 
@@ -16,13 +17,17 @@ property :current_revision_id, String,
          callbacks: {
            "current_revision_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The current revision id."
+         description: <<~'DESCRIPTION'
+           The current revision id.
+         DESCRIPTION
 
 property :environment, String,
          callbacks: {
            "environment is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The URI of the Docker image for the robot application."
+         description: <<~'DESCRIPTION'
+           The URI of the Docker image for the robot application.
+         DESCRIPTION
 
 property :name, String,
          name_property: true,
@@ -31,7 +36,9 @@ property :name, String,
            "name needs to be 1..255 characters" => lambda { |v| v.length >= 1 && v.length <= 255 },
            "name must match pattern [a-zA-Z0-9_\-]*" => lambda { |v| v =~ Regexp.new("/[a-zA-Z0-9_\-]*/") },
          },
-         description: "The name of the simulation application."
+         description: <<~'DESCRIPTION'
+           The name of the simulation application.
+         DESCRIPTION
 
 property :rendering_engine, Hash,
          callbacks: {
@@ -40,7 +47,9 @@ property :rendering_engine, Hash,
            "Subproperty `Version` is not a String" => lambda { |v| v[:Version].is_a? String },
            "Subproperty `Version` must match pattern 1.x" => lambda { |v| v[:Version] =~ Regexp.new("/1.x/") },
          },
-         description: "The rendering engine for the simulation application."
+         description: <<~'DESCRIPTION'
+           The rendering engine for the simulation application.
+         DESCRIPTION
 
 property :robot_software_suite, Hash,
          required: true,
@@ -50,7 +59,9 @@ property :robot_software_suite, Hash,
            "Subproperty `Version` is not a String" => lambda { |v| v[:Version].is_a? String },
            "Subproperty `Version`is not one of `Kinetic`, `Melodic`, `Dashing`, `Foxy`" => lambda { |v| %w{Kinetic Melodic Dashing Foxy}.include? v[:Version] },
          },
-         description: "The robot software suite used by the simulation application."
+         description: <<~'DESCRIPTION'
+           The robot software suite used by the simulation application.
+         DESCRIPTION
 
 property :simulation_software_suite, Hash,
          required: true,
@@ -60,13 +71,17 @@ property :simulation_software_suite, Hash,
            "Subproperty `Version` is not a String" => lambda { |v| v[:Version].is_a? String },
            "Subproperty `Version`is not one of `7`, `9`, `11`, `Kinetic`, `Melodic`, `Dashing`, `Foxy`" => lambda { |v| %w{7 9 11 Kinetic Melodic Dashing Foxy}.include? v[:Version] },
          },
-         description: "The simulation software suite used by the simulation application."
+         description: <<~'DESCRIPTION'
+           The simulation software suite used by the simulation application.
+         DESCRIPTION
 
 property :sources, Array,
          callbacks: {
            "sources is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "The sources of the simulation application."
+         description: <<~'DESCRIPTION'
+           The sources of the simulation application.
+         DESCRIPTION
 
 property :tags, Hash,
          callbacks: {

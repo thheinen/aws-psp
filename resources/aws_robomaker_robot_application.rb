@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_robomaker_robot_application
 provides :aws_robomaker_robot_application, target_mode: true, platform: "aws"
 
@@ -17,13 +18,17 @@ property :current_revision_id, String,
            "current_revision_id is not a String" => lambda { |v| v.is_a? String },
            "current_revision_id needs to be 1..40 characters" => lambda { |v| v.length >= 1 && v.length <= 40 },
          },
-         description: "The revision ID of robot application."
+         description: <<~'DESCRIPTION'
+           The revision ID of robot application.
+         DESCRIPTION
 
 property :environment, String,
          callbacks: {
            "environment is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The URI of the Docker image for the robot application."
+         description: <<~'DESCRIPTION'
+           The URI of the Docker image for the robot application.
+         DESCRIPTION
 
 property :name, String,
          name_property: true,
@@ -31,7 +36,9 @@ property :name, String,
            "name is not a String" => lambda { |v| v.is_a? String },
            "name needs to be 1..255 characters" => lambda { |v| v.length >= 1 && v.length <= 255 },
          },
-         description: "The name of the robot application."
+         description: <<~'DESCRIPTION'
+           The name of the robot application.
+         DESCRIPTION
 
 property :robot_software_suite, Hash,
          required: true,
@@ -47,7 +54,9 @@ property :sources, Array,
          callbacks: {
            "sources is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "The sources of the robot application."
+         description: <<~'DESCRIPTION'
+           The sources of the robot application.
+         DESCRIPTION
 
 property :tags, Hash,
          callbacks: {

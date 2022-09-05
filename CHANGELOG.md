@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.1.2 (2022-09-05)
+
+- Refresh resources
+
 ## v0.1.1 (2022-09-05)
 
 - Update AWS::APS::RuleGroupsNamespace

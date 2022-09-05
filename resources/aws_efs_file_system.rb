@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_efs_file_system
 provides :aws_efs_file_system, target_mode: true, platform: "aws"
 
@@ -28,7 +29,9 @@ property :bypass_policy_lockout_safety_check, [TrueClass, FalseClass],
          callbacks: {
            "bypass_policy_lockout_safety_check is not a Boolean" => lambda { |v| v.is_a? Boolean },
          },
-         description: "Whether to bypass the FileSystemPolicy lockout safety check. The policy lockout safety check determines whether the policy in the request will prevent the principal making the request to be locked out from making future PutFileSystemPolicy requests on the file system. Set BypassPolicyLockoutSafetyCheck to True only when you intend to prevent the principal that is making the request from making a subsequent PutFileSystemPolicy request on the file system. Defaults to false"
+         description: <<~'DESCRIPTION'
+           Whether to bypass the FileSystemPolicy lockout safety check. The policy lockout safety check determines whether the policy in the request will prevent the principal making the request to be locked out from making future PutFileSystemPolicy requests on the file system. Set BypassPolicyLockoutSafetyCheck to True only when you intend to prevent the principal that is making the request from making a subsequent PutFileSystemPolicy request on the file system. Defaults to false
+         DESCRIPTION
 
 property :encrypted, [TrueClass, FalseClass],
          callbacks: {

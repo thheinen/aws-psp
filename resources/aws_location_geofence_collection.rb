@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_location_geofence_collection
 provides :aws_location_geofence_collection, target_mode: true, platform: "aws"
 

@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_glue_schema
 provides :aws_glue_schema, target_mode: true, platform: "aws"
 
@@ -25,7 +26,9 @@ property :compatibility, String,
            "compatibility is not a String" => lambda { |v| v.is_a? String },
            "compatibilityis not one of `NONE`, `DISABLED`, `BACKWARD`, `BACKWARD_ALL`, `FORWARD`, `FORWARD_ALL`, `FULL`, `FULL_ALL`" => lambda { |v| %w{NONE DISABLED BACKWARD BACKWARD_ALL FORWARD FORWARD_ALL FULL FULL_ALL}.include? v },
          },
-         description: "Compatibility setting for the schema."
+         description: <<~'DESCRIPTION'
+           Compatibility setting for the schema.
+         DESCRIPTION
 
 property :data_format, String,
          required: true,
@@ -33,23 +36,28 @@ property :data_format, String,
            "data_format is not a String" => lambda { |v| v.is_a? String },
            "data_formatis not one of `AVRO`, `JSON`, `PROTOBUF`" => lambda { |v| %w{AVRO JSON PROTOBUF}.include? v },
          },
-         description: "Data format name to use for the schema. Accepted values: 'AVRO', 'JSON', 'PROTOBUF'"
+         description: <<~'DESCRIPTION'
+           Data format name to use for the schema. Accepted values: 'AVRO', 'JSON', 'PROTOBUF'
+         DESCRIPTION
 
 property :description, String,
          callbacks: {
            "description is not a String" => lambda { |v| v.is_a? String },
            "description needs to be 0..1000 characters" => lambda { |v| v.length >= 0 && v.length <= 1000 },
          },
-         description: "A description of the schema. If description is not provided, there will not be any default value for this."
+         description: <<~'DESCRIPTION'
+           A description of the schema. If description is not provided, there will not be any default value for this.
+         DESCRIPTION
 
 property :name, String,
          name_property: true,
-         required: true,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
            "name needs to be 1..255 characters" => lambda { |v| v.length >= 1 && v.length <= 255 },
          },
-         description: "Name of the schema."
+         description: <<~'DESCRIPTION'
+           Name of the schema.
+         DESCRIPTION
 
 property :registry, Hash,
          callbacks: {
@@ -67,13 +75,17 @@ property :schema_definition, String,
            "schema_definition is not a String" => lambda { |v| v.is_a? String },
            "schema_definition needs to be 1..170000 characters" => lambda { |v| v.length >= 1 && v.length <= 170000 },
          },
-         description: "Definition for the initial schema version in plain-text."
+         description: <<~'DESCRIPTION'
+           Definition for the initial schema version in plain-text.
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "List of tags to tag the schema"
+         description: <<~'DESCRIPTION'
+           List of tags to tag the schema
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::Glue::Schema"

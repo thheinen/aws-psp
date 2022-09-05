@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_ec2_ipam_allocation
 provides :aws_ec2_ipam_allocation, target_mode: true, platform: "aws"
 
@@ -29,13 +30,17 @@ property :ipam_pool_id, String,
          callbacks: {
            "ipam_pool_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "Id of the IPAM Pool."
+         description: <<~'DESCRIPTION'
+           Id of the IPAM Pool.
+         DESCRIPTION
 
 property :netmask_length, Integer,
          callbacks: {
            "netmask_length is not a Integer" => lambda { |v| v.is_a? Integer },
          },
-         description: "The desired netmask length of the allocation. If set, IPAM will choose a block of free space with this size and return the CIDR representing it."
+         description: <<~'DESCRIPTION'
+           The desired netmask length of the allocation. If set, IPAM will choose a block of free space with this size and return the CIDR representing it.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::EC2::IPAMAllocation"

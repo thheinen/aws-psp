@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_iot_events_detector_model
 provides :aws_iot_events_detector_model, target_mode: true, platform: "aws"
 
@@ -25,7 +26,9 @@ property :detector_model_description, String,
          callbacks: {
            "detector_model_description is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "A brief description of the detector model."
+         description: <<~'DESCRIPTION'
+           A brief description of the detector model.
+         DESCRIPTION
 
 property :detector_model_name, String,
          callbacks: {
@@ -33,14 +36,18 @@ property :detector_model_name, String,
            "detector_model_name needs to be 1..128 characters" => lambda { |v| v.length >= 1 && v.length <= 128 },
            "detector_model_name must match pattern ^[a-zA-Z0-9_-]+$" => lambda { |v| v =~ Regexp.new("/^[a-zA-Z0-9_-]+$/") },
          },
-         description: "The name of the detector model."
+         description: <<~'DESCRIPTION'
+           The name of the detector model.
+         DESCRIPTION
 
 property :evaluation_method, String,
          callbacks: {
            "evaluation_method is not a String" => lambda { |v| v.is_a? String },
            "evaluation_methodis not one of `BATCH`, `SERIAL`" => lambda { |v| %w{BATCH SERIAL}.include? v },
          },
-         description: "Information about the order in which events are evaluated and how actions are executed."
+         description: <<~'DESCRIPTION'
+           Information about the order in which events are evaluated and how actions are executed.
+         DESCRIPTION
 
 property :key, String,
          callbacks: {
@@ -59,7 +66,9 @@ property :role_arn, String,
            "role_arn is not a String" => lambda { |v| v.is_a? String },
            "role_arn needs to be 1..2048 characters" => lambda { |v| v.length >= 1 && v.length <= 2048 },
          },
-         description: "The ARN of the role that grants permission to AWS IoT Events to perform its operations."
+         description: <<~'DESCRIPTION'
+           The ARN of the role that grants permission to AWS IoT Events to perform its operations.
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {

@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_synthetics_group
 provides :aws_synthetics_group, target_mode: true, platform: "aws"
 
@@ -14,12 +15,13 @@ property :name, String,
 
 property :name, String,
          name_property: true,
-         required: true,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
            "name must match pattern ^[0-9a-z_\-]{1,64}$" => lambda { |v| v =~ Regexp.new("/^[0-9a-z_\-]{1,64}$/") },
          },
-         description: "Name of the group."
+         description: <<~'DESCRIPTION'
+           Name of the group.
+         DESCRIPTION
 
 property :resource_arns, Array,
          callbacks: {

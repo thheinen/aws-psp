@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_apigateway_usage_plan_key
 provides :aws_apigateway_usage_plan_key, target_mode: true, platform: "aws"
 
@@ -17,7 +18,9 @@ property :key_id, String,
          callbacks: {
            "key_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The ID of the usage plan key."
+         description: <<~'DESCRIPTION'
+           The ID of the usage plan key.
+         DESCRIPTION
 
 property :key_type, String,
          required: true,
@@ -25,14 +28,18 @@ property :key_type, String,
            "key_type is not a String" => lambda { |v| v.is_a? String },
            "key_typeis not one of `API_KEY`" => lambda { |v| %w{API_KEY}.include? v },
          },
-         description: "The type of usage plan key. Currently, the only valid key type is API_KEY."
+         description: <<~'DESCRIPTION'
+           The type of usage plan key. Currently, the only valid key type is API_KEY.
+         DESCRIPTION
 
 property :usage_plan_id, String,
          required: true,
          callbacks: {
            "usage_plan_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The ID of the usage plan."
+         description: <<~'DESCRIPTION'
+           The ID of the usage plan.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::ApiGateway::UsagePlanKey"

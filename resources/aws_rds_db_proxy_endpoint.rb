@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_rds_db_proxy_endpoint
 provides :aws_rds_db_proxy_endpoint, target_mode: true, platform: "aws"
 
@@ -18,7 +19,9 @@ property :db_proxy_endpoint_name, String,
            "db_proxy_endpoint_name is not a String" => lambda { |v| v.is_a? String },
            "db_proxy_endpoint_name must match pattern [0-z]*" => lambda { |v| v =~ Regexp.new("/[0-z]*/") },
          },
-         description: "The identifier for the DB proxy endpoint. This name must be unique for all DB proxy endpoints owned by your AWS account in the specified AWS Region."
+         description: <<~'DESCRIPTION'
+           The identifier for the DB proxy endpoint. This name must be unique for all DB proxy endpoints owned by your AWS account in the specified AWS Region.
+         DESCRIPTION
 
 property :db_proxy_name, String,
          required: true,
@@ -26,33 +29,43 @@ property :db_proxy_name, String,
            "db_proxy_name is not a String" => lambda { |v| v.is_a? String },
            "db_proxy_name must match pattern [0-z]*" => lambda { |v| v =~ Regexp.new("/[0-z]*/") },
          },
-         description: "The identifier for the proxy. This name must be unique for all proxies owned by your AWS account in the specified AWS Region."
+         description: <<~'DESCRIPTION'
+           The identifier for the proxy. This name must be unique for all proxies owned by your AWS account in the specified AWS Region.
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "An optional set of key-value pairs to associate arbitrary data of your choosing with the DB proxy endpoint."
+         description: <<~'DESCRIPTION'
+           An optional set of key-value pairs to associate arbitrary data of your choosing with the DB proxy endpoint.
+         DESCRIPTION
 
 property :target_role, String,
          callbacks: {
            "target_role is not a String" => lambda { |v| v.is_a? String },
            "target_roleis not one of `READ_WRITE`, `READ_ONLY`" => lambda { |v| %w{READ_WRITE READ_ONLY}.include? v },
          },
-         description: "A value that indicates whether the DB proxy endpoint can be used for read/write or read-only operations."
+         description: <<~'DESCRIPTION'
+           A value that indicates whether the DB proxy endpoint can be used for read/write or read-only operations.
+         DESCRIPTION
 
 property :vpc_security_group_ids, Array,
          callbacks: {
            "vpc_security_group_ids is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "VPC security group IDs to associate with the new DB proxy endpoint."
+         description: <<~'DESCRIPTION'
+           VPC security group IDs to associate with the new DB proxy endpoint.
+         DESCRIPTION
 
 property :vpc_subnet_ids, Array,
          required: true,
          callbacks: {
            "vpc_subnet_ids is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "VPC subnet IDs to associate with the new DB proxy endpoint."
+         description: <<~'DESCRIPTION'
+           VPC subnet IDs to associate with the new DB proxy endpoint.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::RDS::DBProxyEndpoint"

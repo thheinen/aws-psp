@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_ssm_incidents_response_plan
 provides :aws_ssm_incidents_response_plan, target_mode: true, platform: "aws"
 
@@ -56,7 +57,6 @@ property :incident_template, Hash,
 
 property :name, String,
          name_property: true,
-         required: true,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
            "name needs to be 1..200 characters" => lambda { |v| v.length >= 1 && v.length <= 200 },

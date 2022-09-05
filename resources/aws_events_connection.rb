@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_events_connection
 provides :aws_events_connection, target_mode: true, platform: "aws"
 

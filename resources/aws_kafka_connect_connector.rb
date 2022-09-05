@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_kafka_connect_connector
 provides :aws_kafka_connect_connector, target_mode: true, platform: "aws"
 
@@ -21,13 +22,17 @@ property :connector_configuration, Hash,
          callbacks: {
            "connector_configuration is not a Object" => lambda { |v| v.is_a? Object },
          },
-         description: "The configuration for the connector."
+         description: <<~'DESCRIPTION'
+           The configuration for the connector.
+         DESCRIPTION
 
 property :connector_description, String,
          callbacks: {
            "connector_description is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "A summary description of the connector."
+         description: <<~'DESCRIPTION'
+           A summary description of the connector.
+         DESCRIPTION
 
 property :connector_name, String,
          required: true,
@@ -35,7 +40,9 @@ property :connector_name, String,
            "connector_name is not a String" => lambda { |v| v.is_a? String },
            "connector_name needs to be 1..128 characters" => lambda { |v| v.length >= 1 && v.length <= 128 },
          },
-         description: "The name of the connector."
+         description: <<~'DESCRIPTION'
+           The name of the connector.
+         DESCRIPTION
 
 property :kafka_cluster, Hash,
          required: true,
@@ -54,7 +61,9 @@ property :kafka_connect_version, String,
          callbacks: {
            "kafka_connect_version is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The version of Kafka Connect. It has to be compatible with both the Kafka cluster's version and the plugins."
+         description: <<~'DESCRIPTION'
+           The version of Kafka Connect. It has to be compatible with both the Kafka cluster's version and the plugins.
+         DESCRIPTION
 
 property :log_delivery, Hash,
          description: ""
@@ -64,7 +73,9 @@ property :plugins, Array,
          callbacks: {
            "plugins is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "List of plugins to use with the connector."
+         description: <<~'DESCRIPTION'
+           List of plugins to use with the connector.
+         DESCRIPTION
 
 property :service_execution_role_arn, String,
          required: true,
@@ -72,7 +83,9 @@ property :service_execution_role_arn, String,
            "service_execution_role_arn is not a String" => lambda { |v| v.is_a? String },
            "service_execution_role_arn must match pattern arn:(aws|aws-us-gov|aws-cn):iam:.*" => lambda { |v| v =~ Regexp.new("/arn:(aws|aws-us-gov|aws-cn):iam:.*/") },
          },
-         description: "The Amazon Resource Name (ARN) of the IAM role used by the connector to access Amazon S3 objects and other external resources."
+         description: <<~'DESCRIPTION'
+           The Amazon Resource Name (ARN) of the IAM role used by the connector to access Amazon S3 objects and other external resources.
+         DESCRIPTION
 
 property :worker_configuration, Hash,
          callbacks: {

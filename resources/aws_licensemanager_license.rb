@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_licensemanager_license
 provides :aws_licensemanager_license, target_mode: true, platform: "aws"
 
@@ -16,7 +17,9 @@ property :beneficiary, String,
          callbacks: {
            "beneficiary is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "Beneficiary of the license."
+         description: <<~'DESCRIPTION'
+           Beneficiary of the license.
+         DESCRIPTION
 
 property :consumption_configuration, Hash,
          required: true,
@@ -37,7 +40,9 @@ property :home_region, String,
          callbacks: {
            "home_region is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "Home region for the created license."
+         description: <<~'DESCRIPTION'
+           Home region for the created license.
+         DESCRIPTION
 
 property :issuer, Hash,
          required: true,
@@ -58,21 +63,27 @@ property :license_name, String,
          callbacks: {
            "license_name is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "Name for the created license."
+         description: <<~'DESCRIPTION'
+           Name for the created license.
+         DESCRIPTION
 
 property :product_name, String,
          required: true,
          callbacks: {
            "product_name is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "Product name for the created license."
+         description: <<~'DESCRIPTION'
+           Product name for the created license.
+         DESCRIPTION
 
 property :product_sku, String,
          callbacks: {
            "product_sku is not a String" => lambda { |v| v.is_a? String },
            "product_sku needs to be 1..1024 characters" => lambda { |v| v.length >= 1 && v.length <= 1024 },
          },
-         description: "ProductSKU of the license."
+         description: <<~'DESCRIPTION'
+           ProductSKU of the license.
+         DESCRIPTION
 
 property :status, Hash,
          callbacks: {

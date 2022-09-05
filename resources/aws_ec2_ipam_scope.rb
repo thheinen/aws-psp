@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_ec2_ipam_scope
 provides :aws_ec2_ipam_scope, target_mode: true, platform: "aws"
 
@@ -23,13 +24,17 @@ property :ipam_id, String,
          callbacks: {
            "ipam_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The Id of the IPAM this scope is a part of."
+         description: <<~'DESCRIPTION'
+           The Id of the IPAM this scope is a part of.
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "An array of key-value pairs to apply to this resource."
+         description: <<~'DESCRIPTION'
+           An array of key-value pairs to apply to this resource.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::EC2::IPAMScope"

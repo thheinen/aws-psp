@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_lightsail_instance
 provides :aws_lightsail_instance, target_mode: true, platform: "aws"
 
@@ -16,14 +17,18 @@ property :add_ons, Array,
          callbacks: {
            "add_ons is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "An array of objects representing the add-ons to enable for the new instance."
+         description: <<~'DESCRIPTION'
+           An array of objects representing the add-ons to enable for the new instance.
+         DESCRIPTION
 
 property :availability_zone, String,
          callbacks: {
            "availability_zone is not a String" => lambda { |v| v.is_a? String },
            "availability_zone needs to be 1..255 characters" => lambda { |v| v.length >= 1 && v.length <= 255 },
          },
-         description: "The Availability Zone in which to create your instance. Use the following format: us-east-2a (case sensitive). Be sure to add the include Availability Zones parameter to your request."
+         description: <<~'DESCRIPTION'
+           The Availability Zone in which to create your instance. Use the following format: us-east-2a (case sensitive). Be sure to add the include Availability Zones parameter to your request.
+         DESCRIPTION
 
 property :blueprint_id, String,
          required: true,
@@ -31,7 +36,9 @@ property :blueprint_id, String,
            "blueprint_id is not a String" => lambda { |v| v.is_a? String },
            "blueprint_id needs to be 1..255 characters" => lambda { |v| v.length >= 1 && v.length <= 255 },
          },
-         description: "The ID for a virtual private server image (e.g., app_wordpress_4_4 or app_lamp_7_0 ). Use the get blueprints operation to return a list of available images (or blueprints )."
+         description: <<~'DESCRIPTION'
+           The ID for a virtual private server image (e.g., app_wordpress_4_4 or app_lamp_7_0 ). Use the get blueprints operation to return a list of available images (or blueprints ).
+         DESCRIPTION
 
 property :bundle_id, String,
          required: true,
@@ -39,7 +46,9 @@ property :bundle_id, String,
            "bundle_id is not a String" => lambda { |v| v.is_a? String },
            "bundle_id needs to be 1..255 characters" => lambda { |v| v.length >= 1 && v.length <= 255 },
          },
-         description: "The bundle of specification information for your virtual private server (or instance ), including the pricing plan (e.g., micro_1_0 )."
+         description: <<~'DESCRIPTION'
+           The bundle of specification information for your virtual private server (or instance ), including the pricing plan (e.g., micro_1_0 ).
+         DESCRIPTION
 
 property :hardware, Hash,
          callbacks: {
@@ -56,13 +65,17 @@ property :instance_name, String,
            "instance_name needs to be 1..254 characters" => lambda { |v| v.length >= 1 && v.length <= 254 },
            "instance_name must match pattern ^[a-zA-Z0-9][\w\-.]*[a-zA-Z0-9]$" => lambda { |v| v =~ Regexp.new("/^[a-zA-Z0-9][\w\-.]*[a-zA-Z0-9]$/") },
          },
-         description: "The names to use for your new Lightsail instance."
+         description: <<~'DESCRIPTION'
+           The names to use for your new Lightsail instance.
+         DESCRIPTION
 
 property :key_pair_name, String,
          callbacks: {
            "key_pair_name is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The name of your key pair."
+         description: <<~'DESCRIPTION'
+           The name of your key pair.
+         DESCRIPTION
 
 property :location, Hash,
          callbacks: {
@@ -88,13 +101,17 @@ property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "An array of key-value pairs to apply to this resource."
+         description: <<~'DESCRIPTION'
+           An array of key-value pairs to apply to this resource.
+         DESCRIPTION
 
 property :user_data, String,
          callbacks: {
            "user_data is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "A launch script you can create that configures a server with additional user data. For example, you might want to run apt-get -y update."
+         description: <<~'DESCRIPTION'
+           A launch script you can create that configures a server with additional user data. For example, you might want to run apt-get -y update.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::Lightsail::Instance"

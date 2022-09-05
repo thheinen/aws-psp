@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_ec2_transitgateway_vpc_attachment
 provides :aws_ec2_transitgateway_vpc_attachment, target_mode: true, platform: "aws"
 
@@ -24,7 +25,9 @@ property :options, Hash,
            "Subproperty `Ipv6Support` is not a String" => lambda { |v| v[:Ipv6Support].is_a? String },
            "Subproperty `ApplianceModeSupport` is not a String" => lambda { |v| v[:ApplianceModeSupport].is_a? String },
          },
-         description: "The options for the transit gateway vpc attachment."
+         description: <<~'DESCRIPTION'
+           The options for the transit gateway vpc attachment.
+         DESCRIPTION
 
 property :remove_subnet_ids, Array,
          callbacks: {

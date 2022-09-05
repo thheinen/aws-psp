@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_app_integrations_data_integration
 provides :aws_app_integrations_data_integration, target_mode: true, platform: "aws"
 
@@ -17,7 +18,9 @@ property :description, String,
            "description is not a String" => lambda { |v| v.is_a? String },
            "description needs to be 1..1000 characters" => lambda { |v| v.length >= 1 && v.length <= 1000 },
          },
-         description: "The data integration description."
+         description: <<~'DESCRIPTION'
+           The data integration description.
+         DESCRIPTION
 
 property :kms_key, String,
          required: true,
@@ -26,17 +29,20 @@ property :kms_key, String,
            "kms_key needs to be 1..255 characters" => lambda { |v| v.length >= 1 && v.length <= 255 },
            "kms_key must match pattern .*\S.*" => lambda { |v| v =~ Regexp.new("/.*\S.*/") },
          },
-         description: "The KMS key of the data integration."
+         description: <<~'DESCRIPTION'
+           The KMS key of the data integration.
+         DESCRIPTION
 
 property :name, String,
          name_property: true,
-         required: true,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
            "name needs to be 1..255 characters" => lambda { |v| v.length >= 1 && v.length <= 255 },
            "name must match pattern ^[a-zA-Z0-9/\._\-]+$" => lambda { |v| v =~ Regexp.new("/^[a-zA-Z0-9/\._\-]+$/") },
          },
-         description: "The name of the data integration."
+         description: <<~'DESCRIPTION'
+           The name of the data integration.
+         DESCRIPTION
 
 property :schedule_config, Hash,
          required: true,
@@ -51,7 +57,9 @@ property :schedule_config, Hash,
            "Subproperty `ScheduleExpression` needs to be 1..255 characters" => lambda { |v| v[:ScheduleExpression].length >= 1 && v[:ScheduleExpression].length <= 255 },
            "Subproperty `ScheduleExpression` must match pattern .*\S.*" => lambda { |v| v[:ScheduleExpression] =~ Regexp.new("/.*\S.*/") },
          },
-         description: "The name of the data and how often it should be pulled from the source."
+         description: <<~'DESCRIPTION'
+           The name of the data and how often it should be pulled from the source.
+         DESCRIPTION
 
 property :source_uri, String,
          required: true,
@@ -60,13 +68,17 @@ property :source_uri, String,
            "source_uri needs to be 1..255 characters" => lambda { |v| v.length >= 1 && v.length <= 255 },
            "source_uri must match pattern ^\w+\:\/\/\w+\/[\w/!@#+=.-]+$" => lambda { |v| v =~ Regexp.new("/^\w+\:\/\/\w+\/[\w/!@#+=.-]+$/") },
          },
-         description: "The URI of the data source."
+         description: <<~'DESCRIPTION'
+           The URI of the data source.
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "The tags (keys and values) associated with the data integration."
+         description: <<~'DESCRIPTION'
+           The tags (keys and values) associated with the data integration.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::AppIntegrations::DataIntegration"

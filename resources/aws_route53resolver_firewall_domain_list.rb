@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_route53resolver_firewall_domain_list
 provides :aws_route53resolver_firewall_domain_list, target_mode: true, platform: "aws"
 

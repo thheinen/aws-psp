@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_appstream_directory_config
 provides :aws_appstream_directory_config, target_mode: true, platform: "aws"
 

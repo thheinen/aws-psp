@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_imagebuilder_component
 provides :aws_imagebuilder_component, target_mode: true, platform: "aws"
 
@@ -16,34 +17,43 @@ property :change_description, String,
          callbacks: {
            "change_description is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The change description of the component."
+         description: <<~'DESCRIPTION'
+           The change description of the component.
+         DESCRIPTION
 
 property :data, String,
          callbacks: {
            "data is not a String" => lambda { |v| v.is_a? String },
            "data needs to be 1..16000 characters" => lambda { |v| v.length >= 1 && v.length <= 16000 },
          },
-         description: "The data of the component."
+         description: <<~'DESCRIPTION'
+           The data of the component.
+         DESCRIPTION
 
 property :description, String,
          callbacks: {
            "description is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The description of the component."
+         description: <<~'DESCRIPTION'
+           The description of the component.
+         DESCRIPTION
 
 property :kms_key_id, String,
          callbacks: {
            "kms_key_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The KMS key identifier used to encrypt the component."
+         description: <<~'DESCRIPTION'
+           The KMS key identifier used to encrypt the component.
+         DESCRIPTION
 
 property :name, String,
          name_property: true,
-         required: true,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The name of the component."
+         description: <<~'DESCRIPTION'
+           The name of the component.
+         DESCRIPTION
 
 property :platform, String,
          required: true,
@@ -51,32 +61,42 @@ property :platform, String,
            "platform is not a String" => lambda { |v| v.is_a? String },
            "platformis not one of `Windows`, `Linux`" => lambda { |v| %w{Windows Linux}.include? v },
          },
-         description: "The platform of the component."
+         description: <<~'DESCRIPTION'
+           The platform of the component.
+         DESCRIPTION
 
 property :supported_os_versions, Array,
          callbacks: {
            "supported_os_versions is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "The operating system (OS) version supported by the component."
+         description: <<~'DESCRIPTION'
+           The operating system (OS) version supported by the component.
+         DESCRIPTION
 
 property :tags, Hash,
          callbacks: {
            "tags is not a Object" => lambda { |v| v.is_a? Object },
          },
-         description: "The tags associated with the component."
+         description: <<~'DESCRIPTION'
+           The tags associated with the component.
+         DESCRIPTION
 
 property :uri, String,
          callbacks: {
            "uri is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The uri of the component."
+         description: <<~'DESCRIPTION'
+           The uri of the component.
+         DESCRIPTION
 
 property :version, String,
          required: true,
          callbacks: {
            "version is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The version of the component."
+         description: <<~'DESCRIPTION'
+           The version of the component.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::ImageBuilder::Component"

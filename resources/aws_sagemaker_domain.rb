@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_sagemaker_domain
 provides :aws_sagemaker_domain, target_mode: true, platform: "aws"
 
@@ -17,14 +18,18 @@ property :app_network_access_type, String,
            "app_network_access_type is not a String" => lambda { |v| v.is_a? String },
            "app_network_access_typeis not one of `PublicInternetOnly`, `VpcOnly`" => lambda { |v| %w{PublicInternetOnly VpcOnly}.include? v },
          },
-         description: "Specifies the VPC used for non-EFS traffic. The default value is PublicInternetOnly."
+         description: <<~'DESCRIPTION'
+           Specifies the VPC used for non-EFS traffic. The default value is PublicInternetOnly.
+         DESCRIPTION
 
 property :app_security_group_management, String,
          callbacks: {
            "app_security_group_management is not a String" => lambda { |v| v.is_a? String },
            "app_security_group_managementis not one of `Service`, `Customer`" => lambda { |v| %w{Service Customer}.include? v },
          },
-         description: "The entity that creates and manages the required security groups for inter-app communication in VPCOnly mode. Required when CreateDomain.AppNetworkAccessType is VPCOnly and DomainSettings.RStudioServerProDomainSettings.DomainExecutionRoleArn is provided."
+         description: <<~'DESCRIPTION'
+           The entity that creates and manages the required security groups for inter-app communication in VPCOnly mode. Required when CreateDomain.AppNetworkAccessType is VPCOnly and DomainSettings.RStudioServerProDomainSettings.DomainExecutionRoleArn is provided.
+         DESCRIPTION
 
 property :auth_mode, String,
          required: true,
@@ -32,7 +37,9 @@ property :auth_mode, String,
            "auth_mode is not a String" => lambda { |v| v.is_a? String },
            "auth_modeis not one of `SSO`, `IAM`" => lambda { |v| %w{SSO IAM}.include? v },
          },
-         description: "The mode of authentication that members use to access the domain."
+         description: <<~'DESCRIPTION'
+           The mode of authentication that members use to access the domain.
+         DESCRIPTION
 
 property :default_user_settings, Hash,
          required: true,
@@ -42,7 +49,9 @@ property :default_user_settings, Hash,
            "Subproperty `ExecutionRole` must match pattern ^arn:aws[a-z\-]*:iam::\d{12}:role/?[a-zA-Z_0-9+=,.@\-_/]+$" => lambda { |v| v[:ExecutionRole] =~ Regexp.new("/^arn:aws[a-z\-]*:iam::\d{12}:role/?[a-zA-Z_0-9+=,.@\-_/]+$/") },
            "Subproperty `SecurityGroups` is not a Array" => lambda { |v| v[:SecurityGroups].is_a? Array },
          },
-         description: "The default user settings."
+         description: <<~'DESCRIPTION'
+           The default user settings.
+         DESCRIPTION
 
 property :domain_name, String,
          required: true,
@@ -50,7 +59,9 @@ property :domain_name, String,
            "domain_name is not a String" => lambda { |v| v.is_a? String },
            "domain_name must match pattern ^[a-zA-Z0-9](-*[a-zA-Z0-9]){0,62}" => lambda { |v| v =~ Regexp.new("/^[a-zA-Z0-9](-*[a-zA-Z0-9]){0,62}/") },
          },
-         description: "A name for the domain."
+         description: <<~'DESCRIPTION'
+           A name for the domain.
+         DESCRIPTION
 
 property :domain_settings, Hash,
          callbacks: {
@@ -63,20 +74,26 @@ property :kms_key_id, String,
            "kms_key_id is not a String" => lambda { |v| v.is_a? String },
            "kms_key_id must match pattern .*" => lambda { |v| v =~ Regexp.new("/.*/") },
          },
-         description: "SageMaker uses AWS KMS to encrypt the EFS volume attached to the domain with an AWS managed customer master key (CMK) by default."
+         description: <<~'DESCRIPTION'
+           SageMaker uses AWS KMS to encrypt the EFS volume attached to the domain with an AWS managed customer master key (CMK) by default.
+         DESCRIPTION
 
 property :subnet_ids, Array,
          required: true,
          callbacks: {
            "subnet_ids is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "The VPC subnets that Studio uses for communication."
+         description: <<~'DESCRIPTION'
+           The VPC subnets that Studio uses for communication.
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "A list of tags to apply to the user profile."
+         description: <<~'DESCRIPTION'
+           A list of tags to apply to the user profile.
+         DESCRIPTION
 
 property :vpc_id, String,
          required: true,
@@ -84,7 +101,9 @@ property :vpc_id, String,
            "vpc_id is not a String" => lambda { |v| v.is_a? String },
            "vpc_id must match pattern [-0-9a-zA-Z]+" => lambda { |v| v =~ Regexp.new("/[-0-9a-zA-Z]+/") },
          },
-         description: "The ID of the Amazon Virtual Private Cloud (VPC) that Studio uses for communication."
+         description: <<~'DESCRIPTION'
+           The ID of the Amazon Virtual Private Cloud (VPC) that Studio uses for communication.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::SageMaker::Domain"

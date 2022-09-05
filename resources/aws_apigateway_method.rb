@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_apigateway_method
 provides :aws_apigateway_method, target_mode: true, platform: "aws"
 
@@ -16,33 +17,43 @@ property :api_key_required, [TrueClass, FalseClass],
          callbacks: {
            "api_key_required is not a Boolean" => lambda { |v| v.is_a? Boolean },
          },
-         description: "Indicates whether the method requires clients to submit a valid API key."
+         description: <<~'DESCRIPTION'
+           Indicates whether the method requires clients to submit a valid API key.
+         DESCRIPTION
 
 property :authorization_scopes, Array,
          callbacks: {
            "authorization_scopes is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "A list of authorization scopes configured on the method."
+         description: <<~'DESCRIPTION'
+           A list of authorization scopes configured on the method.
+         DESCRIPTION
 
 property :authorization_type, String,
          callbacks: {
            "authorization_type is not a String" => lambda { |v| v.is_a? String },
            "authorization_typeis not one of `NONE`, `AWS_IAM`, `CUSTOM`, `COGNITO_USER_POOLS`" => lambda { |v| %w{NONE AWS_IAM CUSTOM COGNITO_USER_POOLS}.include? v },
          },
-         description: "The method's authorization type."
+         description: <<~'DESCRIPTION'
+           The method's authorization type.
+         DESCRIPTION
 
 property :authorizer_id, String,
          callbacks: {
            "authorizer_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The identifier of the authorizer to use on this method."
+         description: <<~'DESCRIPTION'
+           The identifier of the authorizer to use on this method.
+         DESCRIPTION
 
 property :http_method, String,
          required: true,
          callbacks: {
            "http_method is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The backend system that the method calls when it receives a request."
+         description: <<~'DESCRIPTION'
+           The backend system that the method calls when it receives a request.
+         DESCRIPTION
 
 property :integration, Hash,
          callbacks: {
@@ -65,51 +76,67 @@ property :integration, Hash,
            "Subproperty `Type`is not one of `AWS`, `AWS_PROXY`, `HTTP`, `HTTP_PROXY`, `MOCK`" => lambda { |v| %w{AWS AWS_PROXY HTTP HTTP_PROXY MOCK}.include? v[:Type] },
            "Subproperty `Uri` is not a String" => lambda { |v| v[:Uri].is_a? String },
          },
-         description: "The backend system that the method calls when it receives a request."
+         description: <<~'DESCRIPTION'
+           The backend system that the method calls when it receives a request.
+         DESCRIPTION
 
 property :method_responses, Array,
          callbacks: {
            "method_responses is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "The responses that can be sent to the client who calls the method."
+         description: <<~'DESCRIPTION'
+           The responses that can be sent to the client who calls the method.
+         DESCRIPTION
 
 property :operation_name, String,
          callbacks: {
            "operation_name is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "A friendly operation name for the method."
+         description: <<~'DESCRIPTION'
+           A friendly operation name for the method.
+         DESCRIPTION
 
 property :request_models, Hash,
          callbacks: {
            "request_models is not a Object" => lambda { |v| v.is_a? Object },
          },
-         description: "The resources that are used for the request's content type. Specify request models as key-value pairs (string-to-string mapping), with a content type as the key and a Model resource name as the value."
+         description: <<~'DESCRIPTION'
+           The resources that are used for the request's content type. Specify request models as key-value pairs (string-to-string mapping), with a content type as the key and a Model resource name as the value.
+         DESCRIPTION
 
 property :request_parameters, Hash,
          callbacks: {
            "request_parameters is not a Object" => lambda { |v| v.is_a? Object },
          },
-         description: "The request parameters that API Gateway accepts. Specify request parameters as key-value pairs (string-to-Boolean mapping), with a source as the key and a Boolean as the value."
+         description: <<~'DESCRIPTION'
+           The request parameters that API Gateway accepts. Specify request parameters as key-value pairs (string-to-Boolean mapping), with a source as the key and a Boolean as the value.
+         DESCRIPTION
 
 property :request_validator_id, String,
          callbacks: {
            "request_validator_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The ID of the associated request validator."
+         description: <<~'DESCRIPTION'
+           The ID of the associated request validator.
+         DESCRIPTION
 
 property :resource_id, String,
          required: true,
          callbacks: {
            "resource_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The ID of an API Gateway resource."
+         description: <<~'DESCRIPTION'
+           The ID of an API Gateway resource.
+         DESCRIPTION
 
 property :rest_api_id, String,
          required: true,
          callbacks: {
            "rest_api_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The ID of the RestApi resource in which API Gateway creates the method."
+         description: <<~'DESCRIPTION'
+           The ID of the RestApi resource in which API Gateway creates the method.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::ApiGateway::Method"

@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_cloudformation_public_type_version
 provides :aws_cloudformation_public_type_version, target_mode: true, platform: "aws"
 
@@ -17,27 +18,35 @@ property :arn, String,
            "arn is not a String" => lambda { |v| v.is_a? String },
            "arn must match pattern arn:aws[A-Za-z0-9-]{0,64}:cloudformation:[A-Za-z0-9-]{1,64}:[0-9]{12}:type/.+" => lambda { |v| v =~ Regexp.new("/arn:aws[A-Za-z0-9-]{0,64}:cloudformation:[A-Za-z0-9-]{1,64}:[0-9]{12}:type/.+/") },
          },
-         description: "The Amazon Resource Number (ARN) of the extension."
+         description: <<~'DESCRIPTION'
+           The Amazon Resource Number (ARN) of the extension.
+         DESCRIPTION
 
 property :log_delivery_bucket, String,
          callbacks: {
            "log_delivery_bucket is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "A url to the S3 bucket where logs for the testType run will be available"
+         description: <<~'DESCRIPTION'
+           A url to the S3 bucket where logs for the testType run will be available
+         DESCRIPTION
 
 property :public_version_number, String,
          callbacks: {
            "public_version_number is not a String" => lambda { |v| v.is_a? String },
            "public_version_number needs to be 5..64 characters" => lambda { |v| v.length >= 5 && v.length <= 64 },
          },
-         description: "The version number of a public third-party extension"
+         description: <<~'DESCRIPTION'
+           The version number of a public third-party extension
+         DESCRIPTION
 
 property :type, String,
          callbacks: {
            "type is not a String" => lambda { |v| v.is_a? String },
            "typeis not one of `RESOURCE`, `MODULE`, `HOOK`" => lambda { |v| %w{RESOURCE MODULE HOOK}.include? v },
          },
-         description: "The kind of extension"
+         description: <<~'DESCRIPTION'
+           The kind of extension
+         DESCRIPTION
 
 property :type_name, String,
          callbacks: {

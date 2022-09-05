@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_databrew_project
 provides :aws_databrew_project, target_mode: true, platform: "aws"
 
@@ -18,16 +19,19 @@ property :dataset_name, String,
            "dataset_name is not a String" => lambda { |v| v.is_a? String },
            "dataset_name needs to be 1..255 characters" => lambda { |v| v.length >= 1 && v.length <= 255 },
          },
-         description: "Dataset name"
+         description: <<~'DESCRIPTION'
+           Dataset name
+         DESCRIPTION
 
 property :name, String,
          name_property: true,
-         required: true,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
            "name needs to be 1..255 characters" => lambda { |v| v.length >= 1 && v.length <= 255 },
          },
-         description: "Project name"
+         description: <<~'DESCRIPTION'
+           Project name
+         DESCRIPTION
 
 property :recipe_name, String,
          required: true,
@@ -35,14 +39,18 @@ property :recipe_name, String,
            "recipe_name is not a String" => lambda { |v| v.is_a? String },
            "recipe_name needs to be 1..255 characters" => lambda { |v| v.length >= 1 && v.length <= 255 },
          },
-         description: "Recipe name"
+         description: <<~'DESCRIPTION'
+           Recipe name
+         DESCRIPTION
 
 property :role_arn, String,
          required: true,
          callbacks: {
            "role_arn is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "Role arn"
+         description: <<~'DESCRIPTION'
+           Role arn
+         DESCRIPTION
 
 property :sample, Hash,
          callbacks: {
@@ -50,7 +58,9 @@ property :sample, Hash,
            "Subproperty `Type` is not a String" => lambda { |v| v[:Type].is_a? String },
            "Subproperty `Type`is not one of `FIRST_N`, `LAST_N`, `RANDOM`" => lambda { |v| %w{FIRST_N LAST_N RANDOM}.include? v[:Type] },
          },
-         description: "Sample"
+         description: <<~'DESCRIPTION'
+           Sample
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {

@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_inspector_resource_group
 provides :aws_inspector_resource_group, target_mode: true, platform: "aws"
 

@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_apigateway_v2_api
 provides :aws_apigateway_v2_api, target_mode: true, platform: "aws"
 
@@ -109,7 +110,9 @@ property :tags, Hash,
          callbacks: {
            "tags is not a Object" => lambda { |v| v.is_a? Object },
          },
-         description: "This resource type use map for Tags, suggest to use List of Tag"
+         description: <<~'DESCRIPTION'
+           This resource type use map for Tags, suggest to use List of Tag
+         DESCRIPTION
 
 property :target, String,
          callbacks: {

@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_iot_dimension
 provides :aws_iot_dimension, target_mode: true, platform: "aws"
 
@@ -19,20 +20,26 @@ property :name, String,
            "name needs to be 1..128 characters" => lambda { |v| v.length >= 1 && v.length <= 128 },
            "name must match pattern [a-zA-Z0-9:_-]+" => lambda { |v| v =~ Regexp.new("/[a-zA-Z0-9:_-]+/") },
          },
-         description: "A unique identifier for the dimension."
+         description: <<~'DESCRIPTION'
+           A unique identifier for the dimension.
+         DESCRIPTION
 
 property :string_values, Array,
          required: true,
          callbacks: {
            "string_values is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "Specifies the value or list of values for the dimension."
+         description: <<~'DESCRIPTION'
+           Specifies the value or list of values for the dimension.
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "Metadata that can be used to manage the dimension."
+         description: <<~'DESCRIPTION'
+           Metadata that can be used to manage the dimension.
+         DESCRIPTION
 
 property :type, String,
          required: true,
@@ -40,7 +47,9 @@ property :type, String,
            "type is not a String" => lambda { |v| v.is_a? String },
            "typeis not one of `TOPIC_FILTER`" => lambda { |v| %w{TOPIC_FILTER}.include? v },
          },
-         description: "Specifies the type of the dimension."
+         description: <<~'DESCRIPTION'
+           Specifies the type of the dimension.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::IoT::Dimension"

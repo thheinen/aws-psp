@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_networkmanager_connect_peer
 provides :aws_networkmanager_connect_peer, target_mode: true, platform: "aws"
 
@@ -16,37 +17,49 @@ property :bgp_options, Hash,
          callbacks: {
            "Subproperty `PeerAsn` is not a Number" => lambda { |v| v[:PeerAsn].is_a? Number },
          },
-         description: "Bgp options for connect peer."
+         description: <<~'DESCRIPTION'
+           Bgp options for connect peer.
+         DESCRIPTION
 
 property :connect_attachment_id, String,
          callbacks: {
            "connect_attachment_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The ID of the attachment to connect."
+         description: <<~'DESCRIPTION'
+           The ID of the attachment to connect.
+         DESCRIPTION
 
 property :core_network_address, String,
          callbacks: {
            "core_network_address is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The IP address of a core network."
+         description: <<~'DESCRIPTION'
+           The IP address of a core network.
+         DESCRIPTION
 
 property :inside_cidr_blocks, Array,
          callbacks: {
            "inside_cidr_blocks is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "The inside IP addresses used for a Connect peer configuration."
+         description: <<~'DESCRIPTION'
+           The inside IP addresses used for a Connect peer configuration.
+         DESCRIPTION
 
 property :peer_address, String,
          callbacks: {
            "peer_address is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The IP address of the Connect peer."
+         description: <<~'DESCRIPTION'
+           The IP address of the Connect peer.
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "An array of key-value pairs to apply to this resource."
+         description: <<~'DESCRIPTION'
+           An array of key-value pairs to apply to this resource.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::NetworkManager::ConnectPeer"

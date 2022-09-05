@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_ec2_prefix_list
 provides :aws_ec2_prefix_list, target_mode: true, platform: "aws"
 
@@ -18,20 +19,26 @@ property :address_family, String,
            "address_family is not a String" => lambda { |v| v.is_a? String },
            "address_familyis not one of `IPv4`, `IPv6`" => lambda { |v| %w{IPv4 IPv6}.include? v },
          },
-         description: "Ip Version of Prefix List."
+         description: <<~'DESCRIPTION'
+           Ip Version of Prefix List.
+         DESCRIPTION
 
 property :entries, Array,
          callbacks: {
            "entries is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "Entries of Prefix List."
+         description: <<~'DESCRIPTION'
+           Entries of Prefix List.
+         DESCRIPTION
 
 property :max_entries, Integer,
          required: true,
          callbacks: {
            "max_entries is not a Integer" => lambda { |v| v.is_a? Integer },
          },
-         description: "Max Entries of Prefix List."
+         description: <<~'DESCRIPTION'
+           Max Entries of Prefix List.
+         DESCRIPTION
 
 property :prefix_list_name, String,
          required: true,
@@ -39,13 +46,17 @@ property :prefix_list_name, String,
            "prefix_list_name is not a String" => lambda { |v| v.is_a? String },
            "prefix_list_name needs to be 1..255 characters" => lambda { |v| v.length >= 1 && v.length <= 255 },
          },
-         description: "Name of Prefix List."
+         description: <<~'DESCRIPTION'
+           Name of Prefix List.
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "Tags for Prefix List"
+         description: <<~'DESCRIPTION'
+           Tags for Prefix List
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::EC2::PrefixList"

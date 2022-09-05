@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_rekognition_stream_processor
 provides :aws_rekognition_stream_processor, target_mode: true, platform: "aws"
 
@@ -18,7 +19,9 @@ property :bounding_box_regions_of_interest, Array,
          callbacks: {
            "bounding_box_regions_of_interest is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "The BoundingBoxRegionsOfInterest specifies an array of bounding boxes of interest in the video frames to analyze, as part of connected home feature. If an object is partially in a region of interest, Rekognition will tag it as detected if the overlap of the object with the region-of-interest is greater than 20%."
+         description: <<~'DESCRIPTION'
+           The BoundingBoxRegionsOfInterest specifies an array of bounding boxes of interest in the video frames to analyze, as part of connected home feature. If an object is partially in a region of interest, Rekognition will tag it as detected if the overlap of the object with the region-of-interest is greater than 20%.
+         DESCRIPTION
 
 property :connected_home_settings, Hash,
          callbacks: {
@@ -61,7 +64,9 @@ property :kms_key_id, String,
          callbacks: {
            "kms_key_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The KMS key that is used by Rekognition to encrypt any intermediate customer metadata and store in the customer's S3 bucket."
+         description: <<~'DESCRIPTION'
+           The KMS key that is used by Rekognition to encrypt any intermediate customer metadata and store in the customer's S3 bucket.
+         DESCRIPTION
 
 property :name, String,
          name_property: true,
@@ -70,7 +75,9 @@ property :name, String,
            "name needs to be 1..128 characters" => lambda { |v| v.length >= 1 && v.length <= 128 },
            "name must match pattern [a-zA-Z0-9_.\-]+" => lambda { |v| v =~ Regexp.new("/[a-zA-Z0-9_.\-]+/") },
          },
-         description: "Name of the stream processor. It's an identifier you assign to the stream processor. You can use it to manage the stream processor."
+         description: <<~'DESCRIPTION'
+           Name of the stream processor. It's an identifier you assign to the stream processor. You can use it to manage the stream processor.
+         DESCRIPTION
 
 property :notification_channel, Hash,
          callbacks: {
@@ -83,7 +90,9 @@ property :polygon_regions_of_interest, Array,
          callbacks: {
            "polygon_regions_of_interest is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "The PolygonRegionsOfInterest specifies a set of polygon areas of interest in the video frames to analyze, as part of connected home feature. Each polygon is in turn, an ordered list of Point"
+         description: <<~'DESCRIPTION'
+           The PolygonRegionsOfInterest specifies a set of polygon areas of interest in the video frames to analyze, as part of connected home feature. Each polygon is in turn, an ordered list of Point
+         DESCRIPTION
 
 property :role_arn, String,
          required: true,
@@ -91,7 +100,9 @@ property :role_arn, String,
            "role_arn is not a String" => lambda { |v| v.is_a? String },
            "role_arn must match pattern arn:aws(-[\w]+)*:iam::[0-9]{12}:role/.*" => lambda { |v| v =~ Regexp.new("/arn:aws(-[\w]+)*:iam::[0-9]{12}:role/.*/") },
          },
-         description: "ARN of the IAM role that allows access to the stream processor, and provides Rekognition read permissions for KVS stream and write permissions to S3 bucket and SNS topic."
+         description: <<~'DESCRIPTION'
+           ARN of the IAM role that allows access to the stream processor, and provides Rekognition read permissions for KVS stream and write permissions to S3 bucket and SNS topic.
+         DESCRIPTION
 
 property :s3_destination, Hash,
          callbacks: {
@@ -104,7 +115,9 @@ property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "An array of key-value pairs to apply to this resource."
+         description: <<~'DESCRIPTION'
+           An array of key-value pairs to apply to this resource.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::Rekognition::StreamProcessor"

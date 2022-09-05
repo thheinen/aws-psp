@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_acmpca_certificate_authority
 provides :aws_acmpca_certificate_authority, target_mode: true, platform: "aws"
 
@@ -13,30 +14,40 @@ property :name, String,
          description: "Name of the resource, not desired state"
 
 property :csr_extensions, Hash,
-         description: "Structure that contains CSR pass through extension information used by the CreateCertificateAuthority action."
+         description: <<~'DESCRIPTION'
+           Structure that contains CSR pass through extension information used by the CreateCertificateAuthority action.
+         DESCRIPTION
 
 property :key_algorithm, String,
          required: true,
          callbacks: {
            "key_algorithm is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "Public key algorithm and size, in bits, of the key pair that your CA creates when it issues a certificate."
+         description: <<~'DESCRIPTION'
+           Public key algorithm and size, in bits, of the key pair that your CA creates when it issues a certificate.
+         DESCRIPTION
 
 property :key_storage_security_standard, String,
          callbacks: {
            "key_storage_security_standard is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "KeyStorageSecurityStadard defines a cryptographic key management compliance standard used for handling CA keys."
+         description: <<~'DESCRIPTION'
+           KeyStorageSecurityStadard defines a cryptographic key management compliance standard used for handling CA keys.
+         DESCRIPTION
 
 property :revocation_configuration, Hash,
-         description: "Certificate revocation information used by the CreateCertificateAuthority and UpdateCertificateAuthority actions."
+         description: <<~'DESCRIPTION'
+           Certificate revocation information used by the CreateCertificateAuthority and UpdateCertificateAuthority actions.
+         DESCRIPTION
 
 property :signing_algorithm, String,
          required: true,
          callbacks: {
            "signing_algorithm is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "Algorithm your CA uses to sign certificate requests."
+         description: <<~'DESCRIPTION'
+           Algorithm your CA uses to sign certificate requests.
+         DESCRIPTION
 
 property :subject, Hash,
          required: true,
@@ -56,7 +67,9 @@ property :subject, Hash,
            "Subproperty `Pseudonym` is not a String" => lambda { |v| v[:Pseudonym].is_a? String },
            "Subproperty `GenerationQualifier` is not a String" => lambda { |v| v[:GenerationQualifier].is_a? String },
          },
-         description: "Structure that contains X.500 distinguished name information for your CA."
+         description: <<~'DESCRIPTION'
+           Structure that contains X.500 distinguished name information for your CA.
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
@@ -69,7 +82,9 @@ property :type, String,
          callbacks: {
            "type is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The type of the certificate authority."
+         description: <<~'DESCRIPTION'
+           The type of the certificate authority.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::ACMPCA::CertificateAuthority"

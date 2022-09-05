@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_ses_email_identity
 provides :aws_ses_email_identity, target_mode: true, platform: "aws"
 
@@ -38,7 +39,9 @@ property :email_identity, String,
          callbacks: {
            "email_identity is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The email address or domain to verify."
+         description: <<~'DESCRIPTION'
+           The email address or domain to verify.
+         DESCRIPTION
 
 property :feedback_attributes, Hash,
          callbacks: {

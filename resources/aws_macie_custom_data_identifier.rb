@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_macie_custom_data_identifier
 provides :aws_macie_custom_data_identifier, target_mode: true, platform: "aws"
 
@@ -46,7 +47,6 @@ property :maximum_match_distance, Integer,
 
 property :name, String,
          name_property: true,
-         required: true,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
          },

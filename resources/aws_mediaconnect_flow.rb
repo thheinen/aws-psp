@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_mediaconnect_flow
 provides :aws_mediaconnect_flow, target_mode: true, platform: "aws"
 
@@ -16,15 +17,18 @@ property :availability_zone, String,
          callbacks: {
            "availability_zone is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The Availability Zone that you want to create the flow in. These options are limited to the Availability Zones within the current AWS."
+         description: <<~'DESCRIPTION'
+           The Availability Zone that you want to create the flow in. These options are limited to the Availability Zones within the current AWS.
+         DESCRIPTION
 
 property :name, String,
          name_property: true,
-         required: true,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The name of the flow."
+         description: <<~'DESCRIPTION'
+           The name of the flow.
+         DESCRIPTION
 
 property :source, Hash,
          required: true,
@@ -47,7 +51,9 @@ property :source, Hash,
            "Subproperty `VpcInterfaceName` is not a String" => lambda { |v| v[:VpcInterfaceName].is_a? String },
            "Subproperty `WhitelistCidr` is not a String" => lambda { |v| v[:WhitelistCidr].is_a? String },
          },
-         description: "The source of the flow."
+         description: <<~'DESCRIPTION'
+           The source of the flow.
+         DESCRIPTION
 
 property :source_failover_config, Hash,
          callbacks: {
@@ -55,7 +61,9 @@ property :source_failover_config, Hash,
            "Subproperty `State`is not one of `ENABLED`, `DISABLED`" => lambda { |v| %w{ENABLED DISABLED}.include? v[:State] },
            "Subproperty `RecoveryWindow` is not a Integer" => lambda { |v| v[:RecoveryWindow].is_a? Integer },
          },
-         description: "The source failover config of the flow."
+         description: <<~'DESCRIPTION'
+           The source failover config of the flow.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::MediaConnect::Flow"

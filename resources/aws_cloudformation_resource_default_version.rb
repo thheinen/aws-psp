@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_cloudformation_resource_default_version
 provides :aws_cloudformation_resource_default_version, target_mode: true, platform: "aws"
 
@@ -27,14 +28,18 @@ property :type_version_arn, String,
            "type_version_arn is not a String" => lambda { |v| v.is_a? String },
            "type_version_arn must match pattern ^arn:aws[A-Za-z0-9-]{0,64}:cloudformation:[A-Za-z0-9-]{1,64}:([0-9]{12})?:type/resource/.+$" => lambda { |v| v =~ Regexp.new("/^arn:aws[A-Za-z0-9-]{0,64}:cloudformation:[A-Za-z0-9-]{1,64}:([0-9]{12})?:type/resource/.+$/") },
          },
-         description: "The Amazon Resource Name (ARN) of the type version."
+         description: <<~'DESCRIPTION'
+           The Amazon Resource Name (ARN) of the type version.
+         DESCRIPTION
 
 property :version_id, String,
          callbacks: {
            "version_id is not a String" => lambda { |v| v.is_a? String },
            "version_id must match pattern ^[A-Za-z0-9-]{1,128}$" => lambda { |v| v =~ Regexp.new("/^[A-Za-z0-9-]{1,128}$/") },
          },
-         description: "The ID of an existing version of the resource to set as the default."
+         description: <<~'DESCRIPTION'
+           The ID of an existing version of the resource to set as the default.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::CloudFormation::ResourceDefaultVersion"

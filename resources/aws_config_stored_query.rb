@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_config_stored_query
 provides :aws_config_stored_query, target_mode: true, platform: "aws"
 
@@ -42,7 +43,9 @@ property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "The tags for the stored query."
+         description: <<~'DESCRIPTION'
+           The tags for the stored query.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::Config::StoredQuery"

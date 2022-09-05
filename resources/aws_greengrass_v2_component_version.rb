@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_greengrass_v2_component_version
 provides :aws_greengrass_v2_component_version, target_mode: true, platform: "aws"
 

@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_ec2_internet_gateway
 provides :aws_ec2_internet_gateway, target_mode: true, platform: "aws"
 
@@ -16,7 +17,9 @@ property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "Any tags to assign to the internet gateway."
+         description: <<~'DESCRIPTION'
+           Any tags to assign to the internet gateway.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::EC2::InternetGateway"

@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_licensemanager_grant
 provides :aws_licensemanager_grant, target_mode: true, platform: "aws"
 
@@ -22,19 +23,25 @@ property :grant_name, String,
          callbacks: {
            "grant_name is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "Name for the created Grant."
+         description: <<~'DESCRIPTION'
+           Name for the created Grant.
+         DESCRIPTION
 
 property :home_region, String,
          callbacks: {
            "home_region is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "Home region for the created grant."
+         description: <<~'DESCRIPTION'
+           Home region for the created grant.
+         DESCRIPTION
 
 property :license_arn, Hash,
          callbacks: {
            "license_arn is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "License Arn for the grant."
+         description: <<~'DESCRIPTION'
+           License Arn for the grant.
+         DESCRIPTION
 
 property :principals, Array,
          callbacks: {

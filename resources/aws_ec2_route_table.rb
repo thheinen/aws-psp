@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_ec2_route_table
 provides :aws_ec2_route_table, target_mode: true, platform: "aws"
 
@@ -16,14 +17,18 @@ property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "Any tags assigned to the route table."
+         description: <<~'DESCRIPTION'
+           Any tags assigned to the route table.
+         DESCRIPTION
 
 property :vpc_id, String,
          required: true,
          callbacks: {
            "vpc_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The ID of the VPC."
+         description: <<~'DESCRIPTION'
+           The ID of the VPC.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::EC2::RouteTable"

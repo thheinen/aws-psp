@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_ec2_carrier_gateway
 provides :aws_ec2_carrier_gateway, target_mode: true, platform: "aws"
 
@@ -16,14 +17,18 @@ property :tags, Hash,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "The tags for the carrier gateway."
+         description: <<~'DESCRIPTION'
+           The tags for the carrier gateway.
+         DESCRIPTION
 
 property :vpc_id, String,
          required: true,
          callbacks: {
            "vpc_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The ID of the VPC."
+         description: <<~'DESCRIPTION'
+           The ID of the VPC.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::EC2::CarrierGateway"

@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_networkmanager_transitgateway_registration
 provides :aws_networkmanager_transitgateway_registration, target_mode: true, platform: "aws"
 
@@ -17,14 +18,18 @@ property :global_network_id, String,
          callbacks: {
            "global_network_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The ID of the global network."
+         description: <<~'DESCRIPTION'
+           The ID of the global network.
+         DESCRIPTION
 
 property :transitgateway_arn, String,
          required: true,
          callbacks: {
            "transitgateway_arn is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The Amazon Resource Name (ARN) of the transit gateway."
+         description: <<~'DESCRIPTION'
+           The Amazon Resource Name (ARN) of the transit gateway.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::NetworkManager::TransitGatewayRegistration"

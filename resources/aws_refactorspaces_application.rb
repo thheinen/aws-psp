@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_refactorspaces_application
 provides :aws_refactorspaces_application, target_mode: true, platform: "aws"
 

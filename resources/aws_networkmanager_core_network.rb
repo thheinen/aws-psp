@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_networkmanager_core_network
 provides :aws_networkmanager_core_network, target_mode: true, platform: "aws"
 
@@ -16,26 +17,34 @@ property :description, String,
          callbacks: {
            "description is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The description of core network"
+         description: <<~'DESCRIPTION'
+           The description of core network
+         DESCRIPTION
 
 property :global_network_id, String,
          required: true,
          callbacks: {
            "global_network_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The ID of the global network that your core network is a part of."
+         description: <<~'DESCRIPTION'
+           The ID of the global network that your core network is a part of.
+         DESCRIPTION
 
 property :policy_document, Hash,
          callbacks: {
            "policy_document is not a Object" => lambda { |v| v.is_a? Object },
          },
-         description: "Live policy document for the core network, you must provide PolicyDocument in Json Format"
+         description: <<~'DESCRIPTION'
+           Live policy document for the core network, you must provide PolicyDocument in Json Format
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "The tags for the global network."
+         description: <<~'DESCRIPTION'
+           The tags for the global network.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::NetworkManager::CoreNetwork"

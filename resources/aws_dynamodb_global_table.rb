@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_dynamodb_global_table
 provides :aws_dynamodb_global_table, target_mode: true, platform: "aws"
 

@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_ec2_local_gateway_route
 provides :aws_ec2_local_gateway_route, target_mode: true, platform: "aws"
 

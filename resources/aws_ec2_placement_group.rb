@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_ec2_placement_group
 provides :aws_ec2_placement_group, target_mode: true, platform: "aws"
 
@@ -16,13 +17,17 @@ property :spread_level, String,
          callbacks: {
            "spread_level is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The Spread Level of Placement Group is an enum where it accepts either host or rack when strategy is spread"
+         description: <<~'DESCRIPTION'
+           The Spread Level of Placement Group is an enum where it accepts either host or rack when strategy is spread
+         DESCRIPTION
 
 property :strategy, String,
          callbacks: {
            "strategy is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The placement strategy."
+         description: <<~'DESCRIPTION'
+           The placement strategy.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::EC2::PlacementGroup"

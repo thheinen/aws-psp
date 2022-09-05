@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_robomaker_robot
 provides :aws_robomaker_robot, target_mode: true, platform: "aws"
 
@@ -18,14 +19,18 @@ property :architecture, String,
            "architecture is not a String" => lambda { |v| v.is_a? String },
            "architectureis not one of `X86_64`, `ARM64`, `ARMHF`" => lambda { |v| %w{X86_64 ARM64 ARMHF}.include? v },
          },
-         description: "The target architecture of the robot."
+         description: <<~'DESCRIPTION'
+           The target architecture of the robot.
+         DESCRIPTION
 
 property :fleet, String,
          callbacks: {
            "fleet is not a String" => lambda { |v| v.is_a? String },
            "fleet needs to be 1..1224 characters" => lambda { |v| v.length >= 1 && v.length <= 1224 },
          },
-         description: "The Amazon Resource Name (ARN) of the fleet."
+         description: <<~'DESCRIPTION'
+           The Amazon Resource Name (ARN) of the fleet.
+         DESCRIPTION
 
 property :greengrass_group_id, String,
          required: true,
@@ -33,7 +38,9 @@ property :greengrass_group_id, String,
            "greengrass_group_id is not a String" => lambda { |v| v.is_a? String },
            "greengrass_group_id needs to be 1..1224 characters" => lambda { |v| v.length >= 1 && v.length <= 1224 },
          },
-         description: "The Greengrass group id."
+         description: <<~'DESCRIPTION'
+           The Greengrass group id.
+         DESCRIPTION
 
 property :name, String,
          name_property: true,
@@ -41,7 +48,9 @@ property :name, String,
            "name is not a String" => lambda { |v| v.is_a? String },
            "name needs to be 1..255 characters" => lambda { |v| v.length >= 1 && v.length <= 255 },
          },
-         description: "The name for the robot."
+         description: <<~'DESCRIPTION'
+           The name for the robot.
+         DESCRIPTION
 
 property :tags, Hash,
          callbacks: {

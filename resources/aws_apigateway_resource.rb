@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_apigateway_resource
 provides :aws_apigateway_resource, target_mode: true, platform: "aws"
 
@@ -17,21 +18,27 @@ property :parent_id, String,
          callbacks: {
            "parent_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The parent resource's identifier."
+         description: <<~'DESCRIPTION'
+           The parent resource's identifier.
+         DESCRIPTION
 
 property :path_part, String,
          required: true,
          callbacks: {
            "path_part is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The last path segment for this resource."
+         description: <<~'DESCRIPTION'
+           The last path segment for this resource.
+         DESCRIPTION
 
 property :rest_api_id, String,
          required: true,
          callbacks: {
            "rest_api_id is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The ID of the RestApi resource in which you want to create this resource.."
+         description: <<~'DESCRIPTION'
+           The ID of the RestApi resource in which you want to create this resource..
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::ApiGateway::Resource"

@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_wafv2_regex_pattern_set
 provides :aws_wafv2_regex_pattern_set, target_mode: true, platform: "aws"
 
@@ -17,7 +18,9 @@ property :description, String,
            "description is not a String" => lambda { |v| v.is_a? String },
            "description must match pattern ^[a-zA-Z0-9=:#@/\-,.][a-zA-Z0-9+=:#@/\-,.\s]+[a-zA-Z0-9+=:#@/\-,.]{1,256}$" => lambda { |v| v =~ Regexp.new("/^[a-zA-Z0-9=:#@/\-,.][a-zA-Z0-9+=:#@/\-,.\s]+[a-zA-Z0-9+=:#@/\-,.]{1,256}$/") },
          },
-         description: "Description of the entity."
+         description: <<~'DESCRIPTION'
+           Description of the entity.
+         DESCRIPTION
 
 property :name, String,
          name_property: true,
@@ -25,7 +28,9 @@ property :name, String,
            "name is not a String" => lambda { |v| v.is_a? String },
            "name must match pattern ^[0-9A-Za-z_-]{1,128}$" => lambda { |v| v =~ Regexp.new("/^[0-9A-Za-z_-]{1,128}$/") },
          },
-         description: "Name of the RegexPatternSet."
+         description: <<~'DESCRIPTION'
+           Name of the RegexPatternSet.
+         DESCRIPTION
 
 property :regular_expression_list, Array,
          required: true,
@@ -40,7 +45,9 @@ property :scope, String,
            "scope is not a String" => lambda { |v| v.is_a? String },
            "scopeis not one of `CLOUDFRONT`, `REGIONAL`" => lambda { |v| %w{CLOUDFRONT REGIONAL}.include? v },
          },
-         description: "Use CLOUDFRONT for CloudFront RegexPatternSet, use REGIONAL for Application Load Balancer and API Gateway."
+         description: <<~'DESCRIPTION'
+           Use CLOUDFRONT for CloudFront RegexPatternSet, use REGIONAL for Application Load Balancer and API Gateway.
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {

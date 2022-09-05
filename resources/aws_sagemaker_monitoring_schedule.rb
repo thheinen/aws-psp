@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_sagemaker_monitoring_schedule
 provides :aws_sagemaker_monitoring_schedule, target_mode: true, platform: "aws"
 
@@ -24,7 +25,9 @@ property :failure_reason, String,
            "failure_reason is not a String" => lambda { |v| v.is_a? String },
            "failure_reason needs to be 1..1024 characters" => lambda { |v| v.length >= 1 && v.length <= 1024 },
          },
-         description: "Contains the reason a monitoring job failed, if it failed."
+         description: <<~'DESCRIPTION'
+           Contains the reason a monitoring job failed, if it failed.
+         DESCRIPTION
 
 property :last_monitoring_execution_summary, Hash,
          callbacks: {
@@ -38,7 +41,9 @@ property :last_monitoring_execution_summary, Hash,
            "Subproperty `ProcessingJobArn`is not a valid ARN" => lambda { |v| v[:ProcessingJobArn] =~ Regexp.new("^arn:aws(?:-cn|-us-gov)?:([^:]*:){3,}") },
            "Subproperty `ScheduledTime` is not a String" => lambda { |v| v[:ScheduledTime].is_a? String },
          },
-         description: "Describes metadata on the last execution to run, if there was one."
+         description: <<~'DESCRIPTION'
+           Describes metadata on the last execution to run, if there was one.
+         DESCRIPTION
 
 property :monitoring_schedule_config, Hash,
          required: true,
@@ -62,13 +67,17 @@ property :monitoring_schedule_status, String,
            "monitoring_schedule_status is not a String" => lambda { |v| v.is_a? String },
            "monitoring_schedule_statusis not one of `Pending`, `Failed`, `Scheduled`, `Stopped`" => lambda { |v| %w{Pending Failed Scheduled Stopped}.include? v },
          },
-         description: "The status of a schedule job."
+         description: <<~'DESCRIPTION'
+           The status of a schedule job.
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "An array of key-value pairs to apply to this resource."
+         description: <<~'DESCRIPTION'
+           An array of key-value pairs to apply to this resource.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::SageMaker::MonitoringSchedule"

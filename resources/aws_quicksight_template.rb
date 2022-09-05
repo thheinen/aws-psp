@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_quicksight_template
 provides :aws_quicksight_template, target_mode: true, platform: "aws"
 
@@ -28,13 +29,17 @@ property :name, String,
            "name needs to be 1..2048 characters" => lambda { |v| v.length >= 1 && v.length <= 2048 },
            "name must match pattern [\u0020-\u00FF]+" => lambda { |v| v =~ Regexp.new("/[\u0020-\u00FF]+/") },
          },
-         description: "<p>A display name for the template.</p>"
+         description: <<~'DESCRIPTION'
+           <p>A display name for the template.</p>
+         DESCRIPTION
 
 property :permissions, Array,
          callbacks: {
            "permissions is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "<p>A list of resource permissions to be set on the template. </p>"
+         description: <<~'DESCRIPTION'
+           <p>A list of resource permissions to be set on the template. </p>
+         DESCRIPTION
 
 property :source_entity, Hash,
          required: true,
@@ -44,7 +49,9 @@ property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "<p>Contains a map of the key-value pairs for the resource tag or tags assigned to the resource.</p>"
+         description: <<~'DESCRIPTION'
+           <p>Contains a map of the key-value pairs for the resource tag or tags assigned to the resource.</p>
+         DESCRIPTION
 
 property :template_id, String,
          required: true,

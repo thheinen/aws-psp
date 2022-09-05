@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_datasync_location_nfs
 provides :aws_datasync_location_nfs, target_mode: true, platform: "aws"
 
@@ -32,7 +33,9 @@ property :server_hostname, String,
            "server_hostname is not a String" => lambda { |v| v.is_a? String },
            "server_hostname must match pattern ^(([a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9\-]*[A-Za-z0-9])$" => lambda { |v| v =~ Regexp.new("/^(([a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9\-]*[A-Za-z0-9])$/") },
          },
-         description: "The name of the NFS server. This value is the IP address or DNS name of the NFS server."
+         description: <<~'DESCRIPTION'
+           The name of the NFS server. This value is the IP address or DNS name of the NFS server.
+         DESCRIPTION
 
 property :subdirectory, String,
          required: true,
@@ -40,13 +43,17 @@ property :subdirectory, String,
            "subdirectory is not a String" => lambda { |v| v.is_a? String },
            "subdirectory must match pattern ^[a-zA-Z0-9_\-\+\./\(\)\$\p{Zs}]+$" => lambda { |v| v =~ Regexp.new("/^[a-zA-Z0-9_\-\+\./\(\)\$\p{Zs}]+$/") },
          },
-         description: "The subdirectory in the NFS file system that is used to read data from the NFS source location or write data to the NFS destination."
+         description: <<~'DESCRIPTION'
+           The subdirectory in the NFS file system that is used to read data from the NFS source location or write data to the NFS destination.
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "An array of key-value pairs to apply to this resource."
+         description: <<~'DESCRIPTION'
+           An array of key-value pairs to apply to this resource.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::DataSync::LocationNFS"

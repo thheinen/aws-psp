@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_sagemaker_pipeline
 provides :aws_sagemaker_pipeline, target_mode: true, platform: "aws"
 
@@ -27,7 +28,9 @@ property :pipeline_description, String,
            "pipeline_description is not a String" => lambda { |v| v.is_a? String },
            "pipeline_description needs to be 0..3072 characters" => lambda { |v| v.length >= 0 && v.length <= 3072 },
          },
-         description: "The description of the Pipeline."
+         description: <<~'DESCRIPTION'
+           The description of the Pipeline.
+         DESCRIPTION
 
 property :pipeline_display_name, String,
          callbacks: {
@@ -35,7 +38,9 @@ property :pipeline_display_name, String,
            "pipeline_display_name needs to be 1..256 characters" => lambda { |v| v.length >= 1 && v.length <= 256 },
            "pipeline_display_name must match pattern ^[a-zA-Z0-9](-*[a-zA-Z0-9])*" => lambda { |v| v =~ Regexp.new("/^[a-zA-Z0-9](-*[a-zA-Z0-9])*/") },
          },
-         description: "The display name of the Pipeline."
+         description: <<~'DESCRIPTION'
+           The display name of the Pipeline.
+         DESCRIPTION
 
 property :pipeline_name, String,
          required: true,
@@ -44,7 +49,9 @@ property :pipeline_name, String,
            "pipeline_name needs to be 1..256 characters" => lambda { |v| v.length >= 1 && v.length <= 256 },
            "pipeline_name must match pattern ^[a-zA-Z0-9](-*[a-zA-Z0-9])*" => lambda { |v| v =~ Regexp.new("/^[a-zA-Z0-9](-*[a-zA-Z0-9])*/") },
          },
-         description: "The name of the Pipeline."
+         description: <<~'DESCRIPTION'
+           The name of the Pipeline.
+         DESCRIPTION
 
 property :role_arn, String,
          required: true,
@@ -53,7 +60,9 @@ property :role_arn, String,
            "role_arn needs to be 20..2048 characters" => lambda { |v| v.length >= 20 && v.length <= 2048 },
            "role_arn must match pattern ^arn:aws[a-z\-]*:iam::\d{12}:role/?[a-zA-Z_0-9+=,.@\-_/]+$" => lambda { |v| v =~ Regexp.new("/^arn:aws[a-z\-]*:iam::\d{12}:role/?[a-zA-Z_0-9+=,.@\-_/]+$/") },
          },
-         description: "Role Arn"
+         description: <<~'DESCRIPTION'
+           Role Arn
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {

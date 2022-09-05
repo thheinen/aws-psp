@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_auditmanager_assessment
 provides :aws_auditmanager_assessment, target_mode: true, platform: "aws"
 
@@ -45,7 +46,9 @@ property :roles, Array,
          callbacks: {
            "roles is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "The list of roles for the specified assessment."
+         description: <<~'DESCRIPTION'
+           The list of roles for the specified assessment.
+         DESCRIPTION
 
 property :scope, Hash,
          callbacks: {
@@ -65,7 +68,9 @@ property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "The tags associated with the assessment."
+         description: <<~'DESCRIPTION'
+           The tags associated with the assessment.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::AuditManager::Assessment"

@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_iot_fleet_metric
 provides :aws_iot_fleet_metric, target_mode: true, platform: "aws"
 
@@ -16,7 +17,9 @@ property :aggregation_field, String,
          callbacks: {
            "aggregation_field is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The aggregation field to perform aggregation and metric emission"
+         description: <<~'DESCRIPTION'
+           The aggregation field to perform aggregation and metric emission
+         DESCRIPTION
 
 property :aggregation_type, Hash,
          callbacks: {
@@ -29,50 +32,66 @@ property :description, String,
          callbacks: {
            "description is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The description of a fleet metric"
+         description: <<~'DESCRIPTION'
+           The description of a fleet metric
+         DESCRIPTION
 
 property :index_name, String,
          callbacks: {
            "index_name is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The index name of a fleet metric"
+         description: <<~'DESCRIPTION'
+           The index name of a fleet metric
+         DESCRIPTION
 
 property :metric_name, String,
          required: true,
          callbacks: {
            "metric_name is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The name of the fleet metric"
+         description: <<~'DESCRIPTION'
+           The name of the fleet metric
+         DESCRIPTION
 
 property :period, Integer,
          callbacks: {
            "period is not a Integer" => lambda { |v| v.is_a? Integer },
          },
-         description: "The period of metric emission in seconds"
+         description: <<~'DESCRIPTION'
+           The period of metric emission in seconds
+         DESCRIPTION
 
 property :query_string, String,
          callbacks: {
            "query_string is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The Fleet Indexing query used by a fleet metric"
+         description: <<~'DESCRIPTION'
+           The Fleet Indexing query used by a fleet metric
+         DESCRIPTION
 
 property :query_version, String,
          callbacks: {
            "query_version is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The version of a Fleet Indexing query used by a fleet metric"
+         description: <<~'DESCRIPTION'
+           The version of a Fleet Indexing query used by a fleet metric
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "An array of key-value pairs to apply to this resource"
+         description: <<~'DESCRIPTION'
+           An array of key-value pairs to apply to this resource
+         DESCRIPTION
 
 property :unit, String,
          callbacks: {
            "unit is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The unit of data points emitted by a fleet metric"
+         description: <<~'DESCRIPTION'
+           The unit of data points emitted by a fleet metric
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::IoT::FleetMetric"

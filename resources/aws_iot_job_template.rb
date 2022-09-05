@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_iot_job_template
 provides :aws_iot_job_template, target_mode: true, platform: "aws"
 
@@ -16,7 +17,9 @@ property :abort_config, Hash,
          callbacks: {
            "Subproperty `CriteriaList` is not a Array" => lambda { |v| v[:CriteriaList].is_a? Array },
          },
-         description: "The criteria that determine when and how a job abort takes place."
+         description: <<~'DESCRIPTION'
+           The criteria that determine when and how a job abort takes place.
+         DESCRIPTION
 
 property :description, String,
          required: true,
@@ -24,26 +27,34 @@ property :description, String,
            "description is not a String" => lambda { |v| v.is_a? String },
            "description must match pattern [^\p{C}]+" => lambda { |v| v =~ Regexp.new("/[^\p{C}]+/") },
          },
-         description: "A description of the Job Template."
+         description: <<~'DESCRIPTION'
+           A description of the Job Template.
+         DESCRIPTION
 
 property :document, String,
          callbacks: {
            "document is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "The job document. Required if you don't specify a value for documentSource."
+         description: <<~'DESCRIPTION'
+           The job document. Required if you don't specify a value for documentSource.
+         DESCRIPTION
 
 property :document_source, String,
          callbacks: {
            "document_source is not a String" => lambda { |v| v.is_a? String },
            "document_source needs to be 1..1350 characters" => lambda { |v| v.length >= 1 && v.length <= 1350 },
          },
-         description: "An S3 link to the job document to use in the template. Required if you don't specify a value for document."
+         description: <<~'DESCRIPTION'
+           An S3 link to the job document to use in the template. Required if you don't specify a value for document.
+         DESCRIPTION
 
 property :job_arn, String,
          callbacks: {
            "job_arn is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "Optional for copying a JobTemplate from a pre-existing Job configuration."
+         description: <<~'DESCRIPTION'
+           Optional for copying a JobTemplate from a pre-existing Job configuration.
+         DESCRIPTION
 
 property :job_executions_retry_config, Hash,
          callbacks: {
@@ -52,7 +63,9 @@ property :job_executions_retry_config, Hash,
          description: ""
 
 property :job_executions_rollout_config, Hash,
-         description: "Allows you to create a staged rollout of a job."
+         description: <<~'DESCRIPTION'
+           Allows you to create a staged rollout of a job.
+         DESCRIPTION
 
 property :job_template_id, String,
          required: true,
@@ -64,16 +77,22 @@ property :job_template_id, String,
          description: ""
 
 property :presigned_url_config, Hash,
-         description: "Configuration for pre-signed S3 URLs."
+         description: <<~'DESCRIPTION'
+           Configuration for pre-signed S3 URLs.
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "Metadata that can be used to manage the JobTemplate."
+         description: <<~'DESCRIPTION'
+           Metadata that can be used to manage the JobTemplate.
+         DESCRIPTION
 
 property :timeout_config, Hash,
-         description: "Specifies the amount of time each device has to finish its execution of the job."
+         description: <<~'DESCRIPTION'
+           Specifies the amount of time each device has to finish its execution of the job.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::IoT::JobTemplate"
