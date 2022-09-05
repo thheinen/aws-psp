@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## v0.1.3 (2022-09-05)
+
+
+- Update AWS::DynamoDB::GlobalTable
+- Update AWS::DynamoDB::Table
+- Update AWS::RDS::DBCluster
+- Update AWS::RDS::DBClusterParameterGroup
+- Update AWS::RDS::DBInstance
+- Update AWS::RDS::DBParameterGroup
+- Update AWS::RDS::DBSubnetGroup
+- Update AWS::RDS::EventSubscription
+- Update AWS::RDS::OptionGroup
+- Update AWS::SSMIncidents::ResponsePlan
+
 ## v0.1.2 (2022-09-05)
 
 - Refresh resources
