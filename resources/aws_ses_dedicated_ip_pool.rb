@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_ses_dedicated_ip_pool
 provides :aws_ses_dedicated_ip_pool, target_mode: true, platform: "aws"
 

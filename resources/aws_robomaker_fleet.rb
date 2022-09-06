@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_robomaker_fleet
 provides :aws_robomaker_fleet, target_mode: true, platform: "aws"
 

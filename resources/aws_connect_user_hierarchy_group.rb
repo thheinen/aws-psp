@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_connect_user_hierarchy_group
 provides :aws_connect_user_hierarchy_group, target_mode: true, platform: "aws"
 
@@ -25,6 +24,7 @@ property :instance_arn, String,
 
 property :name, String,
          name_property: true,
+         required: true,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
            "name needs to be 1..100 characters" => lambda { |v| v.length >= 1 && v.length <= 100 },

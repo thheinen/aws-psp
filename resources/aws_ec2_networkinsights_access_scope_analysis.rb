@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_ec2_networkinsights_access_scope_analysis
 provides :aws_ec2_networkinsights_access_scope_analysis, target_mode: true, platform: "aws"
 

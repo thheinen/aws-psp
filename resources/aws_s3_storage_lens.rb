@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_s3_storage_lens
 provides :aws_s3_storage_lens, target_mode: true, platform: "aws"
 

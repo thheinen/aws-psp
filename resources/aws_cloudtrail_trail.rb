@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_cloudtrail_trail
 provides :aws_cloudtrail_trail, target_mode: true, platform: "aws"
 

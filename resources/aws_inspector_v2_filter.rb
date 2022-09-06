@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_inspector_v2_filter
 provides :aws_inspector_v2_filter, target_mode: true, platform: "aws"
 
@@ -40,6 +39,7 @@ property :filter_criteria, Hash,
 
 property :name, String,
          name_property: true,
+         required: true,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
            "name needs to be 1..128 characters" => lambda { |v| v.length >= 1 && v.length <= 128 },

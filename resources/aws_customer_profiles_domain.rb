@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_customer_profiles_domain
 provides :aws_customer_profiles_domain, target_mode: true, platform: "aws"
 

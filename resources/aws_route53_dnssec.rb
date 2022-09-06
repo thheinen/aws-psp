@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_route53_dnssec
 provides :aws_route53_dnssec, target_mode: true, platform: "aws"
 

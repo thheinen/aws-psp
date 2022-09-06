@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_ssm_incidents_replication_set
 provides :aws_ssm_incidents_replication_set, target_mode: true, platform: "aws"
 

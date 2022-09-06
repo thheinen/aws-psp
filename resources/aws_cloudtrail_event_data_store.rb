@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_cloudtrail_event_data_store
 provides :aws_cloudtrail_event_data_store, target_mode: true, platform: "aws"
 

@@ -1,5 +1,81 @@
 # CHANGELOG
 
+## v0.1.4 (2022-09-06)
+
+
+- Update AWS::AccessAnalyzer::Analyzer
+- Update AWS::AmplifyUIBuilder::Component
+- Update AWS::AmplifyUIBuilder::Theme
+- Update AWS::CloudTrail::EventDataStore
+- Update AWS::CloudTrail::Trail
+- Update AWS::CodeStarConnections::Connection
+- Update AWS::Connect::HoursOfOperation
+- Update AWS::Connect::PhoneNumber
+- Update AWS::Connect::QuickConnect
+- Update AWS::Connect::User
+- Update AWS::Connect::UserHierarchyGroup
+- Update AWS::CustomerProfiles::Domain
+- Update AWS::CustomerProfiles::Integration
+- Update AWS::CustomerProfiles::ObjectType
+- Update AWS::EC2::NetworkInsightsAccessScope
+- Update AWS::EC2::NetworkInsightsAccessScopeAnalysis
+- Update AWS::EC2::NetworkInsightsAnalysis
+- Update AWS::EC2::NetworkInsightsPath
+- Add AWS::EC2::VPNConnection
+- Update AWS::EKS::Cluster
+- Update AWS::IAM::InstanceProfile
+- Update AWS::IAM::Role
+- Update AWS::InspectorV2::Filter
+- Update AWS::IoT::TopicRule
+- Update AWS::IoT::TopicRuleDestination
+- Update AWS::LookoutVision::Project
+- Update AWS::MWAA::Environment
+- Update AWS::Macie::AllowList
+- Update AWS::Macie::CustomDataIdentifier
+- Update AWS::Macie::FindingsFilter
+- Update AWS::MediaPackage::Asset
+- Update AWS::MediaPackage::Channel
+- Update AWS::MediaPackage::OriginEndpoint
+- Update AWS::MediaPackage::PackagingConfiguration
+- Update AWS::MediaPackage::PackagingGroup
+- Update AWS::Redshift::Cluster
+- Update AWS::Redshift::ClusterParameterGroup
+- Add AWS::Redshift::ClusterSubnetGroup
+- Update AWS::Redshift::EndpointAccess
+- Update AWS::Redshift::EndpointAuthorization
+- Update AWS::Redshift::EventSubscription
+- Update AWS::Redshift::ScheduledAction
+- Update AWS::RoboMaker::Fleet
+- Update AWS::RoboMaker::Robot
+- Update AWS::RoboMaker::RobotApplication
+- Update AWS::RoboMaker::RobotApplicationVersion
+- Update AWS::RoboMaker::SimulationApplication
+- Update AWS::RoboMaker::SimulationApplicationVersion
+- Update AWS::Route53::DNSSEC
+- Update AWS::Route53::KeySigningKey
+- Update AWS::S3::MultiRegionAccessPoint
+- Update AWS::S3::MultiRegionAccessPointPolicy
+- Update AWS::S3::StorageLens
+- Update AWS::S3ObjectLambda::AccessPoint
+- Update AWS::S3ObjectLambda::AccessPointPolicy
+- Update AWS::SES::ConfigurationSet
+- Update AWS::SES::ConfigurationSetEventDestination
+- Update AWS::SES::ContactList
+- Update AWS::SES::DedicatedIpPool
+- Update AWS::SES::EmailIdentity
+- Update AWS::SES::Template
+- Update AWS::SSMIncidents::ReplicationSet
+- Update AWS::SageMaker::FeatureGroup
+- Update AWS::SageMaker::Image
+- Update AWS::SageMaker::ImageVersion
+- Update AWS::SageMaker::Pipeline
+- Update AWS::ServiceCatalog::ServiceAction
+- Update AWS::ServiceCatalog::ServiceActionAssociation
+- Update AWS::ServiceCatalogAppRegistry::Application
+- Update AWS::ServiceCatalogAppRegistry::AttributeGroup
+- Update AWS::ServiceCatalogAppRegistry::AttributeGroupAssociation
+- Update AWS::ServiceCatalogAppRegistry::ResourceAssociation
+
 ## v0.1.3 (2022-09-05)
 
 

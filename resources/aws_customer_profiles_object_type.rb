@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_customer_profiles_object_type
 provides :aws_customer_profiles_object_type, target_mode: true, platform: "aws"
 
