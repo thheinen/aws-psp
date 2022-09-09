@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_devopsguru_resource_collection
 provides :aws_devopsguru_resource_collection, target_mode: true, platform: "aws"
 

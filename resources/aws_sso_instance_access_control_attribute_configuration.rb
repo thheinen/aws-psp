@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_sso_instance_access_control_attribute_configuration
 provides :aws_sso_instance_access_control_attribute_configuration, target_mode: true, platform: "aws"
 

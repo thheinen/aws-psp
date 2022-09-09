@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_sso_permission_set
 provides :aws_sso_permission_set, target_mode: true, platform: "aws"
 
@@ -53,6 +52,7 @@ property :managed_policies, Array,
 
 property :name, String,
          name_property: true,
+         required: true,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
            "name needs to be 1..32 characters" => lambda { |v| v.length >= 1 && v.length <= 32 },

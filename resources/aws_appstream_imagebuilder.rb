@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_appstream_imagebuilder
 provides :aws_appstream_imagebuilder, target_mode: true, platform: "aws"
 
@@ -77,6 +76,7 @@ property :instance_type, String,
 
 property :name, String,
          name_property: true,
+         required: true,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
          },

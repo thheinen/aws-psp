@@ -18,14 +18,18 @@ property :filter_name, String,
            "filter_name needs to be 1..512 characters" => lambda { |v| v.length >= 1 && v.length <= 512 },
            "filter_name must match pattern ^[^:*]{1,512}" => lambda { |v| v =~ Regexp.new("/^[^:*]{1,512}/") },
          },
-         description: "A name for the metric filter."
+         description: <<~'DESCRIPTION'
+           A name for the metric filter.
+         DESCRIPTION
 
 property :filter_pattern, String,
          required: true,
          callbacks: {
            "filter_pattern is not a String" => lambda { |v| v.is_a? String },
          },
-         description: "Pattern that Logs follows to interpret each entry in a log."
+         description: <<~'DESCRIPTION'
+           Pattern that Logs follows to interpret each entry in a log.
+         DESCRIPTION
 
 property :log_group_name, String,
          required: true,
@@ -34,14 +38,18 @@ property :log_group_name, String,
            "log_group_name needs to be 1..512 characters" => lambda { |v| v.length >= 1 && v.length <= 512 },
            "log_group_name must match pattern ^[.\-_/#A-Za-z0-9]{1,512}" => lambda { |v| v =~ Regexp.new("/^[.\-_/#A-Za-z0-9]{1,512}/") },
          },
-         description: "Existing log group that you want to associate with this filter."
+         description: <<~'DESCRIPTION'
+           Existing log group that you want to associate with this filter.
+         DESCRIPTION
 
 property :metric_transformations, Array,
          required: true,
          callbacks: {
            "metric_transformations is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: "A collection of information that defines how metric data gets emitted."
+         description: <<~'DESCRIPTION'
+           A collection of information that defines how metric data gets emitted.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::Logs::MetricFilter"

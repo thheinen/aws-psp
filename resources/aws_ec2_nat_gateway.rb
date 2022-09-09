@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_ec2_nat_gateway
 provides :aws_ec2_nat_gateway, target_mode: true, platform: "aws"
 
@@ -25,12 +24,6 @@ property :connectivity_type, String,
          },
          description: ""
 
-property :private_ip_address, String,
-         callbacks: {
-           "private_ip_address is not a String" => lambda { |v| v.is_a? String },
-         },
-         description: ""
-
 property :subnet_id, String,
          required: true,
          callbacks: {
@@ -49,13 +42,12 @@ rest_api_collection "/AWS::EC2::NatGateway"
 rest_api_document "/AWS::EC2::NatGateway"
 
 rest_property_map({
-  allocation_id:      "AllocationId",
-  connectivity_type:  "ConnectivityType",
-  private_ip_address: "PrivateIpAddress",
-  subnet_id:          "SubnetId",
-  tags:               "Tags",
+  allocation_id:     "AllocationId",
+  connectivity_type: "ConnectivityType",
+  subnet_id:         "SubnetId",
+  tags:              "Tags",
 })
 
 rest_post_only_properties %i{
-  allocation_id connectivity_type private_ip_address subnet_id
+  allocation_id connectivity_type subnet_id
 }

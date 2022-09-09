@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_eks_addon
 provides :aws_eks_addon, target_mode: true, platform: "aws"
 
@@ -42,7 +41,7 @@ property :cluster_name, String,
 property :resolve_conflicts, String,
          callbacks: {
            "resolve_conflicts is not a String" => lambda { |v| v.is_a? String },
-           "resolve_conflictsis not one of `NONE`, `OVERWRITE`" => lambda { |v| %w{NONE OVERWRITE}.include? v },
+           "resolve_conflictsis not one of `NONE`, `OVERWRITE`, `PRESERVE`" => lambda { |v| %w{NONE OVERWRITE PRESERVE}.include? v },
          },
          description: <<~'DESCRIPTION'
            Resolve parameter value conflicts

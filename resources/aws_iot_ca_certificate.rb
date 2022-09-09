@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_iot_ca_certificate
 provides :aws_iot_ca_certificate, target_mode: true, platform: "aws"
 
@@ -51,6 +50,12 @@ property :registration_config, Hash,
          },
          description: ""
 
+property :remove_auto_registration, [TrueClass, FalseClass],
+         callbacks: {
+           "remove_auto_registration is not a Boolean" => lambda { |v| v.is_a? Boolean },
+         },
+         description: ""
+
 property :status, String,
          required: true,
          callbacks: {
@@ -86,6 +91,7 @@ rest_property_map({
   ca_certificate_pem:           "CACertificatePem",
   certificate_mode:             "CertificateMode",
   registration_config:          "RegistrationConfig",
+  remove_auto_registration:     "RemoveAutoRegistration",
   status:                       "Status",
   tags:                         "Tags",
   verification_certificate_pem: "VerificationCertificatePem",

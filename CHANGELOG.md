@@ -1,5 +1,37 @@
 # CHANGELOG
 
+## v0.1.5 (2022-09-08)
+
+
+- Update AWS::AppStream::DirectoryConfig
+- Update AWS::AppStream::ImageBuilder
+- Update AWS::CE::CostCategory
+- Update AWS::Connect::TaskTemplate
+- Update AWS::ControlTower::EnabledControl
+- Update AWS::DevOpsGuru::NotificationChannel
+- Update AWS::DevOpsGuru::ResourceCollection
+- Update AWS::EC2::CapacityReservation
+- Update AWS::EC2::NatGateway
+- Update AWS::EC2::VPCDHCPOptionsAssociation
+- Update AWS::EKS::Addon
+- Update AWS::EKS::FargateProfile
+- Update AWS::IoT::Authorizer
+- Update AWS::IoT::CACertificate
+- Update AWS::IoT::Certificate
+- Update AWS::IoT::DomainConfiguration
+- Update AWS::IoT::Policy
+- Update AWS::IoT::ProvisioningTemplate
+- Update AWS::IoT::RoleAlias
+- Update AWS::Logs::MetricFilter
+- Add AWS::M2::Application
+- Add AWS::M2::Environment
+- Update AWS::S3::AccessPoint
+- Update AWS::SSO::Assignment
+- Update AWS::SSO::InstanceAccessControlAttributeConfiguration
+- Update AWS::SSO::PermissionSet
+- Update AWS::StepFunctions::StateMachine
+- Update AWS::VoiceID::Domain
+
 ## v0.1.4 (2022-09-06)
 
 
