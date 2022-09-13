@@ -1,5 +1,43 @@
 # CHANGELOG
 
+## v0.1.6 (2022-09-13)
+
+
+- Update AWS::ApiGateway::Account
+- Update AWS::ApiGateway::ApiKey
+- Update AWS::ApiGateway::Authorizer
+- Update AWS::ApiGateway::BasePathMapping
+- Update AWS::ApiGateway::ClientCertificate
+- Update AWS::ApiGateway::Deployment
+- Update AWS::ApiGateway::DocumentationPart
+- Update AWS::ApiGateway::DocumentationVersion
+- Update AWS::ApiGateway::Method
+- Update AWS::ApiGateway::Model
+- Update AWS::ApiGateway::RequestValidator
+- Update AWS::ApiGateway::Resource
+- Update AWS::ApiGateway::Stage
+- Update AWS::ApiGateway::UsagePlan
+- Update AWS::ApiGateway::UsagePlanKey
+- Update AWS::Cassandra::Keyspace
+- Update AWS::Cassandra::Table
+- Update AWS::Connect::ContactFlow
+- Update AWS::Connect::ContactFlowModule
+- Update AWS::Connect::Instance
+- Update AWS::Connect::InstanceStorageConfig
+- Update AWS::EC2::Host
+- Add AWS::EC2::VPCEndpoint
+- Update AWS::ECS::Service
+- Update AWS::GlobalAccelerator::Accelerator
+- Update AWS::GlobalAccelerator::EndpointGroup
+- Update AWS::GlobalAccelerator::Listener
+- Update AWS::RefactorSpaces::Application
+- Update AWS::RefactorSpaces::Environment
+- Update AWS::RefactorSpaces::Route
+- Update AWS::RefactorSpaces::Service
+- Update AWS::SSM::Document
+- Update AWS::Synthetics::Canary
+- Update AWS::Synthetics::Group
+
 ## v0.1.5 (2022-09-08)
 
 
