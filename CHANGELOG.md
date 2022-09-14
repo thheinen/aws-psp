@@ -1,5 +1,30 @@
 # CHANGELOG
 
+## v0.1.8 (2022-09-14)
+
+
+- Update AWS::ApiGatewayV2::Api
+- Update AWS::ApiGatewayV2::VpcLink
+- Update AWS::Connect::Instance
+- Update AWS::Connect::InstanceStorageConfig
+- Update AWS::EKS::Cluster
+- Update AWS::Evidently::Experiment
+- Update AWS::Evidently::Feature
+- Update AWS::Evidently::Launch
+- Update AWS::Evidently::Project
+- Update AWS::Evidently::Segment
+- Add AWS::Logs::Destination
+- Update AWS::Logs::LogGroup
+- Update AWS::Logs::LogStream
+- Update AWS::Logs::QueryDefinition
+- Update AWS::Logs::ResourcePolicy
+- Update AWS::Logs::SubscriptionFilter
+- Update AWS::Macie::Session
+- Update AWS::SNS::Topic
+- Update AWS::Signer::ProfilePermission
+- Update AWS::Signer::SigningProfile
+- Update AWS::Transfer::Workflow
+
 ## v0.1.7 (2022-09-14)
 
 

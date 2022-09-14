@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_evidently_project
 provides :aws_evidently_project, target_mode: true, platform: "aws"
 
@@ -12,6 +11,15 @@ DESCRIPTION
 property :name, String,
          name_property: true,
          description: "Name of the resource, not desired state"
+
+property :app_config_resource, Hash,
+         callbacks: {
+           "Subproperty `ApplicationId` is not a String" => lambda { |v| v[:ApplicationId].is_a? String },
+           "Subproperty `ApplicationId` must match pattern [a-z0-9]{4,7}" => lambda { |v| v[:ApplicationId] =~ Regexp.new("/[a-z0-9]{4,7}/") },
+           "Subproperty `EnvironmentId` is not a String" => lambda { |v| v[:EnvironmentId].is_a? String },
+           "Subproperty `EnvironmentId` must match pattern [a-z0-9]{4,7}" => lambda { |v| v[:EnvironmentId] =~ Regexp.new("/[a-z0-9]{4,7}/") },
+         },
+         description: ""
 
 property :data_delivery, Hash,
          callbacks: {
@@ -30,6 +38,7 @@ property :description, String,
 
 property :name, String,
          name_property: true,
+         required: true,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
            "name needs to be 1..127 characters" => lambda { |v| v.length >= 1 && v.length <= 127 },
@@ -50,10 +59,11 @@ rest_api_collection "/AWS::Evidently::Project"
 rest_api_document "/AWS::Evidently::Project"
 
 rest_property_map({
-  data_delivery: "DataDelivery",
-  description:   "Description",
-  name:          "Name",
-  tags:          "Tags",
+  app_config_resource: "AppConfigResource",
+  data_delivery:       "DataDelivery",
+  description:         "Description",
+  name:                "Name",
+  tags:                "Tags",
 })
 
 rest_post_only_properties %i{

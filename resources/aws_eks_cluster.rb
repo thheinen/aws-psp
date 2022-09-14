@@ -41,12 +41,19 @@ property :name, String,
            The unique name to give to your cluster.
          DESCRIPTION
 
+property :outpost_config, Hash,
+         callbacks: {
+           "Subproperty `OutpostArns` is not a Array" => lambda { |v| v[:OutpostArns].is_a? Array },
+           "Subproperty `ControlPlaneInstanceType` is not a String" => lambda { |v| v[:ControlPlaneInstanceType].is_a? String },
+         },
+         description: ""
+
 property :resources_vpc_config, Hash,
          required: true,
          callbacks: {
+           "Subproperty `EndpointPrivateAccess` is not a Boolean" => lambda { |v| v[:EndpointPrivateAccess].is_a? Boolean },
            "Subproperty `EndpointPublicAccess` is not a Boolean" => lambda { |v| v[:EndpointPublicAccess].is_a? Boolean },
            "Subproperty `PublicAccessCidrs` is not a Array" => lambda { |v| v[:PublicAccessCidrs].is_a? Array },
-           "Subproperty `EndpointPrivateAccess` is not a Boolean" => lambda { |v| v[:EndpointPrivateAccess].is_a? Boolean },
            "Subproperty `SecurityGroupIds` is not a Array" => lambda { |v| v[:SecurityGroupIds].is_a? Array },
            "Subproperty `SubnetIds` is not a Array" => lambda { |v| v[:SubnetIds].is_a? Array },
          },
@@ -87,6 +94,7 @@ rest_property_map({
   kubernetes_network_config: "KubernetesNetworkConfig",
   logging:                   "Logging",
   name:                      "Name",
+  outpost_config:            "OutpostConfig",
   resources_vpc_config:      "ResourcesVpcConfig",
   role_arn:                  "RoleArn",
   tags:                      "Tags",
@@ -94,5 +102,5 @@ rest_property_map({
 })
 
 rest_post_only_properties %i{
-  encryption_config kubernetes_network_config name resources_vpc_config/security_group_ids resources_vpc_config/subnet_ids role_arn
+  encryption_config kubernetes_network_config name outpost_config resources_vpc_config/security_group_ids resources_vpc_config/subnet_ids role_arn
 }
