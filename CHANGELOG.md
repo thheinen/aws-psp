@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## v0.1.7 (2022-09-14)
+
+
+- Update AWS::Chatbot::SlackChannelConfiguration
+- Update AWS::Connect::ContactFlow
+- Update AWS::Connect::ContactFlowModule
+- Update AWS::Connect::Instance
+- Update AWS::Connect::InstanceStorageConfig
+- Add AWS::EMR::SecurityConfiguration
+- Update AWS::GroundStation::Config
+- Update AWS::GroundStation::DataflowEndpointGroup
+- Update AWS::GroundStation::MissionProfile
+- Update AWS::RDS::DBInstance
+- Update AWS::Redshift::ClusterParameterGroup
+- Update AWS::Transfer::Workflow
+
 ## v0.1.6 (2022-09-13)
 
 
