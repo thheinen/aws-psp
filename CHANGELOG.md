@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.1.9 (2022-09-16)
+
+
+- Add AWS::IoTWireless::FuotaTask
+- Add AWS::IoTWireless::MulticastGroup
+
 ## v0.1.8 (2022-09-14)
 
 
