@@ -17,26 +17,34 @@ property :description, String,
          callbacks: {
            "description is not a String" => lambda { |v| v.is_a? String },
          },
-         description: ""
+         description: <<~'DESCRIPTION'
+           A description of the parameter group.
+         DESCRIPTION
 
 property :parameter_group_family, String,
          required: true,
          callbacks: {
            "parameter_group_family is not a String" => lambda { |v| v.is_a? String },
          },
-         description: ""
+         description: <<~'DESCRIPTION'
+           The Amazon Redshift engine version to which the cluster parameter group applies. The cluster engine version determines the set of parameters.
+         DESCRIPTION
 
 property :parameters, Array,
          callbacks: {
            "parameters is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: ""
+         description: <<~'DESCRIPTION'
+           An array of parameters to be modified. A maximum of 20 parameters can be modified in a single request.
+         DESCRIPTION
 
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: ""
+         description: <<~'DESCRIPTION'
+           An array of key-value pairs to apply to this resource.
+         DESCRIPTION
 
 # API URLs and mappings
 rest_api_collection "/AWS::Redshift::ClusterParameterGroup"
