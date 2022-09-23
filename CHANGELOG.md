@@ -1,5 +1,38 @@
 # CHANGELOG
 
+## v0.1.11 (2022-09-23)
+
+
+- Update AWS::AutoScaling::LaunchConfiguration
+- Update AWS::AutoScaling::LifecycleHook
+- Update AWS::AutoScaling::ScalingPolicy
+- Add AWS::AutoScaling::ScheduledAction
+- Update AWS::Chatbot::SlackChannelConfiguration
+- Update AWS::CloudWatch::CompositeAlarm
+- Update AWS::EC2::IPAM
+- Update AWS::EC2::IPAMAllocation
+- Update AWS::EC2::IPAMPool
+- Update AWS::EC2::IPAMScope
+- Update AWS::EC2::NetworkInterface
+- Update AWS::ElasticBeanstalk::Application
+- Update AWS::GameLift::Alias
+- Update AWS::GameLift::Fleet
+- Update AWS::GameLift::GameServerGroup
+- Add AWS::IdentityStore::Group
+- Add AWS::IoTFleetWise::Campaign
+- Add AWS::IoTFleetWise::DecoderManifest
+- Add AWS::IoTFleetWise::Fleet
+- Add AWS::IoTFleetWise::ModelManifest
+- Add AWS::IoTFleetWise::SignalCatalog
+- Add AWS::IoTFleetWise::Vehicle
+- Update AWS::KMS::Alias
+- Update AWS::KMS::Key
+- Update AWS::KMS::ReplicaKey
+- Update AWS::S3Outposts::AccessPoint
+- Update AWS::S3Outposts::Bucket
+- Update AWS::S3Outposts::BucketPolicy
+- Update AWS::S3Outposts::Endpoint
+
 ## v0.1.10 (2022-09-17)
 
 
