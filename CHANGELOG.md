@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.1.12 (2022-09-24)
+
+
+- Add AWS::IdentityStore::Group
+- Add AWS::IdentityStore::GroupMembership
+
 ## v0.1.11 (2022-09-23)
 
 
