@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.13 (2022-09-27)
+
+
+- Update AWS::KMS::Alias
+
 ## v0.1.12 (2022-09-24)
 
 
