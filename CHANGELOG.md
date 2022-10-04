@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.14 (2022-10-04)
+
+
+- Update AWS::StepFunctions::Activity
+
 ## v0.1.13 (2022-09-27)
 
 
