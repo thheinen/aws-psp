@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_access_analyzer_analyzer
 provides :aws_access_analyzer_analyzer, target_mode: true, platform: "aws"
 

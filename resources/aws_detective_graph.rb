@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_detective_graph
 provides :aws_detective_graph, target_mode: true, platform: "aws"
 

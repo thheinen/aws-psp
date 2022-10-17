@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_stepfunctions_state_machine
 provides :aws_stepfunctions_state_machine, target_mode: true, platform: "aws"
 

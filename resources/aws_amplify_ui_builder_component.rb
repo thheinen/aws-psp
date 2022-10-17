@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_amplify_ui_builder_component
 provides :aws_amplify_ui_builder_component, target_mode: true, platform: "aws"
 
@@ -47,7 +48,6 @@ property :events, Hash,
 
 property :name, String,
          name_property: true,
-         required: true,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
            "name needs to be 1..255 characters" => lambda { |v| v.length >= 1 && v.length <= 255 },

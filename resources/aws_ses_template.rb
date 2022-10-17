@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_ses_template
 provides :aws_ses_template, target_mode: true, platform: "aws"
 

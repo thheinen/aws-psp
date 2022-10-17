@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_rds_db_instance
 provides :aws_rds_db_instance, target_mode: true, platform: "aws"
 
@@ -83,6 +84,19 @@ property :copy_tags_to_snapshot, [TrueClass, FalseClass],
          },
          description: <<~'DESCRIPTION'
            A value that indicates whether to copy tags from the DB instance to snapshots of the DB instance. By default, tags are not copied.
+         DESCRIPTION
+
+property :custom_iam_instance_profile, String,
+         callbacks: {
+           "custom_iam_instance_profile is not a String" => lambda { |v| v.is_a? String },
+         },
+         description: <<~'DESCRIPTION'
+           The instance profile associated with the underlying Amazon EC2 instance of an RDS Custom DB instance. The instance profile must meet the following requirements:
+      * The profile must exist in your account.
+      * The profile must have an IAM role that Amazon EC2 has permissions to assume.
+      * The instance profile name and the associated IAM role name must start with the prefix AWSRDSCustom .
+      For the list of permissions required for the IAM role, see Configure IAM and your VPC in the Amazon RDS User Guide .
+            This setting is required for RDS Custom.
          DESCRIPTION
 
 property :db_cluster_identifier, String,
@@ -308,6 +322,22 @@ property :multi_az, [TrueClass, FalseClass],
            Specifies whether the database instance is a multiple Availability Zone deployment.
          DESCRIPTION
 
+property :nchar_character_set_name, String,
+         callbacks: {
+           "nchar_character_set_name is not a String" => lambda { |v| v.is_a? String },
+         },
+         description: <<~'DESCRIPTION'
+           The name of the NCHAR character set for the Oracle DB instance. This parameter doesn't apply to RDS Custom.
+         DESCRIPTION
+
+property :network_type, String,
+         callbacks: {
+           "network_type is not a String" => lambda { |v| v.is_a? String },
+         },
+         description: <<~'DESCRIPTION'
+           The network type of the DB cluster.
+         DESCRIPTION
+
 property :option_group_name, String,
          callbacks: {
            "option_group_name is not a String" => lambda { |v| v.is_a? String },
@@ -475,6 +505,7 @@ rest_property_map({
   ca_certificate_identifier:             "CACertificateIdentifier",
   character_set_name:                    "CharacterSetName",
   copy_tags_to_snapshot:                 "CopyTagsToSnapshot",
+  custom_iam_instance_profile:           "CustomIAMInstanceProfile",
   db_cluster_identifier:                 "DBClusterIdentifier",
   db_instance_class:                     "DBInstanceClass",
   db_instance_identifier:                "DBInstanceIdentifier",
@@ -502,6 +533,8 @@ rest_property_map({
   monitoring_interval:                   "MonitoringInterval",
   monitoring_role_arn:                   "MonitoringRoleArn",
   multi_az:                              "MultiAZ",
+  nchar_character_set_name:              "NcharCharacterSetName",
+  network_type:                          "NetworkType",
   option_group_name:                     "OptionGroupName",
   performance_insights_kms_key_id:       "PerformanceInsightsKMSKeyId",
   performance_insights_retention_period: "PerformanceInsightsRetentionPeriod",
@@ -524,5 +557,5 @@ rest_property_map({
 })
 
 rest_post_only_properties %i{
-  character_set_name db_cluster_identifier db_instance_identifier db_name db_snapshot_identifier db_subnet_group_name kms_key_id master_username port publicly_accessible source_db_instance_identifier source_region storage_encrypted timezone
+  character_set_name custom_iam_instance_profile db_cluster_identifier db_instance_identifier db_name db_snapshot_identifier db_subnet_group_name kms_key_id master_username nchar_character_set_name port publicly_accessible source_db_instance_identifier source_region storage_encrypted timezone
 }

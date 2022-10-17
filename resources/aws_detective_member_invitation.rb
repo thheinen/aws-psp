@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_detective_member_invitation
 provides :aws_detective_member_invitation, target_mode: true, platform: "aws"
 

@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_redshift_endpoint_access
 provides :aws_redshift_endpoint_access, target_mode: true, platform: "aws"
 
@@ -50,6 +51,16 @@ property :subnet_group_name, String,
            The subnet group name where Amazon Redshift chooses to deploy the endpoint.
          DESCRIPTION
 
+property :vpc_endpoint, Hash,
+         callbacks: {
+           "Subproperty `VpcEndpointId` is not a String" => lambda { |v| v[:VpcEndpointId].is_a? String },
+           "Subproperty `VpcId` is not a String" => lambda { |v| v[:VpcId].is_a? String },
+           "Subproperty `NetworkInterfaces` is not a Array" => lambda { |v| v[:NetworkInterfaces].is_a? Array },
+         },
+         description: <<~'DESCRIPTION'
+           The connection endpoint for connecting to an Amazon Redshift cluster through the proxy.
+         DESCRIPTION
+
 property :vpc_security_group_ids, Array,
          required: true,
          callbacks: {
@@ -57,6 +68,14 @@ property :vpc_security_group_ids, Array,
          },
          description: <<~'DESCRIPTION'
            A list of vpc security group ids to apply to the created endpoint access.
+         DESCRIPTION
+
+property :vpc_security_groups, Array,
+         callbacks: {
+           "vpc_security_groups is not a Array" => lambda { |v| v.is_a? Array },
+         },
+         description: <<~'DESCRIPTION'
+           A list of Virtual Private Cloud (VPC) security groups to be associated with the endpoint.
          DESCRIPTION
 
 # API URLs and mappings
@@ -68,7 +87,9 @@ rest_property_map({
   endpoint_name:          "EndpointName",
   resource_owner:         "ResourceOwner",
   subnet_group_name:      "SubnetGroupName",
+  vpc_endpoint:           "VpcEndpoint",
   vpc_security_group_ids: "VpcSecurityGroupIds",
+  vpc_security_groups:    "VpcSecurityGroups",
 })
 
 rest_post_only_properties %i{

@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_ses_configuration_set_event_destination
 provides :aws_ses_configuration_set_event_destination, target_mode: true, platform: "aws"
 

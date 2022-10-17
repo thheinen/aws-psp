@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_macie_allow_list
 provides :aws_macie_allow_list, target_mode: true, platform: "aws"
 
@@ -28,7 +29,6 @@ property :description, String,
 
 property :name, String,
          name_property: true,
-         required: true,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
          },

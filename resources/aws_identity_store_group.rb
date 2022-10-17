@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_identity_store_group
 provides :aws_identity_store_group, target_mode: true, platform: "aws"
 
@@ -23,6 +24,7 @@ property :description, String,
          DESCRIPTION
 
 property :display_name, String,
+         required: true,
          callbacks: {
            "display_name is not a String" => lambda { |v| v.is_a? String },
            "display_name needs to be 1..1024 characters" => lambda { |v| v.length >= 1 && v.length <= 1024 },
@@ -33,6 +35,7 @@ property :display_name, String,
          DESCRIPTION
 
 property :identity_store_id, String,
+         required: true,
          callbacks: {
            "identity_store_id is not a String" => lambda { |v| v.is_a? String },
            "identity_store_id needs to be 1..36 characters" => lambda { |v| v.length >= 1 && v.length <= 36 },

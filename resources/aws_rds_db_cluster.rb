@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_rds_db_cluster
 provides :aws_rds_db_cluster, target_mode: true, platform: "aws"
 
@@ -102,6 +103,14 @@ property :db_cluster_parameter_group_name, String,
            The name of the DB cluster parameter group to associate with this DB cluster.
          DESCRIPTION
 
+property :db_instance_parameter_group_name, String,
+         callbacks: {
+           "db_instance_parameter_group_name is not a String" => lambda { |v| v.is_a? String },
+         },
+         description: <<~'DESCRIPTION'
+           The name of the DB parameter group to apply to all instances of the DB cluster.
+         DESCRIPTION
+
 property :db_subnet_group_name, String,
          callbacks: {
            "db_subnet_group_name is not a String" => lambda { |v| v.is_a? String },
@@ -116,6 +125,22 @@ property :deletion_protection, [TrueClass, FalseClass],
          },
          description: <<~'DESCRIPTION'
            A value that indicates whether the DB cluster has deletion protection enabled. The database can't be deleted when deletion protection is enabled. By default, deletion protection is disabled.
+         DESCRIPTION
+
+property :domain, String,
+         callbacks: {
+           "domain is not a String" => lambda { |v| v.is_a? String },
+         },
+         description: <<~'DESCRIPTION'
+           The Active Directory directory ID to create the DB cluster in.
+         DESCRIPTION
+
+property :domain_iam_role_name, String,
+         callbacks: {
+           "domain_iam_role_name is not a String" => lambda { |v| v.is_a? String },
+         },
+         description: <<~'DESCRIPTION'
+           Specify the name of the IAM role to be used when making API calls to the Directory Service.
          DESCRIPTION
 
 property :enable_cloudwatch_logs_exports, Array,
@@ -226,6 +251,14 @@ property :monitoring_role_arn, String,
            The Amazon Resource Name (ARN) for the IAM role that permits RDS to send Enhanced Monitoring metrics to Amazon CloudWatch Logs.
          DESCRIPTION
 
+property :network_type, String,
+         callbacks: {
+           "network_type is not a String" => lambda { |v| v.is_a? String },
+         },
+         description: <<~'DESCRIPTION'
+           The network type of the DB cluster.
+         DESCRIPTION
+
 property :performance_insights_enabled, [TrueClass, FalseClass],
          callbacks: {
            "performance_insights_enabled is not a Boolean" => lambda { |v| v.is_a? Boolean },
@@ -317,6 +350,15 @@ property :scaling_configuration, Hash,
            The ScalingConfiguration property type specifies the scaling configuration of an Aurora Serverless DB cluster.
          DESCRIPTION
 
+property :serverless_v2_scaling_configuration, Hash,
+         callbacks: {
+           "Subproperty `MinCapacity` is not a Number" => lambda { |v| v[:MinCapacity].is_a? Number },
+           "Subproperty `MaxCapacity` is not a Number" => lambda { |v| v[:MaxCapacity].is_a? Number },
+         },
+         description: <<~'DESCRIPTION'
+           Contains the scaling configuration of an Aurora Serverless v2 DB cluster.
+         DESCRIPTION
+
 property :snapshot_identifier, String,
          callbacks: {
            "snapshot_identifier is not a String" => lambda { |v| v.is_a? String },
@@ -400,8 +442,11 @@ rest_property_map({
   db_cluster_identifier:                 "DBClusterIdentifier",
   db_cluster_instance_class:             "DBClusterInstanceClass",
   db_cluster_parameter_group_name:       "DBClusterParameterGroupName",
+  db_instance_parameter_group_name:      "DBInstanceParameterGroupName",
   db_subnet_group_name:                  "DBSubnetGroupName",
   deletion_protection:                   "DeletionProtection",
+  domain:                                "Domain",
+  domain_iam_role_name:                  "DomainIAMRoleName",
   enable_cloudwatch_logs_exports:        "EnableCloudwatchLogsExports",
   enable_http_endpoint:                  "EnableHttpEndpoint",
   enable_iam_database_authentication:    "EnableIAMDatabaseAuthentication",
@@ -415,6 +460,7 @@ rest_property_map({
   master_username:                       "MasterUsername",
   monitoring_interval:                   "MonitoringInterval",
   monitoring_role_arn:                   "MonitoringRoleArn",
+  network_type:                          "NetworkType",
   performance_insights_enabled:          "PerformanceInsightsEnabled",
   performance_insights_kms_key_id:       "PerformanceInsightsKmsKeyId",
   performance_insights_retention_period: "PerformanceInsightsRetentionPeriod",
@@ -426,6 +472,7 @@ rest_property_map({
   replication_source_identifier:         "ReplicationSourceIdentifier",
   restore_type:                          "RestoreType",
   scaling_configuration:                 "ScalingConfiguration",
+  serverless_v2_scaling_configuration:   "ServerlessV2ScalingConfiguration",
   snapshot_identifier:                   "SnapshotIdentifier",
   source_db_cluster_identifier:          "SourceDBClusterIdentifier",
   source_region:                         "SourceRegion",

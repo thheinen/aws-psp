@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_mediapackage_origin_endpoint
 provides :aws_mediapackage_origin_endpoint, target_mode: true, platform: "aws"
 

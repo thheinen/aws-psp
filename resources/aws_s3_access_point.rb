@@ -1,6 +1,7 @@
 # Import API specifics
 use "awscc_base"
 
+unified_mode true
 resource_name :aws_s3_access_point
 provides :aws_s3_access_point, target_mode: true, platform: "aws"
 
