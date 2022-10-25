@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_groundstation_dataflow_endpoint_group
 provides :aws_groundstation_dataflow_endpoint_group, target_mode: true, platform: "aws"
 

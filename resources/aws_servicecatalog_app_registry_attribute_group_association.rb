@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_servicecatalog_app_registry_attribute_group_association
 provides :aws_servicecatalog_app_registry_attribute_group_association, target_mode: true, platform: "aws"
 

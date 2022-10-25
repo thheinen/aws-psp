@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_ecs_task_definition
 provides :aws_ecs_task_definition, target_mode: true, platform: "aws"
 

@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_fis_experiment_template
 provides :aws_fis_experiment_template, target_mode: true, platform: "aws"
 

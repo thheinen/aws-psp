@@ -1,5 +1,52 @@
 # CHANGELOG
 
+## v0.1.17 (2022-10-25)
+
+
+- Update AWS::AmplifyUIBuilder::Component
+- Update AWS::AmplifyUIBuilder::Theme
+- Update AWS::ApiGateway::UsagePlan
+- Update AWS::AutoScaling::ScalingPolicy
+- Update AWS::Chatbot::SlackChannelConfiguration
+- Update AWS::EC2::EIP
+- Update AWS::EC2::VPCPeeringConnection
+- Add AWS::EC2::Volume
+- Update AWS::ECS::TaskDefinition
+- Update AWS::EKS::Cluster
+- Update AWS::FIS::ExperimentTemplate
+- Add AWS::FSx::DataRepositoryAssociation
+- Update AWS::GroundStation::Config
+- Update AWS::GroundStation::DataflowEndpointGroup
+- Update AWS::GroundStation::MissionProfile
+- Update AWS::IAM::OIDCProvider
+- Update AWS::IAM::SAMLProvider
+- Update AWS::IAM::ServerCertificate
+- Update AWS::IAM::VirtualMFADevice
+- Add AWS::IoTFleetWise::Campaign
+- Add AWS::IoTFleetWise::DecoderManifest
+- Add AWS::IoTFleetWise::Fleet
+- Add AWS::IoTFleetWise::ModelManifest
+- Add AWS::IoTFleetWise::SignalCatalog
+- Add AWS::IoTFleetWise::Vehicle
+- Update AWS::MSK::ServerlessCluster
+- Update AWS::Macie::FindingsFilter
+- Update AWS::RDS::DBCluster
+- Update AWS::RDS::DBClusterParameterGroup
+- Update AWS::RDS::DBInstance
+- Update AWS::RDS::DBParameterGroup
+- Update AWS::RDS::DBSubnetGroup
+- Update AWS::RDS::EventSubscription
+- Update AWS::RDS::OptionGroup
+- Update AWS::RUM::AppMonitor
+- Update AWS::SSMIncidents::ResponsePlan
+- Update AWS::SSO::PermissionSet
+- Update AWS::SageMaker::Image
+- Update AWS::SageMaker::ImageVersion
+- Update AWS::ServiceCatalogAppRegistry::Application
+- Update AWS::ServiceCatalogAppRegistry::AttributeGroup
+- Update AWS::ServiceCatalogAppRegistry::AttributeGroupAssociation
+- Update AWS::ServiceCatalogAppRegistry::ResourceAssociation
+
 ## v0.1.16 (2022-10-25)
 
 

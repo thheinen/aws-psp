@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_iam_virtual_mfa_device
 provides :aws_iam_virtual_mfa_device, target_mode: true, platform: "aws"
 

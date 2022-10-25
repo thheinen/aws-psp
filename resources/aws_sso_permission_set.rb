@@ -22,7 +22,7 @@ property :description, String,
          callbacks: {
            "description is not a String" => lambda { |v| v.is_a? String },
            "description needs to be 1..700 characters" => lambda { |v| v.length >= 1 && v.length <= 700 },
-           "description must match pattern [\u0009\u000A\u000D\u0020-\u007E\u00A0-\u00FF]*" => lambda { |v| v =~ Regexp.new("/[\u0009\u000A\u000D\u0020-\u007E\u00A0-\u00FF]*/") },
+           "description must match pattern [\u0009\u000A\u000D\u0020-\u007E\u00A1-\u00FF]*" => lambda { |v| v =~ Regexp.new("/[\u0009\u000A\u000D\u0020-\u007E\u00A1-\u00FF]*/") },
          },
          description: <<~'DESCRIPTION'
            The permission set description.

@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_sagemaker_image_version
 provides :aws_sagemaker_image_version, target_mode: true, platform: "aws"
 

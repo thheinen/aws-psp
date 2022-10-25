@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_macie_findings_filter
 provides :aws_macie_findings_filter, target_mode: true, platform: "aws"
 
@@ -38,6 +37,7 @@ property :finding_criteria, Hash,
 
 property :name, String,
          name_property: true,
+         required: true,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
          },

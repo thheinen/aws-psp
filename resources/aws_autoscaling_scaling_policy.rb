@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_autoscaling_scaling_policy
 provides :aws_autoscaling_scaling_policy, target_mode: true, platform: "aws"
 
