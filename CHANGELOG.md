@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## v0.1.16 (2022-10-25)
+
+
+- Add AWS::AutoScaling::ScheduledAction
+- Update AWS::CodeArtifact::Domain
+- Update AWS::CodeArtifact::Repository
+- Update AWS::Lex::Bot
+- Update AWS::Lex::BotAlias
+- Update AWS::Lex::BotVersion
+- Update AWS::Lex::ResourcePolicy
+
 ## v0.1.15 (2022-10-17)
 
 

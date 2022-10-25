@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_codeartifact_repository
 provides :aws_codeartifact_repository, target_mode: true, platform: "aws"
 
