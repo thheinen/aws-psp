@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_apigateway_client_certificate
 provides :aws_apigateway_client_certificate, target_mode: true, platform: "aws"
 

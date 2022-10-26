@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_roles_anywhere_crl
 provides :aws_roles_anywhere_crl, target_mode: true, platform: "aws"
 

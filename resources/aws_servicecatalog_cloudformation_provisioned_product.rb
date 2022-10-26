@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_servicecatalog_cloudformation_provisioned_product
 provides :aws_servicecatalog_cloudformation_provisioned_product, target_mode: true, platform: "aws"
 

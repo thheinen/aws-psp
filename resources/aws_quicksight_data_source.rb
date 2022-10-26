@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_quicksight_data_source
 provides :aws_quicksight_data_source, target_mode: true, platform: "aws"
 
@@ -42,6 +41,10 @@ property :credentials, Hash,
            "Subproperty `CopySourceArn` is not a String" => lambda { |v| v[:CopySourceArn].is_a? String },
            "Subproperty `CopySourceArn` must match pattern ^arn:[-a-z0-9]*:quicksight:[-a-z0-9]*:[0-9]{12}:datasource/.+" => lambda { |v| v[:CopySourceArn] =~ Regexp.new("/^arn:[-a-z0-9]*:quicksight:[-a-z0-9]*:[0-9]{12}:datasource/.+/") },
            "Subproperty `CopySourceArn`is not a valid ARN" => lambda { |v| v[:CopySourceArn] =~ Regexp.new("^arn:aws(?:-cn|-us-gov)?:([^:]*:){3,}") },
+           "Subproperty `SecretArn` is not a String" => lambda { |v| v[:SecretArn].is_a? String },
+           "Subproperty `SecretArn` needs to be 1..2048 characters" => lambda { |v| v[:SecretArn].length >= 1 && v[:SecretArn].length <= 2048 },
+           "Subproperty `SecretArn` must match pattern ^arn:[-a-z0-9]*:secretsmanager:[-a-z0-9]*:[0-9]{12}:secret:.+" => lambda { |v| v[:SecretArn] =~ Regexp.new("/^arn:[-a-z0-9]*:secretsmanager:[-a-z0-9]*:[0-9]{12}:secret:.+/") },
+           "Subproperty `SecretArn`is not a valid ARN" => lambda { |v| v[:SecretArn] =~ Regexp.new("^arn:aws(?:-cn|-us-gov)?:([^:]*:){3,}") },
          },
          description: ""
 

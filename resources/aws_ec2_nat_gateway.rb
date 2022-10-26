@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_ec2_nat_gateway
 provides :aws_ec2_nat_gateway, target_mode: true, platform: "aws"
 

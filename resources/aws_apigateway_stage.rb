@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_apigateway_stage
 provides :aws_apigateway_stage, target_mode: true, platform: "aws"
 

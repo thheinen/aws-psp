@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_apigateway_usage_plan_key
 provides :aws_apigateway_usage_plan_key, target_mode: true, platform: "aws"
 

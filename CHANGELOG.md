@@ -1,5 +1,54 @@
 # CHANGELOG
 
+## v0.1.18 (2022-10-26)
+
+
+- Update AWS::ApiGateway::Account
+- Update AWS::ApiGateway::ApiKey
+- Update AWS::ApiGateway::Authorizer
+- Update AWS::ApiGateway::BasePathMapping
+- Update AWS::ApiGateway::ClientCertificate
+- Update AWS::ApiGateway::Deployment
+- Update AWS::ApiGateway::DocumentationPart
+- Update AWS::ApiGateway::DocumentationVersion
+- Update AWS::ApiGateway::Method
+- Update AWS::ApiGateway::Model
+- Update AWS::ApiGateway::RequestValidator
+- Update AWS::ApiGateway::Resource
+- Update AWS::ApiGateway::Stage
+- Update AWS::ApiGateway::UsagePlanKey
+- Update AWS::AutoScaling::LaunchConfiguration
+- Update AWS::AutoScaling::LifecycleHook
+- Update AWS::Config::StoredQuery
+- Update AWS::Detective::Graph
+- Update AWS::Detective::MemberInvitation
+- Update AWS::EC2::NatGateway
+- Update AWS::EC2::TransitGateway
+- Update AWS::EC2::TransitGatewayAttachment
+- Update AWS::EC2::TransitGatewayConnect
+- Update AWS::EC2::TransitGatewayMulticastDomain
+- Update AWS::EC2::TransitGatewayMulticastDomainAssociation
+- Update AWS::EC2::TransitGatewayMulticastGroupMember
+- Update AWS::EC2::TransitGatewayMulticastGroupSource
+- Update AWS::EC2::TransitGatewayPeeringAttachment
+- Update AWS::EC2::TransitGatewayVpcAttachment
+- Update AWS::EFS::FileSystem
+- Update AWS::EKS::Addon
+- Update AWS::Macie::Session
+- Update AWS::QuickSight::DataSet
+- Update AWS::QuickSight::DataSource
+- Update AWS::Rekognition::Project
+- Update AWS::RolesAnywhere::CRL
+- Update AWS::RolesAnywhere::Profile
+- Update AWS::RolesAnywhere::TrustAnchor
+- Update AWS::S3Outposts::AccessPoint
+- Update AWS::S3Outposts::Bucket
+- Update AWS::S3Outposts::BucketPolicy
+- Update AWS::S3Outposts::Endpoint
+- Update AWS::ServiceCatalog::CloudFormationProvisionedProduct
+- Update AWS::ServiceCatalog::ServiceAction
+- Update AWS::ServiceCatalog::ServiceActionAssociation
+
 ## v0.1.17 (2022-10-25)
 
 

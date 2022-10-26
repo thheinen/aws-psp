@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_apigateway_authorizer
 provides :aws_apigateway_authorizer, target_mode: true, platform: "aws"
 
@@ -63,6 +62,7 @@ property :identity_validation_expression, String,
 
 property :name, String,
          name_property: true,
+         required: true,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
          },

@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_ec2_transitgateway_multicast_group_source
 provides :aws_ec2_transitgateway_multicast_group_source, target_mode: true, platform: "aws"
 

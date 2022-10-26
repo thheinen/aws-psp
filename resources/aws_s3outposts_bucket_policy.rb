@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_s3outposts_bucket_policy
 provides :aws_s3outposts_bucket_policy, target_mode: true, platform: "aws"
 
