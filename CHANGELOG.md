@@ -1,5 +1,38 @@
 # CHANGELOG
 
+## v0.1.19 (2022-10-27)
+
+
+- Add AWS::ApiGatewayV2::Deployment
+- Update AWS::CE::CostCategory
+- Update AWS::DataSync::Agent
+- Update AWS::DataSync::LocationEFS
+- Update AWS::DataSync::LocationFSxLustre
+- Update AWS::DataSync::LocationFSxONTAP
+- Update AWS::DataSync::LocationFSxOpenZFS
+- Update AWS::DataSync::LocationFSxWindows
+- Update AWS::DataSync::LocationHDFS
+- Update AWS::DataSync::LocationNFS
+- Update AWS::DataSync::LocationObjectStorage
+- Update AWS::DataSync::LocationS3
+- Update AWS::DataSync::LocationSMB
+- Update AWS::DataSync::Task
+- Update AWS::DynamoDB::GlobalTable
+- Update AWS::DynamoDB::Table
+- Update AWS::EC2::CarrierGateway
+- Update AWS::EC2::EC2Fleet
+- Update AWS::EC2::EIP
+- Update AWS::EC2::SpotFleet
+- Update AWS::EFS::AccessPoint
+- Update AWS::EFS::MountTarget
+- Update AWS::Lambda::Function
+- Update AWS::SES::ConfigurationSet
+- Update AWS::SES::ConfigurationSetEventDestination
+- Update AWS::SES::ContactList
+- Update AWS::SES::DedicatedIpPool
+- Update AWS::SES::EmailIdentity
+- Update AWS::SES::Template
+
 ## v0.1.18 (2022-10-26)
 
 

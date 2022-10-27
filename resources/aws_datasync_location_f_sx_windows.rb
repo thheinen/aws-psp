@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_datasync_location_f_sx_windows
 provides :aws_datasync_location_f_sx_windows, target_mode: true, platform: "aws"
 

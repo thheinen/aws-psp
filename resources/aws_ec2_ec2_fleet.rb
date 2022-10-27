@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_ec2_ec2_fleet
 provides :aws_ec2_ec2_fleet, target_mode: true, platform: "aws"
 
@@ -53,7 +52,7 @@ property :spot_options, Hash,
          callbacks: {
            "Subproperty `SingleAvailabilityZone` is not a Boolean" => lambda { |v| v[:SingleAvailabilityZone].is_a? Boolean },
            "Subproperty `AllocationStrategy` is not a String" => lambda { |v| v[:AllocationStrategy].is_a? String },
-           "Subproperty `AllocationStrategy`is not one of `lowestPrice`, `diversified`, `capacityOptimized`, `capacityOptimizedPrioritized`" => lambda { |v| %w{lowestPrice diversified capacityOptimized capacityOptimizedPrioritized}.include? v[:AllocationStrategy] },
+           "Subproperty `AllocationStrategy`is not one of `lowest-price`, `lowestPrice`, `diversified`, `capacityOptimized`, `capacity-optimized`, `capacityOptimizedPrioritized`, `capacity-optimized-prioritized`, `priceCapacityOptimized`, `price-capacity-optimized`" => lambda { |v| %w{lowest-price lowestPrice diversified capacityOptimized capacity-optimized capacityOptimizedPrioritized capacity-optimized-prioritized priceCapacityOptimized price-capacity-optimized}.include? v[:AllocationStrategy] },
            "Subproperty `SingleInstanceType` is not a Boolean" => lambda { |v| v[:SingleInstanceType].is_a? Boolean },
            "Subproperty `MinTargetCapacity` is not a Integer" => lambda { |v| v[:MinTargetCapacity].is_a? Integer },
            "Subproperty `MaxTotalPrice` is not a String" => lambda { |v| v[:MaxTotalPrice].is_a? String },

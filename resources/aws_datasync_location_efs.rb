@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_datasync_location_efs
 provides :aws_datasync_location_efs, target_mode: true, platform: "aws"
 

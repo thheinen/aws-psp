@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_datasync_location_f_sx_open_zfs
 provides :aws_datasync_location_f_sx_open_zfs, target_mode: true, platform: "aws"
 
