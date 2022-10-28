@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.1.20 (2022-10-28)
+
+
+- Update AWS::APS::RuleGroupsNamespace
+- Update AWS::APS::Workspace
+
 ## v0.1.19 (2022-10-27)
 
 
