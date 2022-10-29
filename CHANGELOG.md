@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## v0.1.21 (2022-10-29)
+
+
+- Update AWS::MSK::BatchScramSecret
+- Update AWS::MSK::Cluster
+- Update AWS::MSK::Configuration
+
 ## v0.1.20 (2022-10-28)
 
 
