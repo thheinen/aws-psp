@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.22 (2022-10-30)
+
+
+- Update AWS::MSK::Cluster
+
 ## v0.1.21 (2022-10-29)
 
 

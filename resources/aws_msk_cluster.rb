@@ -83,6 +83,14 @@ property :number_of_broker_nodes, Integer,
 property :open_monitoring, Hash,
          description: ""
 
+property :storage_mode, String,
+         callbacks: {
+           "storage_mode is not a String" => lambda { |v| v.is_a? String },
+           "storage_mode needs to be 5..6 characters" => lambda { |v| v.length >= 5 && v.length <= 6 },
+           "storage_modeis not one of `LOCAL`, `TIERED`" => lambda { |v| %w{LOCAL TIERED}.include? v },
+         },
+         description: ""
+
 property :tags, Hash,
          callbacks: {
            "tags is not a Object" => lambda { |v| v.is_a? Object },
@@ -107,6 +115,7 @@ rest_property_map({
   logging_info:           "LoggingInfo",
   number_of_broker_nodes: "NumberOfBrokerNodes",
   open_monitoring:        "OpenMonitoring",
+  storage_mode:           "StorageMode",
   tags:                   "Tags",
 })
 
