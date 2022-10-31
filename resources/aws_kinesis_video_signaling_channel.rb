@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_kinesis_video_signaling_channel
 provides :aws_kinesis_video_signaling_channel, target_mode: true, platform: "aws"
 

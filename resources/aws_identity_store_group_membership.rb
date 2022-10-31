@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_identity_store_group_membership
 provides :aws_identity_store_group_membership, target_mode: true, platform: "aws"
 
@@ -37,6 +36,11 @@ property :identity_store_id, String,
 
 property :member_id, Hash,
          required: true,
+         callbacks: {
+           "Subproperty `UserId` is not a String" => lambda { |v| v[:UserId].is_a? String },
+           "Subproperty `UserId` needs to be 1..47 characters" => lambda { |v| v[:UserId].length >= 1 && v[:UserId].length <= 47 },
+           "Subproperty `UserId` must match pattern ^([0-9a-f]{10}-|)[A-Fa-f0-9]{8}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{12}$" => lambda { |v| v[:UserId] =~ Regexp.new("/^([0-9a-f]{10}-|)[A-Fa-f0-9]{8}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{12}$/") },
+         },
          description: <<~'DESCRIPTION'
            An object containing the identifier of a group member.
          DESCRIPTION

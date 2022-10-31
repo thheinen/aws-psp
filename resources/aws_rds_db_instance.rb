@@ -410,6 +410,14 @@ property :publicly_accessible, [TrueClass, FalseClass],
            Indicates whether the DB instance is an internet-facing instance. If you specify true, AWS CloudFormation creates an instance with a publicly resolvable DNS name, which resolves to a public IP address. If you specify false, AWS CloudFormation creates an internal instance with a DNS name that resolves to a private IP address.
          DESCRIPTION
 
+property :replica_mode, String,
+         callbacks: {
+           "replica_mode is not a String" => lambda { |v| v.is_a? String },
+         },
+         description: <<~'DESCRIPTION'
+           The open mode of an Oracle read replica. The default is open-read-only.
+         DESCRIPTION
+
 property :source_db_instance_identifier, String,
          callbacks: {
            "source_db_instance_identifier is not a String" => lambda { |v| v.is_a? String },
@@ -543,6 +551,7 @@ rest_property_map({
   processor_features:                    "ProcessorFeatures",
   promotion_tier:                        "PromotionTier",
   publicly_accessible:                   "PubliclyAccessible",
+  replica_mode:                          "ReplicaMode",
   source_db_instance_identifier:         "SourceDBInstanceIdentifier",
   source_region:                         "SourceRegion",
   storage_encrypted:                     "StorageEncrypted",
@@ -556,5 +565,5 @@ rest_property_map({
 })
 
 rest_post_only_properties %i{
-  character_set_name custom_iam_instance_profile db_cluster_identifier db_instance_identifier db_name db_snapshot_identifier db_subnet_group_name kms_key_id master_username nchar_character_set_name port publicly_accessible source_db_instance_identifier source_region storage_encrypted timezone
+  character_set_name custom_iam_instance_profile db_cluster_identifier db_instance_identifier db_name db_snapshot_identifier db_subnet_group_name kms_key_id master_username nchar_character_set_name port publicly_accessible source_region storage_encrypted timezone
 }

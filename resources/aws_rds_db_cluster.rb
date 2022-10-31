@@ -344,6 +344,7 @@ property :scaling_configuration, Hash,
            "Subproperty `MaxCapacity` is not a Integer" => lambda { |v| v[:MaxCapacity].is_a? Integer },
            "Subproperty `MinCapacity` is not a Integer" => lambda { |v| v[:MinCapacity].is_a? Integer },
            "Subproperty `SecondsUntilAutoPause` is not a Integer" => lambda { |v| v[:SecondsUntilAutoPause].is_a? Integer },
+           "Subproperty `TimeoutAction` is not a String" => lambda { |v| v[:TimeoutAction].is_a? String },
          },
          description: <<~'DESCRIPTION'
            The ScalingConfiguration property type specifies the scaling configuration of an Aurora Serverless DB cluster.

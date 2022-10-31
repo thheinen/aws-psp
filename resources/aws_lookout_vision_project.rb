@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_lookout_vision_project
 provides :aws_lookout_vision_project, target_mode: true, platform: "aws"
 

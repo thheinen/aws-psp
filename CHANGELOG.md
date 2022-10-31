@@ -1,5 +1,25 @@
 # CHANGELOG
 
+## v0.1.23 (2022-10-31)
+
+
+- Update AWS::AccessAnalyzer::Analyzer
+- Update AWS::AppIntegrations::DataIntegration
+- Update AWS::AppIntegrations::EventIntegration
+- Update AWS::CodeStarNotifications::NotificationRule
+- Update AWS::Connect::ContactFlow
+- Update AWS::Connect::ContactFlowModule
+- Update AWS::EC2::VPNConnection
+- Update AWS::IdentityStore::Group
+- Update AWS::IdentityStore::GroupMembership
+- Update AWS::KinesisVideo::SignalingChannel
+- Update AWS::KinesisVideo::Stream
+- Update AWS::LookoutVision::Project
+- Update AWS::Macie::CustomDataIdentifier
+- Update AWS::RDS::DBCluster
+- Update AWS::RDS::DBInstance
+- Update AWS::Rekognition::StreamProcessor
+
 ## v0.1.22 (2022-10-30)
 
 
