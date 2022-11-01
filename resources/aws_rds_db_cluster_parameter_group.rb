@@ -12,6 +12,13 @@ property :name, String,
          name_property: true,
          description: "Name of the resource, not desired state"
 
+property :db_cluster_parameter_group_name, String,
+         callbacks: {
+           "db_cluster_parameter_group_name is not a String" => lambda { |v| v.is_a? String },
+           "db_cluster_parameter_group_name must match pattern ^[a-zA-Z]{1}(?:-?[a-zA-Z0-9])*$" => lambda { |v| v =~ Regexp.new("/^[a-zA-Z]{1}(?:-?[a-zA-Z0-9])*$/") },
+         },
+         description: ""
+
 property :description, String,
          required: true,
          callbacks: {
@@ -52,12 +59,13 @@ rest_api_collection "/AWS::RDS::DBClusterParameterGroup"
 rest_api_document "/AWS::RDS::DBClusterParameterGroup"
 
 rest_property_map({
-  description: "Description",
-  family:      "Family",
-  parameters:  "Parameters",
-  tags:        "Tags",
+  db_cluster_parameter_group_name: "DBClusterParameterGroupName",
+  description:                     "Description",
+  family:                          "Family",
+  parameters:                      "Parameters",
+  tags:                            "Tags",
 })
 
 rest_post_only_properties %i{
-  description family
+  db_cluster_parameter_group_name description family
 }

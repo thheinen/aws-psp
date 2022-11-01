@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_acmpca_certificate_authority
 provides :aws_acmpca_certificate_authority, target_mode: true, platform: "aws"
 
@@ -86,6 +85,14 @@ property :type, String,
            The type of the certificate authority.
          DESCRIPTION
 
+property :usage_mode, String,
+         callbacks: {
+           "usage_mode is not a String" => lambda { |v| v.is_a? String },
+         },
+         description: <<~'DESCRIPTION'
+           Usage mode of the ceritificate authority.
+         DESCRIPTION
+
 # API URLs and mappings
 rest_api_collection "/AWS::ACMPCA::CertificateAuthority"
 rest_api_document "/AWS::ACMPCA::CertificateAuthority"
@@ -99,8 +106,9 @@ rest_property_map({
   subject:                       "Subject",
   tags:                          "Tags",
   type:                          "Type",
+  usage_mode:                    "UsageMode",
 })
 
 rest_post_only_properties %i{
-  csr_extensions key_algorithm key_storage_security_standard signing_algorithm subject type
+  csr_extensions key_algorithm key_storage_security_standard signing_algorithm subject type usage_mode
 }

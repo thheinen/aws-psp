@@ -47,6 +47,14 @@ property :option_group_description, String,
            Provides a description of the option group.
          DESCRIPTION
 
+property :option_group_name, String,
+         callbacks: {
+           "option_group_name is not a String" => lambda { |v| v.is_a? String },
+         },
+         description: <<~'DESCRIPTION'
+           Specifies the name of the option group.
+         DESCRIPTION
+
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
@@ -64,9 +72,10 @@ rest_property_map({
   major_engine_version:     "MajorEngineVersion",
   option_configurations:    "OptionConfigurations",
   option_group_description: "OptionGroupDescription",
+  option_group_name:        "OptionGroupName",
   tags:                     "Tags",
 })
 
 rest_post_only_properties %i{
-  engine_name major_engine_version option_group_description
+  engine_name major_engine_version option_group_description option_group_name
 }

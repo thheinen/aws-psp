@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_codeguru_profiler_profiling_group
 provides :aws_codeguru_profiler_profiling_group, target_mode: true, platform: "aws"
 

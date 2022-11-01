@@ -29,12 +29,6 @@ property :domain_name, String,
            The DomainName of an AWS::ApiGateway::DomainName resource.
          DESCRIPTION
 
-property :id, String,
-         callbacks: {
-           "id is not a String" => lambda { |v| v.is_a? String },
-         },
-         description: ""
-
 property :rest_api_id, String,
          callbacks: {
            "rest_api_id is not a String" => lambda { |v| v.is_a? String },
@@ -58,7 +52,6 @@ rest_api_document "/AWS::ApiGateway::BasePathMapping"
 rest_property_map({
   base_path:   "BasePath",
   domain_name: "DomainName",
-  id:          "Id",
   rest_api_id: "RestApiId",
   stage:       "Stage",
 })

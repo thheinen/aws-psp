@@ -1,5 +1,36 @@
 # CHANGELOG
 
+## v0.1.24 (2022-11-01)
+
+
+- Update AWS::ACMPCA::CertificateAuthority
+- Update AWS::ApiGateway::BasePathMapping
+- Update AWS::AutoScaling::WarmPool
+- Update AWS::CodeGuruProfiler::ProfilingGroup
+- Update AWS::DataBrew::Dataset
+- Update AWS::DataBrew::Job
+- Update AWS::DataBrew::Project
+- Update AWS::DataBrew::Recipe
+- Update AWS::DataBrew::Ruleset
+- Update AWS::DataBrew::Schedule
+- Update AWS::EC2::NetworkInsightsAccessScope
+- Update AWS::EC2::NetworkInsightsAccessScopeAnalysis
+- Update AWS::EC2::NetworkInsightsAnalysis
+- Update AWS::EC2::NetworkInsightsPath
+- Add AWS::ElasticBeanstalk::Environment
+- Update AWS::MWAA::Environment
+- Update AWS::MemoryDB::ACL
+- Update AWS::MemoryDB::Cluster
+- Update AWS::MemoryDB::ParameterGroup
+- Update AWS::MemoryDB::SubnetGroup
+- Update AWS::MemoryDB::User
+- Update AWS::RDS::DBClusterParameterGroup
+- Update AWS::RDS::DBParameterGroup
+- Update AWS::RDS::OptionGroup
+- Update AWS::S3::MultiRegionAccessPoint
+- Update AWS::S3::MultiRegionAccessPointPolicy
+- Update AWS::SSMIncidents::ReplicationSet
+
 ## v0.1.23 (2022-10-31)
 
 
