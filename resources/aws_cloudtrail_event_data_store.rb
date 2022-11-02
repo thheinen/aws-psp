@@ -20,6 +20,14 @@ property :advanced_event_selectors, Array,
            The advanced event selectors that were used to select events for the data store.
          DESCRIPTION
 
+property :kms_key_id, String,
+         callbacks: {
+           "kms_key_id is not a String" => lambda { |v| v.is_a? String },
+         },
+         description: <<~'DESCRIPTION'
+           Specifies the KMS key ID to use to encrypt the events delivered by CloudTrail. The value can be an alias name prefixed by 'alias/', a fully specified ARN to an alias, a fully specified ARN to a key, or a globally unique identifier.
+         DESCRIPTION
+
 property :multi_region_enabled, [TrueClass, FalseClass],
          callbacks: {
            "multi_region_enabled is not a Boolean" => lambda { |v| v.is_a? Boolean },
@@ -73,6 +81,7 @@ rest_api_document "/AWS::CloudTrail::EventDataStore"
 
 rest_property_map({
   advanced_event_selectors:       "AdvancedEventSelectors",
+  kms_key_id:                     "KmsKeyId",
   multi_region_enabled:           "MultiRegionEnabled",
   name:                           "Name",
   organization_enabled:           "OrganizationEnabled",

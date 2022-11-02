@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_ec2_flow_log
 provides :aws_ec2_flow_log, target_mode: true, platform: "aws"
 
@@ -99,7 +98,6 @@ property :tags, Array,
          DESCRIPTION
 
 property :traffic_type, String,
-         required: true,
          callbacks: {
            "traffic_type is not a String" => lambda { |v| v.is_a? String },
            "traffic_typeis not one of `ACCEPT`, `ALL`, `REJECT`" => lambda { |v| %w{ACCEPT ALL REJECT}.include? v },

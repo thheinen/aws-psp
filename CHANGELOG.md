@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## v0.1.25 (2022-11-02)
+
+
+- Add AWS::ApiGatewayV2::Authorizer
+- Update AWS::CloudTrail::EventDataStore
+- Update AWS::EC2::FlowLog
+
 ## v0.1.24 (2022-11-01)
 
 
