@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_cloudwatch_metric_stream
 provides :aws_cloudwatch_metric_stream, target_mode: true, platform: "aws"
 

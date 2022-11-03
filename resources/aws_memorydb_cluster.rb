@@ -50,6 +50,15 @@ property :cluster_name, String,
            The name of the cluster. This value must be unique as it also serves as the cluster identifier.
          DESCRIPTION
 
+property :data_tiering, Hash,
+         callbacks: {
+           "data_tiering is not a String" => lambda { |v| v.is_a? String },
+           "data_tieringis not one of `true`, `false`" => lambda { |v| %w{true false}.include? v },
+         },
+         description: <<~'DESCRIPTION'
+           Enables data tiering. Data tiering is only supported for clusters using the r6gd node type. This parameter must be set when using r6gd nodes.
+         DESCRIPTION
+
 property :description, String,
          callbacks: {
            "description is not a String" => lambda { |v| v.is_a? String },
@@ -221,6 +230,7 @@ rest_property_map({
   auto_minor_version_upgrade: "AutoMinorVersionUpgrade",
   cluster_endpoint:           "ClusterEndpoint",
   cluster_name:               "ClusterName",
+  data_tiering:               "DataTiering",
   description:                "Description",
   engine_version:             "EngineVersion",
   final_snapshot_name:        "FinalSnapshotName",
@@ -244,5 +254,5 @@ rest_property_map({
 })
 
 rest_post_only_properties %i{
-  cluster_name kms_key_id port snapshot_arns snapshot_name tls_enabled
+  cluster_name data_tiering kms_key_id port snapshot_arns snapshot_name tls_enabled
 }

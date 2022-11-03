@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## v0.1.26 (2022-11-03)
+
+
+- Update AWS::CloudTrail::EventDataStore
+- Update AWS::CloudWatch::MetricStream
+- Update AWS::Macie::AllowList
+- Update AWS::MemoryDB::Cluster
+
 ## v0.1.25 (2022-11-02)
 
 
