@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## v0.1.27 (2022-11-04)
+
+
+- Update AWS::Batch::ComputeEnvironment
+- Update AWS::Batch::JobQueue
+- Update AWS::Batch::SchedulingPolicy
+
 ## v0.1.26 (2022-11-03)
 
 

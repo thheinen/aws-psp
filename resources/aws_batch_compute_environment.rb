@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_batch_compute_environment
 provides :aws_batch_compute_environment, target_mode: true, platform: "aws"
 
