@@ -1,5 +1,36 @@
 # CHANGELOG
 
+## v0.1.28 (2022-11-07)
+
+
+- Update AWS::AppStream::DirectoryConfig
+- Update AWS::CloudFront::CachePolicy
+- Update AWS::CloudFront::CloudFrontOriginAccessIdentity
+- Update AWS::CloudFront::Distribution
+- Update AWS::CloudFront::Function
+- Update AWS::CloudFront::KeyGroup
+- Update AWS::CloudFront::MonitoringSubscription
+- Update AWS::CloudFront::OriginAccessControl
+- Update AWS::CloudFront::OriginRequestPolicy
+- Update AWS::CloudFront::PublicKey
+- Update AWS::CloudFront::RealtimeLogConfig
+- Update AWS::CloudFront::ResponseHeadersPolicy
+- Update AWS::CloudTrail::EventDataStore
+- Update AWS::EC2::VPC
+- Update AWS::MediaPackage::Asset
+- Update AWS::MediaPackage::Channel
+- Update AWS::MediaPackage::OriginEndpoint
+- Update AWS::MediaPackage::PackagingConfiguration
+- Update AWS::MediaPackage::PackagingGroup
+- Add AWS::Organizations::Account
+- Add AWS::Organizations::OrganizationalUnit
+- Add AWS::Organizations::Policy
+- Update AWS::ResilienceHub::App
+- Update AWS::ResilienceHub::ResiliencyPolicy
+- Update AWS::SES::ConfigurationSet
+- Add AWS::SES::VdmAttributes
+- Update AWS::SageMaker::FeatureGroup
+
 ## v0.1.27 (2022-11-04)
 
 

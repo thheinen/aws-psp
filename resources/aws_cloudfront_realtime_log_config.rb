@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_cloudfront_realtime_log_config
 provides :aws_cloudfront_realtime_log_config, target_mode: true, platform: "aws"
 
@@ -29,6 +28,7 @@ property :fields, Array,
 
 property :name, String,
          name_property: true,
+         required: true,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
          },

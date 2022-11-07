@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_mediapackage_packaging_configuration
 provides :aws_mediapackage_packaging_configuration, target_mode: true, platform: "aws"
 
@@ -37,6 +36,7 @@ property :dash_package, Hash,
 property :hls_package, Hash,
          callbacks: {
            "Subproperty `HlsManifests` is not a Array" => lambda { |v| v[:HlsManifests].is_a? Array },
+           "Subproperty `IncludeDvbSubtitles` is not a Boolean" => lambda { |v| v[:IncludeDvbSubtitles].is_a? Boolean },
            "Subproperty `UseAudioRenditionGroup` is not a Boolean" => lambda { |v| v[:UseAudioRenditionGroup].is_a? Boolean },
          },
          description: <<~'DESCRIPTION'

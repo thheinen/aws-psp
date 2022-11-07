@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_cloudfront_distribution
 provides :aws_cloudfront_distribution, target_mode: true, platform: "aws"
 

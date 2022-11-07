@@ -54,6 +54,9 @@ property :tracking_options, Hash,
          },
          description: ""
 
+property :vdm_options, Hash,
+         description: ""
+
 # API URLs and mappings
 rest_api_collection "/AWS::SES::ConfigurationSet"
 rest_api_document "/AWS::SES::ConfigurationSet"
@@ -65,6 +68,7 @@ rest_property_map({
   sending_options:     "SendingOptions",
   suppression_options: "SuppressionOptions",
   tracking_options:    "TrackingOptions",
+  vdm_options:         "VdmOptions",
 })
 
 rest_post_only_properties %i{

@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_resiliencehub_app
 provides :aws_resiliencehub_app, target_mode: true, platform: "aws"
 
@@ -27,7 +26,7 @@ property :app_template_body, String,
          callbacks: {
            "app_template_body is not a String" => lambda { |v| v.is_a? String },
            "app_template_body needs to be 0..5000 characters" => lambda { |v| v.length >= 0 && v.length <= 5000 },
-           "app_template_body must match pattern ^[\w\s:,-\.'{}\[\]:]+$" => lambda { |v| v =~ Regexp.new("/^[\w\s:,-\.'{}\[\]:]+$/") },
+           "app_template_body must match pattern ^[\w\s:,-\.'{}\[\]:"]+$" => lambda { |v| v =~ Regexp.new("/^[\w\s:,-\.'{}\[\]:"]+$/") },
          },
          description: <<~'DESCRIPTION'
            A string containing full ResilienceHub app template body.
@@ -44,6 +43,7 @@ property :description, String,
 
 property :name, String,
          name_property: true,
+         required: true,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
            "name must match pattern ^[A-Za-z0-9][A-Za-z0-9_\-]{1,59}$" => lambda { |v| v =~ Regexp.new("/^[A-Za-z0-9][A-Za-z0-9_\-]{1,59}$/") },

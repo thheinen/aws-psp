@@ -109,5 +109,5 @@ rest_property_map({
 })
 
 rest_post_only_properties %i{
-  description event_time_feature_name feature_definitions feature_group_name offline_store_config online_store_config record_identifier_feature_name role_arn tags
+  description event_time_feature_name feature_group_name offline_store_config online_store_config record_identifier_feature_name role_arn tags
 }

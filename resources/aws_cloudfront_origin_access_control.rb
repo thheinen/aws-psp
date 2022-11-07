@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_cloudfront_origin_access_control
 provides :aws_cloudfront_origin_access_control, target_mode: true, platform: "aws"
 

@@ -12,6 +12,14 @@ property :name, String,
          name_property: true,
          description: "Name of the resource, not desired state"
 
+property :certificate_based_auth_properties, Hash,
+         callbacks: {
+           "Subproperty `Status` is not a String" => lambda { |v| v[:Status].is_a? String },
+           "Subproperty `CertificateAuthorityArn` is not a String" => lambda { |v| v[:CertificateAuthorityArn].is_a? String },
+           "Subproperty `CertificateAuthorityArn`is not a valid ARN" => lambda { |v| v[:CertificateAuthorityArn] =~ Regexp.new("^arn:aws(?:-cn|-us-gov)?:([^:]*:){3,}") },
+         },
+         description: ""
+
 property :directory_name, String,
          required: true,
          callbacks: {
@@ -39,6 +47,7 @@ rest_api_collection "/AWS::AppStream::DirectoryConfig"
 rest_api_document "/AWS::AppStream::DirectoryConfig"
 
 rest_property_map({
+  certificate_based_auth_properties:       "CertificateBasedAuthProperties",
   directory_name:                          "DirectoryName",
   organizational_unit_distinguished_names: "OrganizationalUnitDistinguishedNames",
   service_account_credentials:             "ServiceAccountCredentials",

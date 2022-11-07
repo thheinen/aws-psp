@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_cloudfront_function
 provides :aws_cloudfront_function, target_mode: true, platform: "aws"
 
@@ -20,14 +19,12 @@ property :auto_publish, [TrueClass, FalseClass],
          description: ""
 
 property :function_code, String,
-         required: true,
          callbacks: {
            "function_code is not a String" => lambda { |v| v.is_a? String },
          },
          description: ""
 
 property :function_config, Hash,
-         required: true,
          callbacks: {
            "Subproperty `Comment` is not a String" => lambda { |v| v[:Comment].is_a? String },
            "Subproperty `Runtime` is not a String" => lambda { |v| v[:Runtime].is_a? String },
@@ -42,6 +39,7 @@ property :function_metadata, Hash,
 
 property :name, String,
          name_property: true,
+         required: true,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
          },

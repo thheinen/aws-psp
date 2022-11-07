@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_mediapackage_origin_endpoint
 provides :aws_mediapackage_origin_endpoint, target_mode: true, platform: "aws"
 
@@ -80,6 +79,7 @@ property :hls_package, Hash,
            "Subproperty `ProgramDateTimeIntervalSeconds` is not a Integer" => lambda { |v| v[:ProgramDateTimeIntervalSeconds].is_a? Integer },
            "Subproperty `IncludeIframeOnlyStream` is not a Boolean" => lambda { |v| v[:IncludeIframeOnlyStream].is_a? Boolean },
            "Subproperty `UseAudioRenditionGroup` is not a Boolean" => lambda { |v| v[:UseAudioRenditionGroup].is_a? Boolean },
+           "Subproperty `IncludeDvbSubtitles` is not a Boolean" => lambda { |v| v[:IncludeDvbSubtitles].is_a? Boolean },
          },
          description: ""
 
