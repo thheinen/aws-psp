@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_iot_custom_metric
 provides :aws_iot_custom_metric, target_mode: true, platform: "aws"
 

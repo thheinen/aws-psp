@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_transfer_agreement
 provides :aws_transfer_agreement, target_mode: true, platform: "aws"
 

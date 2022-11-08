@@ -40,6 +40,14 @@ property :compute_resources, Hash,
          },
          description: ""
 
+property :eks_configuration, Hash,
+         callbacks: {
+           "Subproperty `EksClusterArn` is not a String" => lambda { |v| v[:EksClusterArn].is_a? String },
+           "Subproperty `EksClusterArn`is not a valid ARN" => lambda { |v| v[:EksClusterArn] =~ Regexp.new("^arn:aws(?:-cn|-us-gov)?:([^:]*:){3,}") },
+           "Subproperty `KubernetesNamespace` is not a String" => lambda { |v| v[:KubernetesNamespace].is_a? String },
+         },
+         description: ""
+
 property :replace_compute_environment, [TrueClass, FalseClass],
          callbacks: {
            "replace_compute_environment is not a Boolean" => lambda { |v| v.is_a? Boolean },
@@ -93,6 +101,7 @@ rest_api_document "/AWS::Batch::ComputeEnvironment"
 rest_property_map({
   compute_environment_name:    "ComputeEnvironmentName",
   compute_resources:           "ComputeResources",
+  eks_configuration:           "EksConfiguration",
   replace_compute_environment: "ReplaceComputeEnvironment",
   service_role:                "ServiceRole",
   state:                       "State",
@@ -103,5 +112,5 @@ rest_property_map({
 })
 
 rest_post_only_properties %i{
-  compute_environment_name compute_resources/spot_iam_fleet_role tags type
+  compute_environment_name compute_resources/spot_iam_fleet_role eks_configuration tags type
 }

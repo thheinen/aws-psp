@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_rds_db_proxy
 provides :aws_rds_db_proxy, target_mode: true, platform: "aws"
 
@@ -44,7 +43,7 @@ property :engine_family, String,
          required: true,
          callbacks: {
            "engine_family is not a String" => lambda { |v| v.is_a? String },
-           "engine_familyis not one of `MYSQL`, `POSTGRESQL`" => lambda { |v| %w{MYSQL POSTGRESQL}.include? v },
+           "engine_familyis not one of `MYSQL`, `POSTGRESQL`, `SQLSERVER`" => lambda { |v| %w{MYSQL POSTGRESQL SQLSERVER}.include? v },
          },
          description: <<~'DESCRIPTION'
            The kinds of databases that the proxy can connect to.

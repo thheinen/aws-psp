@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_rds_db_proxy_endpoint
 provides :aws_rds_db_proxy_endpoint, target_mode: true, platform: "aws"
 

@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_iot_account_audit_configuration
 provides :aws_iot_account_audit_configuration, target_mode: true, platform: "aws"
 

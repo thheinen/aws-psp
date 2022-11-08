@@ -442,6 +442,14 @@ property :storage_encrypted, [TrueClass, FalseClass],
            A value that indicates whether the DB instance is encrypted. By default, it isn't encrypted.
          DESCRIPTION
 
+property :storage_throughput, Integer,
+         callbacks: {
+           "storage_throughput is not a Integer" => lambda { |v| v.is_a? Integer },
+         },
+         description: <<~'DESCRIPTION'
+           Specifies the storage throughput for the DB instance.
+         DESCRIPTION
+
 property :storage_type, String,
          callbacks: {
            "storage_type is not a String" => lambda { |v| v.is_a? String },
@@ -555,6 +563,7 @@ rest_property_map({
   source_db_instance_identifier:         "SourceDBInstanceIdentifier",
   source_region:                         "SourceRegion",
   storage_encrypted:                     "StorageEncrypted",
+  storage_throughput:                    "StorageThroughput",
   storage_type:                          "StorageType",
   tags:                                  "Tags",
   tde_credential_arn:                    "TdeCredentialArn",
@@ -565,5 +574,5 @@ rest_property_map({
 })
 
 rest_post_only_properties %i{
-  character_set_name custom_iam_instance_profile db_cluster_identifier db_instance_identifier db_name db_snapshot_identifier db_subnet_group_name kms_key_id master_username nchar_character_set_name port publicly_accessible source_region storage_encrypted timezone
+  character_set_name custom_iam_instance_profile db_cluster_identifier db_instance_identifier db_name db_subnet_group_name kms_key_id master_username nchar_character_set_name port source_region storage_encrypted timezone
 }

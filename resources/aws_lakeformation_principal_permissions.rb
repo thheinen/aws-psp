@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_lakeformation_principal_permissions
 provides :aws_lakeformation_principal_permissions, target_mode: true, platform: "aws"
 

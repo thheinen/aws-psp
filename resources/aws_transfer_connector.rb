@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_transfer_connector
 provides :aws_transfer_connector, target_mode: true, platform: "aws"
 

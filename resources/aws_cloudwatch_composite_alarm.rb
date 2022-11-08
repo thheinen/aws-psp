@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_cloudwatch_composite_alarm
 provides :aws_cloudwatch_composite_alarm, target_mode: true, platform: "aws"
 
@@ -64,7 +63,6 @@ property :alarm_description, String,
          DESCRIPTION
 
 property :alarm_name, String,
-         required: true,
          callbacks: {
            "alarm_name is not a String" => lambda { |v| v.is_a? String },
            "alarm_name needs to be 1..255 characters" => lambda { |v| v.length >= 1 && v.length <= 255 },

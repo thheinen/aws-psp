@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_config_aggregation_authorization
 provides :aws_config_aggregation_authorization, target_mode: true, platform: "aws"
 

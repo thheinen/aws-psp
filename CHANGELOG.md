@@ -1,5 +1,36 @@
 # CHANGELOG
 
+## v0.1.29 (2022-11-08)
+
+
+- Update AWS::Batch::ComputeEnvironment
+- Add AWS::CloudWatch::Alarm
+- Update AWS::CloudWatch::CompositeAlarm
+- Update AWS::Config::AggregationAuthorization
+- Update AWS::EC2::LocalGatewayRoute
+- Update AWS::EC2::LocalGatewayRouteTableVPCAssociation
+- Update AWS::IoT::AccountAuditConfiguration
+- Update AWS::IoT::CustomMetric
+- Update AWS::IoT::Dimension
+- Update AWS::IoT::MitigationAction
+- Update AWS::IoT::ScheduledAudit
+- Update AWS::IoT::SecurityProfile
+- Update AWS::LakeFormation::DataCellsFilter
+- Update AWS::LakeFormation::PrincipalPermissions
+- Update AWS::LakeFormation::Tag
+- Update AWS::LakeFormation::TagAssociation
+- Update AWS::RDS::DBInstance
+- Update AWS::RDS::DBProxy
+- Update AWS::RDS::DBProxyEndpoint
+- Update AWS::RDS::DBProxyTargetGroup
+- Add AWS::ResourceExplorer2::Index
+- Add AWS::ResourceExplorer2::View
+- Update AWS::Transfer::Agreement
+- Update AWS::Transfer::Certificate
+- Update AWS::Transfer::Connector
+- Update AWS::Transfer::Profile
+- Update AWS::Transfer::Workflow
+
 ## v0.1.28 (2022-11-07)
 
 

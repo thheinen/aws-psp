@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_transfer_profile
 provides :aws_transfer_profile, target_mode: true, platform: "aws"
 

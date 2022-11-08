@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_lakeformation_tag_association
 provides :aws_lakeformation_tag_association, target_mode: true, platform: "aws"
 

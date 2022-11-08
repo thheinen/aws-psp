@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_iot_scheduled_audit
 provides :aws_iot_scheduled_audit, target_mode: true, platform: "aws"
 
