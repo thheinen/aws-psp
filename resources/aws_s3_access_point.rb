@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_s3_access_point
 provides :aws_s3_access_point, target_mode: true, platform: "aws"
 
@@ -21,6 +20,26 @@ property :bucket, String,
          },
          description: <<~'DESCRIPTION'
            The name of the bucket that you want to associate this Access Point with.
+         DESCRIPTION
+
+property :bucket_account_id, String,
+         callbacks: {
+           "bucket_account_id is not a String" => lambda { |v| v.is_a? String },
+           "bucket_account_id must match pattern ^\d{12}$" => lambda { |v| v =~ Regexp.new("/^\d{12}$/") },
+         },
+         description: <<~'DESCRIPTION'
+           The AWS account ID associated with the S3 bucket associated with this access point.
+         DESCRIPTION
+
+property :name, String,
+         name_property: true,
+         callbacks: {
+           "name is not a String" => lambda { |v| v.is_a? String },
+           "name needs to be 3..50 characters" => lambda { |v| v.length >= 3 && v.length <= 50 },
+           "name must match pattern ^[a-z0-9]([a-z0-9\-]*[a-z0-9])?$" => lambda { |v| v =~ Regexp.new("/^[a-z0-9]([a-z0-9\-]*[a-z0-9])?$/") },
+         },
+         description: <<~'DESCRIPTION'
+           The name you want to assign to this Access Point. If you don't specify a name, AWS CloudFormation generates a unique ID and uses that ID for the access point name.
          DESCRIPTION
 
 property :policy, Hash,
@@ -64,6 +83,8 @@ rest_api_document "/AWS::S3::AccessPoint"
 
 rest_property_map({
   bucket:                            "Bucket",
+  bucket_account_id:                 "BucketAccountId",
+  name:                              "Name",
   policy:                            "Policy",
   policy_status:                     "PolicyStatus",
   public_access_block_configuration: "PublicAccessBlockConfiguration",
@@ -71,5 +92,5 @@ rest_property_map({
 })
 
 rest_post_only_properties %i{
-  bucket name public_access_block_configuration vpc_configuration
+  bucket bucket_account_id name public_access_block_configuration vpc_configuration
 }

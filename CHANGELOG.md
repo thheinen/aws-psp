@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## v0.1.30 (2022-11-09)
+
+
+- Add AWS::AmplifyUIBuilder::Form
+- Update AWS::EMR::Studio
+- Update AWS::EMR::StudioSessionMapping
+- Add AWS::ResourceExplorer2::DefaultViewAssociation
+- Update AWS::S3::AccessPoint
+
 ## v0.1.29 (2022-11-08)
 
 
