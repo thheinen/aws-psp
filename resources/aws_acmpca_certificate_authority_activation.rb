@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_acmpca_certificate_authority_activation
 provides :aws_acmpca_certificate_authority_activation, target_mode: true, platform: "aws"
 

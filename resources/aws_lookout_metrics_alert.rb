@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_lookout_metrics_alert
 provides :aws_lookout_metrics_alert, target_mode: true, platform: "aws"
 

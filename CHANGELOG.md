@@ -1,5 +1,23 @@
 # CHANGELOG
 
+## v0.1.31 (2022-11-10)
+
+
+- Update AWS::ACMPCA::CertificateAuthorityActivation
+- Update AWS::CertificateManager::Account
+- Update AWS::LookoutMetrics::Alert
+- Update AWS::LookoutMetrics::AnomalyDetector
+- Update AWS::NetworkFirewall::Firewall
+- Update AWS::NetworkFirewall::FirewallPolicy
+- Update AWS::NetworkFirewall::LoggingConfiguration
+- Update AWS::NetworkFirewall::RuleGroup
+- Update AWS::SageMaker::App
+- Update AWS::SageMaker::AppImageConfig
+- Update AWS::SageMaker::Domain
+- Update AWS::SageMaker::UserProfile
+- Add AWS::Scheduler::Schedule
+- Add AWS::Scheduler::ScheduleGroup
+
 ## v0.1.30 (2022-11-09)
 
 
