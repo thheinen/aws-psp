@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.1.32 (2022-11-12)
+
+
+- Update AWS::ElasticBeanstalk::Application
+- Update AWS::ElasticBeanstalk::ApplicationVersion
+
 ## v0.1.31 (2022-11-10)
 
 

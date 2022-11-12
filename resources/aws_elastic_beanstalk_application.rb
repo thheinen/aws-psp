@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_elastic_beanstalk_application
 provides :aws_elastic_beanstalk_application, target_mode: true, platform: "aws"
 
