@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_lightsail_static_ip
 provides :aws_lightsail_static_ip, target_mode: true, platform: "aws"
 

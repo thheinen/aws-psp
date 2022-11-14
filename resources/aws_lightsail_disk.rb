@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_lightsail_disk
 provides :aws_lightsail_disk, target_mode: true, platform: "aws"
 

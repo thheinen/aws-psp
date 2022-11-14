@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_amplify_app
 provides :aws_amplify_app, target_mode: true, platform: "aws"
 
@@ -98,6 +97,7 @@ property :iam_service_role, String,
 
 property :name, String,
          name_property: true,
+         required: true,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
            "name needs to be 1..255 characters" => lambda { |v| v.length >= 1 && v.length <= 255 },

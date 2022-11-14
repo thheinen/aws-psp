@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_ecs_service
 provides :aws_ecs_service, target_mode: true, platform: "aws"
 
@@ -117,6 +116,14 @@ property :scheduling_strategy, String,
          },
          description: ""
 
+property :service_connect_configuration, Hash,
+         callbacks: {
+           "Subproperty `Enabled` is not a Boolean" => lambda { |v| v[:Enabled].is_a? Boolean },
+           "Subproperty `Namespace` is not a String" => lambda { |v| v[:Namespace].is_a? String },
+           "Subproperty `Services` is not a Array" => lambda { |v| v[:Services].is_a? Array },
+         },
+         description: ""
+
 property :service_name, String,
          callbacks: {
            "service_name is not a String" => lambda { |v| v.is_a? String },
@@ -163,6 +170,7 @@ rest_property_map({
   propagate_tags:                    "PropagateTags",
   role:                              "Role",
   scheduling_strategy:               "SchedulingStrategy",
+  service_connect_configuration:     "ServiceConnectConfiguration",
   service_name:                      "ServiceName",
   service_registries:                "ServiceRegistries",
   tags:                              "Tags",

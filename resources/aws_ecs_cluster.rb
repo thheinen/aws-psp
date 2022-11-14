@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_ecs_cluster
 provides :aws_ecs_cluster, target_mode: true, platform: "aws"
 

@@ -1,5 +1,26 @@
 # CHANGELOG
 
+## v0.1.33 (2022-11-14)
+
+
+- Update AWS::Amplify::App
+- Update AWS::Amplify::Branch
+- Update AWS::Amplify::Domain
+- Update AWS::EC2::NatGateway
+- Update AWS::ECS::Cluster
+- Update AWS::ECS::Service
+- Update AWS::Lightsail::Alarm
+- Update AWS::Lightsail::Bucket
+- Update AWS::Lightsail::Certificate
+- Update AWS::Lightsail::Container
+- Update AWS::Lightsail::Database
+- Update AWS::Lightsail::Disk
+- Update AWS::Lightsail::Instance
+- Update AWS::Lightsail::LoadBalancer
+- Update AWS::Lightsail::LoadBalancerTlsCertificate
+- Update AWS::Lightsail::StaticIp
+- Update AWS::RefactorSpaces::Environment
+
 ## v0.1.32 (2022-11-12)
 
 
