@@ -12,6 +12,9 @@ property :name, String,
          name_property: true,
          description: "Name of the resource, not desired state"
 
+property :app_protocol, Hash,
+         description: ""
+
 property :container_definitions, Array,
          callbacks: {
            "container_definitions is not a Array" => lambda { |v| v.is_a? Array },
@@ -60,6 +63,10 @@ property :memory, String,
          },
          description: ""
 
+property :name, Hash,
+         name_property: true,
+         description: ""
+
 property :network_mode, String,
          callbacks: {
            "network_mode is not a String" => lambda { |v| v.is_a? String },
@@ -80,9 +87,9 @@ property :placement_constraints, Array,
 
 property :proxy_configuration, Hash,
          callbacks: {
+           "Subproperty `ContainerName` is not a String" => lambda { |v| v[:ContainerName].is_a? String },
            "Subproperty `ProxyConfigurationProperties` is not a Array" => lambda { |v| v[:ProxyConfigurationProperties].is_a? Array },
            "Subproperty `Type` is not a String" => lambda { |v| v[:Type].is_a? String },
-           "Subproperty `ContainerName` is not a String" => lambda { |v| v[:ContainerName].is_a? String },
          },
          description: ""
 
@@ -94,8 +101,8 @@ property :requires_compatibilities, Array,
 
 property :runtime_platform, Hash,
          callbacks: {
-           "Subproperty `OperatingSystemFamily` is not a String" => lambda { |v| v[:OperatingSystemFamily].is_a? String },
            "Subproperty `CpuArchitecture` is not a String" => lambda { |v| v[:CpuArchitecture].is_a? String },
+           "Subproperty `OperatingSystemFamily` is not a String" => lambda { |v| v[:OperatingSystemFamily].is_a? String },
          },
          description: ""
 
@@ -122,6 +129,7 @@ rest_api_collection "/AWS::ECS::TaskDefinition"
 rest_api_document "/AWS::ECS::TaskDefinition"
 
 rest_property_map({
+  app_protocol:             "AppProtocol",
   container_definitions:    "ContainerDefinitions",
   cpu:                      "Cpu",
   ephemeral_storage:        "EphemeralStorage",
@@ -130,6 +138,7 @@ rest_property_map({
   inference_accelerators:   "InferenceAccelerators",
   ipc_mode:                 "IpcMode",
   memory:                   "Memory",
+  name:                     "Name",
   network_mode:             "NetworkMode",
   pid_mode:                 "PidMode",
   placement_constraints:    "PlacementConstraints",

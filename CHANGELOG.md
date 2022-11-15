@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## v0.1.34 (2022-11-15)
+
+
+- Update AWS::Amplify::App
+- Update AWS::Amplify::Branch
+- Update AWS::CloudFormation::HookDefaultVersion
+- Update AWS::CloudFormation::HookTypeConfig
+- Update AWS::CloudFormation::HookVersion
+- Update AWS::ECS::ClusterCapacityProviderAssociations
+- Update AWS::ECS::TaskDefinition
+- Add AWS::EMRServerless::Application
+- Add AWS::ElasticLoadBalancingV2::TargetGroup
+- Add AWS::SSM::ResourcePolicy
+
 ## v0.1.33 (2022-11-14)
 
 

@@ -79,6 +79,13 @@ property :environment_variables, Array,
          },
          description: ""
 
+property :framework, String,
+         callbacks: {
+           "framework is not a String" => lambda { |v| v.is_a? String },
+           "framework must match pattern (?s).*" => lambda { |v| v =~ Regexp.new("/(?s).*/") },
+         },
+         description: ""
+
 property :pull_request_environment_name, String,
          callbacks: {
            "pull_request_environment_name is not a String" => lambda { |v| v.is_a? String },
@@ -113,6 +120,7 @@ rest_property_map({
   enable_performance_mode:       "EnablePerformanceMode",
   enable_pull_request_preview:   "EnablePullRequestPreview",
   environment_variables:         "EnvironmentVariables",
+  framework:                     "Framework",
   pull_request_environment_name: "PullRequestEnvironmentName",
   stage:                         "Stage",
   tags:                          "Tags",

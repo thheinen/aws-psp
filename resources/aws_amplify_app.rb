@@ -29,6 +29,8 @@ property :auto_branch_creation_config, Hash,
            "Subproperty `EnablePerformanceMode` is not a Boolean" => lambda { |v| v[:EnablePerformanceMode].is_a? Boolean },
            "Subproperty `EnablePullRequestPreview` is not a Boolean" => lambda { |v| v[:EnablePullRequestPreview].is_a? Boolean },
            "Subproperty `EnvironmentVariables` is not a Array" => lambda { |v| v[:EnvironmentVariables].is_a? Array },
+           "Subproperty `Framework` is not a String" => lambda { |v| v[:Framework].is_a? String },
+           "Subproperty `Framework` must match pattern (?s).*" => lambda { |v| v[:Framework] =~ Regexp.new("/(?s).*/") },
            "Subproperty `PullRequestEnvironmentName` is not a String" => lambda { |v| v[:PullRequestEnvironmentName].is_a? String },
            "Subproperty `PullRequestEnvironmentName` must match pattern (?s).*" => lambda { |v| v[:PullRequestEnvironmentName] =~ Regexp.new("/(?s).*/") },
            "Subproperty `Stage` is not a String" => lambda { |v| v[:Stage].is_a? String },
@@ -112,6 +114,13 @@ property :oauth_token, String,
          },
          description: ""
 
+property :platform, String,
+         callbacks: {
+           "platform is not a String" => lambda { |v| v.is_a? String },
+           "platformis not one of `WEB`, `WEB_DYNAMIC`, `WEB_COMPUTE`" => lambda { |v| %w{WEB WEB_DYNAMIC WEB_COMPUTE}.include? v },
+         },
+         description: ""
+
 property :repository, String,
          callbacks: {
            "repository is not a String" => lambda { |v| v.is_a? String },
@@ -142,6 +151,7 @@ rest_property_map({
   iam_service_role:            "IAMServiceRole",
   name:                        "Name",
   oauth_token:                 "OauthToken",
+  platform:                    "Platform",
   repository:                  "Repository",
   tags:                        "Tags",
 })
