@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_networkmanager_connect_attachment
 provides :aws_networkmanager_connect_attachment, target_mode: true, platform: "aws"
 
@@ -14,6 +13,7 @@ property :name, String,
          description: "Name of the resource, not desired state"
 
 property :core_network_id, String,
+         required: true,
          callbacks: {
            "core_network_id is not a String" => lambda { |v| v.is_a? String },
          },
@@ -22,6 +22,7 @@ property :core_network_id, String,
          DESCRIPTION
 
 property :edge_location, String,
+         required: true,
          callbacks: {
            "edge_location is not a String" => lambda { |v| v.is_a? String },
          },
@@ -30,6 +31,7 @@ property :edge_location, String,
          DESCRIPTION
 
 property :options, Hash,
+         required: true,
          callbacks: {
            "Subproperty `Protocol` is not a String" => lambda { |v| v[:Protocol].is_a? String },
          },
@@ -46,6 +48,7 @@ property :tags, Array,
          DESCRIPTION
 
 property :transport_attachment_id, String,
+         required: true,
          callbacks: {
            "transport_attachment_id is not a String" => lambda { |v| v.is_a? String },
          },

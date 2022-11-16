@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_ivs_playback_key_pair
 provides :aws_ivs_playback_key_pair, target_mode: true, platform: "aws"
 

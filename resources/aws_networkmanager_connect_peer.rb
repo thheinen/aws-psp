@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_networkmanager_connect_peer
 provides :aws_networkmanager_connect_peer, target_mode: true, platform: "aws"
 

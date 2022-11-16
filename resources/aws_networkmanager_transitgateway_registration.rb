@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_networkmanager_transitgateway_registration
 provides :aws_networkmanager_transitgateway_registration, target_mode: true, platform: "aws"
 

@@ -1,5 +1,40 @@
 # CHANGELOG
 
+## v0.1.35 (2022-11-16)
+
+
+- Update AWS::ACMPCA::Permission
+- Update AWS::ApiGatewayV2::Model
+- Update AWS::ApiGatewayV2::VpcLink
+- Update AWS::AppFlow::ConnectorProfile
+- Update AWS::AppFlow::Flow
+- Update AWS::CodeGuruReviewer::RepositoryAssociation
+- Update AWS::ECS::Cluster
+- Update AWS::ElastiCache::GlobalReplicationGroup
+- Update AWS::ElastiCache::User
+- Update AWS::ElastiCache::UserGroup
+- Update AWS::IVS::Channel
+- Update AWS::IVS::PlaybackKeyPair
+- Update AWS::IVS::RecordingConfiguration
+- Update AWS::IVS::StreamKey
+- Update AWS::KinesisFirehose::DeliveryStream
+- Update AWS::Logs::LogStream
+- Update AWS::NetworkManager::ConnectAttachment
+- Update AWS::NetworkManager::ConnectPeer
+- Update AWS::NetworkManager::CoreNetwork
+- Update AWS::NetworkManager::CustomerGatewayAssociation
+- Update AWS::NetworkManager::Device
+- Update AWS::NetworkManager::GlobalNetwork
+- Update AWS::NetworkManager::Link
+- Update AWS::NetworkManager::LinkAssociation
+- Update AWS::NetworkManager::Site
+- Update AWS::NetworkManager::SiteToSiteVpnAttachment
+- Update AWS::NetworkManager::TransitGatewayRegistration
+- Update AWS::NetworkManager::VpcAttachment
+- Update AWS::SageMaker::ModelPackage
+- Update AWS::SageMaker::ModelPackageGroup
+- Update AWS::SageMaker::Project
+
 ## v0.1.34 (2022-11-15)
 
 

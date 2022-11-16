@@ -41,6 +41,12 @@ property :default_capacity_provider_strategy, Array,
          },
          description: ""
 
+property :service_connect_defaults, Hash,
+         callbacks: {
+           "Subproperty `Namespace` is not a String" => lambda { |v| v[:Namespace].is_a? String },
+         },
+         description: ""
+
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
@@ -57,6 +63,7 @@ rest_property_map({
   cluster_settings:                   "ClusterSettings",
   configuration:                      "Configuration",
   default_capacity_provider_strategy: "DefaultCapacityProviderStrategy",
+  service_connect_defaults:           "ServiceConnectDefaults",
   tags:                               "Tags",
 })
 

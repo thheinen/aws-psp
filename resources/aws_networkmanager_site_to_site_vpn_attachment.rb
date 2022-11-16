@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_networkmanager_site_to_site_vpn_attachment
 provides :aws_networkmanager_site_to_site_vpn_attachment, target_mode: true, platform: "aws"
 

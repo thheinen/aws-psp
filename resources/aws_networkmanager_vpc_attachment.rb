@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_networkmanager_vpc_attachment
 provides :aws_networkmanager_vpc_attachment, target_mode: true, platform: "aws"
 

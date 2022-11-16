@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_elasticache_user
 provides :aws_elasticache_user, target_mode: true, platform: "aws"
 
@@ -20,6 +19,14 @@ property :access_string, String,
          description: <<~'DESCRIPTION'
            Access permissions string used for this user account.
          DESCRIPTION
+
+property :authentication_mode, Hash,
+         callbacks: {
+           "Subproperty `Type` is not a String" => lambda { |v| v[:Type].is_a? String },
+           "Subproperty `Type`is not one of `password`, `no-password-required`, `iam`" => lambda { |v| %w{password no-password-required iam}.include? v[:Type] },
+           "Subproperty `Passwords` is not a Array" => lambda { |v| v[:Passwords].is_a? Array },
+         },
+         description: ""
 
 property :engine, String,
          required: true,
@@ -72,6 +79,7 @@ rest_api_document "/AWS::ElastiCache::User"
 
 rest_property_map({
   access_string:        "AccessString",
+  authentication_mode:  "AuthenticationMode",
   engine:               "Engine",
   no_password_required: "NoPasswordRequired",
   passwords:            "Passwords",

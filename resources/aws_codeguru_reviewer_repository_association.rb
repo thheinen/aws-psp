@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_codeguru_reviewer_repository_association
 provides :aws_codeguru_reviewer_repository_association, target_mode: true, platform: "aws"
 
@@ -35,6 +34,7 @@ property :connection_arn, String,
 
 property :name, String,
          name_property: true,
+         required: true,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
            "name needs to be 1..100 characters" => lambda { |v| v.length >= 1 && v.length <= 100 },

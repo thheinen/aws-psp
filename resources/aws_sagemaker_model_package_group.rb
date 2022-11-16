@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_sagemaker_model_package_group
 provides :aws_sagemaker_model_package_group, target_mode: true, platform: "aws"
 

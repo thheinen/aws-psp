@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_networkmanager_link
 provides :aws_networkmanager_link, target_mode: true, platform: "aws"
 

@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_ivs_channel
 provides :aws_ivs_channel, target_mode: true, platform: "aws"
 
