@@ -184,16 +184,6 @@ property :source_algorithm_specification, Hash,
          },
          description: ""
 
-property :tag, Hash,
-         callbacks: {
-           "Subproperty `Key` is not a String" => lambda { |v| v[:Key].is_a? String },
-           "Subproperty `Key` needs to be 1..128 characters" => lambda { |v| v[:Key].length >= 1 && v[:Key].length <= 128 },
-           "Subproperty `Key` must match pattern ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$" => lambda { |v| v[:Key] =~ Regexp.new("/^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$/") },
-           "Subproperty `Value` is not a String" => lambda { |v| v[:Value].is_a? String },
-           "Subproperty `Value` must match pattern ^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$" => lambda { |v| v[:Value] =~ Regexp.new("/^([\p{L}\p{Z}\p{N}_.:/=+\-@]*)$/") },
-         },
-         description: ""
-
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
@@ -247,7 +237,6 @@ rest_property_map({
   model_package_version:                         "ModelPackageVersion",
   sample_payload_url:                            "SamplePayloadUrl",
   source_algorithm_specification:                "SourceAlgorithmSpecification",
-  tag:                                           "Tag",
   tags:                                          "Tags",
   task:                                          "Task",
   validation_specification:                      "ValidationSpecification",

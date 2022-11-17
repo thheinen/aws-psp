@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_iot_twinmaker_component_type
 provides :aws_iot_twinmaker_component_type, target_mode: true, platform: "aws"
 
@@ -66,6 +65,14 @@ property :property_definitions, Hash,
            An map of the property definitions in the component type. Each property definition's key must be unique to this map.
          DESCRIPTION
 
+property :property_groups, Hash,
+         callbacks: {
+           "property_groups is not a Object" => lambda { |v| v.is_a? Object },
+         },
+         description: <<~'DESCRIPTION'
+           An map of the property groups in the component type. Each property group's key must be unique to this map.
+         DESCRIPTION
+
 property :tags, Hash,
          callbacks: {
            "tags is not a Object" => lambda { |v| v.is_a? Object },
@@ -96,6 +103,7 @@ rest_property_map({
   functions:            "Functions",
   is_singleton:         "IsSingleton",
   property_definitions: "PropertyDefinitions",
+  property_groups:      "PropertyGroups",
   tags:                 "Tags",
   workspace_id:         "WorkspaceId",
 })

@@ -12,9 +12,6 @@ property :name, String,
          name_property: true,
          description: "Name of the resource, not desired state"
 
-property :app_protocol, Hash,
-         description: ""
-
 property :container_definitions, Array,
          callbacks: {
            "container_definitions is not a Array" => lambda { |v| v.is_a? Array },
@@ -61,10 +58,6 @@ property :memory, String,
          callbacks: {
            "memory is not a String" => lambda { |v| v.is_a? String },
          },
-         description: ""
-
-property :name, Hash,
-         name_property: true,
          description: ""
 
 property :network_mode, String,
@@ -129,7 +122,6 @@ rest_api_collection "/AWS::ECS::TaskDefinition"
 rest_api_document "/AWS::ECS::TaskDefinition"
 
 rest_property_map({
-  app_protocol:             "AppProtocol",
   container_definitions:    "ContainerDefinitions",
   cpu:                      "Cpu",
   ephemeral_storage:        "EphemeralStorage",
@@ -138,7 +130,6 @@ rest_property_map({
   inference_accelerators:   "InferenceAccelerators",
   ipc_mode:                 "IpcMode",
   memory:                   "Memory",
-  name:                     "Name",
   network_mode:             "NetworkMode",
   pid_mode:                 "PidMode",
   placement_constraints:    "PlacementConstraints",

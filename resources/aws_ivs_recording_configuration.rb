@@ -27,6 +27,14 @@ property :name, String,
            Recording Configuration Name.
          DESCRIPTION
 
+property :recording_reconnect_window_seconds, Integer,
+         callbacks: {
+           "recording_reconnect_window_seconds is not a Integer" => lambda { |v| v.is_a? Integer },
+         },
+         description: <<~'DESCRIPTION'
+           Recording Reconnect Window Seconds. (0 means disabled)
+         DESCRIPTION
+
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
@@ -48,12 +56,13 @@ rest_api_collection "/AWS::IVS::RecordingConfiguration"
 rest_api_document "/AWS::IVS::RecordingConfiguration"
 
 rest_property_map({
-  destination_configuration: "DestinationConfiguration",
-  name:                      "Name",
-  tags:                      "Tags",
-  thumbnail_configuration:   "ThumbnailConfiguration",
+  destination_configuration:          "DestinationConfiguration",
+  name:                               "Name",
+  recording_reconnect_window_seconds: "RecordingReconnectWindowSeconds",
+  tags:                               "Tags",
+  thumbnail_configuration:            "ThumbnailConfiguration",
 })
 
 rest_post_only_properties %i{
-  destination_configuration destination_configuration/s3 destination_configuration/s3/bucket_name name thumbnail_configuration thumbnail_configuration/recording_mode thumbnail_configuration/target_interval_seconds
+  destination_configuration destination_configuration/s3 destination_configuration/s3/bucket_name name recording_reconnect_window_seconds thumbnail_configuration thumbnail_configuration/recording_mode thumbnail_configuration/target_interval_seconds
 }

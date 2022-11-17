@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_config_configuration_aggregator
 provides :aws_config_configuration_aggregator, target_mode: true, platform: "aws"
 

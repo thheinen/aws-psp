@@ -1,5 +1,26 @@
 # CHANGELOG
 
+## v0.1.36 (2022-11-17)
+
+
+- Add AWS::ApiGateway::RestApi
+- Update AWS::Config::ConfigurationAggregator
+- Update AWS::EC2::IPAM
+- Update AWS::EC2::IPAMAllocation
+- Update AWS::EC2::IPAMPool
+- Update AWS::EC2::IPAMScope
+- Update AWS::EC2::KeyPair
+- Update AWS::ECS::CapacityProvider
+- Update AWS::ECS::TaskDefinition
+- Update AWS::IVS::RecordingConfiguration
+- Update AWS::IoT::JobTemplate
+- Update AWS::IoTTwinMaker::ComponentType
+- Update AWS::IoTTwinMaker::Entity
+- Update AWS::IoTTwinMaker::Scene
+- Update AWS::IoTTwinMaker::Workspace
+- Update AWS::KinesisFirehose::DeliveryStream
+- Update AWS::SageMaker::ModelPackage
+
 ## v0.1.35 (2022-11-16)
 
 

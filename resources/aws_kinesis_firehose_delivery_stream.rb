@@ -12,6 +12,21 @@ property :name, String,
          name_property: true,
          description: "Name of the resource, not desired state"
 
+property :amazon_open_search_serverless_destination_configuration, Hash,
+         callbacks: {
+           "Subproperty `IndexName` is not a String" => lambda { |v| v[:IndexName].is_a? String },
+           "Subproperty `IndexName` needs to be 1..80 characters" => lambda { |v| v[:IndexName].length >= 1 && v[:IndexName].length <= 80 },
+           "Subproperty `RoleARN` is not a String" => lambda { |v| v[:RoleARN].is_a? String },
+           "Subproperty `RoleARN` needs to be 1..512 characters" => lambda { |v| v[:RoleARN].length >= 1 && v[:RoleARN].length <= 512 },
+           "Subproperty `RoleARN` must match pattern arn:.*" => lambda { |v| v[:RoleARN] =~ Regexp.new("/arn:.*/") },
+           "Subproperty `S3BackupMode` is not a String" => lambda { |v| v[:S3BackupMode].is_a? String },
+           "Subproperty `S3BackupMode`is not one of `FailedDocumentsOnly`, `AllDocuments`" => lambda { |v| %w{FailedDocumentsOnly AllDocuments}.include? v[:S3BackupMode] },
+           "Subproperty `CollectionEndpoint` is not a String" => lambda { |v| v[:CollectionEndpoint].is_a? String },
+           "Subproperty `CollectionEndpoint` needs to be 1..512 characters" => lambda { |v| v[:CollectionEndpoint].length >= 1 && v[:CollectionEndpoint].length <= 512 },
+           "Subproperty `CollectionEndpoint` must match pattern https:.*" => lambda { |v| v[:CollectionEndpoint] =~ Regexp.new("/https:.*/") },
+         },
+         description: ""
+
 property :amazonopensearchservice_destination_configuration, Hash,
          callbacks: {
            "Subproperty `DomainARN` is not a String" => lambda { |v| v[:DomainARN].is_a? String },
@@ -177,20 +192,21 @@ rest_api_collection "/AWS::KinesisFirehose::DeliveryStream"
 rest_api_document "/AWS::KinesisFirehose::DeliveryStream"
 
 rest_property_map({
-  amazonopensearchservice_destination_configuration: "AmazonopensearchserviceDestinationConfiguration",
-  delivery_stream_encryption_configuration_input:    "DeliveryStreamEncryptionConfigurationInput",
-  delivery_stream_name:                              "DeliveryStreamName",
-  delivery_stream_type:                              "DeliveryStreamType",
-  elasticsearch_destination_configuration:           "ElasticsearchDestinationConfiguration",
-  extended_s3_destination_configuration:             "ExtendedS3DestinationConfiguration",
-  http_endpoint_destination_configuration:           "HttpEndpointDestinationConfiguration",
-  kinesis_stream_source_configuration:               "KinesisStreamSourceConfiguration",
-  redshift_destination_configuration:                "RedshiftDestinationConfiguration",
-  s3_destination_configuration:                      "S3DestinationConfiguration",
-  splunk_destination_configuration:                  "SplunkDestinationConfiguration",
-  tags:                                              "Tags",
+  amazon_open_search_serverless_destination_configuration: "AmazonOpenSearchServerlessDestinationConfiguration",
+  amazonopensearchservice_destination_configuration:       "AmazonopensearchserviceDestinationConfiguration",
+  delivery_stream_encryption_configuration_input:          "DeliveryStreamEncryptionConfigurationInput",
+  delivery_stream_name:                                    "DeliveryStreamName",
+  delivery_stream_type:                                    "DeliveryStreamType",
+  elasticsearch_destination_configuration:                 "ElasticsearchDestinationConfiguration",
+  extended_s3_destination_configuration:                   "ExtendedS3DestinationConfiguration",
+  http_endpoint_destination_configuration:                 "HttpEndpointDestinationConfiguration",
+  kinesis_stream_source_configuration:                     "KinesisStreamSourceConfiguration",
+  redshift_destination_configuration:                      "RedshiftDestinationConfiguration",
+  s3_destination_configuration:                            "S3DestinationConfiguration",
+  splunk_destination_configuration:                        "SplunkDestinationConfiguration",
+  tags:                                                    "Tags",
 })
 
 rest_post_only_properties %i{
-  amazonopensearchservice_destination_configuration/vpc_configuration delivery_stream_name delivery_stream_type elasticsearch_destination_configuration/vpc_configuration kinesis_stream_source_configuration
+  amazon_open_search_serverless_destination_configuration/vpc_configuration amazonopensearchservice_destination_configuration/vpc_configuration delivery_stream_name delivery_stream_type elasticsearch_destination_configuration/vpc_configuration kinesis_stream_source_configuration
 }
