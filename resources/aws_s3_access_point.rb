@@ -31,17 +31,6 @@ property :bucket_account_id, String,
            The AWS account ID associated with the S3 bucket associated with this access point.
          DESCRIPTION
 
-property :name, String,
-         name_property: true,
-         callbacks: {
-           "name is not a String" => lambda { |v| v.is_a? String },
-           "name needs to be 3..50 characters" => lambda { |v| v.length >= 3 && v.length <= 50 },
-           "name must match pattern ^[a-z0-9]([a-z0-9\-]*[a-z0-9])?$" => lambda { |v| v =~ Regexp.new("/^[a-z0-9]([a-z0-9\-]*[a-z0-9])?$/") },
-         },
-         description: <<~'DESCRIPTION'
-           The name you want to assign to this Access Point. If you don't specify a name, AWS CloudFormation generates a unique ID and uses that ID for the access point name.
-         DESCRIPTION
-
 property :policy, Hash,
          callbacks: {
            "policy is not a Object" => lambda { |v| v.is_a? Object },
@@ -84,7 +73,6 @@ rest_api_document "/AWS::S3::AccessPoint"
 rest_property_map({
   bucket:                            "Bucket",
   bucket_account_id:                 "BucketAccountId",
-  name:                              "Name",
   policy:                            "Policy",
   policy_status:                     "PolicyStatus",
   public_access_block_configuration: "PublicAccessBlockConfiguration",

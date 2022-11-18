@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## v0.1.37 (2022-11-18)
+
+
+- Add AWS::CloudFront::ContinuousDeploymentPolicy
+- Update AWS::CloudFront::Distribution
+- Add AWS::ElasticBeanstalk::ConfigurationTemplate
+- Update AWS::Logs::SubscriptionFilter
+- Update AWS::NetworkManager::VpcAttachment
+- Update AWS::QuickSight::Analysis
+- Update AWS::QuickSight::Dashboard
+- Update AWS::QuickSight::Template
+- Update AWS::QuickSight::Theme
+- Update AWS::S3::AccessPoint
+- Update AWS::Synthetics::Canary
+- Update AWS::Synthetics::Group
+
 ## v0.1.36 (2022-11-17)
 
 

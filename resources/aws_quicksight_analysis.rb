@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_quicksight_analysis
 provides :aws_quicksight_analysis, target_mode: true, platform: "aws"
 

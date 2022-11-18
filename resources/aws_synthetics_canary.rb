@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_synthetics_canary
 provides :aws_synthetics_canary, target_mode: true, platform: "aws"
 
@@ -68,6 +67,7 @@ property :failure_retention_period, Integer,
 
 property :name, String,
          name_property: true,
+         required: true,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
            "name must match pattern ^[0-9a-z_\-]{1,21}$" => lambda { |v| v =~ Regexp.new("/^[0-9a-z_\-]{1,21}$/") },

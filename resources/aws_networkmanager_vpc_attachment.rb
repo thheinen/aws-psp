@@ -13,6 +13,7 @@ property :name, String,
          description: "Name of the resource, not desired state"
 
 property :core_network_id, String,
+         required: true,
          callbacks: {
            "core_network_id is not a String" => lambda { |v| v.is_a? String },
          },
@@ -29,6 +30,7 @@ property :options, Hash,
          DESCRIPTION
 
 property :subnet_arns, Array,
+         required: true,
          callbacks: {
            "subnet_arns is not a Array" => lambda { |v| v.is_a? Array },
          },
@@ -45,6 +47,7 @@ property :tags, Array,
          DESCRIPTION
 
 property :vpc_arn, String,
+         required: true,
          callbacks: {
            "vpc_arn is not a String" => lambda { |v| v.is_a? String },
          },
