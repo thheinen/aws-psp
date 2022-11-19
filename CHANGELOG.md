@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## v0.1.38 (2022-11-19)
+
+
+- Update AWS::GameLift::Alias
+- Update AWS::GameLift::Fleet
+- Update AWS::GameLift::GameServerGroup
+
 ## v0.1.37 (2022-11-18)
 
 

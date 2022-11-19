@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_gamelift_game_server_group
 provides :aws_gamelift_game_server_group, target_mode: true, platform: "aws"
 

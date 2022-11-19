@@ -1,22 +1,31 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_gamelift_fleet
 provides :aws_gamelift_fleet, target_mode: true, platform: "aws"
 
 description <<~DESCRIPTION
-  The AWS::GameLift::Fleet resource creates an Amazon GameLift (GameLift) fleet to host game servers.  A fleet is a set of EC2 instances, each of which can host multiple game sessions.
+  The AWS::GameLift::Fleet resource creates an Amazon GameLift (GameLift) fleet to host game servers. A fleet is a set of EC2 or Anywhere instances, each of which can host multiple game sessions.
 DESCRIPTION
 
 property :name, String,
          name_property: true,
          description: "Name of the resource, not desired state"
 
+property :anywhere_configuration, Hash,
+         callbacks: {
+           "Subproperty `Cost` is not a String" => lambda { |v| v[:Cost].is_a? String },
+           "Subproperty `Cost` needs to be 1..11 characters" => lambda { |v| v[:Cost].length >= 1 && v[:Cost].length <= 11 },
+           "Subproperty `Cost` must match pattern ^\d{1,5}(?:\.\d{1,5})?$" => lambda { |v| v[:Cost] =~ Regexp.new("/^\d{1,5}(?:\.\d{1,5})?$/") },
+         },
+         description: <<~'DESCRIPTION'
+           Configuration for Anywhere fleet.
+         DESCRIPTION
+
 property :build_id, String,
          callbacks: {
            "build_id is not a String" => lambda { |v| v.is_a? String },
-           "build_id must match pattern ^build-\S+|^arn:.*:build\/build-\S+" => lambda { |v| v =~ Regexp.new("/^build-\S+|^arn:.*:build\/build-\S+/") },
+           "build_id must match pattern ^build-\S+|^arn:.*:build/build-\S+" => lambda { |v| v =~ Regexp.new("/^build-\S+|^arn:.*:build/build-\S+/") },
          },
          description: <<~'DESCRIPTION'
            A unique identifier for a build to be deployed on the new fleet. If you are deploying the fleet with a custom game build, you must specify this property. The build must have been successfully uploaded to Amazon GameLift and be in a READY status. This fleet setting cannot be changed once the fleet is created.
@@ -29,6 +38,15 @@ property :certificate_configuration, Hash,
          },
          description: <<~'DESCRIPTION'
            Indicates whether to generate a TLS/SSL certificate for the new fleet. TLS certificates are used for encrypting traffic between game clients and game servers running on GameLift. If this parameter is not set, certificate generation is disabled. This fleet setting cannot be changed once the fleet is created.
+         DESCRIPTION
+
+property :compute_type, String,
+         callbacks: {
+           "compute_type is not a String" => lambda { |v| v.is_a? String },
+           "compute_typeis not one of `EC2`, `ANYWHERE`" => lambda { |v| %w{EC2 ANYWHERE}.include? v },
+         },
+         description: <<~'DESCRIPTION'
+           ComputeType to differentiate EC2 hardware managed by GameLift and Anywhere hardware managed by the customer.
          DESCRIPTION
 
 property :description, String,
@@ -123,6 +141,7 @@ property :min_size, Integer,
 
 property :name, String,
          name_property: true,
+         required: true,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
            "name needs to be 1..1024 characters" => lambda { |v| v.length >= 1 && v.length <= 1024 },
@@ -183,7 +202,7 @@ property :runtime_configuration, Hash,
 property :script_id, String,
          callbacks: {
            "script_id is not a String" => lambda { |v| v.is_a? String },
-           "script_id must match pattern ^script-\S+|^arn:.*:script\/script-\S+" => lambda { |v| v =~ Regexp.new("/^script-\S+|^arn:.*:script\/script-\S+/") },
+           "script_id must match pattern ^script-\S+|^arn:.*:script/script-\S+" => lambda { |v| v =~ Regexp.new("/^script-\S+|^arn:.*:script/script-\S+/") },
          },
          description: <<~'DESCRIPTION'
            A unique identifier for a Realtime script to be deployed on a new Realtime Servers fleet. The script must have been successfully uploaded to Amazon GameLift. This fleet setting cannot be changed once the fleet is created.
@@ -213,8 +232,10 @@ rest_api_collection "/AWS::GameLift::Fleet"
 rest_api_document "/AWS::GameLift::Fleet"
 
 rest_property_map({
+  anywhere_configuration:             "AnywhereConfiguration",
   build_id:                           "BuildId",
   certificate_configuration:          "CertificateConfiguration",
+  compute_type:                       "ComputeType",
   description:                        "Description",
   desired_ec2_instances:              "DesiredEC2Instances",
   ec2_inbound_permissions:            "EC2InboundPermissions",
@@ -238,5 +259,5 @@ rest_property_map({
 })
 
 rest_post_only_properties %i{
-  build_id certificate_configuration certificate_type ec2_instance_type fleet_type instance_role_arn log_paths peer_vpc_aws_account_id peer_vpc_id script_id server_launch_parameters server_launch_path
+  build_id certificate_configuration certificate_type compute_type ec2_instance_type fleet_type instance_role_arn log_paths peer_vpc_aws_account_id peer_vpc_id script_id server_launch_parameters server_launch_path
 }
