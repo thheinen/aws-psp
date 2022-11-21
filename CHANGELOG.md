@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.1.39 (2022-11-21)
+
+
+- Update AWS::EKS::Nodegroup
+- Update AWS::Location::GeofenceCollection
+
 ## v0.1.38 (2022-11-19)
 
 

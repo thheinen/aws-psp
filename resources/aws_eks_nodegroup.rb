@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_eks_nodegroup
 provides :aws_eks_nodegroup, target_mode: true, platform: "aws"
 
