@@ -51,6 +51,11 @@ property :kms_arn, String,
            The ARN of the AWS Key Management Service (AWS KMS) key that's used to encrypt your function's environment variables. If it's not provided, AWS Lambda uses a default service key.
          DESCRIPTION
 
+property :metadata_catalog_config, Hash,
+         description: <<~'DESCRIPTION'
+           Configurations of metadata catalog of the flow.
+         DESCRIPTION
+
 property :source_flow_config, Hash,
          required: true,
          description: <<~'DESCRIPTION'
@@ -89,6 +94,7 @@ rest_property_map({
   destination_flow_config_list: "DestinationFlowConfigList",
   flow_name:                    "FlowName",
   kms_arn:                      "KMSArn",
+  metadata_catalog_config:      "MetadataCatalogConfig",
   source_flow_config:           "SourceFlowConfig",
   tags:                         "Tags",
   tasks:                        "Tasks",

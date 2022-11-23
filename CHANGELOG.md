@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.40 (2022-11-23)
+
+
+- Update AWS::AppFlow::Flow
+
 ## v0.1.39 (2022-11-21)
 
 
