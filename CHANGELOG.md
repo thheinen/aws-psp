@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.41 (2022-11-24)
+
+
+- Update AWS::Location::Map
+
 ## v0.1.40 (2022-11-23)
 
 
