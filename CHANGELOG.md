@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.1.42 (2022-11-26)
+
+
+- Add AWS::Oam::Link
+- Add AWS::Oam::Sink
+
 ## v0.1.41 (2022-11-24)
 
 
