@@ -12,6 +12,17 @@ property :name, String,
          name_property: true,
          description: "Name of the resource, not desired state"
 
+property :data_protection_policy, Hash,
+         callbacks: {
+           "data_protection_policy is not a Object" => lambda { |v| v.is_a? Object },
+         },
+         description: <<~'DESCRIPTION'
+           The body of the policy document you want to use for this topic.
+            You can only add one policy per topic.
+            The policy must be in JSON string format.
+            Length Constraints: Maximum length of 30720
+         DESCRIPTION
+
 property :kms_key_id, String,
          callbacks: {
            "kms_key_id is not a String" => lambda { |v| v.is_a? String },
@@ -52,10 +63,11 @@ rest_api_collection "/AWS::Logs::LogGroup"
 rest_api_document "/AWS::Logs::LogGroup"
 
 rest_property_map({
-  kms_key_id:        "KmsKeyId",
-  log_group_name:    "LogGroupName",
-  retention_in_days: "RetentionInDays",
-  tags:              "Tags",
+  data_protection_policy: "DataProtectionPolicy",
+  kms_key_id:             "KmsKeyId",
+  log_group_name:         "LogGroupName",
+  retention_in_days:      "RetentionInDays",
+  tags:                   "Tags",
 })
 
 rest_post_only_properties %i{

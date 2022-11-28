@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.43 (2022-11-28)
+
+
+- Update AWS::Logs::LogGroup
+
 ## v0.1.42 (2022-11-26)
 
 
