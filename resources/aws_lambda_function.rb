@@ -173,6 +173,15 @@ property :runtime, String,
            The identifier of the function's runtime.
          DESCRIPTION
 
+property :snap_start, Hash,
+         callbacks: {
+           "Subproperty `ApplyOn` is not a String" => lambda { |v| v[:ApplyOn].is_a? String },
+           "Subproperty `ApplyOn`is not one of `PublishedVersions`, `None`" => lambda { |v| %w{PublishedVersions None}.include? v[:ApplyOn] },
+         },
+         description: <<~'DESCRIPTION'
+           The SnapStart setting of your function
+         DESCRIPTION
+
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
@@ -230,6 +239,7 @@ rest_property_map({
   reserved_concurrent_executions: "ReservedConcurrentExecutions",
   role:                           "Role",
   runtime:                        "Runtime",
+  snap_start:                     "SnapStart",
   tags:                           "Tags",
   timeout:                        "Timeout",
   tracing_config:                 "TracingConfig",

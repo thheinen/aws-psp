@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.1.44 (2022-11-29)
+
+
+- Update AWS::EC2::NetworkInsightsAnalysis
+- Update AWS::Lambda::Function
+
 ## v0.1.43 (2022-11-28)
 
 

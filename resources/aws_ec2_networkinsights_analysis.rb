@@ -12,6 +12,12 @@ property :name, String,
          name_property: true,
          description: "Name of the resource, not desired state"
 
+property :additional_accounts, Array,
+         callbacks: {
+           "additional_accounts is not a Array" => lambda { |v| v.is_a? Array },
+         },
+         description: ""
+
 property :filter_in_arns, Array,
          callbacks: {
            "filter_in_arns is not a Array" => lambda { |v| v.is_a? Array },
@@ -36,6 +42,7 @@ rest_api_collection "/AWS::EC2::NetworkInsightsAnalysis"
 rest_api_document "/AWS::EC2::NetworkInsightsAnalysis"
 
 rest_property_map({
+  additional_accounts:     "AdditionalAccounts",
   filter_in_arns:          "FilterInArns",
   networkinsights_path_id: "NetworkInsightsPathId",
   tags:                    "Tags",
