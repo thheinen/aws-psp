@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.45 (2022-11-30)
+
+
+- Add AWS::GameLift::Location
+
 ## v0.1.44 (2022-11-29)
 
 
