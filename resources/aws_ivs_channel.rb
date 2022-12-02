@@ -47,7 +47,7 @@ property :recording_configuration_arn, String,
            "recording_configuration_arn must match pattern ^$|arn:aws:ivs:[a-z0-9-]+:[0-9]+:recording-configuration/[a-zA-Z0-9-]+$" => lambda { |v| v =~ Regexp.new("/^$|arn:aws:ivs:[a-z0-9-]+:[0-9]+:recording-configuration/[a-zA-Z0-9-]+$/") },
          },
          description: <<~'DESCRIPTION'
-           Recording Configuration ARN. A value other than an empty string indicates that recording is enabled. Default: ?? (recording is disabled).
+           Recording Configuration ARN. A value other than an empty string indicates that recording is enabled. Default: "" (recording is disabled).
          DESCRIPTION
 
 property :tags, Array,

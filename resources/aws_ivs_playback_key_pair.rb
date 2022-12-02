@@ -24,7 +24,6 @@ property :name, String,
          DESCRIPTION
 
 property :public_key_material, String,
-         required: true,
          callbacks: {
            "public_key_material is not a String" => lambda { |v| v.is_a? String },
          },

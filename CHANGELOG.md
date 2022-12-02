@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## v0.1.47 (2022-12-02)
+
+
+- Update AWS::IVS::Channel
+- Update AWS::IVS::PlaybackKeyPair
+- Update AWS::RefactorSpaces::Application
+- Update AWS::RefactorSpaces::Route
+- Update AWS::RefactorSpaces::Service
+- Update AWS::Transfer::Connector
+
 ## v0.1.46 (2022-12-01)
 
 
