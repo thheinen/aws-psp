@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.48 (2022-12-03)
+
+
+- Update AWS::Route53Resolver::ResolverDNSSECConfig
+
 ## v0.1.47 (2022-12-02)
 
 
