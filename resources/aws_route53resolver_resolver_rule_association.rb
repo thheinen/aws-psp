@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_route53resolver_resolver_rule_association
 provides :aws_route53resolver_resolver_rule_association, target_mode: true, platform: "aws"
 

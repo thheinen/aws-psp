@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_wisdom_knowledge_base
 provides :aws_wisdom_knowledge_base, target_mode: true, platform: "aws"
 
@@ -30,6 +29,7 @@ property :knowledge_base_type, Hash,
 
 property :name, String,
          name_property: true,
+         required: true,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
            "name needs to be 1..255 characters" => lambda { |v| v.length >= 1 && v.length <= 255 },

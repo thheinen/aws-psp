@@ -52,10 +52,10 @@ property :target_arn, String,
          required: true,
          callbacks: {
            "target_arn is not a String" => lambda { |v| v.is_a? String },
-           "target_arn must match pattern ^arn:aws[-a-z0-9]*:connect:[-a-z0-9]*:[0-9]{12}:instance/[-a-zA-Z0-9]*$" => lambda { |v| v =~ Regexp.new("/^arn:aws[-a-z0-9]*:connect:[-a-z0-9]*:[0-9]{12}:instance/[-a-zA-Z0-9]*$/") },
+           "target_arn must match pattern ^arn:aws[-a-z0-9]*:connect:[-a-z0-9]*:[0-9]{12}:(instance|traffic-distribution-group)/[-a-zA-Z0-9]*$" => lambda { |v| v =~ Regexp.new("/^arn:aws[-a-z0-9]*:connect:[-a-z0-9]*:[0-9]{12}:(instance|traffic-distribution-group)/[-a-zA-Z0-9]*$/") },
          },
          description: <<~'DESCRIPTION'
-           The ARN of the Amazon Connect instance the phone number is claimed to.
+           The ARN of the target the phone number is claimed to.
          DESCRIPTION
 
 property :type, String,

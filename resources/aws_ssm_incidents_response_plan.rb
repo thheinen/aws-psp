@@ -54,6 +54,14 @@ property :incident_template, Hash,
          },
          description: ""
 
+property :integrations, Array,
+         callbacks: {
+           "integrations is not a Array" => lambda { |v| v.is_a? Array },
+         },
+         description: <<~'DESCRIPTION'
+           The list of integrations.
+         DESCRIPTION
+
 property :name, String,
          name_property: true,
          required: true,
@@ -84,6 +92,7 @@ rest_property_map({
   display_name:      "DisplayName",
   engagements:       "Engagements",
   incident_template: "IncidentTemplate",
+  integrations:      "Integrations",
   name:              "Name",
   tags:              "Tags",
 })

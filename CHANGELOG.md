@@ -1,5 +1,28 @@
 # CHANGELOG
 
+## v0.1.49 (2022-12-05)
+
+
+- Update AWS::ACMPCA::Certificate
+- Update AWS::Backup::BackupPlan
+- Update AWS::Backup::BackupSelection
+- Update AWS::Backup::BackupVault
+- Update AWS::Backup::Framework
+- Update AWS::Backup::ReportPlan
+- Update AWS::Config::ConformancePack
+- Update AWS::Connect::PhoneNumber
+- Add AWS::Connect::Rule
+- Update AWS::EC2::DHCPOptions
+- Update AWS::EC2::InternetGateway
+- Add AWS::EC2::NetworkPerformanceMetricSubscription
+- Update AWS::Route53Resolver::ResolverConfig
+- Update AWS::Route53Resolver::ResolverRule
+- Update AWS::Route53Resolver::ResolverRuleAssociation
+- Update AWS::SSMIncidents::ResponsePlan
+- Update AWS::Wisdom::Assistant
+- Update AWS::Wisdom::AssistantAssociation
+- Update AWS::Wisdom::KnowledgeBase
+
 ## v0.1.48 (2022-12-03)
 
 

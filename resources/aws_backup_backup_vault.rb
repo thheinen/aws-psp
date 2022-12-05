@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_backup_backup_vault
 provides :aws_backup_backup_vault, target_mode: true, platform: "aws"
 
