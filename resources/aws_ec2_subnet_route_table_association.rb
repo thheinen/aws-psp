@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_ec2_subnet_route_table_association
 provides :aws_ec2_subnet_route_table_association, target_mode: true, platform: "aws"
 

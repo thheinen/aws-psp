@@ -1,5 +1,20 @@
 # CHANGELOG
 
+## v0.1.50 (2022-12-06)
+
+
+- Update AWS::EC2::Host
+- Update AWS::EC2::NetworkAcl
+- Update AWS::EC2::SubnetRouteTableAssociation
+- Add AWS::EC2::VPCEndpoint
+- Update AWS::EKS::IdentityProviderConfig
+- Update AWS::GlobalAccelerator::Accelerator
+- Update AWS::GlobalAccelerator::EndpointGroup
+- Update AWS::GlobalAccelerator::Listener
+- Update AWS::GroundStation::MissionProfile
+- Update AWS::KMS::Key
+- Update AWS::KMS::ReplicaKey
+
 ## v0.1.49 (2022-12-05)
 
 

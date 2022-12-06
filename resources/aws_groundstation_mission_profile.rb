@@ -64,6 +64,7 @@ property :tags, Array,
          description: ""
 
 property :tracking_config_arn, String,
+         required: true,
          callbacks: {
            "tracking_config_arn is not a String" => lambda { |v| v.is_a? String },
          },

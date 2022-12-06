@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_ec2_host
 provides :aws_ec2_host, target_mode: true, platform: "aws"
 
