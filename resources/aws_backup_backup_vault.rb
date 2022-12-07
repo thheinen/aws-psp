@@ -37,9 +37,9 @@ property :encryption_key_arn, String,
 
 property :lock_configuration, Hash,
          callbacks: {
-           "Subproperty `MinRetentionDays` is not a Number" => lambda { |v| v[:MinRetentionDays].is_a? Number },
-           "Subproperty `MaxRetentionDays` is not a Number" => lambda { |v| v[:MaxRetentionDays].is_a? Number },
-           "Subproperty `ChangeableForDays` is not a Number" => lambda { |v| v[:ChangeableForDays].is_a? Number },
+           "Subproperty `MinRetentionDays` is not a Integer" => lambda { |v| v[:MinRetentionDays].is_a? Integer },
+           "Subproperty `MaxRetentionDays` is not a Integer" => lambda { |v| v[:MaxRetentionDays].is_a? Integer },
+           "Subproperty `ChangeableForDays` is not a Integer" => lambda { |v| v[:ChangeableForDays].is_a? Integer },
          },
          description: ""
 

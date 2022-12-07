@@ -1,5 +1,24 @@
 # CHANGELOG
 
+## v0.1.51 (2022-12-07)
+
+
+- Update AWS::Backup::BackupVault
+- Update AWS::Backup::ReportPlan
+- Update AWS::IoT::FleetMetric
+- Update AWS::IoT::Logging
+- Update AWS::IoT::ResourceSpecificLogging
+- Update AWS::RDS::DBCluster
+- Update AWS::RDS::DBInstance
+- Update AWS::RedshiftServerless::Namespace
+- Update AWS::RedshiftServerless::Workgroup
+- Update AWS::WAFv2::IPSet
+- Update AWS::WAFv2::LoggingConfiguration
+- Update AWS::WAFv2::RegexPatternSet
+- Update AWS::WAFv2::RuleGroup
+- Update AWS::WAFv2::WebACL
+- Update AWS::WAFv2::WebACLAssociation
+
 ## v0.1.50 (2022-12-06)
 
 

@@ -56,6 +56,9 @@ property :report_setting, Hash,
          callbacks: {
            "Subproperty `ReportTemplate` is not a String" => lambda { |v| v[:ReportTemplate].is_a? String },
            "Subproperty `FrameworkArns` is not a Array" => lambda { |v| v[:FrameworkArns].is_a? Array },
+           "Subproperty `Accounts` is not a Array" => lambda { |v| v[:Accounts].is_a? Array },
+           "Subproperty `OrganizationUnits` is not a Array" => lambda { |v| v[:OrganizationUnits].is_a? Array },
+           "Subproperty `Regions` is not a Array" => lambda { |v| v[:Regions].is_a? Array },
          },
          description: <<~'DESCRIPTION'
            Identifies the report template for the report. Reports are built using a report template.

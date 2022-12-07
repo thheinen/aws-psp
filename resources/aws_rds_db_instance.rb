@@ -106,6 +106,21 @@ property :db_cluster_identifier, String,
            The identifier of the DB cluster that the instance will belong to.
          DESCRIPTION
 
+property :db_cluster_snapshot_identifier, String,
+         callbacks: {
+           "db_cluster_snapshot_identifier is not a String" => lambda { |v| v.is_a? String },
+         },
+         description: <<~'DESCRIPTION'
+           The identifier for the RDS for MySQL Multi-AZ DB cluster snapshot to restore from. For more information on Multi-AZ DB clusters, see Multi-AZ deployments with two readable standby DB instances in the Amazon RDS User Guide .
+            Constraints:
+      * Must match the identifier of an existing Multi-AZ DB cluster snapshot.
+      * Can't be specified when DBSnapshotIdentifier is specified.
+      * Must be specified when DBSnapshotIdentifier isn't specified.
+      * If you are restoring from a shared manual Multi-AZ DB cluster snapshot, the DBClusterSnapshotIdentifier must be the ARN of the shared snapshot.
+      * Can't be the identifier of an Aurora DB cluster snapshot.
+      * Can't be the identifier of an RDS for PostgreSQL Multi-AZ DB cluster snapshot.
+         DESCRIPTION
+
 property :db_instance_class, String,
          callbacks: {
            "db_instance_class is not a String" => lambda { |v| v.is_a? String },
@@ -418,12 +433,36 @@ property :replica_mode, String,
            The open mode of an Oracle read replica. The default is open-read-only.
          DESCRIPTION
 
+property :restore_time, String,
+         callbacks: {
+           "restore_time is not a String" => lambda { |v| v.is_a? String },
+         },
+         description: <<~'DESCRIPTION'
+           The date and time to restore from.
+         DESCRIPTION
+
+property :source_db_instance_automated_backups_arn, String,
+         callbacks: {
+           "source_db_instance_automated_backups_arn is not a String" => lambda { |v| v.is_a? String },
+         },
+         description: <<~'DESCRIPTION'
+           The Amazon Resource Name (ARN) of the replicated automated backups from which to restore.
+         DESCRIPTION
+
 property :source_db_instance_identifier, String,
          callbacks: {
            "source_db_instance_identifier is not a String" => lambda { |v| v.is_a? String },
          },
          description: <<~'DESCRIPTION'
            If you want to create a Read Replica DB instance, specify the ID of the source DB instance. Each DB instance can have a limited number of Read Replicas.
+         DESCRIPTION
+
+property :source_dbi_resource_id, String,
+         callbacks: {
+           "source_dbi_resource_id is not a String" => lambda { |v| v.is_a? String },
+         },
+         description: <<~'DESCRIPTION'
+           The resource ID of the source DB instance from which to restore.
          DESCRIPTION
 
 property :source_region, String,
@@ -498,6 +537,14 @@ property :use_default_processor_features, [TrueClass, FalseClass],
            A value that indicates whether the DB instance class of the DB instance uses its default processor features.
          DESCRIPTION
 
+property :use_latest_restorable_time, [TrueClass, FalseClass],
+         callbacks: {
+           "use_latest_restorable_time is not a Boolean" => lambda { |v| v.is_a? Boolean },
+         },
+         description: <<~'DESCRIPTION'
+           A value that indicates whether the DB instance is restored from the latest backup time. By default, the DB instance isn't restored from the latest backup time.
+         DESCRIPTION
+
 property :vpc_security_groups, Array,
          callbacks: {
            "vpc_security_groups is not a Array" => lambda { |v| v.is_a? Array },
@@ -511,66 +558,71 @@ rest_api_collection "/AWS::RDS::DBInstance"
 rest_api_document "/AWS::RDS::DBInstance"
 
 rest_property_map({
-  allocated_storage:                     "AllocatedStorage",
-  allow_major_version_upgrade:           "AllowMajorVersionUpgrade",
-  associated_roles:                      "AssociatedRoles",
-  auto_minor_version_upgrade:            "AutoMinorVersionUpgrade",
-  availability_zone:                     "AvailabilityZone",
-  backup_retention_period:               "BackupRetentionPeriod",
-  ca_certificate_identifier:             "CACertificateIdentifier",
-  character_set_name:                    "CharacterSetName",
-  copy_tags_to_snapshot:                 "CopyTagsToSnapshot",
-  custom_iam_instance_profile:           "CustomIAMInstanceProfile",
-  db_cluster_identifier:                 "DBClusterIdentifier",
-  db_instance_class:                     "DBInstanceClass",
-  db_instance_identifier:                "DBInstanceIdentifier",
-  db_name:                               "DBName",
-  db_parameter_group_name:               "DBParameterGroupName",
-  db_security_groups:                    "DBSecurityGroups",
-  db_snapshot_identifier:                "DBSnapshotIdentifier",
-  db_subnet_group_name:                  "DBSubnetGroupName",
-  delete_automated_backups:              "DeleteAutomatedBackups",
-  deletion_protection:                   "DeletionProtection",
-  domain:                                "Domain",
-  domain_iam_role_name:                  "DomainIAMRoleName",
-  enable_cloudwatch_logs_exports:        "EnableCloudwatchLogsExports",
-  enable_iam_database_authentication:    "EnableIAMDatabaseAuthentication",
-  enable_performance_insights:           "EnablePerformanceInsights",
-  endpoint:                              "Endpoint",
-  engine:                                "Engine",
-  engine_version:                        "EngineVersion",
-  iops:                                  "Iops",
-  kms_key_id:                            "KmsKeyId",
-  license_model:                         "LicenseModel",
-  master_user_password:                  "MasterUserPassword",
-  master_username:                       "MasterUsername",
-  max_allocated_storage:                 "MaxAllocatedStorage",
-  monitoring_interval:                   "MonitoringInterval",
-  monitoring_role_arn:                   "MonitoringRoleArn",
-  multi_az:                              "MultiAZ",
-  nchar_character_set_name:              "NcharCharacterSetName",
-  network_type:                          "NetworkType",
-  option_group_name:                     "OptionGroupName",
-  performance_insights_kms_key_id:       "PerformanceInsightsKMSKeyId",
-  performance_insights_retention_period: "PerformanceInsightsRetentionPeriod",
-  port:                                  "Port",
-  preferred_backup_window:               "PreferredBackupWindow",
-  preferred_maintenance_window:          "PreferredMaintenanceWindow",
-  processor_features:                    "ProcessorFeatures",
-  promotion_tier:                        "PromotionTier",
-  publicly_accessible:                   "PubliclyAccessible",
-  replica_mode:                          "ReplicaMode",
-  source_db_instance_identifier:         "SourceDBInstanceIdentifier",
-  source_region:                         "SourceRegion",
-  storage_encrypted:                     "StorageEncrypted",
-  storage_throughput:                    "StorageThroughput",
-  storage_type:                          "StorageType",
-  tags:                                  "Tags",
-  tde_credential_arn:                    "TdeCredentialArn",
-  tde_credential_password:               "TdeCredentialPassword",
-  timezone:                              "Timezone",
-  use_default_processor_features:        "UseDefaultProcessorFeatures",
-  vpc_security_groups:                   "VPCSecurityGroups",
+  allocated_storage:                        "AllocatedStorage",
+  allow_major_version_upgrade:              "AllowMajorVersionUpgrade",
+  associated_roles:                         "AssociatedRoles",
+  auto_minor_version_upgrade:               "AutoMinorVersionUpgrade",
+  availability_zone:                        "AvailabilityZone",
+  backup_retention_period:                  "BackupRetentionPeriod",
+  ca_certificate_identifier:                "CACertificateIdentifier",
+  character_set_name:                       "CharacterSetName",
+  copy_tags_to_snapshot:                    "CopyTagsToSnapshot",
+  custom_iam_instance_profile:              "CustomIAMInstanceProfile",
+  db_cluster_identifier:                    "DBClusterIdentifier",
+  db_cluster_snapshot_identifier:           "DBClusterSnapshotIdentifier",
+  db_instance_class:                        "DBInstanceClass",
+  db_instance_identifier:                   "DBInstanceIdentifier",
+  db_name:                                  "DBName",
+  db_parameter_group_name:                  "DBParameterGroupName",
+  db_security_groups:                       "DBSecurityGroups",
+  db_snapshot_identifier:                   "DBSnapshotIdentifier",
+  db_subnet_group_name:                     "DBSubnetGroupName",
+  delete_automated_backups:                 "DeleteAutomatedBackups",
+  deletion_protection:                      "DeletionProtection",
+  domain:                                   "Domain",
+  domain_iam_role_name:                     "DomainIAMRoleName",
+  enable_cloudwatch_logs_exports:           "EnableCloudwatchLogsExports",
+  enable_iam_database_authentication:       "EnableIAMDatabaseAuthentication",
+  enable_performance_insights:              "EnablePerformanceInsights",
+  endpoint:                                 "Endpoint",
+  engine:                                   "Engine",
+  engine_version:                           "EngineVersion",
+  iops:                                     "Iops",
+  kms_key_id:                               "KmsKeyId",
+  license_model:                            "LicenseModel",
+  master_user_password:                     "MasterUserPassword",
+  master_username:                          "MasterUsername",
+  max_allocated_storage:                    "MaxAllocatedStorage",
+  monitoring_interval:                      "MonitoringInterval",
+  monitoring_role_arn:                      "MonitoringRoleArn",
+  multi_az:                                 "MultiAZ",
+  nchar_character_set_name:                 "NcharCharacterSetName",
+  network_type:                             "NetworkType",
+  option_group_name:                        "OptionGroupName",
+  performance_insights_kms_key_id:          "PerformanceInsightsKMSKeyId",
+  performance_insights_retention_period:    "PerformanceInsightsRetentionPeriod",
+  port:                                     "Port",
+  preferred_backup_window:                  "PreferredBackupWindow",
+  preferred_maintenance_window:             "PreferredMaintenanceWindow",
+  processor_features:                       "ProcessorFeatures",
+  promotion_tier:                           "PromotionTier",
+  publicly_accessible:                      "PubliclyAccessible",
+  replica_mode:                             "ReplicaMode",
+  restore_time:                             "RestoreTime",
+  source_db_instance_automated_backups_arn: "SourceDBInstanceAutomatedBackupsArn",
+  source_db_instance_identifier:            "SourceDBInstanceIdentifier",
+  source_dbi_resource_id:                   "SourceDbiResourceId",
+  source_region:                            "SourceRegion",
+  storage_encrypted:                        "StorageEncrypted",
+  storage_throughput:                       "StorageThroughput",
+  storage_type:                             "StorageType",
+  tags:                                     "Tags",
+  tde_credential_arn:                       "TdeCredentialArn",
+  tde_credential_password:                  "TdeCredentialPassword",
+  timezone:                                 "Timezone",
+  use_default_processor_features:           "UseDefaultProcessorFeatures",
+  use_latest_restorable_time:               "UseLatestRestorableTime",
+  vpc_security_groups:                      "VPCSecurityGroups",
 })
 
 rest_post_only_properties %i{

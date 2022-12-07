@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_wafv2_regex_pattern_set
 provides :aws_wafv2_regex_pattern_set, target_mode: true, platform: "aws"
 

@@ -118,6 +118,14 @@ property :db_subnet_group_name, String,
            A DB subnet group that you want to associate with this DB cluster.
          DESCRIPTION
 
+property :db_system_id, String,
+         callbacks: {
+           "db_system_id is not a String" => lambda { |v| v.is_a? String },
+         },
+         description: <<~'DESCRIPTION'
+           Reserved for future use.
+         DESCRIPTION
+
 property :deletion_protection, [TrueClass, FalseClass],
          callbacks: {
            "deletion_protection is not a Boolean" => lambda { |v| v.is_a? Boolean },
@@ -343,6 +351,7 @@ property :scaling_configuration, Hash,
            "Subproperty `AutoPause` is not a Boolean" => lambda { |v| v[:AutoPause].is_a? Boolean },
            "Subproperty `MaxCapacity` is not a Integer" => lambda { |v| v[:MaxCapacity].is_a? Integer },
            "Subproperty `MinCapacity` is not a Integer" => lambda { |v| v[:MinCapacity].is_a? Integer },
+           "Subproperty `SecondsBeforeTimeout` is not a Integer" => lambda { |v| v[:SecondsBeforeTimeout].is_a? Integer },
            "Subproperty `SecondsUntilAutoPause` is not a Integer" => lambda { |v| v[:SecondsUntilAutoPause].is_a? Integer },
            "Subproperty `TimeoutAction` is not a String" => lambda { |v| v[:TimeoutAction].is_a? String },
          },
@@ -444,6 +453,7 @@ rest_property_map({
   db_cluster_parameter_group_name:       "DBClusterParameterGroupName",
   db_instance_parameter_group_name:      "DBInstanceParameterGroupName",
   db_subnet_group_name:                  "DBSubnetGroupName",
+  db_system_id:                          "DBSystemId",
   deletion_protection:                   "DeletionProtection",
   domain:                                "Domain",
   domain_iam_role_name:                  "DomainIAMRoleName",
@@ -484,5 +494,5 @@ rest_property_map({
 })
 
 rest_post_only_properties %i{
-  availability_zones database_name db_cluster_identifier db_subnet_group_name engine_mode kms_key_id publicly_accessible restore_type snapshot_identifier source_db_cluster_identifier source_region storage_encrypted use_latest_restorable_time
+  availability_zones database_name db_cluster_identifier db_subnet_group_name db_system_id engine_mode kms_key_id publicly_accessible restore_type snapshot_identifier source_db_cluster_identifier source_region storage_encrypted use_latest_restorable_time
 }
