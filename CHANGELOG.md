@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## v0.1.52 (2022-12-08)
+
+
+- Add AWS::DocDBElastic::Cluster
+- Update AWS::EC2::EgressOnlyInternetGateway
+- Update AWS::EC2::RouteTable
+- Update AWS::EKS::Addon
+- Add AWS::Grafana::Workspace
+- Update AWS::Kinesis::Stream
+- Update AWS::Lambda::EventSourceMapping
+
 ## v0.1.51 (2022-12-07)
 
 

@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_lambda_event_source_mapping
 provides :aws_lambda_event_source_mapping, target_mode: true, platform: "aws"
 
@@ -124,6 +123,11 @@ property :queues, Array,
            (ActiveMQ) A list of ActiveMQ queues.
          DESCRIPTION
 
+property :scaling_config, Hash,
+         description: <<~'DESCRIPTION'
+           The scaling configuration for the event source.
+         DESCRIPTION
+
 property :self_managed_event_source, Hash,
          description: <<~'DESCRIPTION'
            Self-managed event source endpoints.
@@ -195,6 +199,7 @@ rest_property_map({
   maximum_retry_attempts:                   "MaximumRetryAttempts",
   parallelization_factor:                   "ParallelizationFactor",
   queues:                                   "Queues",
+  scaling_config:                           "ScalingConfig",
   self_managed_event_source:                "SelfManagedEventSource",
   self_managed_kafka_event_source_config:   "SelfManagedKafkaEventSourceConfig",
   source_access_configurations:             "SourceAccessConfigurations",

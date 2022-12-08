@@ -38,6 +38,14 @@ property :cluster_name, String,
            Name of Cluster
          DESCRIPTION
 
+property :configuration_values, String,
+         callbacks: {
+           "configuration_values is not a String" => lambda { |v| v.is_a? String },
+         },
+         description: <<~'DESCRIPTION'
+           The configuration values to use with the add-on
+         DESCRIPTION
+
 property :resolve_conflicts, String,
          callbacks: {
            "resolve_conflicts is not a String" => lambda { |v| v.is_a? String },
@@ -71,6 +79,7 @@ rest_property_map({
   addon_name:               "AddonName",
   addon_version:            "AddonVersion",
   cluster_name:             "ClusterName",
+  configuration_values:     "ConfigurationValues",
   resolve_conflicts:        "ResolveConflicts",
   service_account_role_arn: "ServiceAccountRoleArn",
   tags:                     "Tags",
