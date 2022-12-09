@@ -12,6 +12,13 @@ property :name, String,
          name_property: true,
          description: "Name of the resource, not desired state"
 
+property :architecture, Hash,
+         callbacks: {
+           "architecture is not a String" => lambda { |v| v.is_a? String },
+           "architectureis not one of `ARM64`, `X86_64`" => lambda { |v| %w{ARM64 X86_64}.include? v },
+         },
+         description: ""
+
 property :auto_start_configuration, Hash,
          callbacks: {
            "Subproperty `Enabled` is not a Boolean" => lambda { |v| v[:Enabled].is_a? Boolean },
@@ -95,6 +102,7 @@ rest_api_collection "/AWS::EMRServerless::Application"
 rest_api_document "/AWS::EMRServerless::Application"
 
 rest_property_map({
+  architecture:             "Architecture",
   auto_start_configuration: "AutoStartConfiguration",
   auto_stop_configuration:  "AutoStopConfiguration",
   initial_capacity:         "InitialCapacity",

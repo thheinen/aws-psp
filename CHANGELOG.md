@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## v0.1.53 (2022-12-09)
+
+
+- Update AWS::EMRServerless::Application
+- Add AWS::IoTTwinMaker::SyncJob
+- Update AWS::MediaConnect::Flow
+- Update AWS::MediaConnect::FlowEntitlement
+- Update AWS::MediaConnect::FlowOutput
+- Update AWS::MediaConnect::FlowSource
+- Update AWS::MediaConnect::FlowVpcInterface
+
 ## v0.1.52 (2022-12-08)
 
 

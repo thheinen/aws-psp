@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_mediaconnect_flow_output
 provides :aws_mediaconnect_flow_output, target_mode: true, platform: "aws"
 
@@ -98,7 +97,7 @@ property :protocol, String,
          required: true,
          callbacks: {
            "protocol is not a String" => lambda { |v| v.is_a? String },
-           "protocolis not one of `zixi-push`, `rtp-fec`, `rtp`, `zixi-pull`, `rist`, `srt-listener`" => lambda { |v| %w{zixi-push rtp-fec rtp zixi-pull rist srt-listener}.include? v },
+           "protocolis not one of `zixi-push`, `rtp-fec`, `rtp`, `zixi-pull`, `rist`, `fujitsu-qos`, `srt-listener`, `srt-caller`" => lambda { |v| %w{zixi-push rtp-fec rtp zixi-pull rist fujitsu-qos srt-listener srt-caller}.include? v },
          },
          description: <<~'DESCRIPTION'
            The protocol that is used by the source or output.
