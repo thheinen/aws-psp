@@ -12,12 +12,28 @@ property :name, String,
          name_property: true,
          description: "Name of the resource, not desired state"
 
+property :available_labels, Array,
+         callbacks: {
+           "available_labels is not a Array" => lambda { |v| v.is_a? Array },
+         },
+         description: <<~'DESCRIPTION'
+           Collection of Available Labels.
+         DESCRIPTION
+
 property :capacity, Integer,
          required: true,
          callbacks: {
            "capacity is not a Integer" => lambda { |v| v.is_a? Integer },
          },
          description: ""
+
+property :consumed_labels, Array,
+         callbacks: {
+           "consumed_labels is not a Array" => lambda { |v| v.is_a? Array },
+         },
+         description: <<~'DESCRIPTION'
+           Collection of Consumed Labels.
+         DESCRIPTION
 
 property :custom_response_bodies, Hash,
          callbacks: {
@@ -77,7 +93,9 @@ rest_api_collection "/AWS::WAFv2::RuleGroup"
 rest_api_document "/AWS::WAFv2::RuleGroup"
 
 rest_property_map({
+  available_labels:       "AvailableLabels",
   capacity:               "Capacity",
+  consumed_labels:        "ConsumedLabels",
   custom_response_bodies: "CustomResponseBodies",
   description:            "Description",
   name:                   "Name",

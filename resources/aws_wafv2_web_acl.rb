@@ -15,6 +15,9 @@ property :name, String,
 property :captcha_config, Hash,
          description: ""
 
+property :challenge_config, Hash,
+         description: ""
+
 property :custom_response_bodies, Hash,
          callbacks: {
            "custom_response_bodies is not a Object" => lambda { |v| v.is_a? Object },
@@ -62,6 +65,12 @@ property :tags, Array,
          },
          description: ""
 
+property :token_domains, Hash,
+         callbacks: {
+           "token_domains is not a Array" => lambda { |v| v.is_a? Array },
+         },
+         description: ""
+
 property :visibility_config, Hash,
          required: true,
          callbacks: {
@@ -78,6 +87,7 @@ rest_api_document "/AWS::WAFv2::WebACL"
 
 rest_property_map({
   captcha_config:         "CaptchaConfig",
+  challenge_config:       "ChallengeConfig",
   custom_response_bodies: "CustomResponseBodies",
   default_action:         "DefaultAction",
   description:            "Description",
@@ -85,6 +95,7 @@ rest_property_map({
   rules:                  "Rules",
   scope:                  "Scope",
   tags:                   "Tags",
+  token_domains:          "TokenDomains",
   visibility_config:      "VisibilityConfig",
 })
 

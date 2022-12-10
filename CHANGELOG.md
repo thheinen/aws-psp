@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## v0.1.54 (2022-12-10)
+
+
+- Update AWS::MediaConnect::Flow
+- Update AWS::WAFv2::RuleGroup
+- Update AWS::WAFv2::WebACL
+
 ## v0.1.53 (2022-12-09)
 
 
