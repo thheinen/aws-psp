@@ -30,6 +30,14 @@ property :egress_access_logs, Hash,
            The configuration parameters for egress access logging.
          DESCRIPTION
 
+property :hls_ingest, Hash,
+         callbacks: {
+           "Subproperty `ingestEndpoints` is not a Array" => lambda { |v| v[:ingestEndpoints].is_a? Array },
+         },
+         description: <<~'DESCRIPTION'
+           An HTTP Live Streaming (HLS) ingest resource configuration.
+         DESCRIPTION
+
 property :id, String,
          required: true,
          callbacks: {
@@ -66,6 +74,7 @@ rest_api_document "/AWS::MediaPackage::Channel"
 rest_property_map({
   description:         "Description",
   egress_access_logs:  "EgressAccessLogs",
+  hls_ingest:          "HlsIngest",
   id:                  "Id",
   ingress_access_logs: "IngressAccessLogs",
   tags:                "Tags",

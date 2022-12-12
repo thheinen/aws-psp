@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_timestream_database
 provides :aws_timestream_database, target_mode: true, platform: "aws"
 

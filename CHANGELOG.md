@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## v0.1.55 (2022-12-12)
+
+
+- Add AWS::CodePipeline::CustomActionType
+- Update AWS::EC2::CapacityReservationFleet
+- Update AWS::EC2::PlacementGroup
+- Update AWS::MediaPackage::Channel
+- Update AWS::RefactorSpaces::Service
+- Update AWS::SageMaker::Pipeline
+- Update AWS::Timestream::Database
+- Update AWS::Timestream::ScheduledQuery
+- Update AWS::Timestream::Table
+
 ## v0.1.54 (2022-12-10)
 
 

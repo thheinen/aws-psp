@@ -49,9 +49,7 @@ property :lambda_endpoint, Hash,
          callbacks: {
            "Subproperty `Arn` is not a String" => lambda { |v| v[:Arn].is_a? String },
            "Subproperty `Arn` needs to be 1..2048 characters" => lambda { |v| v[:Arn].length >= 1 && v[:Arn].length <= 2048 },
-           "Subproperty `Arn` must match pattern ^arn:(aws[a-zA-Z-]*)?:lambda:[a-z]{2}((-gov)|(-iso(b?)))?-[a-z]+-\d{1}:\d{12}:function:[a-zA-Z0-9-_]+(:
-           (\$LATEST|[a-zA-Z0-9-_]+))?$" => lambda { |v| v[:Arn] =~ Regexp.new("/^arn:(aws[a-zA-Z-]*)?:lambda:[a-z]{2}((-gov)|(-iso(b?)))?-[a-z]+-\d{1}:\d{12}:function:[a-zA-Z0-9-_]+(:
-           (\$LATEST|[a-zA-Z0-9-_]+))?$/") },
+           "Subproperty `Arn` must match pattern ^arn:(aws[a-zA-Z-]*)?:lambda:[a-z]{2}((-gov)|(-iso(b?)))?-[a-z]+-\d{1}:\d{12}:function:[a-zA-Z0-9-_]+(:(\$LATEST|[a-zA-Z0-9-_]+))?$" => lambda { |v| v[:Arn] =~ Regexp.new("/^arn:(aws[a-zA-Z-]*)?:lambda:[a-z]{2}((-gov)|(-iso(b?)))?-[a-z]+-\d{1}:\d{12}:function:[a-zA-Z0-9-_]+(:(\$LATEST|[a-zA-Z0-9-_]+))?$/") },
            "Subproperty `Arn`is not a valid ARN" => lambda { |v| v[:Arn] =~ Regexp.new("^arn:aws(?:-cn|-us-gov)?:([^:]*:){3,}") },
          },
          description: ""
