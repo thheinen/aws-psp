@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.56 (2022-12-13)
+
+
+- Update AWS::StepFunctions::StateMachine
+
 ## v0.1.55 (2022-12-12)
 
 
