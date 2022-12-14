@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_redshift_cluster
 provides :aws_redshift_cluster, target_mode: true, platform: "aws"
 
@@ -225,7 +224,7 @@ property :iam_roles, Array,
            "iam_roles is not a Array" => lambda { |v| v.is_a? Array },
          },
          description: <<~'DESCRIPTION'
-           A list of AWS Identity and Access Management (IAM) roles that can be used by the cluster to access other AWS services. You must supply the IAM roles in their Amazon Resource Name (ARN) format. You can supply up to 10 IAM roles in a single request
+           A list of AWS Identity and Access Management (IAM) roles that can be used by the cluster to access other AWS services. You must supply the IAM roles in their Amazon Resource Name (ARN) format. You can supply up to 50 IAM roles in a single request
          DESCRIPTION
 
 property :kms_key_id, String,

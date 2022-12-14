@@ -27,6 +27,14 @@ property :regions, Hash,
            The ReplicationSet configuration.
          DESCRIPTION
 
+property :tags, Array,
+         callbacks: {
+           "tags is not a Array" => lambda { |v| v.is_a? Array },
+         },
+         description: <<~'DESCRIPTION'
+           The tags to apply to the replication set.
+         DESCRIPTION
+
 # API URLs and mappings
 rest_api_collection "/AWS::SSMIncidents::ReplicationSet"
 rest_api_document "/AWS::SSMIncidents::ReplicationSet"
@@ -34,5 +42,6 @@ rest_api_document "/AWS::SSMIncidents::ReplicationSet"
 rest_property_map({
   deletion_protected: "DeletionProtected",
   regions:            "Regions",
+  tags:               "Tags",
 })
 

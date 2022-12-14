@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_redshift_endpoint_authorization
 provides :aws_redshift_endpoint_authorization, target_mode: true, platform: "aws"
 

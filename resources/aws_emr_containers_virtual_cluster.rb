@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_emr_containers_virtual_cluster
 provides :aws_emr_containers_virtual_cluster, target_mode: true, platform: "aws"
 
@@ -27,6 +26,7 @@ property :container_provider, Hash,
 
 property :name, String,
          name_property: true,
+         required: true,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
            "name needs to be 1..64 characters" => lambda { |v| v.length >= 1 && v.length <= 64 },

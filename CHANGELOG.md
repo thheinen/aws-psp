@@ -1,5 +1,26 @@
 # CHANGELOG
 
+## v0.1.57 (2022-12-14)
+
+
+- Update AWS::EMRContainers::VirtualCluster
+- Add AWS::IoT::Thing
+- Update AWS::IoTEvents::AlarmModel
+- Update AWS::IoTEvents::DetectorModel
+- Update AWS::IoTEvents::Input
+- Update AWS::M2::Application
+- Update AWS::M2::Environment
+- Update AWS::NetworkManager::VpcAttachment
+- Update AWS::Redshift::Cluster
+- Update AWS::Redshift::ClusterParameterGroup
+- Update AWS::Redshift::ClusterSubnetGroup
+- Update AWS::Redshift::EndpointAccess
+- Update AWS::Redshift::EndpointAuthorization
+- Update AWS::Redshift::EventSubscription
+- Update AWS::Redshift::ScheduledAction
+- Update AWS::S3::Bucket
+- Update AWS::SSMIncidents::ReplicationSet
+
 ## v0.1.56 (2022-12-13)
 
 

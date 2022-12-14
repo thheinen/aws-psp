@@ -31,6 +31,14 @@ property :engine_type, Hash,
          },
          description: ""
 
+property :kms_key_id, String,
+         callbacks: {
+           "kms_key_id is not a String" => lambda { |v| v.is_a? String },
+         },
+         description: <<~'DESCRIPTION'
+           The ID or the Amazon Resource Name (ARN) of the customer managed KMS Key used for encrypting application-related resources.
+         DESCRIPTION
+
 property :name, String,
          name_property: true,
          required: true,
@@ -54,10 +62,11 @@ rest_property_map({
   definition:  "Definition",
   description: "Description",
   engine_type: "EngineType",
+  kms_key_id:  "KmsKeyId",
   name:        "Name",
   tags:        "Tags",
 })
 
 rest_post_only_properties %i{
-  engine_type name
+  engine_type kms_key_id name
 }

@@ -24,6 +24,7 @@ property :core_network_id, String,
 property :options, Hash,
          callbacks: {
            "Subproperty `Ipv6Support` is not a Boolean" => lambda { |v| v[:Ipv6Support].is_a? Boolean },
+           "Subproperty `ApplianceModeSupport` is not a Boolean" => lambda { |v| v[:ApplianceModeSupport].is_a? Boolean },
          },
          description: <<~'DESCRIPTION'
            Vpc options of the attachment.

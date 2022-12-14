@@ -54,6 +54,14 @@ property :instance_type, String,
            The type of instance underlying the environment.
          DESCRIPTION
 
+property :kms_key_id, String,
+         callbacks: {
+           "kms_key_id is not a String" => lambda { |v| v.is_a? String },
+         },
+         description: <<~'DESCRIPTION'
+           The ID or the Amazon Resource Name (ARN) of the customer managed KMS Key used for encrypting environment-related resources.
+         DESCRIPTION
+
 property :name, String,
          name_property: true,
          required: true,
@@ -124,6 +132,7 @@ rest_property_map({
   engine_version:               "EngineVersion",
   high_availability_config:     "HighAvailabilityConfig",
   instance_type:                "InstanceType",
+  kms_key_id:                   "KmsKeyId",
   name:                         "Name",
   preferred_maintenance_window: "PreferredMaintenanceWindow",
   publicly_accessible:          "PubliclyAccessible",
@@ -134,5 +143,5 @@ rest_property_map({
 })
 
 rest_post_only_properties %i{
-  description engine_type name publicly_accessible security_group_ids storage_configurations subnet_ids
+  description engine_type kms_key_id name publicly_accessible security_group_ids storage_configurations subnet_ids
 }
