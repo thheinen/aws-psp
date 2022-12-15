@@ -19,12 +19,14 @@ property :auto_publish, [TrueClass, FalseClass],
          description: ""
 
 property :function_code, String,
+         required: true,
          callbacks: {
            "function_code is not a String" => lambda { |v| v.is_a? String },
          },
          description: ""
 
 property :function_config, Hash,
+         required: true,
          callbacks: {
            "Subproperty `Comment` is not a String" => lambda { |v| v[:Comment].is_a? String },
            "Subproperty `Runtime` is not a String" => lambda { |v| v[:Runtime].is_a? String },

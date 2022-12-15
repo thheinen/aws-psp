@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.58 (2022-12-15)
+
+
+- Update AWS::CloudFront::Function
+
 ## v0.1.57 (2022-12-14)
 
 
