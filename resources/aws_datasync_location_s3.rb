@@ -34,7 +34,7 @@ property :s3_config, Hash,
 property :s3_storage_class, String,
          callbacks: {
            "s3_storage_class is not a String" => lambda { |v| v.is_a? String },
-           "s3_storage_classis not one of `STANDARD`, `STANDARD_IA`, `ONEZONE_IA`, `INTELLIGENT_TIERING`, `GLACIER`, `DEEP_ARCHIVE`" => lambda { |v| %w{STANDARD STANDARD_IA ONEZONE_IA INTELLIGENT_TIERING GLACIER DEEP_ARCHIVE}.include? v },
+           "s3_storage_classis not one of `STANDARD`, `STANDARD_IA`, `ONEZONE_IA`, `INTELLIGENT_TIERING`, `GLACIER`, `GLACIER_INSTANT_RETRIEVAL`, `DEEP_ARCHIVE`" => lambda { |v| %w{STANDARD STANDARD_IA ONEZONE_IA INTELLIGENT_TIERING GLACIER GLACIER_INSTANT_RETRIEVAL DEEP_ARCHIVE}.include? v },
          },
          description: <<~'DESCRIPTION'
            The Amazon S3 storage class you want to store your files in when this location is used as a task destination.

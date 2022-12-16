@@ -119,6 +119,13 @@ property :stack_set_name, String,
            The name of the AWS CloudFormation stack set to use to generate IAM roles to be used for this workspace.
          DESCRIPTION
 
+property :vpc_configuration, Hash,
+         callbacks: {
+           "Subproperty `SecurityGroupIds` is not a Array" => lambda { |v| v[:SecurityGroupIds].is_a? Array },
+           "Subproperty `SubnetIds` is not a Array" => lambda { |v| v[:SubnetIds].is_a? Array },
+         },
+         description: ""
+
 # API URLs and mappings
 rest_api_collection "/AWS::Grafana::Workspace"
 rest_api_document "/AWS::Grafana::Workspace"
@@ -137,6 +144,7 @@ rest_property_map({
   role_arn:                  "RoleArn",
   saml_configuration:        "SamlConfiguration",
   stack_set_name:            "StackSetName",
+  vpc_configuration:         "VpcConfiguration",
 })
 
 rest_post_only_properties %i{

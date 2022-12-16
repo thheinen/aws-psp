@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## v0.1.59 (2022-12-16)
+
+
+- Update AWS::Cassandra::Keyspace
+- Update AWS::Cassandra::Table
+- Update AWS::DataSync::LocationS3
+- Update AWS::Grafana::Workspace
+- Update AWS::Logs::SubscriptionFilter
+- Update AWS::QuickSight::DataSource
+- Update AWS::ResourceGroups::Group
+
 ## v0.1.58 (2022-12-15)
 
 

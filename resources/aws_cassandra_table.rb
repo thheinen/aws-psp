@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_cassandra_table
 provides :aws_cassandra_table, target_mode: true, platform: "aws"
 
