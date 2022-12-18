@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.60 (2022-12-18)
+
+
+- Update AWS::Logs::SubscriptionFilter
+
 ## v0.1.59 (2022-12-16)
 
 
