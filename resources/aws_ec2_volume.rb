@@ -128,6 +128,3 @@ rest_property_map({
   volume_type:          "VolumeType",
 })
 
-rest_post_only_properties %i{
-  availability_zone encrypted kms_key_id snapshot_id
-}

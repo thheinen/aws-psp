@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_iot_sitewise_gateway
 provides :aws_iot_sitewise_gateway, target_mode: true, platform: "aws"
 

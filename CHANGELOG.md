@@ -1,5 +1,22 @@
 # CHANGELOG
 
+## v0.1.61 (2022-12-19)
+
+
+- Add AWS::AppFlow::Connector
+- Update AWS::EC2::Volume
+- Add AWS::GameLift::Build
+- Update AWS::GreengrassV2::ComponentVersion
+- Update AWS::GreengrassV2::Deployment
+- Update AWS::IoTSiteWise::AccessPolicy
+- Update AWS::IoTSiteWise::Asset
+- Update AWS::IoTSiteWise::AssetModel
+- Update AWS::IoTSiteWise::Dashboard
+- Update AWS::IoTSiteWise::Gateway
+- Update AWS::IoTSiteWise::Portal
+- Update AWS::IoTSiteWise::Project
+- Update AWS::MediaPackage::PackagingConfiguration
+
 ## v0.1.60 (2022-12-18)
 
 

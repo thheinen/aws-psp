@@ -28,6 +28,7 @@ property :dash_package, Hash,
            "Subproperty `SegmentTemplateFormat` is not a String" => lambda { |v| v[:SegmentTemplateFormat].is_a? String },
            "Subproperty `SegmentTemplateFormat`is not one of `NUMBER_WITH_TIMELINE`, `TIME_WITH_TIMELINE`, `NUMBER_WITH_DURATION`" => lambda { |v| %w{NUMBER_WITH_TIMELINE TIME_WITH_TIMELINE NUMBER_WITH_DURATION}.include? v[:SegmentTemplateFormat] },
            "Subproperty `IncludeEncoderConfigurationInSegments` is not a Boolean" => lambda { |v| v[:IncludeEncoderConfigurationInSegments].is_a? Boolean },
+           "Subproperty `IncludeIframeOnlyStream` is not a Boolean" => lambda { |v| v[:IncludeIframeOnlyStream].is_a? Boolean },
          },
          description: <<~'DESCRIPTION'
            A Dynamic Adaptive Streaming over HTTP (DASH) packaging configuration.
