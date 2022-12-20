@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## v0.1.62 (2022-12-20)
+
+
+- Update AWS::CloudFormation::StackSet
+- Update AWS::IoTFleetHub::Application
+- Update AWS::OpsWorksCM::Server
+- Update AWS::RedshiftServerless::Namespace
+- Update AWS::RedshiftServerless::Workgroup
+
 ## v0.1.61 (2022-12-19)
 
 

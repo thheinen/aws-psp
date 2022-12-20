@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_cloudformation_stack_set
 provides :aws_cloudformation_stack_set, target_mode: true, platform: "aws"
 

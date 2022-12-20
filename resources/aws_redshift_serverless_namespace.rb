@@ -89,6 +89,26 @@ property :log_exports, Array,
            The collection of log types to be exported provided by the customer. Should only be one of the three supported log types: userlog, useractivitylog and connectionlog
          DESCRIPTION
 
+property :namespace, Hash,
+         callbacks: {
+           "Subproperty `NamespaceArn` is not a String" => lambda { |v| v[:NamespaceArn].is_a? String },
+           "Subproperty `NamespaceArn`is not a valid ARN" => lambda { |v| v[:NamespaceArn] =~ Regexp.new("^arn:aws(?:-cn|-us-gov)?:([^:]*:){3,}") },
+           "Subproperty `NamespaceId` is not a String" => lambda { |v| v[:NamespaceId].is_a? String },
+           "Subproperty `NamespaceName` is not a String" => lambda { |v| v[:NamespaceName].is_a? String },
+           "Subproperty `NamespaceName` needs to be 3..64 characters" => lambda { |v| v[:NamespaceName].length >= 3 && v[:NamespaceName].length <= 64 },
+           "Subproperty `NamespaceName` must match pattern ^[a-z0-9-]+$" => lambda { |v| v[:NamespaceName] =~ Regexp.new("/^[a-z0-9-]+$/") },
+           "Subproperty `AdminUsername` is not a String" => lambda { |v| v[:AdminUsername].is_a? String },
+           "Subproperty `DbName` is not a String" => lambda { |v| v[:DbName].is_a? String },
+           "Subproperty `DbName` must match pattern [a-zA-Z][a-zA-Z_0-9+.@-]*" => lambda { |v| v[:DbName] =~ Regexp.new("/[a-zA-Z][a-zA-Z_0-9+.@-]*/") },
+           "Subproperty `KmsKeyId` is not a String" => lambda { |v| v[:KmsKeyId].is_a? String },
+           "Subproperty `DefaultIamRoleArn` is not a String" => lambda { |v| v[:DefaultIamRoleArn].is_a? String },
+           "Subproperty `DefaultIamRoleArn`is not a valid ARN" => lambda { |v| v[:DefaultIamRoleArn] =~ Regexp.new("^arn:aws(?:-cn|-us-gov)?:([^:]*:){3,}") },
+           "Subproperty `IamRoles` is not a Array" => lambda { |v| v[:IamRoles].is_a? Array },
+           "Subproperty `LogExports` is not a Array" => lambda { |v| v[:LogExports].is_a? Array },
+           "Subproperty `CreationDate` is not a String" => lambda { |v| v[:CreationDate].is_a? String },
+         },
+         description: ""
+
 property :namespace_name, String,
          required: true,
          callbacks: {
@@ -122,6 +142,7 @@ rest_property_map({
   iam_roles:                       "IamRoles",
   kms_key_id:                      "KmsKeyId",
   log_exports:                     "LogExports",
+  namespace:                       "Namespace",
   namespace_name:                  "NamespaceName",
   tags:                            "Tags",
 })
