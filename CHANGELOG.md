@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.63 (2022-12-21)
+
+
+- Update AWS::MediaTailor::PlaybackConfiguration
+
 ## v0.1.62 (2022-12-20)
 
 
