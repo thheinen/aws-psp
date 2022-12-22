@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.1.64 (2022-12-22)
+
+
+- Update AWS::Logs::SubscriptionFilter
+- Update AWS::SageMaker::Domain
+
 ## v0.1.63 (2022-12-21)
 
 

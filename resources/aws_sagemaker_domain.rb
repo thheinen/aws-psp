@@ -122,5 +122,5 @@ rest_property_map({
 })
 
 rest_post_only_properties %i{
-  app_network_access_type app_security_group_management auth_mode domain_name domain_settings/r_studio_server_pro_domain_settings/default_resource_spec domain_settings/r_studio_server_pro_domain_settings/domain_execution_role_arn domain_settings/security_group_ids kms_key_id subnet_ids tags vpc_id
+  app_network_access_type auth_mode domain_name domain_settings/r_studio_server_pro_domain_settings/default_resource_spec kms_key_id subnet_ids tags vpc_id
 }
