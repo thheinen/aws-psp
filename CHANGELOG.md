@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.65 (2022-12-23)
+
+
+- Update AWS::DataSync::LocationEFS
+
 ## v0.1.64 (2022-12-22)
 
 

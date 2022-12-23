@@ -32,7 +32,6 @@ property :ec2_config, Hash,
          description: ""
 
 property :efs_filesystem_arn, String,
-         required: true,
          callbacks: {
            "efs_filesystem_arn is not a String" => lambda { |v| v.is_a? String },
            "efs_filesystem_arn must match pattern ^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):elasticfilesystem:[a-z\-0-9]*:[0-9]{12}:file-system/fs-.*$" => lambda { |v| v =~ Regexp.new("/^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):elasticfilesystem:[a-z\-0-9]*:[0-9]{12}:file-system/fs-.*$/") },
