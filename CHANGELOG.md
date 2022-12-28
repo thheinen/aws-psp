@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## v0.1.66 (2022-12-28)
+
+
+- Update AWS::ECR::PullThroughCacheRule
+- Update AWS::ECR::RegistryPolicy
+- Update AWS::ECR::ReplicationConfiguration
+- Update AWS::ECR::Repository
+- Update AWS::Location::PlaceIndex
+- Update AWS::Location::RouteCalculator
+
 ## v0.1.65 (2022-12-23)
 
 

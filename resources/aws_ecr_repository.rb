@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_ecr_repository
 provides :aws_ecr_repository, target_mode: true, platform: "aws"
 

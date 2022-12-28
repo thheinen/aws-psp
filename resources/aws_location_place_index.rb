@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_location_place_index
 provides :aws_location_place_index, target_mode: true, platform: "aws"
 
