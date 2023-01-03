@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.67 (2023-01-03)
+
+
+- Update AWS::Scheduler::Schedule
+
 ## v0.1.66 (2022-12-28)
 
 
