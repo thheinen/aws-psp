@@ -225,12 +225,30 @@ property :kms_key_id, String,
            The Amazon Resource Name (ARN) of the AWS Key Management Service master key that is used to encrypt the database instances in the DB cluster, such as arn:aws:kms:us-east-1:012345678910:key/abcd1234-a123-456a-a12b-a123b4cd56ef. If you enable the StorageEncrypted property but don't specify this property, the default master key is used. If you specify this property, you must set the StorageEncrypted property to true.
          DESCRIPTION
 
+property :manage_master_user_password, [TrueClass, FalseClass],
+         callbacks: {
+           "manage_master_user_password is not a Boolean" => lambda { |v| v.is_a? Boolean },
+         },
+         description: <<~'DESCRIPTION'
+           A value that indicates whether to manage the master user password with AWS Secrets Manager.
+         DESCRIPTION
+
 property :master_user_password, String,
          callbacks: {
            "master_user_password is not a String" => lambda { |v| v.is_a? String },
          },
          description: <<~'DESCRIPTION'
            The master password for the DB instance.
+         DESCRIPTION
+
+property :master_user_secret, Hash,
+         callbacks: {
+           "Subproperty `SecretArn` is not a String" => lambda { |v| v[:SecretArn].is_a? String },
+           "Subproperty `SecretArn`is not a valid ARN" => lambda { |v| v[:SecretArn] =~ Regexp.new("^arn:aws(?:-cn|-us-gov)?:([^:]*:){3,}") },
+           "Subproperty `KmsKeyId` is not a String" => lambda { |v| v[:KmsKeyId].is_a? String },
+         },
+         description: <<~'DESCRIPTION'
+           Contains the secret managed by RDS in AWS Secrets Manager for the master user password.
          DESCRIPTION
 
 property :master_username, String,
@@ -466,7 +484,9 @@ rest_property_map({
   global_cluster_identifier:             "GlobalClusterIdentifier",
   iops:                                  "Iops",
   kms_key_id:                            "KmsKeyId",
+  manage_master_user_password:           "ManageMasterUserPassword",
   master_user_password:                  "MasterUserPassword",
+  master_user_secret:                    "MasterUserSecret",
   master_username:                       "MasterUsername",
   monitoring_interval:                   "MonitoringInterval",
   monitoring_role_arn:                   "MonitoringRoleArn",

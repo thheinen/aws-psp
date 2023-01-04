@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## v0.1.68 (2023-01-04)
+
+
+- Update AWS::EC2::PlacementGroup
+- Update AWS::IoT::JobTemplate
+- Update AWS::RDS::DBCluster
+- Update AWS::RDS::DBInstance
+
 ## v0.1.67 (2023-01-03)
 
 

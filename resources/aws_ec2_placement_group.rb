@@ -12,6 +12,22 @@ property :name, String,
          name_property: true,
          description: "Name of the resource, not desired state"
 
+property :group_name, String,
+         callbacks: {
+           "group_name is not a String" => lambda { |v| v.is_a? String },
+         },
+         description: <<~'DESCRIPTION'
+           The Group Name of Placement Group.
+         DESCRIPTION
+
+property :partition_count, Integer,
+         callbacks: {
+           "partition_count is not a Integer" => lambda { |v| v.is_a? Integer },
+         },
+         description: <<~'DESCRIPTION'
+           The number of partitions. Valid only when **Strategy** is set to `partition`
+         DESCRIPTION
+
 property :spread_level, String,
          callbacks: {
            "spread_level is not a String" => lambda { |v| v.is_a? String },
@@ -28,15 +44,26 @@ property :strategy, String,
            The placement strategy.
          DESCRIPTION
 
+property :tags, Array,
+         callbacks: {
+           "tags is not a Array" => lambda { |v| v.is_a? Array },
+         },
+         description: <<~'DESCRIPTION'
+           An array of key-value pairs to apply to this resource.
+         DESCRIPTION
+
 # API URLs and mappings
 rest_api_collection "/AWS::EC2::PlacementGroup"
 rest_api_document "/AWS::EC2::PlacementGroup"
 
 rest_property_map({
-  spread_level: "SpreadLevel",
-  strategy:     "Strategy",
+  group_name:      "GroupName",
+  partition_count: "PartitionCount",
+  spread_level:    "SpreadLevel",
+  strategy:        "Strategy",
+  tags:            "Tags",
 })
 
 rest_post_only_properties %i{
-  spread_level strategy
+  group_name partition_count spread_level strategy
 }

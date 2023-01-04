@@ -286,12 +286,30 @@ property :license_model, String,
            License model information for this DB instance.
          DESCRIPTION
 
+property :manage_master_user_password, [TrueClass, FalseClass],
+         callbacks: {
+           "manage_master_user_password is not a Boolean" => lambda { |v| v.is_a? Boolean },
+         },
+         description: <<~'DESCRIPTION'
+           A value that indicates whether to manage the master user password with AWS Secrets Manager.
+         DESCRIPTION
+
 property :master_user_password, String,
          callbacks: {
            "master_user_password is not a String" => lambda { |v| v.is_a? String },
          },
          description: <<~'DESCRIPTION'
            The password for the master user.
+         DESCRIPTION
+
+property :master_user_secret, Hash,
+         callbacks: {
+           "Subproperty `SecretArn` is not a String" => lambda { |v| v[:SecretArn].is_a? String },
+           "Subproperty `SecretArn`is not a valid ARN" => lambda { |v| v[:SecretArn] =~ Regexp.new("^arn:aws(?:-cn|-us-gov)?:([^:]*:){3,}") },
+           "Subproperty `KmsKeyId` is not a String" => lambda { |v| v[:KmsKeyId].is_a? String },
+         },
+         description: <<~'DESCRIPTION'
+           Contains the secret managed by RDS in AWS Secrets Manager for the master user password.
          DESCRIPTION
 
 property :master_username, String,
@@ -590,7 +608,9 @@ rest_property_map({
   iops:                                     "Iops",
   kms_key_id:                               "KmsKeyId",
   license_model:                            "LicenseModel",
+  manage_master_user_password:              "ManageMasterUserPassword",
   master_user_password:                     "MasterUserPassword",
+  master_user_secret:                       "MasterUserSecret",
   master_username:                          "MasterUsername",
   max_allocated_storage:                    "MaxAllocatedStorage",
   monitoring_interval:                      "MonitoringInterval",

@@ -55,6 +55,12 @@ property :job_arn, String,
            Optional for copying a JobTemplate from a pre-existing Job configuration.
          DESCRIPTION
 
+property :job_executions_retry_config, Hash,
+         callbacks: {
+           "Subproperty `RetryCriteriaList` is not a Array" => lambda { |v| v[:RetryCriteriaList].is_a? Array },
+         },
+         description: ""
+
 property :job_executions_rollout_config, Hash,
          description: <<~'DESCRIPTION'
            Allows you to create a staged rollout of a job.
@@ -97,6 +103,7 @@ rest_property_map({
   document:                      "Document",
   document_source:               "DocumentSource",
   job_arn:                       "JobArn",
+  job_executions_retry_config:   "JobExecutionsRetryConfig",
   job_executions_rollout_config: "JobExecutionsRolloutConfig",
   job_template_id:               "JobTemplateId",
   presigned_url_config:          "PresignedUrlConfig",
