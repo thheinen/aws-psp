@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## v0.1.69 (2023-01-06)
+
+
+- Update AWS::IoT::ScheduledAudit
+- Add AWS::IoTWireless::Destination
+- Add AWS::IoTWireless::DeviceProfile
+- Add AWS::IoTWireless::NetworkAnalyzerConfiguration
+- Add AWS::IoTWireless::ServiceProfile
+- Add AWS::IoTWireless::TaskDefinition
+- Add AWS::IoTWireless::WirelessDevice
+- Add AWS::IoTWireless::WirelessGateway
+
 ## v0.1.68 (2023-01-04)
 
 

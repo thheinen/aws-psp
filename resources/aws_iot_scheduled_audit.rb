@@ -15,7 +15,7 @@ property :name, String,
 property :day_of_month, String,
          callbacks: {
            "day_of_month is not a String" => lambda { |v| v.is_a? String },
-           "day_of_month must match pattern ^([1-9]|[12][0-9]|3[01])$|^LAST$" => lambda { |v| v =~ Regexp.new("/^([1-9]|[12][0-9]|3[01])$|^LAST$/") },
+           "day_of_month must match pattern ^([1-9]|[12][0-9]|3[01])$|^LAST$|^UNSET_VALUE$" => lambda { |v| v =~ Regexp.new("/^([1-9]|[12][0-9]|3[01])$|^LAST$|^UNSET_VALUE$/") },
          },
          description: <<~'DESCRIPTION'
            The day of the month on which the scheduled audit takes place. Can be 1 through 31 or LAST. This field is required if the frequency parameter is set to MONTHLY.
@@ -24,7 +24,7 @@ property :day_of_month, String,
 property :day_of_week, String,
          callbacks: {
            "day_of_week is not a String" => lambda { |v| v.is_a? String },
-           "day_of_weekis not one of `SUN`, `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`" => lambda { |v| %w{SUN MON TUE WED THU FRI SAT}.include? v },
+           "day_of_weekis not one of `SUN`, `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`, `UNSET_VALUE`" => lambda { |v| %w{SUN MON TUE WED THU FRI SAT UNSET_VALUE}.include? v },
          },
          description: <<~'DESCRIPTION'
            The day of the week on which the scheduled audit takes place. Can be one of SUN, MON, TUE,WED, THU, FRI, or SAT. This field is required if the frequency parameter is set to WEEKLY or BIWEEKLY.
