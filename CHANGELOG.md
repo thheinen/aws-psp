@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.70 (2023-01-07)
+
+
+- Update AWS::Location::GeofenceCollection
+
 ## v0.1.69 (2023-01-06)
 
 

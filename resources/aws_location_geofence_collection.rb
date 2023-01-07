@@ -61,5 +61,5 @@ rest_property_map({
 })
 
 rest_post_only_properties %i{
-  collection_name description kms_key_id pricing_plan
+  collection_name description kms_key_id
 }
