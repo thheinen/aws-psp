@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_elasticloadbalancingv2_listener
 provides :aws_elasticloadbalancingv2_listener, target_mode: true, platform: "aws"
 

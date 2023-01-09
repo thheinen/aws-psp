@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.1.71 (2023-01-09)
+
+
+- Update AWS::ElasticLoadBalancingV2::Listener
+- Update AWS::ElasticLoadBalancingV2::ListenerRule
+
 ## v0.1.70 (2023-01-07)
 
 
