@@ -38,7 +38,6 @@ property :mount_options, Hash,
          description: ""
 
 property :password, String,
-         required: true,
          callbacks: {
            "password is not a String" => lambda { |v| v.is_a? String },
            "password must match pattern ^.{0,104}$" => lambda { |v| v =~ Regexp.new("/^.{0,104}$/") },
@@ -48,7 +47,6 @@ property :password, String,
          DESCRIPTION
 
 property :server_hostname, String,
-         required: true,
          callbacks: {
            "server_hostname is not a String" => lambda { |v| v.is_a? String },
            "server_hostname must match pattern ^(([a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9\-]*[A-Za-z0-9])$" => lambda { |v| v =~ Regexp.new("/^(([a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9\-]*[A-Za-z0-9])$/") },
@@ -58,7 +56,6 @@ property :server_hostname, String,
          DESCRIPTION
 
 property :subdirectory, String,
-         required: true,
          callbacks: {
            "subdirectory is not a String" => lambda { |v| v.is_a? String },
            "subdirectory must match pattern ^[a-zA-Z0-9_\-\+\./\(\)\$\p{Zs}]+$" => lambda { |v| v =~ Regexp.new("/^[a-zA-Z0-9_\-\+\./\(\)\$\p{Zs}]+$/") },

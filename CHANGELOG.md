@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## v0.1.72 (2023-01-10)
+
+
+- Update AWS::ApplicationInsights::Application
+- Update AWS::DataSync::LocationFSxLustre
+- Update AWS::DataSync::LocationFSxWindows
+- Update AWS::DataSync::LocationNFS
+- Update AWS::DataSync::LocationObjectStorage
+- Update AWS::DataSync::LocationSMB
+
 ## v0.1.71 (2023-01-09)
 
 

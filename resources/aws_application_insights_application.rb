@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_application_insights_application
 provides :aws_application_insights_application, target_mode: true, platform: "aws"
 

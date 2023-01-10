@@ -22,7 +22,6 @@ property :domain, String,
          DESCRIPTION
 
 property :fsx_filesystem_arn, String,
-         required: true,
          callbacks: {
            "fsx_filesystem_arn is not a String" => lambda { |v| v.is_a? String },
            "fsx_filesystem_arn must match pattern ^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):fsx:[a-z\-0-9]*:[0-9]{12}:file-system/fs-.*$" => lambda { |v| v =~ Regexp.new("/^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):fsx:[a-z\-0-9]*:[0-9]{12}:file-system/fs-.*$/") },
@@ -32,7 +31,6 @@ property :fsx_filesystem_arn, String,
          DESCRIPTION
 
 property :password, String,
-         required: true,
          callbacks: {
            "password is not a String" => lambda { |v| v.is_a? String },
            "password must match pattern ^.{0,104}$" => lambda { |v| v =~ Regexp.new("/^.{0,104}$/") },

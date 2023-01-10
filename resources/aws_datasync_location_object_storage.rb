@@ -32,7 +32,6 @@ property :agent_arns, Array,
          DESCRIPTION
 
 property :bucket_name, String,
-         required: true,
          callbacks: {
            "bucket_name is not a String" => lambda { |v| v.is_a? String },
            "bucket_name needs to be 3..63 characters" => lambda { |v| v.length >= 3 && v.length <= 63 },
@@ -53,7 +52,6 @@ property :secret_key, String,
          DESCRIPTION
 
 property :server_hostname, String,
-         required: true,
          callbacks: {
            "server_hostname is not a String" => lambda { |v| v.is_a? String },
            "server_hostname must match pattern ^(([a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9\-]*[A-Za-z0-9])$" => lambda { |v| v =~ Regexp.new("/^(([a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9\-]*[A-Za-z0-9])$/") },

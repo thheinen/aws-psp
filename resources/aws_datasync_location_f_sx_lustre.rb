@@ -13,7 +13,6 @@ property :name, String,
          description: "Name of the resource, not desired state"
 
 property :fsx_filesystem_arn, String,
-         required: true,
          callbacks: {
            "fsx_filesystem_arn is not a String" => lambda { |v| v.is_a? String },
            "fsx_filesystem_arn must match pattern ^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):fsx:[a-z\-0-9]+:[0-9]{12}:file-system/fs-[0-9a-f]+$" => lambda { |v| v =~ Regexp.new("/^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):fsx:[a-z\-0-9]+:[0-9]{12}:file-system/fs-[0-9a-f]+$/") },
