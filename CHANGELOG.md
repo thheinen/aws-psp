@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.1.73 (2023-01-11)
+
+
+- Update AWS::EC2::CustomerGateway
+- Update AWS::Logs::QueryDefinition
+
 ## v0.1.72 (2023-01-10)
 
 

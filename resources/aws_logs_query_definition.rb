@@ -26,7 +26,6 @@ property :name, String,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
            "name needs to be 1..255 characters" => lambda { |v| v.length >= 1 && v.length <= 255 },
-           "name must match pattern ^([^:*\/]+\/?)*[^:*\/]+$" => lambda { |v| v =~ Regexp.new("/^([^:*\/]+\/?)*[^:*\/]+$/") },
          },
          description: <<~'DESCRIPTION'
            A name for the saved query definition
