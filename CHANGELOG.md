@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## v0.1.74 (2023-01-12)
+
+
+- Update AWS::AuditManager::Assessment
+- Update AWS::EC2::CustomerGateway
+- Update AWS::FMS::NotificationChannel
+- Update AWS::FMS::Policy
+- Update AWS::RDS::DBInstance
+- Update AWS::RDS::DBProxyTargetGroup
+- Add AWS::SecretsManager::Secret
+
 ## v0.1.73 (2023-01-11)
 
 

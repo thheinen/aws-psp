@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_fms_notification_channel
 provides :aws_fms_notification_channel, target_mode: true, platform: "aws"
 

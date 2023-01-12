@@ -69,6 +69,26 @@ property :ca_certificate_identifier, String,
            The identifier of the CA certificate for this DB instance.
          DESCRIPTION
 
+property :certificate_details, Hash,
+         callbacks: {
+           "Subproperty `CAIdentifier` is not a String" => lambda { |v| v[:CAIdentifier].is_a? String },
+           "Subproperty `ValidTill` is not a String" => lambda { |v| v[:ValidTill].is_a? String },
+         },
+         description: <<~'DESCRIPTION'
+           Returns the details of the DB instance's server certificate.
+         DESCRIPTION
+
+property :certificate_rotation_restart, [TrueClass, FalseClass],
+         callbacks: {
+           "certificate_rotation_restart is not a Boolean" => lambda { |v| v.is_a? Boolean },
+         },
+         description: <<~'DESCRIPTION'
+           A value that indicates whether the DB instance is restarted when you rotate your SSL/TLS certificate.
+      By default, the DB instance is restarted when you rotate your SSL/TLS certificate. The certificate is not updated until the DB instance is restarted.
+      If you are using SSL/TLS to connect to the DB instance, follow the appropriate instructions for your DB engine to rotate your SSL/TLS certificate
+      This setting doesn't apply to RDS Custom.
+         DESCRIPTION
+
 property :character_set_name, String,
          callbacks: {
            "character_set_name is not a String" => lambda { |v| v.is_a? String },
@@ -583,6 +603,8 @@ rest_property_map({
   availability_zone:                        "AvailabilityZone",
   backup_retention_period:                  "BackupRetentionPeriod",
   ca_certificate_identifier:                "CACertificateIdentifier",
+  certificate_details:                      "CertificateDetails",
+  certificate_rotation_restart:             "CertificateRotationRestart",
   character_set_name:                       "CharacterSetName",
   copy_tags_to_snapshot:                    "CopyTagsToSnapshot",
   custom_iam_instance_profile:              "CustomIAMInstanceProfile",

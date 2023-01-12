@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_auditmanager_assessment
 provides :aws_auditmanager_assessment, target_mode: true, platform: "aws"
 
@@ -18,6 +17,14 @@ property :assessment_reports_destination, Hash,
 
 property :aws_account, Hash,
          description: ""
+
+property :delegations, Array,
+         callbacks: {
+           "delegations is not a Array" => lambda { |v| v.is_a? Array },
+         },
+         description: <<~'DESCRIPTION'
+           The list of delegations.
+         DESCRIPTION
 
 property :description, Hash,
          callbacks: {
@@ -79,6 +86,7 @@ rest_api_document "/AWS::AuditManager::Assessment"
 rest_property_map({
   assessment_reports_destination: "AssessmentReportsDestination",
   aws_account:                    "AwsAccount",
+  delegations:                    "Delegations",
   description:                    "Description",
   framework_id:                   "FrameworkId",
   name:                           "Name",

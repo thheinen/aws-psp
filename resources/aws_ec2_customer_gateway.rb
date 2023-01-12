@@ -21,6 +21,14 @@ property :bgp_asn, Integer,
            For devices that support BGP, the customer gateway's BGP ASN.
          DESCRIPTION
 
+property :device_name, String,
+         callbacks: {
+           "device_name is not a String" => lambda { |v| v.is_a? String },
+         },
+         description: <<~'DESCRIPTION'
+           A name for the customer gateway device.
+         DESCRIPTION
+
 property :ip_address, String,
          required: true,
          callbacks: {
@@ -52,12 +60,13 @@ rest_api_collection "/AWS::EC2::CustomerGateway"
 rest_api_document "/AWS::EC2::CustomerGateway"
 
 rest_property_map({
-  bgp_asn:    "BgpAsn",
-  ip_address: "IpAddress",
-  tags:       "Tags",
-  type:       "Type",
+  bgp_asn:     "BgpAsn",
+  device_name: "DeviceName",
+  ip_address:  "IpAddress",
+  tags:        "Tags",
+  type:        "Type",
 })
 
 rest_post_only_properties %i{
-  bgp_asn ip_address type
+  bgp_asn device_name ip_address type
 }

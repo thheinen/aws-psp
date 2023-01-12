@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_fms_policy
 provides :aws_fms_policy, target_mode: true, platform: "aws"
 
@@ -40,12 +39,19 @@ property :include_map, Hash,
          },
          description: ""
 
+property :policy_description, String,
+         callbacks: {
+           "policy_description is not a String" => lambda { |v| v.is_a? String },
+           "policy_description must match pattern ^([a-zA-Z0-9_.:/=+\-@\s]+)$" => lambda { |v| v =~ Regexp.new("/^([a-zA-Z0-9_.:/=+\-@\s]+)$/") },
+         },
+         description: ""
+
 property :policy_name, String,
          required: true,
          callbacks: {
            "policy_name is not a String" => lambda { |v| v.is_a? String },
            "policy_name needs to be 1..1024 characters" => lambda { |v| v.length >= 1 && v.length <= 1024 },
-           "policy_name must match pattern ^([a-zA-Z0-9_.:/=+\-@]+)$" => lambda { |v| v =~ Regexp.new("/^([a-zA-Z0-9_.:/=+\-@]+)$/") },
+           "policy_name must match pattern ^([a-zA-Z0-9_.:/=+\-@\s]+)$" => lambda { |v| v =~ Regexp.new("/^([a-zA-Z0-9_.:/=+\-@\s]+)$/") },
          },
          description: ""
 
@@ -56,6 +62,12 @@ property :remediation_enabled, [TrueClass, FalseClass],
          },
          description: ""
 
+property :resource_set_ids, Array,
+         callbacks: {
+           "resource_set_ids is not a Array" => lambda { |v| v.is_a? Array },
+         },
+         description: ""
+
 property :resource_tags, Array,
          callbacks: {
            "resource_tags is not a Array" => lambda { |v| v.is_a? Array },
@@ -63,7 +75,6 @@ property :resource_tags, Array,
          description: ""
 
 property :resource_type, Hash,
-         required: true,
          callbacks: {
            "resource_type is not a String" => lambda { |v| v.is_a? String },
            "resource_type needs to be 1..128 characters" => lambda { |v| v.length >= 1 && v.length <= 128 },
@@ -102,8 +113,10 @@ rest_property_map({
   exclude_map:                  "ExcludeMap",
   exclude_resource_tags:        "ExcludeResourceTags",
   include_map:                  "IncludeMap",
+  policy_description:           "PolicyDescription",
   policy_name:                  "PolicyName",
   remediation_enabled:          "RemediationEnabled",
+  resource_set_ids:             "ResourceSetIds",
   resource_tags:                "ResourceTags",
   resource_type:                "ResourceType",
   resource_type_list:           "ResourceTypeList",
