@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## v0.1.75 (2023-01-13)
+
+
+- Update AWS::CloudWatch::MetricStream
+- Update AWS::EC2::NatGateway
+- Update AWS::EC2::PlacementGroup
+- Update AWS::EKS::Addon
+- Add AWS::GameCast::Application
+- Add AWS::GameCast::StreamGroup
+- Update AWS::RDS::DBProxyTargetGroup
+
 ## v0.1.74 (2023-01-12)
 
 

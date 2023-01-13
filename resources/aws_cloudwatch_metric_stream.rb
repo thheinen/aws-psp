@@ -38,6 +38,14 @@ property :include_filters, Array,
            Define which metrics will be streamed. Metrics matched by multiple instances of MetricStreamFilter are joined with an OR operation by default. If both IncludeFilters and ExcludeFilters are omitted, all metrics in the account will be streamed. IncludeFilters and ExcludeFilters are mutually exclusive. Default to null.
          DESCRIPTION
 
+property :include_linked_accounts_metrics, [TrueClass, FalseClass],
+         callbacks: {
+           "include_linked_accounts_metrics is not a Boolean" => lambda { |v| v.is_a? Boolean },
+         },
+         description: <<~'DESCRIPTION'
+           If you are creating a metric stream in a monitoring account, specify true to include metrics from source accounts that are linked to this monitoring account, in the metric stream. The default is false.
+         DESCRIPTION
+
 property :name, String,
          name_property: true,
          callbacks: {
@@ -89,14 +97,15 @@ rest_api_collection "/AWS::CloudWatch::MetricStream"
 rest_api_document "/AWS::CloudWatch::MetricStream"
 
 rest_property_map({
-  exclude_filters:           "ExcludeFilters",
-  firehose_arn:              "FirehoseArn",
-  include_filters:           "IncludeFilters",
-  name:                      "Name",
-  output_format:             "OutputFormat",
-  role_arn:                  "RoleArn",
-  statistics_configurations: "StatisticsConfigurations",
-  tags:                      "Tags",
+  exclude_filters:                 "ExcludeFilters",
+  firehose_arn:                    "FirehoseArn",
+  include_filters:                 "IncludeFilters",
+  include_linked_accounts_metrics: "IncludeLinkedAccountsMetrics",
+  name:                            "Name",
+  output_format:                   "OutputFormat",
+  role_arn:                        "RoleArn",
+  statistics_configurations:       "StatisticsConfigurations",
+  tags:                            "Tags",
 })
 
 rest_post_only_properties %i{

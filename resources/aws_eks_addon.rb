@@ -46,6 +46,14 @@ property :configuration_values, String,
            The configuration values to use with the add-on
          DESCRIPTION
 
+property :preserve_on_delete, [TrueClass, FalseClass],
+         callbacks: {
+           "preserve_on_delete is not a Boolean" => lambda { |v| v.is_a? Boolean },
+         },
+         description: <<~'DESCRIPTION'
+           PreserveOnDelete parameter value
+         DESCRIPTION
+
 property :resolve_conflicts, String,
          callbacks: {
            "resolve_conflicts is not a String" => lambda { |v| v.is_a? String },
@@ -80,6 +88,7 @@ rest_property_map({
   addon_version:            "AddonVersion",
   cluster_name:             "ClusterName",
   configuration_values:     "ConfigurationValues",
+  preserve_on_delete:       "PreserveOnDelete",
   resolve_conflicts:        "ResolveConflicts",
   service_account_role_arn: "ServiceAccountRoleArn",
   tags:                     "Tags",
