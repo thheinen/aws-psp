@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_location_tracker
 provides :aws_location_tracker, target_mode: true, platform: "aws"
 
@@ -70,5 +69,5 @@ rest_property_map({
 })
 
 rest_post_only_properties %i{
-  description kms_key_id position_filtering pricing_plan pricing_plan_data_source tracker_name
+  description kms_key_id position_filtering pricing_plan tracker_name
 }

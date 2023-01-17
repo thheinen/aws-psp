@@ -5,7 +5,7 @@ resource_name :aws_ec2_network_performance_metric_subscription
 provides :aws_ec2_network_performance_metric_subscription, target_mode: true, platform: "aws"
 
 description <<~DESCRIPTION
-  An example resource schema demonstrating some basic constructs and validation rules.
+  Resource Type definition for AWS::EC2::NetworkPerformanceMetricSubscription
 DESCRIPTION
 
 property :name, String,
@@ -18,7 +18,7 @@ property :destination, String,
            "destination is not a String" => lambda { |v| v.is_a? String },
          },
          description: <<~'DESCRIPTION'
-           The destination is a mandatory element for the metric subscription.
+           The target Region or Availability Zone for the metric to subscribe to.
          DESCRIPTION
 
 property :metric, String,
@@ -27,7 +27,7 @@ property :metric, String,
            "metric is not a String" => lambda { |v| v.is_a? String },
          },
          description: <<~'DESCRIPTION'
-           The metric type for the metric subscription.
+           The metric type to subscribe to.
          DESCRIPTION
 
 property :source, String,
@@ -36,7 +36,7 @@ property :source, String,
            "source is not a String" => lambda { |v| v.is_a? String },
          },
          description: <<~'DESCRIPTION'
-           The source is a mandatory element for the metric subscription.
+           The starting Region or Availability Zone for metric to subscribe to.
          DESCRIPTION
 
 property :statistic, String,
@@ -45,7 +45,7 @@ property :statistic, String,
            "statistic is not a String" => lambda { |v| v.is_a? String },
          },
          description: <<~'DESCRIPTION'
-           The statistic type for the metric subscription.
+           The statistic to subscribe to.
          DESCRIPTION
 
 # API URLs and mappings

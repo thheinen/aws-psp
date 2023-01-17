@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_forecast_dataset
 provides :aws_forecast_dataset, target_mode: true, platform: "aws"
 

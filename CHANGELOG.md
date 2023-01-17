@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## v0.1.76 (2023-01-17)
+
+
+- Update AWS::EC2::NetworkPerformanceMetricSubscription
+- Update AWS::EventSchemas::RegistryPolicy
+- Update AWS::Forecast::Dataset
+- Update AWS::Forecast::DatasetGroup
+- Update AWS::Location::Tracker
+- Update AWS::Location::TrackerConsumer
+- Update AWS::StepFunctions::Activity
+
 ## v0.1.75 (2023-01-13)
 
 
