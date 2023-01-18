@@ -5,7 +5,7 @@ resource_name :aws_robomaker_robot_application
 provides :aws_robomaker_robot_application, target_mode: true, platform: "aws"
 
 description <<~DESCRIPTION
-  AWS::RoboMaker::RobotApplication resource creates an AWS RoboMaker RobotApplication. Robot application can be used in AWS RoboMaker Simulation Jobs.
+  This schema is for testing purpose only.
 DESCRIPTION
 
 property :name, String,

@@ -69,5 +69,5 @@ rest_property_map({
 })
 
 rest_post_only_properties %i{
-  description kms_key_id position_filtering pricing_plan tracker_name
+  description kms_key_id position_filtering tracker_name
 }

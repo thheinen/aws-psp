@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## v0.1.77 (2023-01-18)
+
+
+- Update AWS::ElastiCache::SubnetGroup
+- Update AWS::Location::Tracker
+- Update AWS::RoboMaker::RobotApplication
+- Update AWS::RoboMaker::SimulationApplication
+- Update AWS::Route53Resolver::FirewallDomainList
+- Update AWS::Route53Resolver::FirewallRuleGroup
+- Update AWS::Route53Resolver::FirewallRuleGroupAssociation
+
 ## v0.1.76 (2023-01-17)
 
 

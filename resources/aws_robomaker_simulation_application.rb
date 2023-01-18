@@ -5,7 +5,7 @@ resource_name :aws_robomaker_simulation_application
 provides :aws_robomaker_simulation_application, target_mode: true, platform: "aws"
 
 description <<~DESCRIPTION
-  AWS::RoboMaker::SimulationApplication resource creates an AWS RoboMaker SimulationApplication. Simulation application can be used in AWS RoboMaker Simulation Jobs.
+  This schema is for testing purpose only.
 DESCRIPTION
 
 property :name, String,
