@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_imagebuilder_component
 provides :aws_imagebuilder_component, target_mode: true, platform: "aws"
 
@@ -48,6 +47,7 @@ property :kms_key_id, String,
 
 property :name, String,
          name_property: true,
+         required: true,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
          },

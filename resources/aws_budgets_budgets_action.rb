@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_budgets_budgets_action
 provides :aws_budgets_budgets_action, target_mode: true, platform: "aws"
 

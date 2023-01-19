@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_iot_analytics_dataset
 provides :aws_iot_analytics_dataset, target_mode: true, platform: "aws"
 

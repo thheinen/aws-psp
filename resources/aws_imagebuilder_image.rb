@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_imagebuilder_image
 provides :aws_imagebuilder_image, target_mode: true, platform: "aws"
 
@@ -45,6 +44,14 @@ property :image_recipe_arn, String,
            The Amazon Resource Name (ARN) of the image recipe that defines how images are configured, tested, and assessed.
          DESCRIPTION
 
+property :image_scanning_configuration, Hash,
+         callbacks: {
+           "Subproperty `ImageScanningEnabled` is not a Boolean" => lambda { |v| v[:ImageScanningEnabled].is_a? Boolean },
+         },
+         description: <<~'DESCRIPTION'
+           Contains settings for vulnerability scans.
+         DESCRIPTION
+
 property :image_tests_configuration, Hash,
          callbacks: {
            "Subproperty `ImageTestsEnabled` is not a Boolean" => lambda { |v| v[:ImageTestsEnabled].is_a? Boolean },
@@ -79,11 +86,12 @@ rest_property_map({
   distribution_configuration_arn:   "DistributionConfigurationArn",
   enhanced_image_metadata_enabled:  "EnhancedImageMetadataEnabled",
   image_recipe_arn:                 "ImageRecipeArn",
+  image_scanning_configuration:     "ImageScanningConfiguration",
   image_tests_configuration:        "ImageTestsConfiguration",
   infrastructure_configuration_arn: "InfrastructureConfigurationArn",
   tags:                             "Tags",
 })
 
 rest_post_only_properties %i{
-  container_recipe_arn distribution_configuration_arn enhanced_image_metadata_enabled image_recipe_arn image_tests_configuration infrastructure_configuration_arn tags
+  container_recipe_arn distribution_configuration_arn enhanced_image_metadata_enabled image_recipe_arn image_scanning_configuration image_tests_configuration infrastructure_configuration_arn tags
 }

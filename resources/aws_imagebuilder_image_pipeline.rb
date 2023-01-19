@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_imagebuilder_image_pipeline
 provides :aws_imagebuilder_image_pipeline, target_mode: true, platform: "aws"
 
@@ -51,6 +50,14 @@ property :image_recipe_arn, String,
          },
          description: <<~'DESCRIPTION'
            The Amazon Resource Name (ARN) of the image recipe that defines how images are configured, tested, and assessed.
+         DESCRIPTION
+
+property :image_scanning_configuration, Hash,
+         callbacks: {
+           "Subproperty `ImageScanningEnabled` is not a Boolean" => lambda { |v| v[:ImageScanningEnabled].is_a? Boolean },
+         },
+         description: <<~'DESCRIPTION'
+           Contains settings for vulnerability scans.
          DESCRIPTION
 
 property :image_tests_configuration, Hash,
@@ -116,6 +123,7 @@ rest_property_map({
   distribution_configuration_arn:   "DistributionConfigurationArn",
   enhanced_image_metadata_enabled:  "EnhancedImageMetadataEnabled",
   image_recipe_arn:                 "ImageRecipeArn",
+  image_scanning_configuration:     "ImageScanningConfiguration",
   image_tests_configuration:        "ImageTestsConfiguration",
   infrastructure_configuration_arn: "InfrastructureConfigurationArn",
   name:                             "Name",

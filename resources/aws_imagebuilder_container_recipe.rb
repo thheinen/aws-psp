@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_imagebuilder_container_recipe
 provides :aws_imagebuilder_container_recipe, target_mode: true, platform: "aws"
 

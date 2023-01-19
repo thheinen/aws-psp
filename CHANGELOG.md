@@ -1,5 +1,25 @@
 # CHANGELOG
 
+## v0.1.78 (2023-01-19)
+
+
+- Update AWS::Budgets::BudgetsAction
+- Update AWS::CloudFormation::ModuleDefaultVersion
+- Update AWS::CloudFormation::ModuleVersion
+- Update AWS::ImageBuilder::Component
+- Update AWS::ImageBuilder::ContainerRecipe
+- Update AWS::ImageBuilder::DistributionConfiguration
+- Update AWS::ImageBuilder::Image
+- Update AWS::ImageBuilder::ImagePipeline
+- Update AWS::ImageBuilder::ImageRecipe
+- Update AWS::ImageBuilder::InfrastructureConfiguration
+- Update AWS::IoTAnalytics::Channel
+- Update AWS::IoTAnalytics::Dataset
+- Update AWS::IoTAnalytics::Datastore
+- Update AWS::IoTAnalytics::Pipeline
+- Update AWS::LicenseManager::Grant
+- Update AWS::LicenseManager::License
+
 ## v0.1.77 (2023-01-18)
 
 

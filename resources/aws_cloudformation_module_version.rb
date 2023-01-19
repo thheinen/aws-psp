@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_cloudformation_module_version
 provides :aws_cloudformation_module_version, target_mode: true, platform: "aws"
 

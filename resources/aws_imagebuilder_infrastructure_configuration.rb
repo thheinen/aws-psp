@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_imagebuilder_infrastructure_configuration
 provides :aws_imagebuilder_infrastructure_configuration, target_mode: true, platform: "aws"
 
@@ -63,6 +62,7 @@ property :logging, Hash,
 
 property :name, String,
          name_property: true,
+         required: true,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
          },
