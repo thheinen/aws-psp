@@ -124,14 +124,6 @@ property :security_group_ids, Array,
          },
          description: ""
 
-property :server_name, String,
-         callbacks: {
-           "server_name is not a String" => lambda { |v| v.is_a? String },
-           "server_name needs to be 1..40 characters" => lambda { |v| v.length >= 1 && v.length <= 40 },
-           "server_name must match pattern [a-zA-Z][a-zA-Z0-9\-]*" => lambda { |v| v =~ Regexp.new("/[a-zA-Z][a-zA-Z0-9\-]*/") },
-         },
-         description: ""
-
 property :service_role_arn, String,
          required: true,
          callbacks: {
@@ -174,7 +166,6 @@ rest_property_map({
   preferred_backup_window:      "PreferredBackupWindow",
   preferred_maintenance_window: "PreferredMaintenanceWindow",
   security_group_ids:           "SecurityGroupIds",
-  server_name:                  "ServerName",
   service_role_arn:             "ServiceRoleArn",
   subnet_ids:                   "SubnetIds",
   tags:                         "Tags",

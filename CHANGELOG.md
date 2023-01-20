@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.79 (2023-01-20)
+
+
+- Update AWS::OpsWorksCM::Server
+
 ## v0.1.78 (2023-01-19)
 
 
