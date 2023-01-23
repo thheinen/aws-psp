@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_open_search_service_domain
 provides :aws_open_search_service_domain, target_mode: true, platform: "aws"
 
@@ -29,6 +28,8 @@ property :advanced_security_options, Hash,
          callbacks: {
            "Subproperty `Enabled` is not a Boolean" => lambda { |v| v[:Enabled].is_a? Boolean },
            "Subproperty `InternalUserDatabaseEnabled` is not a Boolean" => lambda { |v| v[:InternalUserDatabaseEnabled].is_a? Boolean },
+           "Subproperty `AnonymousAuthEnabled` is not a Boolean" => lambda { |v| v[:AnonymousAuthEnabled].is_a? Boolean },
+           "Subproperty `AnonymousAuthDisableDate` is not a String" => lambda { |v| v[:AnonymousAuthDisableDate].is_a? String },
          },
          description: ""
 

@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## v0.1.80 (2023-01-23)
+
+
+- Add AWS::ApplicationAutoScaling::ScalableTarget
+- Add AWS::EC2::VPNConnectionRoute
+- Update AWS::OpenSearchService::Domain
+- Update AWS::SageMaker::Domain
+
 ## v0.1.79 (2023-01-20)
 
 

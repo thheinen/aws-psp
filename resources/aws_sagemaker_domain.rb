@@ -40,6 +40,17 @@ property :auth_mode, String,
            The mode of authentication that members use to access the domain.
          DESCRIPTION
 
+property :default_space_settings, Hash,
+         callbacks: {
+           "Subproperty `ExecutionRole` is not a String" => lambda { |v| v[:ExecutionRole].is_a? String },
+           "Subproperty `ExecutionRole` needs to be 20..2048 characters" => lambda { |v| v[:ExecutionRole].length >= 20 && v[:ExecutionRole].length <= 2048 },
+           "Subproperty `ExecutionRole` must match pattern ^arn:aws[a-z\-]*:iam::\d{12}:role/?[a-zA-Z_0-9+=,.@\-_/]+$" => lambda { |v| v[:ExecutionRole] =~ Regexp.new("/^arn:aws[a-z\-]*:iam::\d{12}:role/?[a-zA-Z_0-9+=,.@\-_/]+$/") },
+           "Subproperty `SecurityGroups` is not a Array" => lambda { |v| v[:SecurityGroups].is_a? Array },
+         },
+         description: <<~'DESCRIPTION'
+           The default space settings.
+         DESCRIPTION
+
 property :default_user_settings, Hash,
          required: true,
          callbacks: {
@@ -112,6 +123,7 @@ rest_property_map({
   app_network_access_type:       "AppNetworkAccessType",
   app_security_group_management: "AppSecurityGroupManagement",
   auth_mode:                     "AuthMode",
+  default_space_settings:        "DefaultSpaceSettings",
   default_user_settings:         "DefaultUserSettings",
   domain_name:                   "DomainName",
   domain_settings:               "DomainSettings",
