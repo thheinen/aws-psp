@@ -12,6 +12,18 @@ property :name, String,
          name_property: true,
          description: "Name of the resource, not desired state"
 
+property :contact_post_pass_duration_seconds, Integer,
+         callbacks: {
+           "contact_post_pass_duration_seconds is not a Integer" => lambda { |v| v.is_a? Integer },
+         },
+         description: ""
+
+property :contact_pre_pass_duration_seconds, Integer,
+         callbacks: {
+           "contact_pre_pass_duration_seconds is not a Integer" => lambda { |v| v.is_a? Integer },
+         },
+         description: ""
+
 property :endpoint_details, Array,
          required: true,
          callbacks: {
@@ -30,7 +42,9 @@ rest_api_collection "/AWS::GroundStation::DataflowEndpointGroup"
 rest_api_document "/AWS::GroundStation::DataflowEndpointGroup"
 
 rest_property_map({
-  endpoint_details: "EndpointDetails",
-  tags:             "Tags",
+  contact_post_pass_duration_seconds: "ContactPostPassDurationSeconds",
+  contact_pre_pass_duration_seconds:  "ContactPrePassDurationSeconds",
+  endpoint_details:                   "EndpointDetails",
+  tags:                               "Tags",
 })
 

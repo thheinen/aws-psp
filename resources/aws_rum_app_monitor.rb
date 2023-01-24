@@ -25,6 +25,9 @@ property :app_monitor_configuration, Hash,
          },
          description: ""
 
+property :custom_events, Hash,
+         description: ""
+
 property :cw_log_enabled, [TrueClass, FalseClass],
          callbacks: {
            "cw_log_enabled is not a Boolean" => lambda { |v| v.is_a? Boolean },
@@ -68,6 +71,7 @@ rest_api_document "/AWS::RUM::AppMonitor"
 
 rest_property_map({
   app_monitor_configuration: "AppMonitorConfiguration",
+  custom_events:             "CustomEvents",
   cw_log_enabled:            "CwLogEnabled",
   domain:                    "Domain",
   name:                      "Name",

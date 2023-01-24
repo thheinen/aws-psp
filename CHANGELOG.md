@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## v0.1.81 (2023-01-24)
+
+
+- Update AWS::AmplifyUIBuilder::Theme
+- Add AWS::Connect::ApprovedOrigin
+- Add AWS::Connect::IntegrationAssociation
+- Add AWS::Connect::SecurityKey
+- Update AWS::GroundStation::DataflowEndpointGroup
+- Update AWS::Lambda::Function
+- Update AWS::OpenSearchService::Domain
+- Update AWS::RUM::AppMonitor
+- Update AWS::Route53Resolver::ResolverQueryLoggingConfig
+- Update AWS::Route53Resolver::ResolverQueryLoggingConfigAssociation
+
 ## v0.1.80 (2023-01-23)
 
 

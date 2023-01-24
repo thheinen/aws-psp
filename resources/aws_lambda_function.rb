@@ -173,6 +173,17 @@ property :runtime, String,
            The identifier of the function's runtime.
          DESCRIPTION
 
+property :runtime_management_config, Hash,
+         callbacks: {
+           "Subproperty `UpdateRuntimeOn` is not a String" => lambda { |v| v[:UpdateRuntimeOn].is_a? String },
+           "Subproperty `UpdateRuntimeOn`is not one of `Auto`, `FunctionUpdate`, `Manual`" => lambda { |v| %w{Auto FunctionUpdate Manual}.include? v[:UpdateRuntimeOn] },
+           "Subproperty `RuntimeVersionArn` is not a String" => lambda { |v| v[:RuntimeVersionArn].is_a? String },
+           "Subproperty `RuntimeVersionArn`is not a valid ARN" => lambda { |v| v[:RuntimeVersionArn] =~ Regexp.new("^arn:aws(?:-cn|-us-gov)?:([^:]*:){3,}") },
+         },
+         description: <<~'DESCRIPTION'
+           RuntimeManagementConfig
+         DESCRIPTION
+
 property :snap_start, Hash,
          callbacks: {
            "Subproperty `ApplyOn` is not a String" => lambda { |v| v[:ApplyOn].is_a? String },
@@ -239,6 +250,7 @@ rest_property_map({
   reserved_concurrent_executions: "ReservedConcurrentExecutions",
   role:                           "Role",
   runtime:                        "Runtime",
+  runtime_management_config:      "RuntimeManagementConfig",
   snap_start:                     "SnapStart",
   tags:                           "Tags",
   timeout:                        "Timeout",

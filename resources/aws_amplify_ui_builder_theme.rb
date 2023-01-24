@@ -12,6 +12,18 @@ property :name, String,
          name_property: true,
          description: "Name of the resource, not desired state"
 
+property :app_id, String,
+         callbacks: {
+           "app_id is not a String" => lambda { |v| v.is_a? String },
+         },
+         description: ""
+
+property :environment_name, String,
+         callbacks: {
+           "environment_name is not a String" => lambda { |v| v.is_a? String },
+         },
+         description: ""
+
 property :name, String,
          name_property: true,
          required: true,
@@ -45,10 +57,12 @@ rest_api_collection "/AWS::AmplifyUIBuilder::Theme"
 rest_api_document "/AWS::AmplifyUIBuilder::Theme"
 
 rest_property_map({
-  name:      "Name",
-  overrides: "Overrides",
-  tags:      "Tags",
-  values:    "Values",
+  app_id:           "AppId",
+  environment_name: "EnvironmentName",
+  name:             "Name",
+  overrides:        "Overrides",
+  tags:             "Tags",
+  values:           "Values",
 })
 
 rest_post_only_properties %i{
