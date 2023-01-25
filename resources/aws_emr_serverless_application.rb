@@ -36,6 +36,14 @@ property :auto_stop_configuration, Hash,
            Configuration for Auto Stop of Application.
          DESCRIPTION
 
+property :image_configuration, Hash,
+         callbacks: {
+           "Subproperty `ImageUri` is not a String" => lambda { |v| v[:ImageUri].is_a? String },
+           "Subproperty `ImageUri` needs to be 1..1024 characters" => lambda { |v| v[:ImageUri].length >= 1 && v[:ImageUri].length <= 1024 },
+           "Subproperty `ImageUri` must match pattern ^([a-z0-9]+[a-z0-9-.]*)\/((?:[a-z0-9]+(?:[._-][a-z0-9]+)*\/)*[a-z0-9]+(?:[._-][a-z0-9]+)*)(?:\:([a-zA-Z0-9_][a-zA-Z0-9-._]{0,299})|@(sha256:[0-9a-f]{64}))$" => lambda { |v| v[:ImageUri] =~ Regexp.new("/^([a-z0-9]+[a-z0-9-.]*)\/((?:[a-z0-9]+(?:[._-][a-z0-9]+)*\/)*[a-z0-9]+(?:[._-][a-z0-9]+)*)(?:\:([a-zA-Z0-9_][a-zA-Z0-9-._]{0,299})|@(sha256:[0-9a-f]{64}))$/") },
+         },
+         description: ""
+
 property :initial_capacity, Hash,
          callbacks: {
            "initial_capacity is not a Array" => lambda { |v| v.is_a? Array },
@@ -97,21 +105,29 @@ property :type, String,
            The type of the application
          DESCRIPTION
 
+property :worker_type_specifications, Hash,
+         callbacks: {
+           "worker_type_specifications is not a Object" => lambda { |v| v.is_a? Object },
+         },
+         description: ""
+
 # API URLs and mappings
 rest_api_collection "/AWS::EMRServerless::Application"
 rest_api_document "/AWS::EMRServerless::Application"
 
 rest_property_map({
-  architecture:             "Architecture",
-  auto_start_configuration: "AutoStartConfiguration",
-  auto_stop_configuration:  "AutoStopConfiguration",
-  initial_capacity:         "InitialCapacity",
-  maximum_capacity:         "MaximumCapacity",
-  name:                     "Name",
-  network_configuration:    "NetworkConfiguration",
-  release_label:            "ReleaseLabel",
-  tags:                     "Tags",
-  type:                     "Type",
+  architecture:               "Architecture",
+  auto_start_configuration:   "AutoStartConfiguration",
+  auto_stop_configuration:    "AutoStopConfiguration",
+  image_configuration:        "ImageConfiguration",
+  initial_capacity:           "InitialCapacity",
+  maximum_capacity:           "MaximumCapacity",
+  name:                       "Name",
+  network_configuration:      "NetworkConfiguration",
+  release_label:              "ReleaseLabel",
+  tags:                       "Tags",
+  type:                       "Type",
+  worker_type_specifications: "WorkerTypeSpecifications",
 })
 
 rest_post_only_properties %i{

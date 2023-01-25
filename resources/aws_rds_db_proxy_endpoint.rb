@@ -40,15 +40,6 @@ property :tags, Array,
            An optional set of key-value pairs to associate arbitrary data of your choosing with the DB proxy endpoint.
          DESCRIPTION
 
-property :target_role, String,
-         callbacks: {
-           "target_role is not a String" => lambda { |v| v.is_a? String },
-           "target_roleis not one of `READ_WRITE`, `READ_ONLY`" => lambda { |v| %w{READ_WRITE READ_ONLY}.include? v },
-         },
-         description: <<~'DESCRIPTION'
-           A value that indicates whether the DB proxy endpoint can be used for read/write or read-only operations.
-         DESCRIPTION
-
 property :vpc_security_group_ids, Array,
          callbacks: {
            "vpc_security_group_ids is not a Array" => lambda { |v| v.is_a? Array },
@@ -74,11 +65,10 @@ rest_property_map({
   db_proxy_endpoint_name: "DBProxyEndpointName",
   db_proxy_name:          "DBProxyName",
   tags:                   "Tags",
-  target_role:            "TargetRole",
   vpc_security_group_ids: "VpcSecurityGroupIds",
   vpc_subnet_ids:         "VpcSubnetIds",
 })
 
 rest_post_only_properties %i{
-  db_proxy_endpoint_name db_proxy_name target_role vpc_subnet_ids
+  db_proxy_endpoint_name db_proxy_name vpc_subnet_ids
 }

@@ -59,6 +59,14 @@ property :kms_master_key_id, String,
             This property applies only to [server-side-encryption](https://docs.aws.amazon.com/sns/latest/dg/sns-server-side-encryption.html).
          DESCRIPTION
 
+property :signature_version, String,
+         callbacks: {
+           "signature_version is not a String" => lambda { |v| v.is_a? String },
+         },
+         description: <<~'DESCRIPTION'
+           Version of the Amazon SNS signature used. If the SignatureVersion is 1, Signature is a Base64-encoded SHA1withRSA signature of the Message, MessageId, Type, Timestamp, and TopicArn values. If the SignatureVersion is 2, Signature is a Base64-encoded SHA256withRSA signature of the Message, MessageId, Type, Timestamp, and TopicArn values.
+         DESCRIPTION
+
 property :subscription, Array,
          callbacks: {
            "subscription is not a Array" => lambda { |v| v.is_a? Array },
@@ -92,6 +100,7 @@ rest_property_map({
   display_name:                "DisplayName",
   fifo_topic:                  "FifoTopic",
   kms_master_key_id:           "KmsMasterKeyId",
+  signature_version:           "SignatureVersion",
   subscription:                "Subscription",
   tags:                        "Tags",
   topic_name:                  "TopicName",

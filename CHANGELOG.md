@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## v0.1.82 (2023-01-25)
+
+
+- Update AWS::AppFlow::ConnectorProfile
+- Update AWS::EMRServerless::Application
+- Update AWS::OpenSearchService::Domain
+- Update AWS::RDS::DBProxyEndpoint
+- Update AWS::RDS::DBProxyTargetGroup
+- Update AWS::SNS::Topic
+
 ## v0.1.81 (2023-01-24)
 
 

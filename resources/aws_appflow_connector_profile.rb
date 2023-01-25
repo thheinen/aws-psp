@@ -50,7 +50,7 @@ property :connector_type, Hash,
          required: true,
          callbacks: {
            "connector_type is not a String" => lambda { |v| v.is_a? String },
-           "connector_typeis not one of `Salesforce`, `Singular`, `Slack`, `Redshift`, `Marketo`, `Googleanalytics`, `Zendesk`, `Servicenow`, `SAPOData`, `Datadog`, `Trendmicro`, `Snowflake`, `Dynatrace`, `Infornexus`, `Amplitude`, `Veeva`, `CustomConnector`" => lambda { |v| %w{Salesforce Singular Slack Redshift Marketo Googleanalytics Zendesk Servicenow SAPOData Datadog Trendmicro Snowflake Dynatrace Infornexus Amplitude Veeva CustomConnector}.include? v },
+           "connector_typeis not one of `Salesforce`, `Pardot`, `Singular`, `Slack`, `Redshift`, `Marketo`, `Googleanalytics`, `Zendesk`, `Servicenow`, `SAPOData`, `Datadog`, `Trendmicro`, `Snowflake`, `Dynatrace`, `Infornexus`, `Amplitude`, `Veeva`, `CustomConnector`" => lambda { |v| %w{Salesforce Pardot Singular Slack Redshift Marketo Googleanalytics Zendesk Servicenow SAPOData Datadog Trendmicro Snowflake Dynatrace Infornexus Amplitude Veeva CustomConnector}.include? v },
          },
          description: <<~'DESCRIPTION'
            List of Saas providers that need connector profile to be created
