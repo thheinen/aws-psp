@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## v0.1.83 (2023-01-26)
+
+
+- Update AWS::KinesisAnalyticsV2::Application
+- Add AWS::OpenSearchServerless::AccessPolicy
+- Add AWS::OpenSearchServerless::Collection
+- Add AWS::OpenSearchServerless::SecurityConfig
+- Add AWS::OpenSearchServerless::SecurityPolicy
+- Add AWS::OpenSearchServerless::VpcEndpoint
+- Update AWS::RDS::GlobalCluster
+- Update AWS::Route53::CidrCollection
+
 ## v0.1.82 (2023-01-25)
 
 

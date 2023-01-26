@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_kinesis_analytics_v2_application
 provides :aws_kinesis_analytics_v2_application, target_mode: true, platform: "aws"
 
