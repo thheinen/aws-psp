@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.1.84 (2023-01-27)
+
+
+- Update AWS::SSM::Association
+- Update AWS::SSM::ResourceDataSync
+
 ## v0.1.83 (2023-01-26)
 
 
