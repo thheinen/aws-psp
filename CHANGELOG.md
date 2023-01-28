@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.85 (2023-01-28)
+
+
+- Update AWS::Rekognition::Collection
+
 ## v0.1.84 (2023-01-27)
 
 
