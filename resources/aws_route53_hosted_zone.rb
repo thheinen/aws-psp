@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_route53_hosted_zone
 provides :aws_route53_hosted_zone, target_mode: true, platform: "aws"
 

@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_athena_work_group
 provides :aws_athena_work_group, target_mode: true, platform: "aws"
 
@@ -24,6 +23,7 @@ property :description, String,
 
 property :name, String,
          name_property: true,
+         required: true,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
            "name must match pattern [a-zA-Z0-9._-]{1,128}" => lambda { |v| v =~ Regexp.new("/[a-zA-Z0-9._-]{1,128}/") },

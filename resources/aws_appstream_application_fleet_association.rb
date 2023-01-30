@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_appstream_application_fleet_association
 provides :aws_appstream_application_fleet_association, target_mode: true, platform: "aws"
 

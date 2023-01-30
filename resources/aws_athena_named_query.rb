@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_athena_named_query
 provides :aws_athena_named_query, target_mode: true, platform: "aws"
 

@@ -1,5 +1,26 @@
 # CHANGELOG
 
+## v0.1.86 (2023-01-30)
+
+
+- Update AWS::AppStream::AppBlock
+- Update AWS::AppStream::Application
+- Update AWS::AppStream::ApplicationEntitlementAssociation
+- Update AWS::AppStream::ApplicationFleetAssociation
+- Update AWS::AppStream::Entitlement
+- Update AWS::Athena::DataCatalog
+- Update AWS::Athena::NamedQuery
+- Update AWS::Athena::WorkGroup
+- Update AWS::CloudFormation::PublicTypeVersion
+- Update AWS::CloudFormation::Publisher
+- Update AWS::CloudFormation::TypeActivation
+- Update AWS::EC2::EnclaveCertificateIamRoleAssociation
+- Add AWS::EC2::IPAMPoolCidr
+- Add AWS::EC2::IPAMResourceDiscovery
+- Update AWS::Pinpoint::InAppTemplate
+- Update AWS::Route53::HostedZone
+- Add AWS::SageMaker::ModelCard
+
 ## v0.1.85 (2023-01-28)
 
 
