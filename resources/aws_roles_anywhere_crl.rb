@@ -13,6 +13,7 @@ property :name, String,
          description: "Name of the resource, not desired state"
 
 property :crl_data, String,
+         required: true,
          callbacks: {
            "crl_data is not a String" => lambda { |v| v.is_a? String },
          },
@@ -26,6 +27,7 @@ property :enabled, [TrueClass, FalseClass],
 
 property :name, String,
          name_property: true,
+         required: true,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
          },

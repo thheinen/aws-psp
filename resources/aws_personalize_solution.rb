@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_personalize_solution
 provides :aws_personalize_solution, target_mode: true, platform: "aws"
 
@@ -33,6 +32,7 @@ property :event_type, String,
 
 property :name, String,
          name_property: true,
+         required: true,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
            "name needs to be 1..63 characters" => lambda { |v| v.length >= 1 && v.length <= 63 },

@@ -21,6 +21,7 @@ property :bgp_options, Hash,
          DESCRIPTION
 
 property :connect_attachment_id, String,
+         required: true,
          callbacks: {
            "connect_attachment_id is not a String" => lambda { |v| v.is_a? String },
          },
@@ -37,6 +38,7 @@ property :core_network_address, String,
          DESCRIPTION
 
 property :inside_cidr_blocks, Array,
+         required: true,
          callbacks: {
            "inside_cidr_blocks is not a Array" => lambda { |v| v.is_a? Array },
          },
@@ -45,6 +47,7 @@ property :inside_cidr_blocks, Array,
          DESCRIPTION
 
 property :peer_address, String,
+         required: true,
          callbacks: {
            "peer_address is not a String" => lambda { |v| v.is_a? String },
          },

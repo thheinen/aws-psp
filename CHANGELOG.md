@@ -1,5 +1,27 @@
 # CHANGELOG
 
+## v0.1.87 (2023-01-31)
+
+
+- Update AWS::AmplifyUIBuilder::Component
+- Update AWS::Athena::PreparedStatement
+- Update AWS::EC2::SubnetNetworkAclAssociation
+- Update AWS::EC2::VPNGateway
+- Update AWS::NetworkManager::ConnectPeer
+- Update AWS::NetworkManager::SiteToSiteVpnAttachment
+- Add AWS::Omics::AnnotationStore
+- Add AWS::Omics::ReferenceStore
+- Add AWS::Omics::RunGroup
+- Add AWS::Omics::SequenceStore
+- Add AWS::Omics::VariantStore
+- Add AWS::Omics::Workflow
+- Update AWS::Personalize::Dataset
+- Update AWS::Personalize::DatasetGroup
+- Update AWS::Personalize::Schema
+- Update AWS::Personalize::Solution
+- Update AWS::RolesAnywhere::CRL
+- Update AWS::RolesAnywhere::Profile
+
 ## v0.1.86 (2023-01-30)
 
 

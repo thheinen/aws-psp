@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_athena_prepared_statement
 provides :aws_athena_prepared_statement, target_mode: true, platform: "aws"
 

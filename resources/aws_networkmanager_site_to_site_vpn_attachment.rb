@@ -13,6 +13,7 @@ property :name, String,
          description: "Name of the resource, not desired state"
 
 property :core_network_id, String,
+         required: true,
          callbacks: {
            "core_network_id is not a String" => lambda { |v| v.is_a? String },
          },
@@ -29,6 +30,7 @@ property :tags, Array,
          DESCRIPTION
 
 property :vpn_connection_arn, String,
+         required: true,
          callbacks: {
            "vpn_connection_arn is not a String" => lambda { |v| v.is_a? String },
          },

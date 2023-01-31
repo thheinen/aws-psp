@@ -32,6 +32,7 @@ property :managed_policy_arns, Array,
 
 property :name, String,
          name_property: true,
+         required: true,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
          },
@@ -44,6 +45,7 @@ property :require_instance_properties, [TrueClass, FalseClass],
          description: ""
 
 property :role_arns, Array,
+         required: true,
          callbacks: {
            "role_arns is not a Array" => lambda { |v| v.is_a? Array },
          },

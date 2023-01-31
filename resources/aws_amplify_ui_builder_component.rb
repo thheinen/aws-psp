@@ -12,6 +12,12 @@ property :name, String,
          name_property: true,
          description: "Name of the resource, not desired state"
 
+property :app_id, String,
+         callbacks: {
+           "app_id is not a String" => lambda { |v| v.is_a? String },
+         },
+         description: ""
+
 property :binding_properties, Hash,
          required: true,
          callbacks: {
@@ -36,6 +42,12 @@ property :component_type, String,
          callbacks: {
            "component_type is not a String" => lambda { |v| v.is_a? String },
            "component_type needs to be 1..255 characters" => lambda { |v| v.length >= 1 && v.length <= 255 },
+         },
+         description: ""
+
+property :environment_name, String,
+         callbacks: {
+           "environment_name is not a String" => lambda { |v| v.is_a? String },
          },
          description: ""
 
@@ -98,10 +110,12 @@ rest_api_collection "/AWS::AmplifyUIBuilder::Component"
 rest_api_document "/AWS::AmplifyUIBuilder::Component"
 
 rest_property_map({
+  app_id:                "AppId",
   binding_properties:    "BindingProperties",
   children:              "Children",
   collection_properties: "CollectionProperties",
   component_type:        "ComponentType",
+  environment_name:      "EnvironmentName",
   events:                "Events",
   name:                  "Name",
   overrides:             "Overrides",
