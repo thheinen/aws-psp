@@ -12,6 +12,22 @@ property :name, String,
          name_property: true,
          description: "Name of the resource, not desired state"
 
+property :default_resource_discovery_association_id, String,
+         callbacks: {
+           "default_resource_discovery_association_id is not a String" => lambda { |v| v.is_a? String },
+         },
+         description: <<~'DESCRIPTION'
+           The Id of the default association to the default resource discovery, created with this IPAM.
+         DESCRIPTION
+
+property :default_resource_discovery_id, String,
+         callbacks: {
+           "default_resource_discovery_id is not a String" => lambda { |v| v.is_a? String },
+         },
+         description: <<~'DESCRIPTION'
+           The Id of the default resource discovery, created with this IPAM.
+         DESCRIPTION
+
 property :description, String,
          callbacks: {
            "description is not a String" => lambda { |v| v.is_a? String },
@@ -24,6 +40,14 @@ property :operating_regions, Array,
          },
          description: <<~'DESCRIPTION'
            The regions IPAM is enabled for. Allows pools to be created in these regions, as well as enabling monitoring
+         DESCRIPTION
+
+property :resource_discovery_association_count, Integer,
+         callbacks: {
+           "resource_discovery_association_count is not a Integer" => lambda { |v| v.is_a? Integer },
+         },
+         description: <<~'DESCRIPTION'
+           The count of resource discoveries associated with this IPAM.
          DESCRIPTION
 
 property :tags, Array,
@@ -39,8 +63,11 @@ rest_api_collection "/AWS::EC2::IPAM"
 rest_api_document "/AWS::EC2::IPAM"
 
 rest_property_map({
-  description:       "Description",
-  operating_regions: "OperatingRegions",
-  tags:              "Tags",
+  default_resource_discovery_association_id: "DefaultResourceDiscoveryAssociationId",
+  default_resource_discovery_id:             "DefaultResourceDiscoveryId",
+  description:                               "Description",
+  operating_regions:                         "OperatingRegions",
+  resource_discovery_association_count:      "ResourceDiscoveryAssociationCount",
+  tags:                                      "Tags",
 })
 

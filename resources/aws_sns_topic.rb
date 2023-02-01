@@ -90,6 +90,14 @@ property :topic_name, String,
             If you don't specify a name, AWS CloudFormation generates a unique physical ID and uses that ID for the topic name. For more information, see Name Type.
          DESCRIPTION
 
+property :tracing_config, String,
+         callbacks: {
+           "tracing_config is not a String" => lambda { |v| v.is_a? String },
+         },
+         description: <<~'DESCRIPTION'
+           Tracing mode of an Amazon SNS topic. By default TracingConfig is set to PassThrough, and the topic passes through the tracing header it receives from an SNS publisher to its subscriptions. If set to Active, SNS will vend X-Ray segment data to topic owner account if the sampled flag in the tracing header is true. Only supported on standard topics.
+         DESCRIPTION
+
 # API URLs and mappings
 rest_api_collection "/AWS::SNS::Topic"
 rest_api_document "/AWS::SNS::Topic"
@@ -104,6 +112,7 @@ rest_property_map({
   subscription:                "Subscription",
   tags:                        "Tags",
   topic_name:                  "TopicName",
+  tracing_config:              "TracingConfig",
 })
 
 rest_post_only_properties %i{

@@ -101,6 +101,15 @@ property :provisioned_cidrs, Array,
            A list of cidrs representing the address space available for allocation in this pool.
          DESCRIPTION
 
+property :public_ip_source, String,
+         callbacks: {
+           "public_ip_source is not a String" => lambda { |v| v.is_a? String },
+           "public_ip_sourceis not one of `byoip`, `amazon`" => lambda { |v| %w{byoip amazon}.include? v },
+         },
+         description: <<~'DESCRIPTION'
+           The IP address source for pools in the public scope. Only used for provisioning IP address CIDRs to pools in the public scope. Default is `byoip`.
+         DESCRIPTION
+
 property :publicly_advertisable, [TrueClass, FalseClass],
          callbacks: {
            "publicly_advertisable is not a Boolean" => lambda { |v| v.is_a? Boolean },
@@ -141,11 +150,12 @@ rest_property_map({
   ipam_scope_id:                     "IpamScopeId",
   locale:                            "Locale",
   provisioned_cidrs:                 "ProvisionedCidrs",
+  public_ip_source:                  "PublicIpSource",
   publicly_advertisable:             "PubliclyAdvertisable",
   source_ipam_pool_id:               "SourceIpamPoolId",
   tags:                              "Tags",
 })
 
 rest_post_only_properties %i{
-  address_family aws_service ipam_scope_id locale publicly_advertisable source_ipam_pool_id
+  address_family aws_service ipam_scope_id locale public_ip_source publicly_advertisable source_ipam_pool_id
 }

@@ -38,6 +38,12 @@ property :namespace_name, String,
          },
          description: ""
 
+property :port, Integer,
+         callbacks: {
+           "port is not a Integer" => lambda { |v| v.is_a? Integer },
+         },
+         description: ""
+
 property :publicly_accessible, [TrueClass, FalseClass],
          callbacks: {
            "publicly_accessible is not a Boolean" => lambda { |v| v.is_a? Boolean },
@@ -101,6 +107,7 @@ rest_property_map({
   config_parameters:    "ConfigParameters",
   enhanced_vpc_routing: "EnhancedVpcRouting",
   namespace_name:       "NamespaceName",
+  port:                 "Port",
   publicly_accessible:  "PubliclyAccessible",
   security_group_ids:   "SecurityGroupIds",
   subnet_ids:           "SubnetIds",

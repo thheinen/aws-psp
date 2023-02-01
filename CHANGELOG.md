@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## v0.1.88 (2023-02-01)
+
+
+- Update AWS::CloudFormation::ResourceDefaultVersion
+- Update AWS::CloudFormation::ResourceVersion
+- Add AWS::CloudTrail::Channel
+- Add AWS::CloudTrail::ResourcePolicy
+- Update AWS::EC2::IPAM
+- Update AWS::EC2::IPAMPool
+- Add AWS::EC2::IPAMResourceDiscoveryAssociation
+- Update AWS::EC2::PrefixList
+- Update AWS::RedshiftServerless::Workgroup
+- Update AWS::SNS::Topic
+- Update AWS::SSMContacts::Contact
+- Update AWS::SSMContacts::ContactChannel
+
 ## v0.1.87 (2023-01-31)
 
 
