@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## v0.1.89 (2023-02-02)
+
+
+- Update AWS::QLDB::Stream
+- Update AWS::RedshiftServerless::Namespace
+- Update AWS::RedshiftServerless::Workgroup
+- Update AWS::SQS::Queue
+- Add AWS::SimSpaceWeaver::Simulation
+
 ## v0.1.88 (2023-02-01)
 
 

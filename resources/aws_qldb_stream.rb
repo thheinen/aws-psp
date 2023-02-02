@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_qldb_stream
 provides :aws_qldb_stream, target_mode: true, platform: "aws"
 
