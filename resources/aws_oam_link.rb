@@ -13,7 +13,6 @@ property :name, String,
          description: "Name of the resource, not desired state"
 
 property :label_template, String,
-         required: true,
          callbacks: {
            "label_template is not a String" => lambda { |v| v.is_a? String },
            "label_template needs to be 1..64 characters" => lambda { |v| v.length >= 1 && v.length <= 64 },

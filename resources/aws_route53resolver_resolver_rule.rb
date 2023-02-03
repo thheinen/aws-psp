@@ -81,5 +81,5 @@ rest_property_map({
 })
 
 rest_post_only_properties %i{
-  domain_name rule_type
+  rule_type
 }

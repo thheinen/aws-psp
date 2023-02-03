@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## v0.1.90 (2023-02-03)
+
+
+- Update AWS::ApiGateway::DomainName
+- Update AWS::Oam::Link
+- Update AWS::Redshift::EndpointAccess
+- Update AWS::Route53Resolver::ResolverRule
+
 ## v0.1.89 (2023-02-02)
 
 
