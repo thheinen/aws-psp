@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.91 (2023-02-06)
+
+
+- Update AWS::ECS::TaskSet
+
 ## v0.1.90 (2023-02-03)
 
 
