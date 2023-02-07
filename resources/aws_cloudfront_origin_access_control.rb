@@ -22,7 +22,7 @@ property :origin_access_control_config, Hash,
            "Subproperty `SigningBehavior` is not a String" => lambda { |v| v[:SigningBehavior].is_a? String },
            "Subproperty `SigningBehavior` must match pattern ^(never|no-override|always)$" => lambda { |v| v[:SigningBehavior] =~ Regexp.new("/^(never|no-override|always)$/") },
            "Subproperty `OriginAccessControlOriginType` is not a String" => lambda { |v| v[:OriginAccessControlOriginType].is_a? String },
-           "Subproperty `OriginAccessControlOriginType` must match pattern ^(s3)$" => lambda { |v| v[:OriginAccessControlOriginType] =~ Regexp.new("/^(s3)$/") },
+           "Subproperty `OriginAccessControlOriginType` must match pattern ^(s3|mediastore)$" => lambda { |v| v[:OriginAccessControlOriginType] =~ Regexp.new("/^(s3|mediastore)$/") },
          },
          description: ""
 

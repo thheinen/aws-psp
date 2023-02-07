@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## v0.1.92 (2023-02-07)
+
+
+- Update AWS::CloudFront::OriginAccessControl
+- Update AWS::CodeDeploy::Application
+- Update AWS::CodeDeploy::DeploymentConfig
+- Update AWS::DataSync::Agent
+- Update AWS::DataSync::LocationFSxONTAP
+- Update AWS::DataSync::LocationFSxOpenZFS
+- Update AWS::DataSync::LocationObjectStorage
+- Update AWS::DataSync::LocationS3
+- Update AWS::DataSync::LocationSMB
+- Update AWS::EC2::NetworkInsightsPath
+
 ## v0.1.91 (2023-02-06)
 
 

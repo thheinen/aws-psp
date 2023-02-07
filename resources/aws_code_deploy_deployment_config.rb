@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_code_deploy_deployment_config
 provides :aws_code_deploy_deployment_config, target_mode: true, platform: "aws"
 

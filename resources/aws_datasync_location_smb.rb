@@ -33,7 +33,7 @@ property :domain, String,
 property :mount_options, Hash,
          callbacks: {
            "Subproperty `Version` is not a String" => lambda { |v| v[:Version].is_a? String },
-           "Subproperty `Version`is not one of `AUTOMATIC`, `SMB2`, `SMB3`" => lambda { |v| %w{AUTOMATIC SMB2 SMB3}.include? v[:Version] },
+           "Subproperty `Version`is not one of `AUTOMATIC`, `SMB1`, `SMB2_0`, `SMB2`, `SMB3`" => lambda { |v| %w{AUTOMATIC SMB1 SMB2_0 SMB2 SMB3}.include? v[:Version] },
          },
          description: ""
 

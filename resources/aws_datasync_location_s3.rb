@@ -13,7 +13,6 @@ property :name, String,
          description: "Name of the resource, not desired state"
 
 property :s3_bucket_arn, String,
-         required: true,
          callbacks: {
            "s3_bucket_arn is not a String" => lambda { |v| v.is_a? String },
            "s3_bucket_arn must match pattern ^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):s3:[a-z\-0-9]*:[0-9]*:.*$" => lambda { |v| v =~ Regexp.new("/^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):s3:[a-z\-0-9]*:[0-9]*:.*$/") },

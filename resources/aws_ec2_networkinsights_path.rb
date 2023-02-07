@@ -13,7 +13,6 @@ property :name, String,
          description: "Name of the resource, not desired state"
 
 property :destination, String,
-         required: true,
          callbacks: {
            "destination is not a String" => lambda { |v| v.is_a? String },
          },

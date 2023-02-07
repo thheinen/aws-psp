@@ -13,7 +13,6 @@ property :name, String,
          description: "Name of the resource, not desired state"
 
 property :protocol, Hash,
-         required: true,
          description: ""
 
 property :security_group_arns, Array,

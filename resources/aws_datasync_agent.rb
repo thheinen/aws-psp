@@ -13,7 +13,6 @@ property :name, String,
          description: "Name of the resource, not desired state"
 
 property :activation_key, String,
-         required: true,
          callbacks: {
            "activation_key is not a String" => lambda { |v| v.is_a? String },
            "activation_key must match pattern [A-Z0-9]{5}(-[A-Z0-9]{5}){4}" => lambda { |v| v =~ Regexp.new("/[A-Z0-9]{5}(-[A-Z0-9]{5}){4}/") },

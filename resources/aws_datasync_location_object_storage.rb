@@ -51,6 +51,14 @@ property :secret_key, String,
            Optional. The secret key is used if credentials are required to access the self-managed object storage server.
          DESCRIPTION
 
+property :server_certificate, String,
+         callbacks: {
+           "server_certificate is not a String" => lambda { |v| v.is_a? String },
+         },
+         description: <<~'DESCRIPTION'
+           X.509 PEM content containing a certificate authority or chain to trust.
+         DESCRIPTION
+
 property :server_hostname, String,
          callbacks: {
            "server_hostname is not a String" => lambda { |v| v.is_a? String },
@@ -99,15 +107,16 @@ rest_api_collection "/AWS::DataSync::LocationObjectStorage"
 rest_api_document "/AWS::DataSync::LocationObjectStorage"
 
 rest_property_map({
-  access_key:      "AccessKey",
-  agent_arns:      "AgentArns",
-  bucket_name:     "BucketName",
-  secret_key:      "SecretKey",
-  server_hostname: "ServerHostname",
-  server_port:     "ServerPort",
-  server_protocol: "ServerProtocol",
-  subdirectory:    "Subdirectory",
-  tags:            "Tags",
+  access_key:         "AccessKey",
+  agent_arns:         "AgentArns",
+  bucket_name:        "BucketName",
+  secret_key:         "SecretKey",
+  server_certificate: "ServerCertificate",
+  server_hostname:    "ServerHostname",
+  server_port:        "ServerPort",
+  server_protocol:    "ServerProtocol",
+  subdirectory:       "Subdirectory",
+  tags:               "Tags",
 })
 
 rest_post_only_properties %i{
