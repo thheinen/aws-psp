@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## v0.1.93 (2023-02-08)
+
+
+- Add AWS::ApiGatewayV2::RouteResponse
+- Update AWS::KafkaConnect::Connector
+- Add AWS::Organizations::ResourcePolicy
+
 ## v0.1.92 (2023-02-07)
 
 
