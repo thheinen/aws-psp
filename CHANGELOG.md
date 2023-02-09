@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.1.94 (2023-02-09)
+
+
+- Add AWS::NetworkManager::TransitGatewayPeering
+- Add AWS::SageMaker::Space
+
 ## v0.1.93 (2023-02-08)
 
 
