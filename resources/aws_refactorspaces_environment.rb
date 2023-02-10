@@ -32,7 +32,7 @@ property :name, String,
 property :network_fabric_type, Hash,
          callbacks: {
            "network_fabric_type is not a String" => lambda { |v| v.is_a? String },
-           "network_fabric_typeis not one of `TRANSIT_GATEWAY`" => lambda { |v| %w{TRANSIT_GATEWAY}.include? v },
+           "network_fabric_typeis not one of `TRANSIT_GATEWAY`, `NONE`" => lambda { |v| %w{TRANSIT_GATEWAY NONE}.include? v },
          },
          description: ""
 

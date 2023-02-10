@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.95 (2023-02-10)
+
+
+- Update AWS::RefactorSpaces::Environment
+
 ## v0.1.94 (2023-02-09)
 
 
