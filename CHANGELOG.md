@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## v0.1.96 (2023-02-13)
+
+
+- Add AWS::EC2::LocalGatewayRouteTable
+- Add AWS::EC2::LocalGatewayRouteTableVirtualInterfaceGroupAssociation
+- Add AWS::FMS::ResourceSet
+- Add AWS::SystemsManagerSAP::Application
+
 ## v0.1.95 (2023-02-10)
 
 
