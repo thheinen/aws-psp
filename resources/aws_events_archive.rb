@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_events_archive
 provides :aws_events_archive, target_mode: true, platform: "aws"
 
@@ -12,6 +11,13 @@ DESCRIPTION
 property :name, String,
          name_property: true,
          description: "Name of the resource, not desired state"
+
+property :archive_name, String,
+         callbacks: {
+           "archive_name is not a String" => lambda { |v| v.is_a? String },
+           "archive_name needs to be 1..48 characters" => lambda { |v| v.length >= 1 && v.length <= 48 },
+         },
+         description: ""
 
 property :description, String,
          callbacks: {
@@ -43,6 +49,7 @@ rest_api_collection "/AWS::Events::Archive"
 rest_api_document "/AWS::Events::Archive"
 
 rest_property_map({
+  archive_name:   "ArchiveName",
   description:    "Description",
   event_pattern:  "EventPattern",
   retention_days: "RetentionDays",

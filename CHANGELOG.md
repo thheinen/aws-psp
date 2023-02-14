@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## v0.1.97 (2023-02-14)
+
+
+- Update AWS::Events::ApiDestination
+- Update AWS::Events::Archive
+- Update AWS::Events::Connection
+- Update AWS::Events::Endpoint
+
 ## v0.1.96 (2023-02-13)
 
 

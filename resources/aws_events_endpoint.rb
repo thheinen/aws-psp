@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_events_endpoint
 provides :aws_events_endpoint, target_mode: true, platform: "aws"
 
@@ -29,6 +28,7 @@ property :event_buses, Hash,
 
 property :name, String,
          name_property: true,
+         required: true,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
            "name needs to be 1..64 characters" => lambda { |v| v.length >= 1 && v.length <= 64 },
