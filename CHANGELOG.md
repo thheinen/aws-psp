@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.1.98 (2023-02-16)
+
+
+- Add AWS::ApiGateway::VpcLink
+- Add AWS::InternetMonitor::Monitor
+
 ## v0.1.97 (2023-02-14)
 
 
