@@ -33,6 +33,7 @@ property :security_group_ids, Array,
          DESCRIPTION
 
 property :subnet_ids, Array,
+         required: true,
          callbacks: {
            "subnet_ids is not a Array" => lambda { |v| v.is_a? Array },
          },

@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.99 (2023-02-19)
+
+
+- Update AWS::OpenSearchServerless::VpcEndpoint
+
 ## v0.1.98 (2023-02-16)
 
 
