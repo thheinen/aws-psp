@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_work_spaces_connection_alias
 provides :aws_work_spaces_connection_alias, target_mode: true, platform: "aws"
 

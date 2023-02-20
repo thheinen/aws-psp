@@ -28,7 +28,6 @@ property :event_buses, Hash,
 
 property :name, String,
          name_property: true,
-         required: true,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
            "name needs to be 1..64 characters" => lambda { |v| v.length >= 1 && v.length <= 64 },

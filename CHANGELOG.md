@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## v0.1.100 (2023-02-20)
+
+
+- Add AWS::EC2::VPCEndpointService
+- Update AWS::Events::Endpoint
+- Update AWS::WorkSpaces::ConnectionAlias
+
 ## v0.1.99 (2023-02-19)
 
 
