@@ -25,7 +25,7 @@ property :dashboard_id, String,
          required: true,
          callbacks: {
            "dashboard_id is not a String" => lambda { |v| v.is_a? String },
-           "dashboard_id needs to be 1..2048 characters" => lambda { |v| v.length >= 1 && v.length <= 2048 },
+           "dashboard_id needs to be 1..512 characters" => lambda { |v| v.length >= 1 && v.length <= 512 },
            "dashboard_id must match pattern [\w\-]+" => lambda { |v| v =~ Regexp.new("/[\w\-]+/") },
          },
          description: ""
@@ -33,22 +33,31 @@ property :dashboard_id, String,
 property :dashboard_publish_options, Hash,
          description: ""
 
+property :definition, Hash,
+         callbacks: {
+           "Subproperty `DataSetIdentifierDeclarations` is not a Array" => lambda { |v| v[:DataSetIdentifierDeclarations].is_a? Array },
+           "Subproperty `Sheets` is not a Array" => lambda { |v| v[:Sheets].is_a? Array },
+           "Subproperty `CalculatedFields` is not a Array" => lambda { |v| v[:CalculatedFields].is_a? Array },
+           "Subproperty `ParameterDeclarations` is not a Array" => lambda { |v| v[:ParameterDeclarations].is_a? Array },
+           "Subproperty `FilterGroups` is not a Array" => lambda { |v| v[:FilterGroups].is_a? Array },
+           "Subproperty `ColumnConfigurations` is not a Array" => lambda { |v| v[:ColumnConfigurations].is_a? Array },
+         },
+         description: ""
+
 property :name, String,
          name_property: true,
+         required: true,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
            "name needs to be 1..2048 characters" => lambda { |v| v.length >= 1 && v.length <= 2048 },
-           "name must match pattern [\u0020-\u00FF]+" => lambda { |v| v =~ Regexp.new("/[\u0020-\u00FF]+/") },
          },
-         description: <<~'DESCRIPTION'
-           <p>The display name of the dashboard.</p>
-         DESCRIPTION
+         description: ""
 
 property :parameters, Hash,
          callbacks: {
            "Subproperty `StringParameters` is not a Array" => lambda { |v| v[:StringParameters].is_a? Array },
-           "Subproperty `DecimalParameters` is not a Array" => lambda { |v| v[:DecimalParameters].is_a? Array },
            "Subproperty `IntegerParameters` is not a Array" => lambda { |v| v[:IntegerParameters].is_a? Array },
+           "Subproperty `DecimalParameters` is not a Array" => lambda { |v| v[:DecimalParameters].is_a? Array },
            "Subproperty `DateTimeParameters` is not a Array" => lambda { |v| v[:DateTimeParameters].is_a? Array },
          },
          description: ""
@@ -57,45 +66,29 @@ property :permissions, Array,
          callbacks: {
            "permissions is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: <<~'DESCRIPTION'
-           <p>A structure that contains the permissions of the dashboard. You can use this structure
-      for granting permissions by providing a list of IAM action information for each
-      principal ARN. </p>
-            <p>To specify no permissions, omit the permissions list.</p>
-         DESCRIPTION
+         description: ""
 
 property :source_entity, Hash,
-         required: true,
          description: ""
 
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: <<~'DESCRIPTION'
-           <p>Contains a map of the key-value pairs for the resource tag or tags assigned to the
-      dashboard.</p>
-         DESCRIPTION
+         description: ""
 
 property :theme_arn, String,
          callbacks: {
            "theme_arn is not a String" => lambda { |v| v.is_a? String },
          },
-         description: <<~'DESCRIPTION'
-           <p>The Amazon Resource Name (ARN) of the theme that is being used for this dashboard. If
-      you add a value for this field, it overrides the value that is used in the source
-      entity. The theme ARN must exist in the same AWS account where you create the
-      dashboard.</p>
-         DESCRIPTION
+         description: ""
 
 property :version_description, String,
          callbacks: {
            "version_description is not a String" => lambda { |v| v.is_a? String },
            "version_description needs to be 1..512 characters" => lambda { |v| v.length >= 1 && v.length <= 512 },
          },
-         description: <<~'DESCRIPTION'
-           <p>A description for the first version of the dashboard being created.</p>
-         DESCRIPTION
+         description: ""
 
 # API URLs and mappings
 rest_api_collection "/AWS::QuickSight::Dashboard"
@@ -105,6 +98,7 @@ rest_property_map({
   aws_account_id:            "AwsAccountId",
   dashboard_id:              "DashboardId",
   dashboard_publish_options: "DashboardPublishOptions",
+  definition:                "Definition",
   name:                      "Name",
   parameters:                "Parameters",
   permissions:               "Permissions",

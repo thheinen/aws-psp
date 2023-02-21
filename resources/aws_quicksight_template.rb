@@ -21,42 +21,45 @@ property :aws_account_id, String,
          },
          description: ""
 
+property :definition, Hash,
+         callbacks: {
+           "Subproperty `DataSetConfigurations` is not a Array" => lambda { |v| v[:DataSetConfigurations].is_a? Array },
+           "Subproperty `Sheets` is not a Array" => lambda { |v| v[:Sheets].is_a? Array },
+           "Subproperty `CalculatedFields` is not a Array" => lambda { |v| v[:CalculatedFields].is_a? Array },
+           "Subproperty `ParameterDeclarations` is not a Array" => lambda { |v| v[:ParameterDeclarations].is_a? Array },
+           "Subproperty `FilterGroups` is not a Array" => lambda { |v| v[:FilterGroups].is_a? Array },
+           "Subproperty `ColumnConfigurations` is not a Array" => lambda { |v| v[:ColumnConfigurations].is_a? Array },
+         },
+         description: ""
+
 property :name, String,
          name_property: true,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
            "name needs to be 1..2048 characters" => lambda { |v| v.length >= 1 && v.length <= 2048 },
-           "name must match pattern [\u0020-\u00FF]+" => lambda { |v| v =~ Regexp.new("/[\u0020-\u00FF]+/") },
          },
-         description: <<~'DESCRIPTION'
-           <p>A display name for the template.</p>
-         DESCRIPTION
+         description: ""
 
 property :permissions, Array,
          callbacks: {
            "permissions is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: <<~'DESCRIPTION'
-           <p>A list of resource permissions to be set on the template. </p>
-         DESCRIPTION
+         description: ""
 
 property :source_entity, Hash,
-         required: true,
          description: ""
 
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
-         description: <<~'DESCRIPTION'
-           <p>Contains a map of the key-value pairs for the resource tag or tags assigned to the resource.</p>
-         DESCRIPTION
+         description: ""
 
 property :template_id, String,
          required: true,
          callbacks: {
            "template_id is not a String" => lambda { |v| v.is_a? String },
-           "template_id needs to be 1..2048 characters" => lambda { |v| v.length >= 1 && v.length <= 2048 },
+           "template_id needs to be 1..512 characters" => lambda { |v| v.length >= 1 && v.length <= 512 },
            "template_id must match pattern [\w\-]+" => lambda { |v| v =~ Regexp.new("/[\w\-]+/") },
          },
          description: ""
@@ -66,12 +69,7 @@ property :version_description, String,
            "version_description is not a String" => lambda { |v| v.is_a? String },
            "version_description needs to be 1..512 characters" => lambda { |v| v.length >= 1 && v.length <= 512 },
          },
-         description: <<~'DESCRIPTION'
-           <p>A description of the current template version being created. This API operation creates the
-      first version of the template. Every time <code>UpdateTemplate</code> is called, a new
-      version is created. Each version of the template maintains a description of the version
-      in the <code>VersionDescription</code> field.</p>
-         DESCRIPTION
+         description: ""
 
 # API URLs and mappings
 rest_api_collection "/AWS::QuickSight::Template"
@@ -79,6 +77,7 @@ rest_api_document "/AWS::QuickSight::Template"
 
 rest_property_map({
   aws_account_id:      "AwsAccountId",
+  definition:          "Definition",
   name:                "Name",
   permissions:         "Permissions",
   source_entity:       "SourceEntity",

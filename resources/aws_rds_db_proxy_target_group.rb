@@ -67,5 +67,5 @@ rest_property_map({
 })
 
 rest_post_only_properties %i{
-  target_group_name
+  db_proxy_name target_group_name
 }

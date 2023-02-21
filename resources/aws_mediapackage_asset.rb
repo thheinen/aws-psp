@@ -12,6 +12,14 @@ property :name, String,
          name_property: true,
          description: "Name of the resource, not desired state"
 
+property :egress_endpoints, Array,
+         callbacks: {
+           "egress_endpoints is not a Array" => lambda { |v| v.is_a? Array },
+         },
+         description: <<~'DESCRIPTION'
+           The list of egress endpoints available for the Asset.
+         DESCRIPTION
+
 property :id, String,
          required: true,
          callbacks: {
@@ -69,6 +77,7 @@ rest_api_collection "/AWS::MediaPackage::Asset"
 rest_api_document "/AWS::MediaPackage::Asset"
 
 rest_property_map({
+  egress_endpoints:   "EgressEndpoints",
   id:                 "Id",
   packaging_group_id: "PackagingGroupId",
   resource_id:        "ResourceId",

@@ -30,6 +30,14 @@ property :parameter_group_family, String,
            The Amazon Redshift engine version to which the cluster parameter group applies. The cluster engine version determines the set of parameters.
          DESCRIPTION
 
+property :parameter_group_name, String,
+         callbacks: {
+           "parameter_group_name is not a String" => lambda { |v| v.is_a? String },
+         },
+         description: <<~'DESCRIPTION'
+           The name of the cluster parameter group.
+         DESCRIPTION
+
 property :parameters, Array,
          callbacks: {
            "parameters is not a Array" => lambda { |v| v.is_a? Array },
@@ -53,10 +61,11 @@ rest_api_document "/AWS::Redshift::ClusterParameterGroup"
 rest_property_map({
   description:            "Description",
   parameter_group_family: "ParameterGroupFamily",
+  parameter_group_name:   "ParameterGroupName",
   parameters:             "Parameters",
   tags:                   "Tags",
 })
 
 rest_post_only_properties %i{
-  description parameter_group_family
+  description parameter_group_family parameter_group_name
 }

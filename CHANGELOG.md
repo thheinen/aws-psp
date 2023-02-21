@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## v0.1.101 (2023-02-21)
+
+
+- Update AWS::MediaPackage::Asset
+- Update AWS::QuickSight::Analysis
+- Update AWS::QuickSight::Dashboard
+- Update AWS::QuickSight::Template
+- Update AWS::RDS::DBProxyTargetGroup
+- Update AWS::Redshift::ClusterParameterGroup
+
 ## v0.1.100 (2023-02-20)
 
 
