@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## v0.1.102 (2023-02-22)
+
+
+- Update AWS::Lambda::EventSourceMapping
+- Update AWS::Lambda::Url
+- Add AWS::NetworkManager::TransitGatewayRouteTableAttachment
+
 ## v0.1.101 (2023-02-21)
 
 

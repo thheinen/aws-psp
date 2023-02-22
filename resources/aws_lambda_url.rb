@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_lambda_url
 provides :aws_lambda_url, target_mode: true, platform: "aws"
 

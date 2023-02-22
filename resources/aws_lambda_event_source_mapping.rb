@@ -38,6 +38,19 @@ property :destination_config, Hash,
            (Streams) An Amazon SQS queue or Amazon SNS topic destination for discarded records.
          DESCRIPTION
 
+property :document_db_event_source_config, Hash,
+         callbacks: {
+           "Subproperty `DatabaseName` is not a String" => lambda { |v| v[:DatabaseName].is_a? String },
+           "Subproperty `DatabaseName` needs to be 1..63 characters" => lambda { |v| v[:DatabaseName].length >= 1 && v[:DatabaseName].length <= 63 },
+           "Subproperty `CollectionName` is not a String" => lambda { |v| v[:CollectionName].is_a? String },
+           "Subproperty `CollectionName` needs to be 1..57 characters" => lambda { |v| v[:CollectionName].length >= 1 && v[:CollectionName].length <= 57 },
+           "Subproperty `FullDocument` is not a String" => lambda { |v| v[:FullDocument].is_a? String },
+           "Subproperty `FullDocument`is not one of `UpdateLookup`, `Default`" => lambda { |v| %w{UpdateLookup Default}.include? v[:FullDocument] },
+         },
+         description: <<~'DESCRIPTION'
+           Document db event source config.
+         DESCRIPTION
+
 property :enabled, [TrueClass, FalseClass],
          callbacks: {
            "enabled is not a Boolean" => lambda { |v| v.is_a? Boolean },
@@ -189,6 +202,7 @@ rest_property_map({
   batch_size:                               "BatchSize",
   bisect_batch_on_function_error:           "BisectBatchOnFunctionError",
   destination_config:                       "DestinationConfig",
+  document_db_event_source_config:          "DocumentDBEventSourceConfig",
   enabled:                                  "Enabled",
   event_source_arn:                         "EventSourceArn",
   filter_criteria:                          "FilterCriteria",
