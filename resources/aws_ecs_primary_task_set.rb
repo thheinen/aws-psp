@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_ecs_primary_task_set
 provides :aws_ecs_primary_task_set, target_mode: true, platform: "aws"
 
