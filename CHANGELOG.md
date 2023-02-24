@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.104 (2023-02-24)
+
+
+- Update AWS::SSMContacts::Contact
+
 ## v0.1.103 (2023-02-23)
 
 

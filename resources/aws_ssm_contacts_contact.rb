@@ -35,7 +35,6 @@ property :display_name, String,
          DESCRIPTION
 
 property :plan, Array,
-         required: true,
          callbacks: {
            "plan is not a Array" => lambda { |v| v.is_a? Array },
          },
