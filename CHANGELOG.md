@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.105 (2023-02-25)
+
+
+- Update AWS::ElastiCache::User
+
 ## v0.1.104 (2023-02-24)
 
 

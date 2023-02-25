@@ -54,6 +54,14 @@ property :passwords, Array,
            Passwords used for this user account. You can create up to two passwords for each user.
          DESCRIPTION
 
+property :tags, Array,
+         callbacks: {
+           "tags is not a Array" => lambda { |v| v.is_a? Array },
+         },
+         description: <<~'DESCRIPTION'
+           An array of key-value pairs to apply to this user.
+         DESCRIPTION
+
 property :user_id, String,
          required: true,
          callbacks: {
@@ -83,6 +91,7 @@ rest_property_map({
   engine:               "Engine",
   no_password_required: "NoPasswordRequired",
   passwords:            "Passwords",
+  tags:                 "Tags",
   user_id:              "UserId",
   user_name:            "UserName",
 })
