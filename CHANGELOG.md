@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.106 (2023-02-26)
+
+
+- Update AWS::InternetMonitor::Monitor
+
 ## v0.1.105 (2023-02-25)
 
 

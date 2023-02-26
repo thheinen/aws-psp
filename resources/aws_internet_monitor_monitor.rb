@@ -12,6 +12,12 @@ property :name, String,
          name_property: true,
          description: "Name of the resource, not desired state"
 
+property :max_city_networks_to_monitor, Integer,
+         callbacks: {
+           "max_city_networks_to_monitor is not a Integer" => lambda { |v| v.is_a? Integer },
+         },
+         description: ""
+
 property :monitor_name, String,
          callbacks: {
            "monitor_name is not a String" => lambda { |v| v.is_a? String },
@@ -56,12 +62,13 @@ rest_api_collection "/AWS::InternetMonitor::Monitor"
 rest_api_document "/AWS::InternetMonitor::Monitor"
 
 rest_property_map({
-  monitor_name:        "MonitorName",
-  resources:           "Resources",
-  resources_to_add:    "ResourcesToAdd",
-  resources_to_remove: "ResourcesToRemove",
-  status:              "Status",
-  tags:                "Tags",
+  max_city_networks_to_monitor: "MaxCityNetworksToMonitor",
+  monitor_name:                 "MonitorName",
+  resources:                    "Resources",
+  resources_to_add:             "ResourcesToAdd",
+  resources_to_remove:          "ResourcesToRemove",
+  status:                       "Status",
+  tags:                         "Tags",
 })
 
 rest_post_only_properties %i{
