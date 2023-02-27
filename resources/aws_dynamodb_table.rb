@@ -30,6 +30,12 @@ property :contributor_insights_specification, Hash,
          },
          description: ""
 
+property :deletion_protection_enabled, [TrueClass, FalseClass],
+         callbacks: {
+           "deletion_protection_enabled is not a Boolean" => lambda { |v| v.is_a? Boolean },
+         },
+         description: ""
+
 property :global_secondary_indexes, Array,
          callbacks: {
            "global_secondary_indexes is not a Array" => lambda { |v| v.is_a? Array },
@@ -120,6 +126,7 @@ rest_property_map({
   attribute_definitions:                "AttributeDefinitions",
   billing_mode:                         "BillingMode",
   contributor_insights_specification:   "ContributorInsightsSpecification",
+  deletion_protection_enabled:          "DeletionProtectionEnabled",
   global_secondary_indexes:             "GlobalSecondaryIndexes",
   import_source_specification:          "ImportSourceSpecification",
   key_schema:                           "KeySchema",

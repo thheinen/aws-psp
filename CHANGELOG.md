@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## v0.1.107 (2023-02-27)
+
+
+- Update AWS::DynamoDB::Table
+- Update AWS::GreengrassV2::Deployment
+- Add AWS::IVSChat::LoggingConfiguration
+- Add AWS::IVSChat::Room
+- Update AWS::RDS::DBProxyEndpoint
+
 ## v0.1.106 (2023-02-26)
 
 

@@ -35,6 +35,13 @@ property :deployment_policies, Hash,
 property :iot_job_configuration, Hash,
          description: ""
 
+property :parent_target_arn, String,
+         callbacks: {
+           "parent_target_arn is not a String" => lambda { |v| v.is_a? String },
+           "parent_target_arn must match pattern arn:[^:]*:iot:[^:]*:[0-9]+:thinggroup/.+" => lambda { |v| v =~ Regexp.new("/arn:[^:]*:iot:[^:]*:[0-9]+:thinggroup/.+/") },
+         },
+         description: ""
+
 property :tags, Hash,
          callbacks: {
            "tags is not a Object" => lambda { |v| v.is_a? Object },
@@ -58,10 +65,11 @@ rest_property_map({
   deployment_name:       "DeploymentName",
   deployment_policies:   "DeploymentPolicies",
   iot_job_configuration: "IotJobConfiguration",
+  parent_target_arn:     "ParentTargetArn",
   tags:                  "Tags",
   target_arn:            "TargetArn",
 })
 
 rest_post_only_properties %i{
-  components deployment_name deployment_policies iot_job_configuration target_arn
+  components deployment_name deployment_policies iot_job_configuration parent_target_arn target_arn
 }
