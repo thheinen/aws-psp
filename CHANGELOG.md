@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.108 (2023-02-28)
+
+
+- Update AWS::DocDBElastic::Cluster
+
 ## v0.1.107 (2023-02-27)
 
 

@@ -104,5 +104,5 @@ rest_property_map({
 })
 
 rest_post_only_properties %i{
-  admin_user_name auth_type cluster_name kms_key_id preferred_maintenance_window
+  admin_user_name auth_type cluster_name kms_key_id
 }
