@@ -27,7 +27,6 @@ property :conditions, Array,
          description: ""
 
 property :listener_arn, String,
-         required: true,
          callbacks: {
            "listener_arn is not a String" => lambda { |v| v.is_a? String },
          },

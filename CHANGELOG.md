@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.1.109 (2023-03-01)
+
+
+- Add AWS::AppRunner::Service
+- Update AWS::ElasticLoadBalancingV2::ListenerRule
+
 ## v0.1.108 (2023-02-28)
 
 
