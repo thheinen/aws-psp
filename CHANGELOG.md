@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## v0.1.111 (2023-03-03)
+
+
+- Add AWS::AppRunner::ObservabilityConfiguration
+- Add AWS::AppRunner::VpcConnector
+- Add AWS::AppRunner::VpcIngressConnection
+
 ## v0.1.110 (2023-03-03)
 
 
