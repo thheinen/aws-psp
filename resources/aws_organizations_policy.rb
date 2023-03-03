@@ -12,15 +12,10 @@ property :name, String,
          name_property: true,
          description: "Name of the resource, not desired state"
 
-property :content, String,
+property :content, [Hash, String],
          required: true,
-         callbacks: {
-           "content is not a String" => lambda { |v| v.is_a? String },
-           "content needs to be 1..1000000 characters" => lambda { |v| v.length >= 1 && v.length <= 1000000 },
-           "content must match pattern [\s\S]*" => lambda { |v| v =~ Regexp.new("/[\s\S]*/") },
-         },
          description: <<~'DESCRIPTION'
-           The Policy text content
+           The Policy text content. For AWS CloudFormation templates formatted in YAML, you can provide the policy in JSON or YAML format. AWS CloudFormation always converts a YAML policy to JSON format before submitting it.
          DESCRIPTION
 
 property :description, String,
