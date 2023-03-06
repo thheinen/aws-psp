@@ -23,6 +23,7 @@ property :description, String,
 
 property :name, String,
          name_property: true,
+         required: true,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
            "name needs to be 3..32 characters" => lambda { |v| v.length >= 3 && v.length <= 32 },
@@ -44,6 +45,7 @@ property :policy, String,
          DESCRIPTION
 
 property :type, Hash,
+         required: true,
          callbacks: {
            "type is not a String" => lambda { |v| v.is_a? String },
            "typeis not one of `encryption`, `network`" => lambda { |v| %w{encryption network}.include? v },

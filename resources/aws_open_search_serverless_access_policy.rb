@@ -23,6 +23,7 @@ property :description, String,
 
 property :name, String,
          name_property: true,
+         required: true,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
            "name needs to be 3..32 characters" => lambda { |v| v.length >= 3 && v.length <= 32 },
@@ -33,6 +34,7 @@ property :name, String,
          DESCRIPTION
 
 property :policy, String,
+         required: true,
          callbacks: {
            "policy is not a String" => lambda { |v| v.is_a? String },
            "policy needs to be 1..20480 characters" => lambda { |v| v.length >= 1 && v.length <= 20480 },
@@ -43,6 +45,7 @@ property :policy, String,
          DESCRIPTION
 
 property :type, Hash,
+         required: true,
          callbacks: {
            "type is not a String" => lambda { |v| v.is_a? String },
            "typeis not one of `data`" => lambda { |v| %w{data}.include? v },

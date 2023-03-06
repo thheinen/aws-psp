@@ -75,6 +75,12 @@ property :job_template_id, String,
          },
          description: ""
 
+property :maintenance_windows, Array,
+         callbacks: {
+           "maintenance_windows is not a Array" => lambda { |v| v.is_a? Array },
+         },
+         description: ""
+
 property :presigned_url_config, Hash,
          description: <<~'DESCRIPTION'
            Configuration for pre-signed S3 URLs.
@@ -106,6 +112,7 @@ rest_property_map({
   job_executions_retry_config:   "JobExecutionsRetryConfig",
   job_executions_rollout_config: "JobExecutionsRolloutConfig",
   job_template_id:               "JobTemplateId",
+  maintenance_windows:           "MaintenanceWindows",
   presigned_url_config:          "PresignedUrlConfig",
   tags:                          "Tags",
   timeout_config:                "TimeoutConfig",

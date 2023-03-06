@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## v0.1.112 (2023-03-06)
+
+
+- Update AWS::IoT::JobTemplate
+- Update AWS::OpenSearchServerless::AccessPolicy
+- Update AWS::OpenSearchServerless::SecurityPolicy
+
 ## v0.1.111 (2023-03-03)
 
 
