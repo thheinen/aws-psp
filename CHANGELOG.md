@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## v0.1.113 (2023-03-07)
+
+
+- Update AWS::AppSync::DomainName
+- Update AWS::AppSync::DomainNameApiAssociation
+- Update AWS::Config::OrganizationConformancePack
+- Update AWS::SSM::Document
+
 ## v0.1.112 (2023-03-06)
 
 
