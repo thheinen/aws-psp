@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## v0.1.114 (2023-03-09)
+
+
+- Update AWS::Lambda::CodeSigningConfig
+- Update AWS::SageMaker::DataQualityJobDefinition
+- Update AWS::SageMaker::ModelBiasJobDefinition
+- Update AWS::SageMaker::ModelExplainabilityJobDefinition
+- Update AWS::SageMaker::ModelQualityJobDefinition
+- Update AWS::SageMaker::MonitoringSchedule
+
 ## v0.1.113 (2023-03-07)
 
 

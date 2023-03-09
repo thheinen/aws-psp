@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_sagemaker_model_quality_job_definition
 provides :aws_sagemaker_model_quality_job_definition, target_mode: true, platform: "aws"
 

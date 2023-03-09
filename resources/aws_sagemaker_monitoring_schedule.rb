@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_sagemaker_monitoring_schedule
 provides :aws_sagemaker_monitoring_schedule, target_mode: true, platform: "aws"
 
