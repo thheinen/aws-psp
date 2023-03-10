@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.115 (2023-03-10)
+
+
+- Update AWS::S3::MultiRegionAccessPoint
+
 ## v0.1.114 (2023-03-09)
 
 
