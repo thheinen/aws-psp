@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.1.116 (2023-03-14)
+
+
+- Update AWS::Cassandra::Table
+- Add AWS::Comprehend::Flywheel
+
 ## v0.1.115 (2023-03-10)
 
 

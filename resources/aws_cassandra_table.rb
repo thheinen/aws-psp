@@ -15,6 +15,14 @@ property :name, String,
 property :billing_mode, Hash,
          description: ""
 
+property :client_side_timestamps_enabled, [TrueClass, FalseClass],
+         callbacks: {
+           "client_side_timestamps_enabled is not a Boolean" => lambda { |v| v.is_a? Boolean },
+         },
+         description: <<~'DESCRIPTION'
+           Indicates whether client side timestamps are enabled (true) or disabled (false) on the table. False by default, once it is enabled it cannot be disabled again.
+         DESCRIPTION
+
 property :clustering_key_columns, Array,
          callbacks: {
            "clustering_key_columns is not a Array" => lambda { |v| v.is_a? Array },
@@ -92,6 +100,7 @@ rest_api_document "/AWS::Cassandra::Table"
 
 rest_property_map({
   billing_mode:                   "BillingMode",
+  client_side_timestamps_enabled: "ClientSideTimestampsEnabled",
   clustering_key_columns:         "ClusteringKeyColumns",
   default_time_to_live:           "DefaultTimeToLive",
   encryption_specification:       "EncryptionSpecification",
@@ -104,5 +113,5 @@ rest_property_map({
 })
 
 rest_post_only_properties %i{
-  clustering_key_columns keyspace_name partition_key_columns table_name
+  client_side_timestamps_enabled clustering_key_columns keyspace_name partition_key_columns table_name
 }
