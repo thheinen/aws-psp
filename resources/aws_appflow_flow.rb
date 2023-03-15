@@ -81,6 +81,9 @@ property :tasks, Array,
 
 property :trigger_config, Hash,
          required: true,
+         callbacks: {
+           "Subproperty `ActivateFlowOnCreate` is not a Boolean" => lambda { |v| v[:ActivateFlowOnCreate].is_a? Boolean },
+         },
          description: <<~'DESCRIPTION'
            Trigger settings of the flow.
          DESCRIPTION
@@ -102,5 +105,5 @@ rest_property_map({
 })
 
 rest_post_only_properties %i{
-  flow_name kms_arn
+  flow_name kms_arn trigger_config/activate_flow_on_create
 }

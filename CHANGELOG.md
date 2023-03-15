@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## v0.1.117 (2023-03-15)
+
+
+- Update AWS::AppFlow::Flow
+- Add AWS::Chatbot::MicrosoftTeamsChannelConfiguration
+- Add AWS::SageMaker::InferenceExperiment
+
 ## v0.1.116 (2023-03-14)
 
 
