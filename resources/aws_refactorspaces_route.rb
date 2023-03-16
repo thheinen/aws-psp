@@ -34,6 +34,7 @@ property :environment_identifier, String,
          description: ""
 
 property :route_type, Hash,
+         required: true,
          callbacks: {
            "route_type is not a String" => lambda { |v| v.is_a? String },
            "route_typeis not one of `DEFAULT`, `URI_PATH`" => lambda { |v| %w{DEFAULT URI_PATH}.include? v },

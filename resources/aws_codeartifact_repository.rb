@@ -20,6 +20,17 @@ property :description, String,
            A text description of the repository.
          DESCRIPTION
 
+property :domain_name, String,
+         required: true,
+         callbacks: {
+           "domain_name is not a String" => lambda { |v| v.is_a? String },
+           "domain_name needs to be 2..50 characters" => lambda { |v| v.length >= 2 && v.length <= 50 },
+           "domain_name must match pattern ^([a-z][a-z0-9\-]{0,48}[a-z0-9])$" => lambda { |v| v =~ Regexp.new("/^([a-z][a-z0-9\-]{0,48}[a-z0-9])$/") },
+         },
+         description: <<~'DESCRIPTION'
+           The name of the domain that contains the repository.
+         DESCRIPTION
+
 property :external_connections, Array,
          callbacks: {
            "external_connections is not a Array" => lambda { |v| v.is_a? Array },
@@ -69,6 +80,7 @@ rest_api_document "/AWS::CodeArtifact::Repository"
 
 rest_property_map({
   description:                 "Description",
+  domain_name:                 "DomainName",
   external_connections:        "ExternalConnections",
   permissions_policy_document: "PermissionsPolicyDocument",
   repository_name:             "RepositoryName",

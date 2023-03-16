@@ -22,6 +22,7 @@ property :description, String,
 
 property :name, String,
          name_property: true,
+         required: true,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
            "name needs to be 3..63 characters" => lambda { |v| v.length >= 3 && v.length <= 63 },
@@ -30,6 +31,7 @@ property :name, String,
          description: ""
 
 property :network_fabric_type, Hash,
+         required: true,
          callbacks: {
            "network_fabric_type is not a String" => lambda { |v| v.is_a? String },
            "network_fabric_typeis not one of `TRANSIT_GATEWAY`, `NONE`" => lambda { |v| %w{TRANSIT_GATEWAY NONE}.include? v },

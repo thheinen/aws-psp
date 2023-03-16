@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## v0.1.118 (2023-03-16)
+
+
+- Update AWS::CodeArtifact::Repository
+- Update AWS::RefactorSpaces::Application
+- Update AWS::RefactorSpaces::Environment
+- Update AWS::RefactorSpaces::Route
+- Update AWS::RefactorSpaces::Service
+
 ## v0.1.117 (2023-03-15)
 
 

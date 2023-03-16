@@ -30,6 +30,7 @@ property :description, String,
          description: ""
 
 property :endpoint_type, Hash,
+         required: true,
          callbacks: {
            "endpoint_type is not a String" => lambda { |v| v.is_a? String },
            "endpoint_typeis not one of `LAMBDA`, `URL`" => lambda { |v| %w{LAMBDA URL}.include? v },
@@ -56,6 +57,7 @@ property :lambda_endpoint, Hash,
 
 property :name, String,
          name_property: true,
+         required: true,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
            "name needs to be 3..63 characters" => lambda { |v| v.length >= 3 && v.length <= 63 },

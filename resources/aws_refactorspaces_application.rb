@@ -21,6 +21,7 @@ property :apigateway_proxy, Hash,
          description: ""
 
 property :environment_identifier, String,
+         required: true,
          callbacks: {
            "environment_identifier is not a String" => lambda { |v| v.is_a? String },
            "environment_identifier needs to be 14..14 characters" => lambda { |v| v.length >= 14 && v.length <= 14 },
@@ -30,6 +31,7 @@ property :environment_identifier, String,
 
 property :name, String,
          name_property: true,
+         required: true,
          callbacks: {
            "name is not a String" => lambda { |v| v.is_a? String },
            "name needs to be 3..63 characters" => lambda { |v| v.length >= 3 && v.length <= 63 },
@@ -38,6 +40,7 @@ property :name, String,
          description: ""
 
 property :proxy_type, Hash,
+         required: true,
          callbacks: {
            "proxy_type is not a String" => lambda { |v| v.is_a? String },
            "proxy_typeis not one of `API_GATEWAY`" => lambda { |v| %w{API_GATEWAY}.include? v },
@@ -53,6 +56,7 @@ property :tags, Array,
          DESCRIPTION
 
 property :vpc_id, String,
+         required: true,
          callbacks: {
            "vpc_id is not a String" => lambda { |v| v.is_a? String },
            "vpc_id needs to be 12..21 characters" => lambda { |v| v.length >= 12 && v.length <= 21 },
