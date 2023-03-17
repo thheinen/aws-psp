@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.119 (2023-03-17)
+
+
+- Update AWS::OpenSearchService::Domain
+
 ## v0.1.118 (2023-03-16)
 
 

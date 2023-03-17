@@ -109,9 +109,21 @@ property :node_to_node_encryption_options, Hash,
          },
          description: ""
 
+property :off_peak_window_options, Hash,
+         callbacks: {
+           "Subproperty `Enabled` is not a Boolean" => lambda { |v| v[:Enabled].is_a? Boolean },
+         },
+         description: ""
+
 property :snapshot_options, Hash,
          callbacks: {
            "Subproperty `AutomatedSnapshotStartHour` is not a Integer" => lambda { |v| v[:AutomatedSnapshotStartHour].is_a? Integer },
+         },
+         description: ""
+
+property :software_update_options, Hash,
+         callbacks: {
+           "Subproperty `AutoSoftwareUpdateEnabled` is not a Boolean" => lambda { |v| v[:AutoSoftwareUpdateEnabled].is_a? Boolean },
          },
          description: ""
 
@@ -147,7 +159,9 @@ rest_property_map({
   engine_version:                  "EngineVersion",
   log_publishing_options:          "LogPublishingOptions",
   node_to_node_encryption_options: "NodeToNodeEncryptionOptions",
+  off_peak_window_options:         "OffPeakWindowOptions",
   snapshot_options:                "SnapshotOptions",
+  software_update_options:         "SoftwareUpdateOptions",
   tags:                            "Tags",
   vpc_options:                     "VPCOptions",
 })
