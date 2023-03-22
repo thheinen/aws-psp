@@ -19,6 +19,7 @@ property :max_city_networks_to_monitor, Integer,
          description: ""
 
 property :monitor_name, String,
+         required: true,
          callbacks: {
            "monitor_name is not a String" => lambda { |v| v.is_a? String },
            "monitor_name needs to be 1..255 characters" => lambda { |v| v.length >= 1 && v.length <= 255 },

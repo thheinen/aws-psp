@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.1.120 (2023-03-22)
+
+
+- Update AWS::InternetMonitor::Monitor
+- Update AWS::Logs::LogGroup
+
 ## v0.1.119 (2023-03-17)
 
 

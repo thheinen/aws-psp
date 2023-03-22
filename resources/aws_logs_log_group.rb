@@ -47,7 +47,7 @@ property :retention_in_days, Integer,
            "retention_in_days is not a Integer" => lambda { |v| v.is_a? Integer },
          },
          description: <<~'DESCRIPTION'
-           The number of days to retain the log events in the specified log group. Possible values are: 1, 3, 5, 7, 14, 30, 60, 90, 120, 150, 180, 365, 400, 545, 731, 1827, and 3653.
+           The number of days to retain the log events in the specified log group. Possible values are: 1, 3, 5, 7, 14, 30, 60, 90, 120, 150, 180, 365, 400, 545, 731, 1096, 1827, and 3653.
          DESCRIPTION
 
 property :tags, Array,
