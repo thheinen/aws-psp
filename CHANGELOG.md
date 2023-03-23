@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.1.121 (2023-03-23)
+
+
+- Add AWS::ApiGatewayV2::Route
+- Update AWS::GroundStation::MissionProfile
+
 ## v0.1.120 (2023-03-22)
 
 
