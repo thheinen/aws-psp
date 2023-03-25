@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.122 (2023-03-25)
+
+
+- Update AWS::GroundStation::MissionProfile
+
 ## v0.1.121 (2023-03-23)
 
 
