@@ -75,5 +75,5 @@ rest_property_map({
 })
 
 rest_post_only_properties %i{
-  engine engine_version global_cluster_identifier source_db_cluster_identifier storage_encrypted
+  engine global_cluster_identifier source_db_cluster_identifier storage_encrypted
 }

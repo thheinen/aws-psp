@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.1.123 (2023-03-27)
+
+
+- Update AWS::GroundStation::MissionProfile
+- Update AWS::RDS::GlobalCluster
+
 ## v0.1.122 (2023-03-25)
 
 
