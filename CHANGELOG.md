@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## v0.1.124 (2023-03-28)
+
+
+- Add AWS::DevOpsGuru::LogAnomalyDetectionIntegration
+- Update AWS::GroundStation::MissionProfile
+- Update AWS::RDS::DBCluster
+
 ## v0.1.123 (2023-03-27)
 
 

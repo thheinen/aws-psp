@@ -354,6 +354,14 @@ property :replication_source_identifier, String,
            The Amazon Resource Name (ARN) of the source DB instance or DB cluster if this DB cluster is created as a Read Replica.
          DESCRIPTION
 
+property :restore_to_time, String,
+         callbacks: {
+           "restore_to_time is not a String" => lambda { |v| v.is_a? String },
+         },
+         description: <<~'DESCRIPTION'
+           The date and time to restore the DB cluster to. Value must be a time in Universal Coordinated Time (UTC) format. An example: 2015-03-07T23:45:00Z
+         DESCRIPTION
+
 property :restore_type, String,
          callbacks: {
            "restore_type is not a String" => lambda { |v| v.is_a? String },
@@ -500,6 +508,7 @@ rest_property_map({
   publicly_accessible:                   "PubliclyAccessible",
   read_endpoint:                         "ReadEndpoint",
   replication_source_identifier:         "ReplicationSourceIdentifier",
+  restore_to_time:                       "RestoreToTime",
   restore_type:                          "RestoreType",
   scaling_configuration:                 "ScalingConfiguration",
   serverless_v2_scaling_configuration:   "ServerlessV2ScalingConfiguration",
@@ -514,5 +523,5 @@ rest_property_map({
 })
 
 rest_post_only_properties %i{
-  availability_zones database_name db_cluster_identifier db_subnet_group_name db_system_id engine_mode kms_key_id publicly_accessible restore_type snapshot_identifier source_db_cluster_identifier source_region storage_encrypted use_latest_restorable_time
+  availability_zones database_name db_cluster_identifier db_subnet_group_name db_system_id engine_mode kms_key_id publicly_accessible restore_to_time restore_type snapshot_identifier source_db_cluster_identifier source_region storage_encrypted use_latest_restorable_time
 }
