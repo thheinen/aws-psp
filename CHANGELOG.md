@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.1.125 (2023-03-29)
+
+
+- Update AWS::Grafana::Workspace
+- Update AWS::Lambda::Url
+
 ## v0.1.124 (2023-03-28)
 
 

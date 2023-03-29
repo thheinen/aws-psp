@@ -13,6 +13,7 @@ property :name, String,
          description: "Name of the resource, not desired state"
 
 property :account_access_type, Hash,
+         required: true,
          callbacks: {
            "account_access_type is not a String" => lambda { |v| v.is_a? String },
            "account_access_typeis not one of `CURRENT_ACCOUNT`, `ORGANIZATION`" => lambda { |v| %w{CURRENT_ACCOUNT ORGANIZATION}.include? v },
@@ -20,6 +21,7 @@ property :account_access_type, Hash,
          description: ""
 
 property :authentication_providers, Array,
+         required: true,
          callbacks: {
            "authentication_providers is not a Array" => lambda { |v| v.is_a? Array },
          },
@@ -89,6 +91,7 @@ property :organizational_units, Array,
          DESCRIPTION
 
 property :permission_type, Hash,
+         required: true,
          callbacks: {
            "permission_type is not a String" => lambda { |v| v.is_a? String },
            "permission_typeis not one of `CUSTOMER_MANAGED`, `SERVICE_MANAGED`" => lambda { |v| %w{CUSTOMER_MANAGED SERVICE_MANAGED}.include? v },
