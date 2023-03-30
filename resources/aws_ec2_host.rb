@@ -29,6 +29,14 @@ property :availability_zone, String,
            The Availability Zone in which to allocate the Dedicated Host.
          DESCRIPTION
 
+property :host_maintenance, String,
+         callbacks: {
+           "host_maintenance is not a String" => lambda { |v| v.is_a? String },
+         },
+         description: <<~'DESCRIPTION'
+           Automatically allocates a new dedicated host and moves your instances on to it if a degradation is detected on your current host.
+         DESCRIPTION
+
 property :host_recovery, String,
          callbacks: {
            "host_recovery is not a String" => lambda { |v| v.is_a? String },
@@ -68,6 +76,7 @@ rest_api_document "/AWS::EC2::Host"
 rest_property_map({
   auto_placement:    "AutoPlacement",
   availability_zone: "AvailabilityZone",
+  host_maintenance:  "HostMaintenance",
   host_recovery:     "HostRecovery",
   instance_family:   "InstanceFamily",
   instance_type:     "InstanceType",

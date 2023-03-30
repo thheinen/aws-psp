@@ -5,7 +5,7 @@ resource_name :aws_logs_subscription_filter
 provides :aws_logs_subscription_filter, target_mode: true, platform: "aws"
 
 description <<~DESCRIPTION
-  An example resource schema demonstrating some basic constructs and validation rules.
+  Subscription filters allow you to subscribe to a real-time stream of log events and have them delivered to a specific destination.
 DESCRIPTION
 
 property :name, String,
@@ -78,5 +78,5 @@ rest_property_map({
 })
 
 rest_post_only_properties %i{
-  destination_arn distribution filter_name filter_pattern log_group_name role_arn
+  filter_name log_group_name
 }

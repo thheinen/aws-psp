@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## v0.1.126 (2023-03-30)
+
+
+- Update AWS::EC2::Host
+- Update AWS::Logs::SubscriptionFilter
+- Add AWS::Neptune::DBCluster
+
 ## v0.1.125 (2023-03-29)
 
 
