@@ -45,11 +45,11 @@ property :health_check_configuration, Hash,
 property :instance_configuration, Hash,
          callbacks: {
            "Subproperty `Cpu` is not a String" => lambda { |v| v[:Cpu].is_a? String },
-           "Subproperty `Cpu` needs to be 4..6 characters" => lambda { |v| v[:Cpu].length >= 4 && v[:Cpu].length <= 6 },
-           "Subproperty `Cpu` must match pattern 1024|2048|(1|2) vCPU" => lambda { |v| v[:Cpu] =~ Regexp.new("/1024|2048|(1|2) vCPU/") },
+           "Subproperty `Cpu` needs to be 3..9 characters" => lambda { |v| v[:Cpu].length >= 3 && v[:Cpu].length <= 9 },
+           "Subproperty `Cpu` must match pattern 256|512|1024|2048|4096|(0.25|0.5|1|2|4) vCPU" => lambda { |v| v[:Cpu] =~ Regexp.new("/256|512|1024|2048|4096|(0.25|0.5|1|2|4) vCPU/") },
            "Subproperty `Memory` is not a String" => lambda { |v| v[:Memory].is_a? String },
-           "Subproperty `Memory` needs to be 4..4 characters" => lambda { |v| v[:Memory].length >= 4 && v[:Memory].length <= 4 },
-           "Subproperty `Memory` must match pattern 2048|3072|4096|(2|3|4) GB" => lambda { |v| v[:Memory] =~ Regexp.new("/2048|3072|4096|(2|3|4) GB/") },
+           "Subproperty `Memory` needs to be 3..6 characters" => lambda { |v| v[:Memory].length >= 3 && v[:Memory].length <= 6 },
+           "Subproperty `Memory` must match pattern 512|1024|2048|3072|4096|6144|8192|10240|12288|(0.5|1|2|3|4|6|8|10|12) GB" => lambda { |v| v[:Memory] =~ Regexp.new("/512|1024|2048|3072|4096|6144|8192|10240|12288|(0.5|1|2|3|4|6|8|10|12) GB/") },
          },
          description: ""
 

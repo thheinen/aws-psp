@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.127 (2023-03-31)
+
+
+- Update AWS::AppRunner::Service
+
 ## v0.1.126 (2023-03-30)
 
 
