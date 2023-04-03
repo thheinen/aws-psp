@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## v0.1.128 (2023-04-03)
+
+
+- Update AWS::AppSync::DomainName
+- Update AWS::DataSync::LocationObjectStorage
+- Update AWS::GameLift::GameServerGroup
+- Update AWS::GroundStation::MissionProfile
+- Update AWS::IoT::ResourceSpecificLogging
+- Update AWS::XRay::Group
+- Add AWS::XRay::ResourcePolicy
+- Update AWS::XRay::SamplingRule
+
 ## v0.1.127 (2023-03-31)
 
 

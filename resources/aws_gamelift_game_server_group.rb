@@ -65,7 +65,6 @@ property :instance_definitions, Hash,
          DESCRIPTION
 
 property :launch_template, Hash,
-         required: true,
          description: <<~'DESCRIPTION'
            The EC2 launch template that contains configuration settings and game server code to be deployed to all instances in the game server group.
          DESCRIPTION

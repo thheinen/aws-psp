@@ -57,6 +57,25 @@ property :name, String,
            A name used to identify a mission profile.
          DESCRIPTION
 
+property :streams_kms_key, Hash,
+         callbacks: {
+           "Subproperty `KmsKeyArn` is not a String" => lambda { |v| v[:KmsKeyArn].is_a? String },
+           "Subproperty `KmsKeyArn`is not a valid ARN" => lambda { |v| v[:KmsKeyArn] =~ Regexp.new("^arn:aws(?:-cn|-us-gov)?:([^:]*:){3,}") },
+           "Subproperty `KmsAliasArn` is not a String" => lambda { |v| v[:KmsAliasArn].is_a? String },
+           "Subproperty `KmsAliasArn`is not a valid ARN" => lambda { |v| v[:KmsAliasArn] =~ Regexp.new("^arn:aws(?:-cn|-us-gov)?:([^:]*:){3,}") },
+         },
+         description: <<~'DESCRIPTION'
+           The ARN of a KMS Key used for encrypting data during transmission from the source to destination locations.
+         DESCRIPTION
+
+property :streams_kms_role, String,
+         callbacks: {
+           "streams_kms_role is not a String" => lambda { |v| v.is_a? String },
+         },
+         description: <<~'DESCRIPTION'
+           The ARN of the KMS Key or Alias Key role used to define permissions on KMS Key usage.
+         DESCRIPTION
+
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
@@ -80,6 +99,8 @@ rest_property_map({
   dataflow_edges:                          "DataflowEdges",
   minimum_viable_contact_duration_seconds: "MinimumViableContactDurationSeconds",
   name:                                    "Name",
+  streams_kms_key:                         "StreamsKmsKey",
+  streams_kms_role:                        "StreamsKmsRole",
   tags:                                    "Tags",
   tracking_config_arn:                     "TrackingConfigArn",
 })

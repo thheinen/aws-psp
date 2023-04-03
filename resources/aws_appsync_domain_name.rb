@@ -28,6 +28,15 @@ property :description, String,
          },
          description: ""
 
+property :domain_name, String,
+         required: true,
+         callbacks: {
+           "domain_name is not a String" => lambda { |v| v.is_a? String },
+           "domain_name needs to be 1..253 characters" => lambda { |v| v.length >= 1 && v.length <= 253 },
+           "domain_name must match pattern ^(\*[a-z\d-]*\.)?([a-z\d-]+\.)+[a-z\d-]+$" => lambda { |v| v =~ Regexp.new("/^(\*[a-z\d-]*\.)?([a-z\d-]+\.)+[a-z\d-]+$/") },
+         },
+         description: ""
+
 # API URLs and mappings
 rest_api_collection "/AWS::AppSync::DomainName"
 rest_api_document "/AWS::AppSync::DomainName"
@@ -35,6 +44,7 @@ rest_api_document "/AWS::AppSync::DomainName"
 rest_property_map({
   certificate_arn: "CertificateArn",
   description:     "Description",
+  domain_name:     "DomainName",
 })
 
 rest_post_only_properties %i{

@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_xray_group
 provides :aws_xray_group, target_mode: true, platform: "aws"
 

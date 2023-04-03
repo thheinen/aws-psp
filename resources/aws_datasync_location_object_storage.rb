@@ -15,7 +15,7 @@ property :name, String,
 property :access_key, String,
          callbacks: {
            "access_key is not a String" => lambda { |v| v.is_a? String },
-           "access_key needs to be 8..200 characters" => lambda { |v| v.length >= 8 && v.length <= 200 },
+           "access_key needs to be 1..200 characters" => lambda { |v| v.length >= 1 && v.length <= 200 },
            "access_key must match pattern ^.+$" => lambda { |v| v =~ Regexp.new("/^.+$/") },
          },
          description: <<~'DESCRIPTION'

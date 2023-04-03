@@ -27,7 +27,7 @@ property :target_name, String,
          callbacks: {
            "target_name is not a String" => lambda { |v| v.is_a? String },
            "target_name needs to be 1..128 characters" => lambda { |v| v.length >= 1 && v.length <= 128 },
-           "target_name must match pattern [a-zA-Z0-9.:_-]+" => lambda { |v| v =~ Regexp.new("/[a-zA-Z0-9.:_-]+/") },
+           "target_name must match pattern [a-zA-Z0-9.:\s_\-]+" => lambda { |v| v =~ Regexp.new("/[a-zA-Z0-9.:\s_\-]+/") },
          },
          description: <<~'DESCRIPTION'
            The target name.
@@ -37,10 +37,10 @@ property :target_type, String,
          required: true,
          callbacks: {
            "target_type is not a String" => lambda { |v| v.is_a? String },
-           "target_typeis not one of `THING_GROUP`, `CLIENT_ID`, `SOURCE_IP`, `PRINCIPAL_ID`" => lambda { |v| %w{THING_GROUP CLIENT_ID SOURCE_IP PRINCIPAL_ID}.include? v },
+           "target_typeis not one of `THING_GROUP`, `CLIENT_ID`, `SOURCE_IP`, `PRINCIPAL_ID`, `EVENT_TYPE`" => lambda { |v| %w{THING_GROUP CLIENT_ID SOURCE_IP PRINCIPAL_ID EVENT_TYPE}.include? v },
          },
          description: <<~'DESCRIPTION'
-           The target type. Value must be THING_GROUP, CLIENT_ID, SOURCE_IP, PRINCIPAL_ID.
+           The target type. Value must be THING_GROUP, CLIENT_ID, SOURCE_IP, PRINCIPAL_ID, or EVENT_TYPE.
          DESCRIPTION
 
 # API URLs and mappings
