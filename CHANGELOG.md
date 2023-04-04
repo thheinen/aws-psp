@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.129 (2023-04-04)
+
+
+- Add AWS::SSMContacts::Rotation
+
 ## v0.1.128 (2023-04-03)
 
 
