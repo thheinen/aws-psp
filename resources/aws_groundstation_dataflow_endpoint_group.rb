@@ -16,13 +16,17 @@ property :contact_post_pass_duration_seconds, Integer,
          callbacks: {
            "contact_post_pass_duration_seconds is not a Integer" => lambda { |v| v.is_a? Integer },
          },
-         description: ""
+         description: <<~'DESCRIPTION'
+           Amount of time, in seconds, after a contact ends that the Ground Station Dataflow Endpoint Group will be in a POSTPASS state. A Ground Station Dataflow Endpoint Group State Change event will be emitted when the Dataflow Endpoint Group enters and exits the POSTPASS state.
+         DESCRIPTION
 
 property :contact_pre_pass_duration_seconds, Integer,
          callbacks: {
            "contact_pre_pass_duration_seconds is not a Integer" => lambda { |v| v.is_a? Integer },
          },
-         description: ""
+         description: <<~'DESCRIPTION'
+           Amount of time, in seconds, before a contact starts that the Ground Station Dataflow Endpoint Group will be in a PREPASS state. A Ground Station Dataflow Endpoint Group State Change event will be emitted when the Dataflow Endpoint Group enters and exits the PREPASS state.
+         DESCRIPTION
 
 property :endpoint_details, Array,
          required: true,

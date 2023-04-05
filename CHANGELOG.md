@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## v0.1.130 (2023-04-05)
+
+
+- Update AWS::GroundStation::DataflowEndpointGroup
+- Add AWS::QuickSight::RefreshSchedule
+- Add AWS::SSMContacts::Plan
+
 ## v0.1.129 (2023-04-04)
 
 
