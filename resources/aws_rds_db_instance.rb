@@ -479,6 +479,14 @@ property :restore_time, String,
            The date and time to restore from.
          DESCRIPTION
 
+property :source_db_cluster_identifier, String,
+         callbacks: {
+           "source_db_cluster_identifier is not a String" => lambda { |v| v.is_a? String },
+         },
+         description: <<~'DESCRIPTION'
+           The identifier of the Multi-AZ DB cluster that will act as the source for the read replica. Each DB cluster can have up to 15 read replicas.
+         DESCRIPTION
+
 property :source_db_instance_automated_backups_arn, String,
          callbacks: {
            "source_db_instance_automated_backups_arn is not a String" => lambda { |v| v.is_a? String },
@@ -651,6 +659,7 @@ rest_property_map({
   publicly_accessible:                      "PubliclyAccessible",
   replica_mode:                             "ReplicaMode",
   restore_time:                             "RestoreTime",
+  source_db_cluster_identifier:             "SourceDBClusterIdentifier",
   source_db_instance_automated_backups_arn: "SourceDBInstanceAutomatedBackupsArn",
   source_db_instance_identifier:            "SourceDBInstanceIdentifier",
   source_dbi_resource_id:                   "SourceDbiResourceId",
