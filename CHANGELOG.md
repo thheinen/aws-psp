@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## v0.1.132 (2023-04-10)
+
+
+- Update AWS::EC2::NetworkInterface
+- Update AWS::GameLift::Build
+- Update AWS::InternetMonitor::Monitor
+
 ## v0.1.131 (2023-04-06)
 
 
