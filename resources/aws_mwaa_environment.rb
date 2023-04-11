@@ -132,6 +132,19 @@ property :source_bucket_arn, Hash,
          },
          description: ""
 
+property :startup_script_s3_object_version, Hash,
+         callbacks: {
+           "startup_script_s3_object_version is not a String" => lambda { |v| v.is_a? String },
+         },
+         description: ""
+
+property :startup_script_s3_path, Hash,
+         callbacks: {
+           "startup_script_s3_path is not a String" => lambda { |v| v.is_a? String },
+           "startup_script_s3_path must match pattern .*" => lambda { |v| v =~ Regexp.new("/.*/") },
+         },
+         description: ""
+
 property :tags, Hash,
          callbacks: {
            "tags is not a Object" => lambda { |v| v.is_a? Object },
@@ -159,26 +172,28 @@ rest_api_collection "/AWS::MWAA::Environment"
 rest_api_document "/AWS::MWAA::Environment"
 
 rest_property_map({
-  airflow_configuration_options:   "AirflowConfigurationOptions",
-  airflow_version:                 "AirflowVersion",
-  dag_s3_path:                     "DagS3Path",
-  environment_class:               "EnvironmentClass",
-  execution_role_arn:              "ExecutionRoleArn",
-  kms_key:                         "KmsKey",
-  logging_configuration:           "LoggingConfiguration",
-  max_workers:                     "MaxWorkers",
-  min_workers:                     "MinWorkers",
-  name:                            "Name",
-  network_configuration:           "NetworkConfiguration",
-  plugins_s3_object_version:       "PluginsS3ObjectVersion",
-  plugins_s3_path:                 "PluginsS3Path",
-  requirements_s3_object_version:  "RequirementsS3ObjectVersion",
-  requirements_s3_path:            "RequirementsS3Path",
-  schedulers:                      "Schedulers",
-  source_bucket_arn:               "SourceBucketArn",
-  tags:                            "Tags",
-  webserver_access_mode:           "WebserverAccessMode",
-  weekly_maintenance_window_start: "WeeklyMaintenanceWindowStart",
+  airflow_configuration_options:    "AirflowConfigurationOptions",
+  airflow_version:                  "AirflowVersion",
+  dag_s3_path:                      "DagS3Path",
+  environment_class:                "EnvironmentClass",
+  execution_role_arn:               "ExecutionRoleArn",
+  kms_key:                          "KmsKey",
+  logging_configuration:            "LoggingConfiguration",
+  max_workers:                      "MaxWorkers",
+  min_workers:                      "MinWorkers",
+  name:                             "Name",
+  network_configuration:            "NetworkConfiguration",
+  plugins_s3_object_version:        "PluginsS3ObjectVersion",
+  plugins_s3_path:                  "PluginsS3Path",
+  requirements_s3_object_version:   "RequirementsS3ObjectVersion",
+  requirements_s3_path:             "RequirementsS3Path",
+  schedulers:                       "Schedulers",
+  source_bucket_arn:                "SourceBucketArn",
+  startup_script_s3_object_version: "StartupScriptS3ObjectVersion",
+  startup_script_s3_path:           "StartupScriptS3Path",
+  tags:                             "Tags",
+  webserver_access_mode:            "WebserverAccessMode",
+  weekly_maintenance_window_start:  "WeeklyMaintenanceWindowStart",
 })
 
 rest_post_only_properties %i{

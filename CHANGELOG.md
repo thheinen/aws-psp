@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## v0.1.133 (2023-04-11)
+
+
+- Add AWS::AppConfig::Extension
+- Add AWS::AppConfig::ExtensionAssociation
+- Update AWS::MWAA::Environment
+
 ## v0.1.132 (2023-04-10)
 
 
