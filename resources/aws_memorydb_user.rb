@@ -13,7 +13,6 @@ property :name, String,
          description: "Name of the resource, not desired state"
 
 property :access_string, String,
-         required: true,
          callbacks: {
            "access_string is not a String" => lambda { |v| v.is_a? String },
          },
@@ -22,7 +21,6 @@ property :access_string, String,
          DESCRIPTION
 
 property :authentication_mode, Hash,
-         required: true,
          callbacks: {
            "Subproperty `Type` is not a String" => lambda { |v| v[:Type].is_a? String },
            "Subproperty `Type`is not one of `password`" => lambda { |v| %w{password}.include? v[:Type] },

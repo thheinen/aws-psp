@@ -65,6 +65,13 @@ property :name, String,
            The user friendly name of a workspace.
          DESCRIPTION
 
+property :network_access_control, Hash,
+         callbacks: {
+           "Subproperty `PrefixListIds` is not a Array" => lambda { |v| v[:PrefixListIds].is_a? Array },
+           "Subproperty `VpceIds` is not a Array" => lambda { |v| v[:VpceIds].is_a? Array },
+         },
+         description: ""
+
 property :notification_destinations, Array,
          callbacks: {
            "notification_destinations is not a Array" => lambda { |v| v.is_a? Array },
@@ -140,6 +147,7 @@ rest_property_map({
   data_sources:              "DataSources",
   description:               "Description",
   name:                      "Name",
+  network_access_control:    "NetworkAccessControl",
   notification_destinations: "NotificationDestinations",
   organization_role_name:    "OrganizationRoleName",
   organizational_units:      "OrganizationalUnits",

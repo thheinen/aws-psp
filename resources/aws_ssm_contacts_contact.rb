@@ -46,7 +46,7 @@ property :type, String,
          required: true,
          callbacks: {
            "type is not a String" => lambda { |v| v.is_a? String },
-           "typeis not one of `PERSONAL`, `CUSTOM`, `SERVICE`, `ESCALATION`" => lambda { |v| %w{PERSONAL CUSTOM SERVICE ESCALATION}.include? v },
+           "typeis not one of `PERSONAL`, `CUSTOM`, `SERVICE`, `ESCALATION`, `ONCALL_SCHEDULE`" => lambda { |v| %w{PERSONAL CUSTOM SERVICE ESCALATION ONCALL_SCHEDULE}.include? v },
          },
          description: <<~'DESCRIPTION'
            Contact type, which specify type of contact. Currently supported values: ?PERSONAL?, ?SHARED?, ?OTHER?.

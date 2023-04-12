@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## v0.1.134 (2023-04-12)
+
+
+- Update AWS::EC2::GatewayRouteTableAssociation
+- Update AWS::EC2::Subnet
+- Update AWS::Grafana::Workspace
+- Update AWS::MemoryDB::User
+- Update AWS::SSMContacts::Contact
+
 ## v0.1.133 (2023-04-11)
 
 
