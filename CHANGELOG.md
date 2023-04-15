@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.135 (2023-04-15)
+
+
+- Update AWS::MemoryDB::Cluster
+
 ## v0.1.134 (2023-04-12)
 
 
