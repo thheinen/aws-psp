@@ -20,6 +20,14 @@ property :authorized, [TrueClass, FalseClass],
            Whether the channel is authorized.
          DESCRIPTION
 
+property :insecure_ingest, [TrueClass, FalseClass],
+         callbacks: {
+           "insecure_ingest is not a Boolean" => lambda { |v| v.is_a? Boolean },
+         },
+         description: <<~'DESCRIPTION'
+           Whether the channel allows insecure ingest.
+         DESCRIPTION
+
 property :latency_mode, String,
          callbacks: {
            "latency_mode is not a String" => lambda { |v| v.is_a? String },
@@ -73,6 +81,7 @@ rest_api_document "/AWS::IVS::Channel"
 
 rest_property_map({
   authorized:                  "Authorized",
+  insecure_ingest:             "InsecureIngest",
   latency_mode:                "LatencyMode",
   name:                        "Name",
   recording_configuration_arn: "RecordingConfigurationArn",

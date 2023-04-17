@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## v0.1.136 (2023-04-17)
+
+
+- Update AWS::IVS::Channel
+- Update AWS::InternetMonitor::Monitor
+- Add AWS::RAM::Permission
+
 ## v0.1.135 (2023-04-15)
 
 

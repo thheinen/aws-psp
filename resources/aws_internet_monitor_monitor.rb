@@ -61,6 +61,12 @@ property :tags, Array,
          },
          description: ""
 
+property :traffic_percentage_to_monitor, Integer,
+         callbacks: {
+           "traffic_percentage_to_monitor is not a Integer" => lambda { |v| v.is_a? Integer },
+         },
+         description: ""
+
 # API URLs and mappings
 rest_api_collection "/AWS::InternetMonitor::Monitor"
 rest_api_document "/AWS::InternetMonitor::Monitor"
@@ -74,6 +80,7 @@ rest_property_map({
   resources_to_remove:                "ResourcesToRemove",
   status:                             "Status",
   tags:                               "Tags",
+  traffic_percentage_to_monitor:      "TrafficPercentageToMonitor",
 })
 
 rest_post_only_properties %i{
