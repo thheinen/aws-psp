@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.1.137 (2023-04-18)
+
+
+- Update AWS::SupportApp::AccountAlias
+- Add AWS::SupportApp::SlackWorkspaceConfiguration
+
 ## v0.1.136 (2023-04-17)
 
 
