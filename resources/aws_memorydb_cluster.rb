@@ -31,6 +31,15 @@ property :auto_minor_version_upgrade, [TrueClass, FalseClass],
             You cannot modify the value of AutoMinorVersionUpgrade after the cluster is created. To enable AutoMinorVersionUpgrade on a cluster you must set AutoMinorVersionUpgrade to true when you create a cluster.
          DESCRIPTION
 
+property :cluster_endpoint, Hash,
+         callbacks: {
+           "Subproperty `Address` is not a String" => lambda { |v| v[:Address].is_a? String },
+           "Subproperty `Port` is not a Integer" => lambda { |v| v[:Port].is_a? Integer },
+         },
+         description: <<~'DESCRIPTION'
+           The cluster endpoint.
+         DESCRIPTION
+
 property :cluster_name, String,
          required: true,
          callbacks: {
@@ -219,6 +228,7 @@ rest_api_document "/AWS::MemoryDB::Cluster"
 rest_property_map({
   acl_name:                   "ACLName",
   auto_minor_version_upgrade: "AutoMinorVersionUpgrade",
+  cluster_endpoint:           "ClusterEndpoint",
   cluster_name:               "ClusterName",
   data_tiering:               "DataTiering",
   description:                "Description",

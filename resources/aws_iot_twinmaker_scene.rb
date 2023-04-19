@@ -51,6 +51,14 @@ property :scene_id, String,
            The ID of the scene.
          DESCRIPTION
 
+property :scene_metadata, Hash,
+         callbacks: {
+           "scene_metadata is not a Object" => lambda { |v| v.is_a? Object },
+         },
+         description: <<~'DESCRIPTION'
+           A key-value pair of scene metadata for the scene.
+         DESCRIPTION
+
 property :tags, Hash,
          callbacks: {
            "tags is not a Object" => lambda { |v| v.is_a? Object },
@@ -79,6 +87,7 @@ rest_property_map({
   content_location: "ContentLocation",
   description:      "Description",
   scene_id:         "SceneId",
+  scene_metadata:   "SceneMetadata",
   tags:             "Tags",
   workspace_id:     "WorkspaceId",
 })

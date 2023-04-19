@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## v0.1.138 (2023-04-19)
+
+
+- Update AWS::AppFlow::ConnectorProfile
+- Update AWS::IoTTwinMaker::Scene
+- Add AWS::Lambda::EventInvokeConfig
+- Update AWS::MemoryDB::Cluster
+- Update AWS::SupportApp::SlackChannelConfiguration
+
 ## v0.1.137 (2023-04-18)
 
 

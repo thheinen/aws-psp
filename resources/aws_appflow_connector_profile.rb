@@ -80,5 +80,5 @@ rest_property_map({
 })
 
 rest_post_only_properties %i{
-  connector_profile_name connector_type kms_arn
+  connector_label connector_profile_name connector_type
 }
