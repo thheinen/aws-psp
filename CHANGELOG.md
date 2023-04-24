@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## v0.1.139 (2023-04-24)
+
+
+- Add AWS::ApiGatewayV2::IntegrationResponse
+- Add AWS::EC2::VPCEndpointServicePermissions
+- Update AWS::IoT::DomainConfiguration
+- Add AWS::QuickSight::VPCConnection
+
 ## v0.1.138 (2023-04-19)
 
 

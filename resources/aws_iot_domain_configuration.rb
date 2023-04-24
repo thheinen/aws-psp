@@ -62,6 +62,12 @@ property :tags, Array,
          },
          description: ""
 
+property :tls_config, Hash,
+         callbacks: {
+           "Subproperty `SecurityPolicy` is not a String" => lambda { |v| v[:SecurityPolicy].is_a? String },
+         },
+         description: ""
+
 property :validation_certificate_arn, String,
          callbacks: {
            "validation_certificate_arn is not a String" => lambda { |v| v.is_a? String },
@@ -81,6 +87,7 @@ rest_property_map({
   server_certificate_arns:     "ServerCertificateArns",
   service_type:                "ServiceType",
   tags:                        "Tags",
+  tls_config:                  "TlsConfig",
   validation_certificate_arn:  "ValidationCertificateArn",
 })
 
