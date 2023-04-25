@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## v0.1.140 (2023-04-25)
+
+
+- Add AWS::Connect::EvaluationForm
+- Update AWS::EC2::IPAM
+- Update AWS::Glue::Registry
+- Update AWS::Glue::Schema
+- Update AWS::Glue::SchemaVersion
+- Update AWS::Glue::SchemaVersionMetadata
+- Update AWS::SageMaker::Device
+- Update AWS::SageMaker::DeviceFleet
+
 ## v0.1.139 (2023-04-24)
 
 

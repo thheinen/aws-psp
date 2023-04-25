@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_sagemaker_device_fleet
 provides :aws_sagemaker_device_fleet, target_mode: true, platform: "aws"
 

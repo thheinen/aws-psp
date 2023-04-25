@@ -1,7 +1,6 @@
 # Import API specifics
 use "awscc_base"
 
-unified_mode true
 resource_name :aws_glue_schema_version_metadata
 provides :aws_glue_schema_version_metadata, target_mode: true, platform: "aws"
 

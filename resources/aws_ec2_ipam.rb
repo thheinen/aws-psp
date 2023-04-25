@@ -42,14 +42,6 @@ property :operating_regions, Array,
            The regions IPAM is enabled for. Allows pools to be created in these regions, as well as enabling monitoring
          DESCRIPTION
 
-property :resource_discovery_association_count, Integer,
-         callbacks: {
-           "resource_discovery_association_count is not a Integer" => lambda { |v| v.is_a? Integer },
-         },
-         description: <<~'DESCRIPTION'
-           The count of resource discoveries associated with this IPAM.
-         DESCRIPTION
-
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
@@ -67,7 +59,6 @@ rest_property_map({
   default_resource_discovery_id:             "DefaultResourceDiscoveryId",
   description:                               "Description",
   operating_regions:                         "OperatingRegions",
-  resource_discovery_association_count:      "ResourceDiscoveryAssociationCount",
   tags:                                      "Tags",
 })
 
