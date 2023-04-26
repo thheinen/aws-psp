@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.141 (2023-04-26)
+
+
+- Update AWS::S3::AccessPoint
+
 ## v0.1.140 (2023-04-25)
 
 
