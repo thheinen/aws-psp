@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## v0.1.142 (2023-04-27)
+
+
+- Update AWS::AmplifyUIBuilder::Form
+- Add AWS::DataSync::StorageSystem
+- Update AWS::GameLift::Build
+- Add AWS::MSK::ClusterPolicy
+- Add AWS::MSK::VpcConnection
+
 ## v0.1.141 (2023-04-26)
 
 

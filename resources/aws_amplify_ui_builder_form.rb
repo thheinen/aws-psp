@@ -49,6 +49,13 @@ property :form_action_type, Hash,
          },
          description: ""
 
+property :label_decorator, Hash,
+         callbacks: {
+           "label_decorator is not a String" => lambda { |v| v.is_a? String },
+           "label_decoratoris not one of `required`, `optional`, `none`" => lambda { |v| %w{required optional none}.include? v },
+         },
+         description: ""
+
 property :name, String,
          name_property: true,
          required: true,
@@ -93,6 +100,7 @@ rest_property_map({
   environment_name:   "EnvironmentName",
   fields:             "Fields",
   form_action_type:   "FormActionType",
+  label_decorator:    "LabelDecorator",
   name:               "Name",
   schema_version:     "SchemaVersion",
   sectional_elements: "SectionalElements",

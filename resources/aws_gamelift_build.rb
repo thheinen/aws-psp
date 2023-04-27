@@ -30,6 +30,14 @@ property :operating_system, String,
            The operating system that the game server binaries are built to run on. This value determines the type of fleet resources that you can use for this build. If your game build contains multiple executables, they all must run on the same operating system. If an operating system is not specified when creating a build, Amazon GameLift uses the default value (WINDOWS_2012). This value cannot be changed later.
          DESCRIPTION
 
+property :server_sdk_version, String,
+         callbacks: {
+           "server_sdk_version is not a String" => lambda { |v| v.is_a? String },
+         },
+         description: <<~'DESCRIPTION'
+           A server SDK version you used when integrating your game server build with Amazon GameLift. By default Amazon GameLift sets this value to 4.0.2.
+         DESCRIPTION
+
 property :storage_location, Hash,
          callbacks: {
            "Subproperty `Bucket` is not a String" => lambda { |v| v[:Bucket].is_a? String },
@@ -55,12 +63,13 @@ rest_api_collection "/AWS::GameLift::Build"
 rest_api_document "/AWS::GameLift::Build"
 
 rest_property_map({
-  name:             "Name",
-  operating_system: "OperatingSystem",
-  storage_location: "StorageLocation",
-  version:          "Version",
+  name:               "Name",
+  operating_system:   "OperatingSystem",
+  server_sdk_version: "ServerSdkVersion",
+  storage_location:   "StorageLocation",
+  version:            "Version",
 })
 
 rest_post_only_properties %i{
-  operating_system storage_location
+  operating_system server_sdk_version storage_location
 }
