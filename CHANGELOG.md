@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.143 (2023-04-28)
+
+
+- Update AWS::Lightsail::Disk
+
 ## v0.1.142 (2023-04-27)
 
 

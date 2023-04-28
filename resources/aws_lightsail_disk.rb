@@ -40,6 +40,13 @@ property :disk_name, String,
            The names to use for your new Lightsail disk.
          DESCRIPTION
 
+property :location, Hash,
+         callbacks: {
+           "Subproperty `AvailabilityZone` is not a String" => lambda { |v| v[:AvailabilityZone].is_a? String },
+           "Subproperty `RegionName` is not a String" => lambda { |v| v[:RegionName].is_a? String },
+         },
+         description: ""
+
 property :size_in_gb, Integer,
          required: true,
          callbacks: {
@@ -65,6 +72,7 @@ rest_property_map({
   add_ons:           "AddOns",
   availability_zone: "AvailabilityZone",
   disk_name:         "DiskName",
+  location:          "Location",
   size_in_gb:        "SizeInGb",
   tags:              "Tags",
 })
