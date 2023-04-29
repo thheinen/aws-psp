@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.144 (2023-04-29)
+
+
+- Update AWS::Detective::Graph
+
 ## v0.1.143 (2023-04-28)
 
 
