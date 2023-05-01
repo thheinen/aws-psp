@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.1.145 (2023-05-01)
+
+
+- Add AWS::EC2::VerifiedAccessInstance
+- Add AWS::EC2::VerifiedAccessTrustProvider
+
 ## v0.1.144 (2023-04-29)
 
 
