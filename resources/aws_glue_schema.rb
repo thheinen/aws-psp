@@ -64,7 +64,7 @@ property :registry, Hash,
            "Subproperty `Name` is not a String" => lambda { |v| v[:Name].is_a? String },
            "Subproperty `Name` needs to be 1..255 characters" => lambda { |v| v[:Name].length >= 1 && v[:Name].length <= 255 },
            "Subproperty `Arn` is not a String" => lambda { |v| v[:Arn].is_a? String },
-           "Subproperty `Arn` must match pattern arn:(aws|aws-us-gov|aws-cn):glue:.*" => lambda { |v| v[:Arn] =~ Regexp.new("/arn:(aws|aws-us-gov|aws-cn):glue:.*/") },
+           "Subproperty `Arn` must match pattern arn:aws(-(cn|us-gov|iso(-[bef])?))?:glue:.*" => lambda { |v| v[:Arn] =~ Regexp.new("/arn:aws(-(cn|us-gov|iso(-[bef])?))?:glue:.*/") },
            "Subproperty `Arn`is not a valid ARN" => lambda { |v| v[:Arn] =~ Regexp.new("^arn:aws(?:-cn|-us-gov)?:([^:]*:){3,}") },
          },
          description: ""

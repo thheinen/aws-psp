@@ -53,3 +53,6 @@ rest_property_map({
   resource_type: "ResourceType",
 })
 
+rest_post_only_properties %i{
+  application resource resource_type
+}

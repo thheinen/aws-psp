@@ -43,3 +43,6 @@ rest_property_map({
   attribute_group: "AttributeGroup",
 })
 
+rest_post_only_properties %i{
+  application attribute_group
+}

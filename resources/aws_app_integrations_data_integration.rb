@@ -21,6 +21,15 @@ property :description, String,
            The data integration description.
          DESCRIPTION
 
+property :file_configuration, Hash,
+         callbacks: {
+           "Subproperty `Folders` is not a Array" => lambda { |v| v[:Folders].is_a? Array },
+           "Subproperty `Filters` is not a Object" => lambda { |v| v[:Filters].is_a? Object },
+         },
+         description: <<~'DESCRIPTION'
+           The configuration for what files should be pulled from the source.
+         DESCRIPTION
+
 property :kms_key, String,
          required: true,
          callbacks: {
@@ -44,6 +53,14 @@ property :name, String,
            The name of the data integration.
          DESCRIPTION
 
+property :object_configuration, Hash,
+         callbacks: {
+           "object_configuration is not a Object" => lambda { |v| v.is_a? Object },
+         },
+         description: <<~'DESCRIPTION'
+           The configuration for what data should be pulled from the source.
+         DESCRIPTION
+
 property :schedule_config, Hash,
          required: true,
          callbacks: {
@@ -65,8 +82,8 @@ property :source_uri, String,
          required: true,
          callbacks: {
            "source_uri is not a String" => lambda { |v| v.is_a? String },
-           "source_uri needs to be 1..255 characters" => lambda { |v| v.length >= 1 && v.length <= 255 },
-           "source_uri must match pattern ^\w+\:\/\/\w+\/[\w/!@#+=.-]+$" => lambda { |v| v =~ Regexp.new("/^\w+\:\/\/\w+\/[\w/!@#+=.-]+$/") },
+           "source_uri needs to be 1..1000 characters" => lambda { |v| v.length >= 1 && v.length <= 1000 },
+           "source_uri must match pattern ^(\w+\:\/\/[\w.-]+[\w/!@#+=.-]+$)|(\w+\:\/\/[\w.-]+[\w/!@#+=.-]+[\w/!@#+=.-]+[\w/!@#+=.,-]+$)" => lambda { |v| v =~ Regexp.new("/^(\w+\:\/\/[\w.-]+[\w/!@#+=.-]+$)|(\w+\:\/\/[\w.-]+[\w/!@#+=.-]+[\w/!@#+=.-]+[\w/!@#+=.,-]+$)/") },
          },
          description: <<~'DESCRIPTION'
            The URI of the data source.
@@ -85,12 +102,14 @@ rest_api_collection "/AWS::AppIntegrations::DataIntegration"
 rest_api_document "/AWS::AppIntegrations::DataIntegration"
 
 rest_property_map({
-  description:     "Description",
-  kms_key:         "KmsKey",
-  name:            "Name",
-  schedule_config: "ScheduleConfig",
-  source_uri:      "SourceURI",
-  tags:            "Tags",
+  description:          "Description",
+  file_configuration:   "FileConfiguration",
+  kms_key:              "KmsKey",
+  name:                 "Name",
+  object_configuration: "ObjectConfiguration",
+  schedule_config:      "ScheduleConfig",
+  source_uri:           "SourceURI",
+  tags:                 "Tags",
 })
 
 rest_post_only_properties %i{

@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## v0.1.146 (2023-05-02)
+
+
+- Update AWS::AppIntegrations::DataIntegration
+- Update AWS::Glue::Schema
+- Update AWS::ServiceCatalogAppRegistry::AttributeGroupAssociation
+- Update AWS::ServiceCatalogAppRegistry::ResourceAssociation
+
 ## v0.1.145 (2023-05-01)
 
 
