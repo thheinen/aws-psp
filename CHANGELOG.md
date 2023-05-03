@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## v0.1.147 (2023-05-03)
+
+
+- Add AWS::BackupGateway::Hypervisor
+- Update AWS::EC2::NetworkInsightsPath
+- Add AWS::Proton::EnvironmentAccountConnection
+- Add AWS::Proton::EnvironmentTemplate
+- Add AWS::Proton::ServiceTemplate
+
 ## v0.1.146 (2023-05-02)
 
 

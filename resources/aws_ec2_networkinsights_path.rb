@@ -30,6 +30,12 @@ property :destination_port, Hash,
          },
          description: ""
 
+property :filter_at_destination, Hash,
+         description: ""
+
+property :filter_at_source, Hash,
+         description: ""
+
 property :protocol, Hash,
          required: true,
          callbacks: {
@@ -62,15 +68,17 @@ rest_api_collection "/AWS::EC2::NetworkInsightsPath"
 rest_api_document "/AWS::EC2::NetworkInsightsPath"
 
 rest_property_map({
-  destination:      "Destination",
-  destination_ip:   "DestinationIp",
-  destination_port: "DestinationPort",
-  protocol:         "Protocol",
-  source:           "Source",
-  source_ip:        "SourceIp",
-  tags:             "Tags",
+  destination:           "Destination",
+  destination_ip:        "DestinationIp",
+  destination_port:      "DestinationPort",
+  filter_at_destination: "FilterAtDestination",
+  filter_at_source:      "FilterAtSource",
+  protocol:              "Protocol",
+  source:                "Source",
+  source_ip:             "SourceIp",
+  tags:                  "Tags",
 })
 
 rest_post_only_properties %i{
-  destination destination_ip destination_port protocol source source_ip
+  destination destination_ip destination_port filter_at_destination filter_at_source protocol source source_ip
 }
