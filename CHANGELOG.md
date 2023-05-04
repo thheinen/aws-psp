@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.148 (2023-05-04)
+
+
+- Add AWS::OSIS::Pipeline
+
 ## v0.1.147 (2023-05-03)
 
 
