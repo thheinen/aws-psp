@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.149 (2023-05-06)
+
+
+- Update AWS::NetworkFirewall::FirewallPolicy
+
 ## v0.1.148 (2023-05-04)
 
 

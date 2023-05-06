@@ -29,6 +29,7 @@ property :firewall_policy, Hash,
            "Subproperty `StatelessRuleGroupReferences` is not a Array" => lambda { |v| v[:StatelessRuleGroupReferences].is_a? Array },
            "Subproperty `StatefulRuleGroupReferences` is not a Array" => lambda { |v| v[:StatefulRuleGroupReferences].is_a? Array },
            "Subproperty `StatefulDefaultActions` is not a Array" => lambda { |v| v[:StatefulDefaultActions].is_a? Array },
+           "Subproperty `PolicyVariables` is not a Object" => lambda { |v| v[:PolicyVariables].is_a? Object },
          },
          description: ""
 
