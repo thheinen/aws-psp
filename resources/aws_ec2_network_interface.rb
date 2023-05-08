@@ -20,6 +20,14 @@ property :description, String,
            A description for the network interface.
          DESCRIPTION
 
+property :enable_primary_ipv6, [TrueClass, FalseClass],
+         callbacks: {
+           "enable_primary_ipv6 is not a Boolean" => lambda { |v| v.is_a? Boolean },
+         },
+         description: <<~'DESCRIPTION'
+           If you have instances or ENIs that rely on the IPv6 address not changing, to avoid disrupting traffic to instances or ENIs, you can enable a primary IPv6 address. Enable this option to automatically assign an IPv6 associated with the ENI attached to your instance to be the primary IPv6 address. When you enable an IPv6 address to be a primary IPv6, you cannot disable it. Traffic will be routed to the primary IPv6 address until the instance is terminated or the ENI is detached. If you have multiple IPv6 addresses associated with an ENI and you enable a primary IPv6 address, the first IPv6 address associated with the ENI becomes the primary IPv6 address.
+         DESCRIPTION
+
 property :group_set, Array,
          callbacks: {
            "group_set is not a Array" => lambda { |v| v.is_a? Array },
@@ -107,6 +115,7 @@ rest_api_document "/AWS::EC2::NetworkInterface"
 
 rest_property_map({
   description:                        "Description",
+  enable_primary_ipv6:                "EnablePrimaryIpv6",
   group_set:                          "GroupSet",
   interface_type:                     "InterfaceType",
   ipv6_address_count:                 "Ipv6AddressCount",

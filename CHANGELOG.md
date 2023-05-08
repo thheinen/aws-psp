@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## v0.1.150 (2023-05-08)
+
+
+- Update AWS::EC2::NetworkInterface
+- Add AWS::EC2::VerifiedAccessEndpoint
+- Add AWS::EC2::VerifiedAccessGroup
+- Add AWS::IoT::BillingGroup
+- Add AWS::IoT::ThingGroup
+- Add AWS::IoT::ThingType
+
 ## v0.1.149 (2023-05-06)
 
 
