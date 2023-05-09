@@ -75,3 +75,6 @@ rest_property_map({
   tags:                 "Tags",
 })
 
+rest_post_only_properties %i{
+  sampling_rule/version
+}

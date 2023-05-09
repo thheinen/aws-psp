@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## v0.1.151 (2023-05-09)
+
+
+- Update AWS::Connect::Rule
+- Update AWS::SimSpaceWeaver::Simulation
+- Update AWS::XRay::Group
+- Update AWS::XRay::SamplingRule
+
 ## v0.1.150 (2023-05-08)
 
 

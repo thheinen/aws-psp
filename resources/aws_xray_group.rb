@@ -21,6 +21,7 @@ property :filter_expression, String,
          DESCRIPTION
 
 property :group_name, String,
+         required: true,
          callbacks: {
            "group_name is not a String" => lambda { |v| v.is_a? String },
            "group_name needs to be 1..32 characters" => lambda { |v| v.length >= 1 && v.length <= 32 },
