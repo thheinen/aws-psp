@@ -35,6 +35,8 @@ property :code, Hash,
            "Subproperty `S3ObjectVersion` is not a String" => lambda { |v| v[:S3ObjectVersion].is_a? String },
            "Subproperty `Script` is not a String" => lambda { |v| v[:Script].is_a? String },
            "Subproperty `Handler` is not a String" => lambda { |v| v[:Handler].is_a? String },
+           "Subproperty `SourceLocationArn` is not a String" => lambda { |v| v[:SourceLocationArn].is_a? String },
+           "Subproperty `SourceLocationArn`is not a valid ARN" => lambda { |v| v[:SourceLocationArn] =~ Regexp.new("^arn:aws(?:-cn|-us-gov)?:([^:]*:){3,}") },
          },
          description: <<~'DESCRIPTION'
            Provide the canary script source
@@ -107,7 +109,6 @@ property :schedule, Hash,
          DESCRIPTION
 
 property :start_canary_after_creation, [TrueClass, FalseClass],
-         required: true,
          callbacks: {
            "start_canary_after_creation is not a Boolean" => lambda { |v| v.is_a? Boolean },
          },

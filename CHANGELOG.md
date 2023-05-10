@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.1.152 (2023-05-10)
+
+
+- Update AWS::MemoryDB::User
+- Update AWS::Synthetics::Canary
+
 ## v0.1.151 (2023-05-09)
 
 

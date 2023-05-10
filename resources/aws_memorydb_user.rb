@@ -23,7 +23,7 @@ property :access_string, String,
 property :authentication_mode, Hash,
          callbacks: {
            "Subproperty `Type` is not a String" => lambda { |v| v[:Type].is_a? String },
-           "Subproperty `Type`is not one of `password`" => lambda { |v| %w{password}.include? v[:Type] },
+           "Subproperty `Type`is not one of `password`, `iam`" => lambda { |v| %w{password iam}.include? v[:Type] },
            "Subproperty `Passwords` is not a Array" => lambda { |v| v[:Passwords].is_a? Array },
          },
          description: ""
