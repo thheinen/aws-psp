@@ -36,6 +36,14 @@ property :backup_retention_period, Integer,
            Specifies the number of days for which automatic DB snapshots are retained.
          DESCRIPTION
 
+property :copy_tags_to_snapshot, [TrueClass, FalseClass],
+         callbacks: {
+           "copy_tags_to_snapshot is not a Boolean" => lambda { |v| v.is_a? Boolean },
+         },
+         description: <<~'DESCRIPTION'
+           A value that indicates whether to copy all tags from the DB cluster to snapshots of the DB cluster. The default behaviour is not to copy them.
+         DESCRIPTION
+
 property :db_cluster_identifier, String,
          callbacks: {
            "db_cluster_identifier is not a String" => lambda { |v| v.is_a? String },
@@ -52,6 +60,14 @@ property :db_cluster_parameter_group_name, String,
          },
          description: <<~'DESCRIPTION'
            Provides the name of the DB cluster parameter group.
+         DESCRIPTION
+
+property :db_instance_parameter_group_name, String,
+         callbacks: {
+           "db_instance_parameter_group_name is not a String" => lambda { |v| v.is_a? String },
+         },
+         description: <<~'DESCRIPTION'
+           The name of the DB parameter group to apply to all instances of the DB cluster. Used only in case of a major EngineVersion upgrade request.
          DESCRIPTION
 
 property :db_subnet_group_name, String,
@@ -138,6 +154,15 @@ property :restore_type, String,
             If a DB cluster snapshot is specified, the target DB cluster is created from the source DB cluster restore point with the same configuration as the original source DB cluster, except that the new DB cluster is created with the default security group.
          DESCRIPTION
 
+property :serverless_scaling_configuration, Hash,
+         callbacks: {
+           "Subproperty `MinCapacity` is not a Number" => lambda { |v| v[:MinCapacity].is_a? Number },
+           "Subproperty `MaxCapacity` is not a Number" => lambda { |v| v[:MaxCapacity].is_a? Number },
+         },
+         description: <<~'DESCRIPTION'
+           Contains the scaling configuration used by the Neptune Serverless Instances within this DB cluster.
+         DESCRIPTION
+
 property :snapshot_identifier, String,
          callbacks: {
            "snapshot_identifier is not a String" => lambda { |v| v.is_a? String },
@@ -199,29 +224,32 @@ rest_api_collection "/AWS::Neptune::DBCluster"
 rest_api_document "/AWS::Neptune::DBCluster"
 
 rest_property_map({
-  associated_roles:                "AssociatedRoles",
-  availability_zones:              "AvailabilityZones",
-  backup_retention_period:         "BackupRetentionPeriod",
-  db_cluster_identifier:           "DBClusterIdentifier",
-  db_cluster_parameter_group_name: "DBClusterParameterGroupName",
-  db_subnet_group_name:            "DBSubnetGroupName",
-  deletion_protection:             "DeletionProtection",
-  enable_cloudwatch_logs_exports:  "EnableCloudwatchLogsExports",
-  engine_version:                  "EngineVersion",
-  iam_auth_enabled:                "IamAuthEnabled",
-  kms_key_id:                      "KmsKeyId",
-  preferred_backup_window:         "PreferredBackupWindow",
-  preferred_maintenance_window:    "PreferredMaintenanceWindow",
-  restore_to_time:                 "RestoreToTime",
-  restore_type:                    "RestoreType",
-  snapshot_identifier:             "SnapshotIdentifier",
-  source_db_cluster_identifier:    "SourceDBClusterIdentifier",
-  storage_encrypted:               "StorageEncrypted",
-  tags:                            "Tags",
-  use_latest_restorable_time:      "UseLatestRestorableTime",
-  vpc_security_group_ids:          "VpcSecurityGroupIds",
+  associated_roles:                 "AssociatedRoles",
+  availability_zones:               "AvailabilityZones",
+  backup_retention_period:          "BackupRetentionPeriod",
+  copy_tags_to_snapshot:            "CopyTagsToSnapshot",
+  db_cluster_identifier:            "DBClusterIdentifier",
+  db_cluster_parameter_group_name:  "DBClusterParameterGroupName",
+  db_instance_parameter_group_name: "DBInstanceParameterGroupName",
+  db_subnet_group_name:             "DBSubnetGroupName",
+  deletion_protection:              "DeletionProtection",
+  enable_cloudwatch_logs_exports:   "EnableCloudwatchLogsExports",
+  engine_version:                   "EngineVersion",
+  iam_auth_enabled:                 "IamAuthEnabled",
+  kms_key_id:                       "KmsKeyId",
+  preferred_backup_window:          "PreferredBackupWindow",
+  preferred_maintenance_window:     "PreferredMaintenanceWindow",
+  restore_to_time:                  "RestoreToTime",
+  restore_type:                     "RestoreType",
+  serverless_scaling_configuration: "ServerlessScalingConfiguration",
+  snapshot_identifier:              "SnapshotIdentifier",
+  source_db_cluster_identifier:     "SourceDBClusterIdentifier",
+  storage_encrypted:                "StorageEncrypted",
+  tags:                             "Tags",
+  use_latest_restorable_time:       "UseLatestRestorableTime",
+  vpc_security_group_ids:           "VpcSecurityGroupIds",
 })
 
 rest_post_only_properties %i{
-  availability_zones db_cluster_identifier db_subnet_group_name engine_version kms_key_id restore_to_time restore_type snapshot_identifier source_db_cluster_identifier storage_encrypted use_latest_restorable_time
+  availability_zones db_cluster_identifier db_subnet_group_name kms_key_id restore_to_time restore_type snapshot_identifier source_db_cluster_identifier storage_encrypted use_latest_restorable_time
 }

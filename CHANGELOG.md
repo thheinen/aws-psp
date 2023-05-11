@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.1.153 (2023-05-11)
+
+
+- Update AWS::MediaConnect::FlowSource
+- Update AWS::Neptune::DBCluster
+
 ## v0.1.152 (2023-05-10)
 
 

@@ -19,7 +19,7 @@ property :decryption, Hash,
            "Subproperty `ConstantInitializationVector` is not a String" => lambda { |v| v[:ConstantInitializationVector].is_a? String },
            "Subproperty `DeviceId` is not a String" => lambda { |v| v[:DeviceId].is_a? String },
            "Subproperty `KeyType` is not a String" => lambda { |v| v[:KeyType].is_a? String },
-           "Subproperty `KeyType`is not one of `speke`, `static-key`" => lambda { |v| %w{speke static-key}.include? v[:KeyType] },
+           "Subproperty `KeyType`is not one of `speke`, `static-key`, `srt-password`" => lambda { |v| %w{speke static-key srt-password}.include? v[:KeyType] },
            "Subproperty `Region` is not a String" => lambda { |v| v[:Region].is_a? String },
            "Subproperty `ResourceId` is not a String" => lambda { |v| v[:ResourceId].is_a? String },
            "Subproperty `RoleArn` is not a String" => lambda { |v| v[:RoleArn].is_a? String },
@@ -81,6 +81,14 @@ property :max_latency, Integer,
            The maximum latency in milliseconds. This parameter applies only to RIST-based and Zixi-based streams.
          DESCRIPTION
 
+property :min_latency, Integer,
+         callbacks: {
+           "min_latency is not a Integer" => lambda { |v| v.is_a? Integer },
+         },
+         description: <<~'DESCRIPTION'
+           The minimum latency in milliseconds.
+         DESCRIPTION
+
 property :name, String,
          name_property: true,
          required: true,
@@ -94,10 +102,42 @@ property :name, String,
 property :protocol, String,
          callbacks: {
            "protocol is not a String" => lambda { |v| v.is_a? String },
-           "protocolis not one of `zixi-push`, `rtp-fec`, `rtp`, `rist`" => lambda { |v| %w{zixi-push rtp-fec rtp rist}.include? v },
+           "protocolis not one of `zixi-push`, `rtp-fec`, `rtp`, `rist`, `srt-listener`, `srt-caller`" => lambda { |v| %w{zixi-push rtp-fec rtp rist srt-listener srt-caller}.include? v },
          },
          description: <<~'DESCRIPTION'
            The protocol that is used by the source.
+         DESCRIPTION
+
+property :sender_control_port, Integer,
+         callbacks: {
+           "sender_control_port is not a Integer" => lambda { |v| v.is_a? Integer },
+         },
+         description: <<~'DESCRIPTION'
+           The port that the flow uses to send outbound requests to initiate connection with the sender for fujitsu-qos protocol.
+         DESCRIPTION
+
+property :sender_ip_address, String,
+         callbacks: {
+           "sender_ip_address is not a String" => lambda { |v| v.is_a? String },
+         },
+         description: <<~'DESCRIPTION'
+           The IP address that the flow communicates with to initiate connection with the sender for fujitsu-qos protocol.
+         DESCRIPTION
+
+property :source_listener_address, String,
+         callbacks: {
+           "source_listener_address is not a String" => lambda { |v| v.is_a? String },
+         },
+         description: <<~'DESCRIPTION'
+           Source IP or domain name for SRT-caller protocol.
+         DESCRIPTION
+
+property :source_listener_port, Integer,
+         callbacks: {
+           "source_listener_port is not a Integer" => lambda { |v| v.is_a? Integer },
+         },
+         description: <<~'DESCRIPTION'
+           Source port for SRT-caller protocol.
          DESCRIPTION
 
 property :stream_id, String,
@@ -129,18 +169,23 @@ rest_api_collection "/AWS::MediaConnect::FlowSource"
 rest_api_document "/AWS::MediaConnect::FlowSource"
 
 rest_property_map({
-  decryption:         "Decryption",
-  description:        "Description",
-  entitlement_arn:    "EntitlementArn",
-  flow_arn:           "FlowArn",
-  ingest_port:        "IngestPort",
-  max_bitrate:        "MaxBitrate",
-  max_latency:        "MaxLatency",
-  name:               "Name",
-  protocol:           "Protocol",
-  stream_id:          "StreamId",
-  vpc_interface_name: "VpcInterfaceName",
-  whitelist_cidr:     "WhitelistCidr",
+  decryption:              "Decryption",
+  description:             "Description",
+  entitlement_arn:         "EntitlementArn",
+  flow_arn:                "FlowArn",
+  ingest_port:             "IngestPort",
+  max_bitrate:             "MaxBitrate",
+  max_latency:             "MaxLatency",
+  min_latency:             "MinLatency",
+  name:                    "Name",
+  protocol:                "Protocol",
+  sender_control_port:     "SenderControlPort",
+  sender_ip_address:       "SenderIpAddress",
+  source_listener_address: "SourceListenerAddress",
+  source_listener_port:    "SourceListenerPort",
+  stream_id:               "StreamId",
+  vpc_interface_name:      "VpcInterfaceName",
+  whitelist_cidr:          "WhitelistCidr",
 })
 
 rest_post_only_properties %i{
