@@ -28,6 +28,11 @@ property :project_name, Hash,
          },
          description: ""
 
+property :servicecatalog_provisioned_product_details, Hash,
+         description: <<~'DESCRIPTION'
+           Provisioned ServiceCatalog  Details
+         DESCRIPTION
+
 property :servicecatalog_provisioning_details, Hash,
          required: true,
          callbacks: {
@@ -50,10 +55,11 @@ rest_api_collection "/AWS::SageMaker::Project"
 rest_api_document "/AWS::SageMaker::Project"
 
 rest_property_map({
-  project_description:                 "ProjectDescription",
-  project_name:                        "ProjectName",
-  servicecatalog_provisioning_details: "ServiceCatalogProvisioningDetails",
-  tags:                                "Tags",
+  project_description:                        "ProjectDescription",
+  project_name:                               "ProjectName",
+  servicecatalog_provisioned_product_details: "ServiceCatalogProvisionedProductDetails",
+  servicecatalog_provisioning_details:        "ServiceCatalogProvisioningDetails",
+  tags:                                       "Tags",
 })
 
 rest_post_only_properties %i{

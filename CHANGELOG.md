@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.154 (2023-05-12)
+
+
+- Update AWS::SageMaker::Project
+
 ## v0.1.153 (2023-05-11)
 
 
