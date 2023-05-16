@@ -41,6 +41,15 @@ property :flow_name, String,
            Name of the flow.
          DESCRIPTION
 
+property :flow_status, String,
+         callbacks: {
+           "flow_status is not a String" => lambda { |v| v.is_a? String },
+           "flow_statusis not one of `Active`, `Suspended`" => lambda { |v| %w{Active Suspended}.include? v },
+         },
+         description: <<~'DESCRIPTION'
+           Flow activation status for Scheduled- and Event-triggered flows
+         DESCRIPTION
+
 property :kms_arn, String,
          callbacks: {
            "kms_arn is not a String" => lambda { |v| v.is_a? String },
@@ -81,9 +90,6 @@ property :tasks, Array,
 
 property :trigger_config, Hash,
          required: true,
-         callbacks: {
-           "Subproperty `ActivateFlowOnCreate` is not a Boolean" => lambda { |v| v[:ActivateFlowOnCreate].is_a? Boolean },
-         },
          description: <<~'DESCRIPTION'
            Trigger settings of the flow.
          DESCRIPTION
@@ -96,6 +102,7 @@ rest_property_map({
   description:                  "Description",
   destination_flow_config_list: "DestinationFlowConfigList",
   flow_name:                    "FlowName",
+  flow_status:                  "FlowStatus",
   kms_arn:                      "KMSArn",
   metadata_catalog_config:      "MetadataCatalogConfig",
   source_flow_config:           "SourceFlowConfig",
@@ -105,5 +112,5 @@ rest_property_map({
 })
 
 rest_post_only_properties %i{
-  flow_name kms_arn trigger_config/activate_flow_on_create
+  flow_name kms_arn
 }

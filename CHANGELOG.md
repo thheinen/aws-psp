@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## v0.1.155 (2023-05-16)
+
+
+- Update AWS::AppFlow::Flow
+- Add AWS::EC2::SubnetCidrBlock
+- Add AWS::QuickSight::Topic
+
 ## v0.1.154 (2023-05-12)
 
 
