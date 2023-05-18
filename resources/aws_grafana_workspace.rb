@@ -55,6 +55,15 @@ property :description, String,
            Description of a workspace.
          DESCRIPTION
 
+property :grafana_version, String,
+         callbacks: {
+           "grafana_version is not a String" => lambda { |v| v.is_a? String },
+           "grafana_version needs to be 1..255 characters" => lambda { |v| v.length >= 1 && v.length <= 255 },
+         },
+         description: <<~'DESCRIPTION'
+           The version of Grafana to support in your workspace. For region ap-northeast-2, only version 8.4 is supported.
+         DESCRIPTION
+
 property :name, String,
          name_property: true,
          callbacks: {
@@ -146,6 +155,7 @@ rest_property_map({
   client_token:              "ClientToken",
   data_sources:              "DataSources",
   description:               "Description",
+  grafana_version:           "GrafanaVersion",
   name:                      "Name",
   network_access_control:    "NetworkAccessControl",
   notification_destinations: "NotificationDestinations",

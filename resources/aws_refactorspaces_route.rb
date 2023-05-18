@@ -62,9 +62,10 @@ property :uri_path_route, Hash,
          callbacks: {
            "Subproperty `SourcePath` is not a String" => lambda { |v| v[:SourcePath].is_a? String },
            "Subproperty `SourcePath` needs to be 1..2048 characters" => lambda { |v| v[:SourcePath].length >= 1 && v[:SourcePath].length <= 2048 },
-           "Subproperty `SourcePath` must match pattern ^(/[a-zA-Z0-9._-]+)+$" => lambda { |v| v[:SourcePath] =~ Regexp.new("/^(/[a-zA-Z0-9._-]+)+$/") },
+           "Subproperty `SourcePath` must match pattern ^(/([a-zA-Z0-9._:-]+|\{[a-zA-Z0-9._:-]+\}))+$" => lambda { |v| v[:SourcePath] =~ Regexp.new("/^(/([a-zA-Z0-9._:-]+|\{[a-zA-Z0-9._:-]+\}))+$/") },
            "Subproperty `Methods` is not a Array" => lambda { |v| v[:Methods].is_a? Array },
            "Subproperty `IncludeChildPaths` is not a Boolean" => lambda { |v| v[:IncludeChildPaths].is_a? Boolean },
+           "Subproperty `AppendSourcePath` is not a Boolean" => lambda { |v| v[:AppendSourcePath].is_a? Boolean },
          },
          description: ""
 
@@ -83,5 +84,5 @@ rest_property_map({
 })
 
 rest_post_only_properties %i{
-  application_identifier environment_identifier route_type service_identifier uri_path_route/include_child_paths uri_path_route/methods uri_path_route/source_path
+  application_identifier environment_identifier route_type service_identifier uri_path_route/append_source_path uri_path_route/include_child_paths uri_path_route/methods uri_path_route/source_path
 }

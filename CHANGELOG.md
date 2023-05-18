@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## v0.1.156 (2023-05-18)
+
+
+- Add AWS::Connect::Prompt
+- Update AWS::Grafana::Workspace
+- Update AWS::OpenSearchService::Domain
+- Update AWS::RefactorSpaces::Route
+- Add AWS::Shield::DRTAccess
+- Add AWS::Shield::ProactiveEngagement
+- Add AWS::Shield::Protection
+- Add AWS::Shield::ProtectionGroup
+
 ## v0.1.155 (2023-05-16)
 
 

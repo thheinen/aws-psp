@@ -44,6 +44,7 @@ property :cluster_config, Hash,
            "Subproperty `WarmType` is not a String" => lambda { |v| v[:WarmType].is_a? String },
            "Subproperty `ZoneAwarenessEnabled` is not a Boolean" => lambda { |v| v[:ZoneAwarenessEnabled].is_a? Boolean },
            "Subproperty `DedicatedMasterType` is not a String" => lambda { |v| v[:DedicatedMasterType].is_a? String },
+           "Subproperty `MultiAZWithStandbyEnabled` is not a Boolean" => lambda { |v| v[:MultiAZWithStandbyEnabled].is_a? Boolean },
          },
          description: ""
 
