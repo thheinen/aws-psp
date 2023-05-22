@@ -30,6 +30,16 @@ property :options, Hash,
            Vpc options of the attachment.
          DESCRIPTION
 
+property :proposed_segment_change, Hash,
+         callbacks: {
+           "Subproperty `Tags` is not a Array" => lambda { |v| v[:Tags].is_a? Array },
+           "Subproperty `AttachmentPolicyRuleNumber` is not a Integer" => lambda { |v| v[:AttachmentPolicyRuleNumber].is_a? Integer },
+           "Subproperty `SegmentName` is not a String" => lambda { |v| v[:SegmentName].is_a? String },
+         },
+         description: <<~'DESCRIPTION'
+           The attachment to move from one segment to another.
+         DESCRIPTION
+
 property :subnet_arns, Array,
          required: true,
          callbacks: {
@@ -61,11 +71,12 @@ rest_api_collection "/AWS::NetworkManager::VpcAttachment"
 rest_api_document "/AWS::NetworkManager::VpcAttachment"
 
 rest_property_map({
-  core_network_id: "CoreNetworkId",
-  options:         "Options",
-  subnet_arns:     "SubnetArns",
-  tags:            "Tags",
-  vpc_arn:         "VpcArn",
+  core_network_id:         "CoreNetworkId",
+  options:                 "Options",
+  proposed_segment_change: "ProposedSegmentChange",
+  subnet_arns:             "SubnetArns",
+  tags:                    "Tags",
+  vpc_arn:                 "VpcArn",
 })
 
 rest_post_only_properties %i{

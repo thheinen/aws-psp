@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## v0.1.157 (2023-05-22)
+
+
+- Update AWS::NetworkManager::ConnectAttachment
+- Update AWS::NetworkManager::SiteToSiteVpnAttachment
+- Update AWS::NetworkManager::VpcAttachment
+
 ## v0.1.156 (2023-05-18)
 
 

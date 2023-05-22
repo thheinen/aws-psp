@@ -39,6 +39,16 @@ property :options, Hash,
            Protocol options for connect attachment
          DESCRIPTION
 
+property :proposed_segment_change, Hash,
+         callbacks: {
+           "Subproperty `Tags` is not a Array" => lambda { |v| v[:Tags].is_a? Array },
+           "Subproperty `AttachmentPolicyRuleNumber` is not a Integer" => lambda { |v| v[:AttachmentPolicyRuleNumber].is_a? Integer },
+           "Subproperty `SegmentName` is not a String" => lambda { |v| v[:SegmentName].is_a? String },
+         },
+         description: <<~'DESCRIPTION'
+           The attachment to move from one segment to another.
+         DESCRIPTION
+
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
@@ -64,6 +74,7 @@ rest_property_map({
   core_network_id:         "CoreNetworkId",
   edge_location:           "EdgeLocation",
   options:                 "Options",
+  proposed_segment_change: "ProposedSegmentChange",
   tags:                    "Tags",
   transport_attachment_id: "TransportAttachmentId",
 })

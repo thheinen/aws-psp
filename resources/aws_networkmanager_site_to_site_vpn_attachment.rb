@@ -21,6 +21,16 @@ property :core_network_id, String,
            The ID of a core network where you're creating a site-to-site VPN attachment.
          DESCRIPTION
 
+property :proposed_segment_change, Hash,
+         callbacks: {
+           "Subproperty `Tags` is not a Array" => lambda { |v| v[:Tags].is_a? Array },
+           "Subproperty `AttachmentPolicyRuleNumber` is not a Integer" => lambda { |v| v[:AttachmentPolicyRuleNumber].is_a? Integer },
+           "Subproperty `SegmentName` is not a String" => lambda { |v| v[:SegmentName].is_a? String },
+         },
+         description: <<~'DESCRIPTION'
+           The attachment to move from one segment to another.
+         DESCRIPTION
+
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
@@ -43,9 +53,10 @@ rest_api_collection "/AWS::NetworkManager::SiteToSiteVpnAttachment"
 rest_api_document "/AWS::NetworkManager::SiteToSiteVpnAttachment"
 
 rest_property_map({
-  core_network_id:    "CoreNetworkId",
-  tags:               "Tags",
-  vpn_connection_arn: "VpnConnectionArn",
+  core_network_id:         "CoreNetworkId",
+  proposed_segment_change: "ProposedSegmentChange",
+  tags:                    "Tags",
+  vpn_connection_arn:      "VpnConnectionArn",
 })
 
 rest_post_only_properties %i{
