@@ -48,6 +48,13 @@ property :name, String,
          },
          description: ""
 
+property :role_arn, String,
+         callbacks: {
+           "role_arn is not a String" => lambda { |v| v.is_a? String },
+           "role_arn must match pattern ^arn:(aws|aws-cn|aws-iso|aws-iso-[a-z]{1}|aws-us-gov):[A-Za-z0-9][A-Za-z0-9_/.-]{0,62}:([a-z]{2}-((iso[a-z]{0,1}-)|(gov-)){0,1}[a-z]+-[0-9]|):[0-9]{12}:[A-Za-z0-9/][A-Za-z0-9:_/+=,@.-]{0,1023}$" => lambda { |v| v =~ Regexp.new("/^arn:(aws|aws-cn|aws-iso|aws-iso-[a-z]{1}|aws-us-gov):[A-Za-z0-9][A-Za-z0-9_/.-]{0,62}:([a-z]{2}-((iso[a-z]{0,1}-)|(gov-)){0,1}[a-z]+-[0-9]|):[0-9]{12}:[A-Za-z0-9/][A-Za-z0-9:_/+=,@.-]{0,1023}$/") },
+         },
+         description: ""
+
 property :tags, Hash,
          callbacks: {
            "tags is not a Object" => lambda { |v| v.is_a? Object },
@@ -64,9 +71,10 @@ rest_property_map({
   engine_type: "EngineType",
   kms_key_id:  "KmsKeyId",
   name:        "Name",
+  role_arn:    "RoleArn",
   tags:        "Tags",
 })
 
 rest_post_only_properties %i{
-  engine_type kms_key_id name
+  engine_type kms_key_id name role_arn
 }

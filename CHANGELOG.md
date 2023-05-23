@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.1.158 (2023-05-23)
+
+
+- Update AWS::M2::Application
+- Update AWS::ResilienceHub::App
+
 ## v0.1.157 (2023-05-22)
 
 
