@@ -31,6 +31,12 @@ property :compression, Hash,
          },
          description: ""
 
+property :data_destination_configs, Array,
+         callbacks: {
+           "data_destination_configs is not a Array" => lambda { |v| v.is_a? Array },
+         },
+         description: ""
+
 property :data_extra_dimensions, Array,
          callbacks: {
            "data_extra_dimensions is not a Array" => lambda { |v| v.is_a? Array },
@@ -127,6 +133,7 @@ rest_property_map({
   action:                           "Action",
   collection_scheme:                "CollectionScheme",
   compression:                      "Compression",
+  data_destination_configs:         "DataDestinationConfigs",
   data_extra_dimensions:            "DataExtraDimensions",
   description:                      "Description",
   diagnostics_mode:                 "DiagnosticsMode",

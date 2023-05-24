@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## v0.1.159 (2023-05-24)
+
+
+- Add AWS::AppSync::SourceApiAssociation
+- Update AWS::IoTFleetWise::Campaign
+- Update AWS::SES::DedicatedIpPool
+
 ## v0.1.158 (2023-05-23)
 
 
