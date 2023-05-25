@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## v0.1.160 (2023-05-25)
+
+
+- Update AWS::CloudTrail::EventDataStore
+- Update AWS::CloudTrail::Trail
+- Add AWS::Cognito::IdentityPoolPrincipalTag
+
 ## v0.1.159 (2023-05-24)
 
 

@@ -20,6 +20,14 @@ property :advanced_event_selectors, Array,
            The advanced event selectors that were used to select events for the data store.
          DESCRIPTION
 
+property :ingestion_enabled, [TrueClass, FalseClass],
+         callbacks: {
+           "ingestion_enabled is not a Boolean" => lambda { |v| v.is_a? Boolean },
+         },
+         description: <<~'DESCRIPTION'
+           Indicates whether the event data store is ingesting events.
+         DESCRIPTION
+
 property :kms_key_id, String,
          callbacks: {
            "kms_key_id is not a String" => lambda { |v| v.is_a? String },
@@ -81,6 +89,7 @@ rest_api_document "/AWS::CloudTrail::EventDataStore"
 
 rest_property_map({
   advanced_event_selectors:       "AdvancedEventSelectors",
+  ingestion_enabled:              "IngestionEnabled",
   kms_key_id:                     "KmsKeyId",
   multi_region_enabled:           "MultiRegionEnabled",
   name:                           "Name",

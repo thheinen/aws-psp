@@ -12,6 +12,14 @@ property :name, String,
          name_property: true,
          description: "Name of the resource, not desired state"
 
+property :advanced_event_selectors, Array,
+         callbacks: {
+           "advanced_event_selectors is not a Array" => lambda { |v| v.is_a? Array },
+         },
+         description: <<~'DESCRIPTION'
+           The advanced event selectors that were used to select events for the data store.
+         DESCRIPTION
+
 property :cloudwatch_logs_log_group_arn, String,
          callbacks: {
            "cloudwatch_logs_log_group_arn is not a String" => lambda { |v| v.is_a? String },
@@ -137,6 +145,7 @@ rest_api_collection "/AWS::CloudTrail::Trail"
 rest_api_document "/AWS::CloudTrail::Trail"
 
 rest_property_map({
+  advanced_event_selectors:      "AdvancedEventSelectors",
   cloudwatch_logs_log_group_arn: "CloudWatchLogsLogGroupArn",
   cloudwatch_logs_role_arn:      "CloudWatchLogsRoleArn",
   enable_log_file_validation:    "EnableLogFileValidation",
