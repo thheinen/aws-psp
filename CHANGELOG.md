@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.1.161 (2023-05-26)
+
+
+- Add AWS::Detective::OrganizationAdmin
+- Update AWS::QuickSight::DataSet
+
 ## v0.1.160 (2023-05-25)
 
 

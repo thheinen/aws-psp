@@ -40,12 +40,23 @@ property :data_set_id, String,
          },
          description: ""
 
+property :data_set_refresh_properties, Hash,
+         description: ""
+
 property :data_set_usage_configuration, Hash,
          callbacks: {
            "Subproperty `DisableUseAsDirectQuerySource` is not a Boolean" => lambda { |v| v[:DisableUseAsDirectQuerySource].is_a? Boolean },
            "Subproperty `DisableUseAsImportedSource` is not a Boolean" => lambda { |v| v[:DisableUseAsImportedSource].is_a? Boolean },
          },
          description: ""
+
+property :dataset_parameters, Array,
+         callbacks: {
+           "dataset_parameters is not a Array" => lambda { |v| v.is_a? Array },
+         },
+         description: <<~'DESCRIPTION'
+           <p>The parameters declared in the dataset.</p>
+         DESCRIPTION
 
 property :field_folders, Hash,
          callbacks: {
@@ -107,6 +118,13 @@ property :row_level_permission_data_set, Hash,
          },
          description: ""
 
+property :row_level_permission_tag_configuration, Hash,
+         callbacks: {
+           "Subproperty `TagRules` is not a Array" => lambda { |v| v[:TagRules].is_a? Array },
+           "Subproperty `TagRuleConfigurations` is not a Array" => lambda { |v| v[:TagRuleConfigurations].is_a? Array },
+         },
+         description: ""
+
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
@@ -120,20 +138,23 @@ rest_api_collection "/AWS::QuickSight::DataSet"
 rest_api_document "/AWS::QuickSight::DataSet"
 
 rest_property_map({
-  aws_account_id:                "AwsAccountId",
-  column_groups:                 "ColumnGroups",
-  column_level_permission_rules: "ColumnLevelPermissionRules",
-  data_set_id:                   "DataSetId",
-  data_set_usage_configuration:  "DataSetUsageConfiguration",
-  field_folders:                 "FieldFolders",
-  import_mode:                   "ImportMode",
-  ingestion_wait_policy:         "IngestionWaitPolicy",
-  logical_table_map:             "LogicalTableMap",
-  name:                          "Name",
-  permissions:                   "Permissions",
-  physical_table_map:            "PhysicalTableMap",
-  row_level_permission_data_set: "RowLevelPermissionDataSet",
-  tags:                          "Tags",
+  aws_account_id:                         "AwsAccountId",
+  column_groups:                          "ColumnGroups",
+  column_level_permission_rules:          "ColumnLevelPermissionRules",
+  data_set_id:                            "DataSetId",
+  data_set_refresh_properties:            "DataSetRefreshProperties",
+  data_set_usage_configuration:           "DataSetUsageConfiguration",
+  dataset_parameters:                     "DatasetParameters",
+  field_folders:                          "FieldFolders",
+  import_mode:                            "ImportMode",
+  ingestion_wait_policy:                  "IngestionWaitPolicy",
+  logical_table_map:                      "LogicalTableMap",
+  name:                                   "Name",
+  permissions:                            "Permissions",
+  physical_table_map:                     "PhysicalTableMap",
+  row_level_permission_data_set:          "RowLevelPermissionDataSet",
+  row_level_permission_tag_configuration: "RowLevelPermissionTagConfiguration",
+  tags:                                   "Tags",
 })
 
 rest_post_only_properties %i{
