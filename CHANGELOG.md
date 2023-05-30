@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.162 (2023-05-30)
+
+
+- Update AWS::ApiGatewayV2::RouteResponse
+
 ## v0.1.161 (2023-05-26)
 
 

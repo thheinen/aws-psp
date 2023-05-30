@@ -32,9 +32,6 @@ property :response_models, Hash,
          description: ""
 
 property :response_parameters, Hash,
-         callbacks: {
-           "response_parameters is not a Object" => lambda { |v| v.is_a? Object },
-         },
          description: ""
 
 property :route_id, String,
