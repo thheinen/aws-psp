@@ -12,22 +12,6 @@ property :name, String,
          name_property: true,
          description: "Name of the resource, not desired state"
 
-property :default_resource_discovery_association_id, String,
-         callbacks: {
-           "default_resource_discovery_association_id is not a String" => lambda { |v| v.is_a? String },
-         },
-         description: <<~'DESCRIPTION'
-           The Id of the default association to the default resource discovery, created with this IPAM.
-         DESCRIPTION
-
-property :default_resource_discovery_id, String,
-         callbacks: {
-           "default_resource_discovery_id is not a String" => lambda { |v| v.is_a? String },
-         },
-         description: <<~'DESCRIPTION'
-           The Id of the default resource discovery, created with this IPAM.
-         DESCRIPTION
-
 property :description, String,
          callbacks: {
            "description is not a String" => lambda { |v| v.is_a? String },
@@ -55,10 +39,8 @@ rest_api_collection "/AWS::EC2::IPAM"
 rest_api_document "/AWS::EC2::IPAM"
 
 rest_property_map({
-  default_resource_discovery_association_id: "DefaultResourceDiscoveryAssociationId",
-  default_resource_discovery_id:             "DefaultResourceDiscoveryId",
-  description:                               "Description",
-  operating_regions:                         "OperatingRegions",
-  tags:                                      "Tags",
+  description:       "Description",
+  operating_regions: "OperatingRegions",
+  tags:              "Tags",
 })
 
