@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.164 (2023-06-02)
+
+
+- Add AWS::Lambda::LayerVersionPermission
+
 ## v0.1.163 (2023-05-31)
 
 
