@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.1.165 (2023-06-05)
+
+
+- Add AWS::IAM::ServiceLinkedRole
+- Add AWS::Lambda::LayerVersion
+
 ## v0.1.164 (2023-06-02)
 
 
