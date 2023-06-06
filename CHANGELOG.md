@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## v0.1.166 (2023-06-06)
+
+
+- Add AWS::CustomerProfiles::CalculatedAttributeDefinition
+- Update AWS::Signer::SigningProfile
+- Add AWS::StepFunctions::StateMachineVersion
+
 ## v0.1.165 (2023-06-05)
 
 

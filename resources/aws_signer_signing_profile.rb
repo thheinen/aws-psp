@@ -16,7 +16,7 @@ property :platform_id, Hash,
          required: true,
          callbacks: {
            "platform_id is not a String" => lambda { |v| v.is_a? String },
-           "platform_idis not one of `AWSLambda-SHA384-ECDSA`" => lambda { |v| %w{AWSLambda-SHA384-ECDSA}.include? v },
+           "platform_idis not one of `AWSLambda-SHA384-ECDSA`, `Notation-OCI-SHA384-ECDSA`" => lambda { |v| %w{AWSLambda-SHA384-ECDSA Notation-OCI-SHA384-ECDSA}.include? v },
          },
          description: <<~'DESCRIPTION'
            The ID of the target signing platform.
