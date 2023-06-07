@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## v0.1.167 (2023-06-07)
+
+
+- Update AWS::Omics::SequenceStore
+- Add AWS::SecurityHub::Standard
+- Add AWS::StepFunctions::StateMachineAlias
+
 ## v0.1.166 (2023-06-06)
 
 

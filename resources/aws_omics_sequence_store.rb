@@ -22,6 +22,15 @@ property :description, String,
            A description for the store.
          DESCRIPTION
 
+property :fallback_location, String,
+         callbacks: {
+           "fallback_location is not a String" => lambda { |v| v.is_a? String },
+           "fallback_location must match pattern ^s3:\/\/([a-z0-9][a-z0-9-.]{1,61}[a-z0-9])\/?((.{1,1024})\/)?$" => lambda { |v| v =~ Regexp.new("/^s3:\/\/([a-z0-9][a-z0-9-.]{1,61}[a-z0-9])\/?((.{1,1024})\/)?$/") },
+         },
+         description: <<~'DESCRIPTION'
+           An S3 URI representing the bucket and folder to store failed read set uploads.
+         DESCRIPTION
+
 property :name, String,
          name_property: true,
          required: true,
@@ -62,12 +71,13 @@ rest_api_collection "/AWS::Omics::SequenceStore"
 rest_api_document "/AWS::Omics::SequenceStore"
 
 rest_property_map({
-  description: "Description",
-  name:        "Name",
-  sse_config:  "SseConfig",
-  tags:        "Tags",
+  description:       "Description",
+  fallback_location: "FallbackLocation",
+  name:              "Name",
+  sse_config:        "SseConfig",
+  tags:              "Tags",
 })
 
 rest_post_only_properties %i{
-  description name sse_config tags
+  description fallback_location name sse_config tags
 }
