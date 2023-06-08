@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.168 (2023-06-08)
+
+
+- Add AWS::CustomerProfiles::EventStream
+
 ## v0.1.167 (2023-06-07)
 
 
