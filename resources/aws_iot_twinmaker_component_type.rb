@@ -54,7 +54,6 @@ property :is_singleton, [TrueClass, FalseClass],
          },
          description: <<~'DESCRIPTION'
            A Boolean value that specifies whether an entity can have more than one component of this type.
-
          DESCRIPTION
 
 property :property_definitions, Hash,

@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.169 (2023-06-09)
+
+
+- Update AWS::IoTTwinMaker::ComponentType
+
 ## v0.1.168 (2023-06-08)
 
 
