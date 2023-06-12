@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.170 (2023-06-12)
+
+
+- Add AWS::RDS::CustomDBEngineVersion
+
 ## v0.1.169 (2023-06-09)
 
 
