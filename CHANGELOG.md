@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## v0.1.171 (2023-06-13)
+
+
+- Add AWS::CleanRooms::Collaboration
+- Add AWS::CleanRooms::ConfiguredTable
+- Add AWS::CleanRooms::ConfiguredTableAssociation
+- Add AWS::CleanRooms::Membership
+- Add AWS::EC2::VolumeAttachment
+- Add AWS::SNS::TopicPolicy
+- Add AWS::SecurityHub::AutomationRule
+
 ## v0.1.170 (2023-06-12)
 
 
