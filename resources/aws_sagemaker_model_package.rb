@@ -12,21 +12,6 @@ property :name, String,
          name_property: true,
          description: "Name of the resource, not desired state"
 
-property :additional_inference_specification_definition, Hash,
-         callbacks: {
-           "Subproperty `Containers` is not a Array" => lambda { |v| v[:Containers].is_a? Array },
-           "Subproperty `Description` is not a String" => lambda { |v| v[:Description].is_a? String },
-           "Subproperty `Description` must match pattern .*" => lambda { |v| v[:Description] =~ Regexp.new("/.*/") },
-           "Subproperty `Name` is not a String" => lambda { |v| v[:Name].is_a? String },
-           "Subproperty `Name` needs to be 1..63 characters" => lambda { |v| v[:Name].length >= 1 && v[:Name].length <= 63 },
-           "Subproperty `Name` must match pattern ^[a-zA-Z0-9](-*[a-zA-Z0-9]){0,62}$" => lambda { |v| v[:Name] =~ Regexp.new("/^[a-zA-Z0-9](-*[a-zA-Z0-9]){0,62}$/") },
-           "Subproperty `SupportedContentTypes` is not a Array" => lambda { |v| v[:SupportedContentTypes].is_a? Array },
-           "Subproperty `SupportedRealtimeInferenceInstanceTypes` is not a Array" => lambda { |v| v[:SupportedRealtimeInferenceInstanceTypes].is_a? Array },
-           "Subproperty `SupportedResponseMIMETypes` is not a Array" => lambda { |v| v[:SupportedResponseMIMETypes].is_a? Array },
-           "Subproperty `SupportedTransformInstanceTypes` is not a Array" => lambda { |v| v[:SupportedTransformInstanceTypes].is_a? Array },
-         },
-         description: ""
-
 property :additional_inference_specifications, Hash,
          callbacks: {
            "additional_inference_specifications is not a Array" => lambda { |v| v.is_a? Array },
@@ -60,9 +45,6 @@ property :client_token, Hash,
          },
          description: ""
 
-property :created_by, Hash,
-         description: ""
-
 property :customer_metadata_properties, Hash,
          callbacks: {
            "customer_metadata_properties is not a Object" => lambda { |v| v.is_a? Object },
@@ -78,12 +60,6 @@ property :domain, Hash,
 property :drift_check_baselines, Hash,
          description: ""
 
-property :environment, Hash,
-         callbacks: {
-           "environment is not a Object" => lambda { |v| v.is_a? Object },
-         },
-         description: ""
-
 property :inference_specification, Hash,
          callbacks: {
            "Subproperty `Containers` is not a Array" => lambda { |v| v[:Containers].is_a? Array },
@@ -92,9 +68,6 @@ property :inference_specification, Hash,
            "Subproperty `SupportedResponseMIMETypes` is not a Array" => lambda { |v| v[:SupportedResponseMIMETypes].is_a? Array },
            "Subproperty `SupportedTransformInstanceTypes` is not a Array" => lambda { |v| v[:SupportedTransformInstanceTypes].is_a? Array },
          },
-         description: ""
-
-property :last_modified_by, Hash,
          description: ""
 
 property :last_modified_time, Hash,
@@ -154,17 +127,6 @@ property :model_package_status_details, Hash,
          },
          description: ""
 
-property :model_package_status_item, Hash,
-         callbacks: {
-           "Subproperty `FailureReason` is not a String" => lambda { |v| v[:FailureReason].is_a? String },
-           "Subproperty `Name` is not a String" => lambda { |v| v[:Name].is_a? String },
-           "Subproperty `Name` needs to be 1..63 characters" => lambda { |v| v[:Name].length >= 1 && v[:Name].length <= 63 },
-           "Subproperty `Name` must match pattern ^[a-zA-Z0-9](-*[a-zA-Z0-9]){0,62}$" => lambda { |v| v[:Name] =~ Regexp.new("/^[a-zA-Z0-9](-*[a-zA-Z0-9]){0,62}$/") },
-           "Subproperty `Status` is not a String" => lambda { |v| v[:Status].is_a? String },
-           "Subproperty `Status`is not one of `NotStarted`, `Failed`, `InProgress`, `Completed`" => lambda { |v| %w{NotStarted Failed InProgress Completed}.include? v[:Status] },
-         },
-         description: ""
-
 property :model_package_version, Hash,
          callbacks: {
            "model_package_version is not a Integer" => lambda { |v| v.is_a? Integer },
@@ -212,34 +174,29 @@ rest_api_collection "/AWS::SageMaker::ModelPackage"
 rest_api_document "/AWS::SageMaker::ModelPackage"
 
 rest_property_map({
-  additional_inference_specification_definition: "AdditionalInferenceSpecificationDefinition",
-  additional_inference_specifications:           "AdditionalInferenceSpecifications",
-  additional_inference_specifications_to_add:    "AdditionalInferenceSpecificationsToAdd",
-  approval_description:                          "ApprovalDescription",
-  certify_for_marketplace:                       "CertifyForMarketplace",
-  client_token:                                  "ClientToken",
-  created_by:                                    "CreatedBy",
-  customer_metadata_properties:                  "CustomerMetadataProperties",
-  domain:                                        "Domain",
-  drift_check_baselines:                         "DriftCheckBaselines",
-  environment:                                   "Environment",
-  inference_specification:                       "InferenceSpecification",
-  last_modified_by:                              "LastModifiedBy",
-  last_modified_time:                            "LastModifiedTime",
-  metadata_properties:                           "MetadataProperties",
-  model_approval_status:                         "ModelApprovalStatus",
-  model_metrics:                                 "ModelMetrics",
-  model_package_description:                     "ModelPackageDescription",
-  model_package_group_name:                      "ModelPackageGroupName",
-  model_package_name:                            "ModelPackageName",
-  model_package_status_details:                  "ModelPackageStatusDetails",
-  model_package_status_item:                     "ModelPackageStatusItem",
-  model_package_version:                         "ModelPackageVersion",
-  sample_payload_url:                            "SamplePayloadUrl",
-  source_algorithm_specification:                "SourceAlgorithmSpecification",
-  tags:                                          "Tags",
-  task:                                          "Task",
-  validation_specification:                      "ValidationSpecification",
+  additional_inference_specifications:        "AdditionalInferenceSpecifications",
+  additional_inference_specifications_to_add: "AdditionalInferenceSpecificationsToAdd",
+  approval_description:                       "ApprovalDescription",
+  certify_for_marketplace:                    "CertifyForMarketplace",
+  client_token:                               "ClientToken",
+  customer_metadata_properties:               "CustomerMetadataProperties",
+  domain:                                     "Domain",
+  drift_check_baselines:                      "DriftCheckBaselines",
+  inference_specification:                    "InferenceSpecification",
+  last_modified_time:                         "LastModifiedTime",
+  metadata_properties:                        "MetadataProperties",
+  model_approval_status:                      "ModelApprovalStatus",
+  model_metrics:                              "ModelMetrics",
+  model_package_description:                  "ModelPackageDescription",
+  model_package_group_name:                   "ModelPackageGroupName",
+  model_package_name:                         "ModelPackageName",
+  model_package_status_details:               "ModelPackageStatusDetails",
+  model_package_version:                      "ModelPackageVersion",
+  sample_payload_url:                         "SamplePayloadUrl",
+  source_algorithm_specification:             "SourceAlgorithmSpecification",
+  tags:                                       "Tags",
+  task:                                       "Task",
+  validation_specification:                   "ValidationSpecification",
 })
 
 rest_post_only_properties %i{

@@ -21,6 +21,13 @@ property :keyspace_name, String,
            Name for Cassandra keyspace
          DESCRIPTION
 
+property :replication_specification, Hash,
+         callbacks: {
+           "Subproperty `ReplicationStrategy` is not a String" => lambda { |v| v[:ReplicationStrategy].is_a? String },
+           "Subproperty `ReplicationStrategy`is not one of `SINGLE_REGION`, `MULTI_REGION`" => lambda { |v| %w{SINGLE_REGION MULTI_REGION}.include? v[:ReplicationStrategy] },
+         },
+         description: ""
+
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
@@ -32,10 +39,11 @@ rest_api_collection "/AWS::Cassandra::Keyspace"
 rest_api_document "/AWS::Cassandra::Keyspace"
 
 rest_property_map({
-  keyspace_name: "KeyspaceName",
-  tags:          "Tags",
+  keyspace_name:             "KeyspaceName",
+  replication_specification: "ReplicationSpecification",
+  tags:                      "Tags",
 })
 
 rest_post_only_properties %i{
-  keyspace_name
+  keyspace_name replication_specification
 }

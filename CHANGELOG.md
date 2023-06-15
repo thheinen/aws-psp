@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## v0.1.172 (2023-06-15)
+
+
+- Update AWS::Cassandra::Keyspace
+- Update AWS::IVS::Channel
+- Add AWS::MediaConnect::Bridge
+- Add AWS::MediaConnect::BridgeOutput
+- Add AWS::MediaConnect::BridgeSource
+- Add AWS::MediaConnect::Gateway
+- Update AWS::SageMaker::ModelPackage
+
 ## v0.1.171 (2023-06-13)
 
 

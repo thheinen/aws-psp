@@ -48,6 +48,15 @@ property :name, String,
            Channel
          DESCRIPTION
 
+property :preset, String,
+         callbacks: {
+           "preset is not a String" => lambda { |v| v.is_a? String },
+           "presetis not one of `HIGHER_BANDWIDTH_DELIVERY`, `CONSTRAINED_BANDWIDTH_DELIVERY`" => lambda { |v| %w{HIGHER_BANDWIDTH_DELIVERY CONSTRAINED_BANDWIDTH_DELIVERY}.include? v },
+         },
+         description: <<~'DESCRIPTION'
+           Optional transcode preset for the channel. This is selectable only for ADVANCED_HD and ADVANCED_SD channel types. For those channel types, the default preset is HIGHER_BANDWIDTH_DELIVERY. For other channel types (BASIC and STANDARD), preset is the empty string ("").
+         DESCRIPTION
+
 property :recording_configuration_arn, String,
          callbacks: {
            "recording_configuration_arn is not a String" => lambda { |v| v.is_a? String },
@@ -69,7 +78,7 @@ property :tags, Array,
 property :type, String,
          callbacks: {
            "type is not a String" => lambda { |v| v.is_a? String },
-           "typeis not one of `STANDARD`, `BASIC`" => lambda { |v| %w{STANDARD BASIC}.include? v },
+           "typeis not one of `STANDARD`, `BASIC`, `ADVANCED_SD`, `ADVANCED_HD`" => lambda { |v| %w{STANDARD BASIC ADVANCED_SD ADVANCED_HD}.include? v },
          },
          description: <<~'DESCRIPTION'
            Channel type, which determines the allowable resolution and bitrate. If you exceed the allowable resolution or bitrate, the stream probably will disconnect immediately.
@@ -84,6 +93,7 @@ rest_property_map({
   insecure_ingest:             "InsecureIngest",
   latency_mode:                "LatencyMode",
   name:                        "Name",
+  preset:                      "Preset",
   recording_configuration_arn: "RecordingConfigurationArn",
   tags:                        "Tags",
   type:                        "Type",
