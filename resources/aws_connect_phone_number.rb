@@ -62,10 +62,10 @@ property :type, String,
          required: true,
          callbacks: {
            "type is not a String" => lambda { |v| v.is_a? String },
-           "type must match pattern TOLL_FREE|DID" => lambda { |v| v =~ Regexp.new("/TOLL_FREE|DID/") },
+           "type must match pattern TOLL_FREE|DID|UIFN|SHARED|THIRD_PARTY_DID|THIRD_PARTY_TF" => lambda { |v| v =~ Regexp.new("/TOLL_FREE|DID|UIFN|SHARED|THIRD_PARTY_DID|THIRD_PARTY_TF/") },
          },
          description: <<~'DESCRIPTION'
-           The phone number type, either TOLL_FREE or DID.
+           The phone number type
          DESCRIPTION
 
 # API URLs and mappings

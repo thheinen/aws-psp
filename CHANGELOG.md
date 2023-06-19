@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.1.173 (2023-06-19)
+
+
+- Update AWS::Connect::PhoneNumber
+- Add AWS::Organizations::Organization
+
 ## v0.1.172 (2023-06-15)
 
 
