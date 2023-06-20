@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.1.174 (2023-06-20)
+
+
+- Update AWS::MediaConnect::FlowSource
+- Update AWS::QuickSight::Theme
+
 ## v0.1.173 (2023-06-19)
 
 

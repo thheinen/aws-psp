@@ -57,6 +57,15 @@ property :flow_arn, String,
            The ARN of the flow.
          DESCRIPTION
 
+property :gateway_bridge_source, Hash,
+         callbacks: {
+           "Subproperty `BridgeArn` is not a String" => lambda { |v| v[:BridgeArn].is_a? String },
+           "Subproperty `BridgeArn`is not a valid ARN" => lambda { |v| v[:BridgeArn] =~ Regexp.new("^arn:aws(?:-cn|-us-gov)?:([^:]*:){3,}") },
+         },
+         description: <<~'DESCRIPTION'
+           The source configuration for cloud flows receiving a stream from a bridge.
+         DESCRIPTION
+
 property :ingest_port, Integer,
          callbacks: {
            "ingest_port is not a Integer" => lambda { |v| v.is_a? Integer },
@@ -173,6 +182,7 @@ rest_property_map({
   description:             "Description",
   entitlement_arn:         "EntitlementArn",
   flow_arn:                "FlowArn",
+  gateway_bridge_source:   "GatewayBridgeSource",
   ingest_port:             "IngestPort",
   max_bitrate:             "MaxBitrate",
   max_latency:             "MaxLatency",
