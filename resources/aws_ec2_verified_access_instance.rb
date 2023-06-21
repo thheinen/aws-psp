@@ -22,6 +22,8 @@ property :description, String,
 
 property :logging_configurations, Hash,
          callbacks: {
+           "Subproperty `LogVersion` is not a String" => lambda { |v| v[:LogVersion].is_a? String },
+           "Subproperty `IncludeTrustContext` is not a Boolean" => lambda { |v| v[:IncludeTrustContext].is_a? Boolean },
            "Subproperty `CloudWatchLogs` is not a Object" => lambda { |v| v[:CloudWatchLogs].is_a? Object },
            "Subproperty `KinesisDataFirehose` is not a Object" => lambda { |v| v[:KinesisDataFirehose].is_a? Object },
            "Subproperty `S3` is not a Object" => lambda { |v| v[:S3].is_a? Object },

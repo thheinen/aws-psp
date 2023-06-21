@@ -35,7 +35,7 @@ property :name, String,
 property :saml_options, Hash,
          callbacks: {
            "Subproperty `Metadata` is not a String" => lambda { |v| v[:Metadata].is_a? String },
-           "Subproperty `Metadata` needs to be 1..20480 characters" => lambda { |v| v[:Metadata].length >= 1 && v[:Metadata].length <= 20480 },
+           "Subproperty `Metadata` needs to be 1..51200 characters" => lambda { |v| v[:Metadata].length >= 1 && v[:Metadata].length <= 51200 },
            "Subproperty `Metadata` must match pattern [\u0009\u000A\u000D\u0020-\u007E\u00A1-\u00FF]+" => lambda { |v| v[:Metadata] =~ Regexp.new("/[\u0009\u000A\u000D\u0020-\u007E\u00A1-\u00FF]+/") },
            "Subproperty `UserAttribute` is not a String" => lambda { |v| v[:UserAttribute].is_a? String },
            "Subproperty `UserAttribute` needs to be 1..2048 characters" => lambda { |v| v[:UserAttribute].length >= 1 && v[:UserAttribute].length <= 2048 },

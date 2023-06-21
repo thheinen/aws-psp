@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## v0.1.175 (2023-06-21)
+
+
+- Update AWS::EC2::VerifiedAccessInstance
+- Add AWS::NimbleStudio::Studio
+- Update AWS::OpenSearchServerless::SecurityConfig
+- Add AWS::VerifiedPermissions::Policy
+- Add AWS::VerifiedPermissions::PolicyStore
+- Add AWS::VerifiedPermissions::PolicyTemplate
+
 ## v0.1.174 (2023-06-20)
 
 
