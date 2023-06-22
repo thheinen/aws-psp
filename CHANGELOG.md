@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## v0.1.176 (2023-06-22)
+
+
+- Add AWS::AppRunner::AutoScalingConfiguration
+- Add AWS::EC2::LaunchTemplate
+- Add AWS::VerifiedPermissions::IdentitySource
+
 ## v0.1.175 (2023-06-21)
 
 
