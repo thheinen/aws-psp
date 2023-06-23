@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## v0.1.177 (2023-06-23)
+
+
+- Update AWS::AppStream::AppBlock
+- Update AWS::SageMaker::ModelPackage
+- Update AWS::WAFv2::WebACL
+
 ## v0.1.176 (2023-06-22)
 
 

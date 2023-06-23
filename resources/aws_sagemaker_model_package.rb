@@ -122,7 +122,6 @@ property :model_package_name, Hash,
 
 property :model_package_status_details, Hash,
          callbacks: {
-           "Subproperty `ImageScanStatuses` is not a Array" => lambda { |v| v[:ImageScanStatuses].is_a? Array },
            "Subproperty `ValidationStatuses` is not a Array" => lambda { |v| v[:ValidationStatuses].is_a? Array },
          },
          description: ""

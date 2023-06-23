@@ -32,8 +32,21 @@ property :name, String,
          },
          description: ""
 
+property :packaging_type, Hash,
+         callbacks: {
+           "packaging_type is not a String" => lambda { |v| v.is_a? String },
+         },
+         description: ""
+
+property :post_setup_script_details, Hash,
+         callbacks: {
+           "Subproperty `ExecutablePath` is not a String" => lambda { |v| v[:ExecutablePath].is_a? String },
+           "Subproperty `ExecutableParameters` is not a String" => lambda { |v| v[:ExecutableParameters].is_a? String },
+           "Subproperty `TimeoutInSeconds` is not a Integer" => lambda { |v| v[:TimeoutInSeconds].is_a? Integer },
+         },
+         description: ""
+
 property :setup_script_details, Hash,
-         required: true,
          callbacks: {
            "Subproperty `ExecutablePath` is not a String" => lambda { |v| v[:ExecutablePath].is_a? String },
            "Subproperty `ExecutableParameters` is not a String" => lambda { |v| v[:ExecutableParameters].is_a? String },
@@ -60,14 +73,16 @@ rest_api_collection "/AWS::AppStream::AppBlock"
 rest_api_document "/AWS::AppStream::AppBlock"
 
 rest_property_map({
-  description:          "Description",
-  display_name:         "DisplayName",
-  name:                 "Name",
-  setup_script_details: "SetupScriptDetails",
-  source_s3_location:   "SourceS3Location",
-  tags:                 "Tags",
+  description:               "Description",
+  display_name:              "DisplayName",
+  name:                      "Name",
+  packaging_type:            "PackagingType",
+  post_setup_script_details: "PostSetupScriptDetails",
+  setup_script_details:      "SetupScriptDetails",
+  source_s3_location:        "SourceS3Location",
+  tags:                      "Tags",
 })
 
 rest_post_only_properties %i{
-  description display_name name setup_script_details source_s3_location
+  description display_name name packaging_type post_setup_script_details setup_script_details source_s3_location
 }

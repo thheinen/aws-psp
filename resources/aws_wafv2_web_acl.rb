@@ -12,6 +12,9 @@ property :name, String,
          name_property: true,
          description: "Name of the resource, not desired state"
 
+property :association_config, Hash,
+         description: ""
+
 property :captcha_config, Hash,
          description: ""
 
@@ -86,6 +89,7 @@ rest_api_collection "/AWS::WAFv2::WebACL"
 rest_api_document "/AWS::WAFv2::WebACL"
 
 rest_property_map({
+  association_config:     "AssociationConfig",
   captcha_config:         "CaptchaConfig",
   challenge_config:       "ChallengeConfig",
   custom_response_bodies: "CustomResponseBodies",
