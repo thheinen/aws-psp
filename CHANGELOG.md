@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.1.178 (2023-06-26)
+
+
+- Add AWS::AppStream::AppBlockBuilder
+- Update AWS::InternetMonitor::Monitor
+
 ## v0.1.177 (2023-06-23)
 
 

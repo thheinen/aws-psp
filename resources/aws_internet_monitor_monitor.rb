@@ -12,6 +12,13 @@ property :name, String,
          name_property: true,
          description: "Name of the resource, not desired state"
 
+property :health_events_config, Hash,
+         callbacks: {
+           "Subproperty `AvailabilityScoreThreshold` is not a Number" => lambda { |v| v[:AvailabilityScoreThreshold].is_a? Number },
+           "Subproperty `PerformanceScoreThreshold` is not a Number" => lambda { |v| v[:PerformanceScoreThreshold].is_a? Number },
+         },
+         description: ""
+
 property :internet_measurements_log_delivery, Hash,
          description: ""
 
@@ -72,6 +79,7 @@ rest_api_collection "/AWS::InternetMonitor::Monitor"
 rest_api_document "/AWS::InternetMonitor::Monitor"
 
 rest_property_map({
+  health_events_config:               "HealthEventsConfig",
   internet_measurements_log_delivery: "InternetMeasurementsLogDelivery",
   max_city_networks_to_monitor:       "MaxCityNetworksToMonitor",
   monitor_name:                       "MonitorName",
