@@ -12,6 +12,15 @@ property :name, String,
          name_property: true,
          description: "Name of the resource, not desired state"
 
+property :key_format, String,
+         callbacks: {
+           "key_format is not a String" => lambda { |v| v.is_a? String },
+           "key_formatis not one of `pem`, `ppk`" => lambda { |v| %w{pem ppk}.include? v },
+         },
+         description: <<~'DESCRIPTION'
+           The format of the private key
+         DESCRIPTION
+
 property :key_name, String,
          required: true,
          callbacks: {
@@ -27,7 +36,7 @@ property :key_type, String,
            "key_typeis not one of `rsa`, `ed25519`" => lambda { |v| %w{rsa ed25519}.include? v },
          },
          description: <<~'DESCRIPTION'
-           The title of the TPS report is a mandatory element.
+           The crypto-system used to generate a key pair.
          DESCRIPTION
 
 property :public_key_material, String,
@@ -51,6 +60,7 @@ rest_api_collection "/AWS::EC2::KeyPair"
 rest_api_document "/AWS::EC2::KeyPair"
 
 rest_property_map({
+  key_format:          "KeyFormat",
   key_name:            "KeyName",
   key_type:            "KeyType",
   public_key_material: "PublicKeyMaterial",
@@ -58,5 +68,5 @@ rest_property_map({
 })
 
 rest_post_only_properties %i{
-  key_name key_type
+  key_format key_name key_type public_key_material tags
 }

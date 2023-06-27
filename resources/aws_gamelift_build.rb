@@ -24,7 +24,7 @@ property :name, String,
 property :operating_system, String,
          callbacks: {
            "operating_system is not a String" => lambda { |v| v.is_a? String },
-           "operating_systemis not one of `AMAZON_LINUX`, `AMAZON_LINUX_2`, `WINDOWS_2012`, `WINDOWS_2016`" => lambda { |v| %w{AMAZON_LINUX AMAZON_LINUX_2 WINDOWS_2012 WINDOWS_2016}.include? v },
+           "operating_systemis not one of `AMAZON_LINUX`, `AMAZON_LINUX_2`, `AMAZON_LINUX_2023`, `WINDOWS_2012`, `WINDOWS_2016`" => lambda { |v| %w{AMAZON_LINUX AMAZON_LINUX_2 AMAZON_LINUX_2023 WINDOWS_2012 WINDOWS_2016}.include? v },
          },
          description: <<~'DESCRIPTION'
            The operating system that the game server binaries are built to run on. This value determines the type of fleet resources that you can use for this build. If your game build contains multiple executables, they all must run on the same operating system. If an operating system is not specified when creating a build, Amazon GameLift uses the default value (WINDOWS_2012). This value cannot be changed later.

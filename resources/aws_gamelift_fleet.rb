@@ -181,8 +181,8 @@ property :peer_vpc_id, String,
 
 property :resource_creation_limit_policy, Hash,
          callbacks: {
-           "Subproperty `NewGameSessionsPerCreator` is not a Integer" => lambda { |v| v[:NewGameSessionsPerCreator].is_a? Integer },
            "Subproperty `PolicyPeriodInMinutes` is not a Integer" => lambda { |v| v[:PolicyPeriodInMinutes].is_a? Integer },
+           "Subproperty `NewGameSessionsPerCreator` is not a Integer" => lambda { |v| v[:NewGameSessionsPerCreator].is_a? Integer },
          },
          description: <<~'DESCRIPTION'
            A policy that limits the number of game sessions an individual player can create over a span of time for this fleet.
@@ -190,9 +190,9 @@ property :resource_creation_limit_policy, Hash,
 
 property :runtime_configuration, Hash,
          callbacks: {
-           "Subproperty `GameSessionActivationTimeoutSeconds` is not a Integer" => lambda { |v| v[:GameSessionActivationTimeoutSeconds].is_a? Integer },
-           "Subproperty `MaxConcurrentGameSessionActivations` is not a Integer" => lambda { |v| v[:MaxConcurrentGameSessionActivations].is_a? Integer },
            "Subproperty `ServerProcesses` is not a Array" => lambda { |v| v[:ServerProcesses].is_a? Array },
+           "Subproperty `MaxConcurrentGameSessionActivations` is not a Integer" => lambda { |v| v[:MaxConcurrentGameSessionActivations].is_a? Integer },
+           "Subproperty `GameSessionActivationTimeoutSeconds` is not a Integer" => lambda { |v| v[:GameSessionActivationTimeoutSeconds].is_a? Integer },
          },
          description: <<~'DESCRIPTION'
            Instructions for launching server processes on each instance in the fleet. Server processes run either a custom game build executable or a Realtime script. The runtime configuration defines the server executables or launch script file, launch parameters, and the number of processes to run concurrently on each instance. When creating a fleet, the runtime configuration must have at least one server process configuration; otherwise the request fails with an invalid request exception.

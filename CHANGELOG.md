@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## v0.1.179 (2023-06-27)
+
+
+- Update AWS::EC2::KeyPair
+- Update AWS::GameLift::Build
+- Update AWS::GameLift::Fleet
+
 ## v0.1.178 (2023-06-26)
 
 
