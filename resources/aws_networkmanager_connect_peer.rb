@@ -38,7 +38,6 @@ property :core_network_address, String,
          DESCRIPTION
 
 property :inside_cidr_blocks, Array,
-         required: true,
          callbacks: {
            "inside_cidr_blocks is not a Array" => lambda { |v| v.is_a? Array },
          },

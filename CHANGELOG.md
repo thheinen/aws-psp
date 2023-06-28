@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## v0.1.180 (2023-06-28)
+
+
+- Add AWS::ApiGatewayV2::ApiMapping
+- Update AWS::Inspector::AssessmentTarget
+- Update AWS::Inspector::AssessmentTemplate
+- Update AWS::Inspector::ResourceGroup
+- Update AWS::NetworkManager::ConnectPeer
+- Update AWS::SNS::TopicPolicy
+
 ## v0.1.179 (2023-06-27)
 
 
