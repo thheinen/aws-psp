@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.181 (2023-06-30)
+
+
+- Add AWS::Comprehend::DocumentClassifier
+
 ## v0.1.180 (2023-06-28)
 
 
