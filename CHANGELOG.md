@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.1.182 (2023-07-05)
+
+
+- Add AWS::AutoScaling::AutoScalingGroup
+- Update AWS::S3Outposts::Endpoint
+
 ## v0.1.181 (2023-06-30)
 
 

@@ -30,6 +30,15 @@ property :customer_owned_ipv4_pool, String,
            The ID of the customer-owned IPv4 pool for the Endpoint. IP addresses will be allocated from this pool for the endpoint.
          DESCRIPTION
 
+property :failed_reason, Hash,
+         callbacks: {
+           "Subproperty `ErrorCode` is not a String" => lambda { |v| v[:ErrorCode].is_a? String },
+           "Subproperty `Message` is not a String" => lambda { |v| v[:Message].is_a? String },
+         },
+         description: <<~'DESCRIPTION'
+           The failure reason, if any, for a create or delete endpoint operation.
+         DESCRIPTION
+
 property :outpost_id, String,
          required: true,
          callbacks: {
@@ -69,6 +78,7 @@ rest_api_document "/AWS::S3Outposts::Endpoint"
 rest_property_map({
   access_type:              "AccessType",
   customer_owned_ipv4_pool: "CustomerOwnedIpv4Pool",
+  failed_reason:            "FailedReason",
   outpost_id:               "OutpostId",
   security_group_id:        "SecurityGroupId",
   subnet_id:                "SubnetId",
