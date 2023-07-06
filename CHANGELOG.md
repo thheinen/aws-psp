@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.183 (2023-07-06)
+
+
+- Add AWS::EC2::InstanceConnectEndpoint
+
 ## v0.1.182 (2023-07-05)
 
 
