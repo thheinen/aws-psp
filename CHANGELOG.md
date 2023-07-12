@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.1.184 (2023-07-12)
+
+
+- Add AWS::IAM::GroupPolicy
+- Add AWS::IAM::UserPolicy
+
 ## v0.1.183 (2023-07-06)
 
 
