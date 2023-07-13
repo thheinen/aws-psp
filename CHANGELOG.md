@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## v0.1.185 (2023-07-13)
+
+
+- Add AWS::Connect::Queue
+- Add AWS::Connect::RoutingProfile
+- Add AWS::IAM::RolePolicy
+
 ## v0.1.184 (2023-07-12)
 
 
