@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.186 (2023-07-14)
+
+
+- Update AWS::ApplicationInsights::Application
+
 ## v0.1.185 (2023-07-13)
 
 

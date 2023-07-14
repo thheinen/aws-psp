@@ -116,5 +116,5 @@ rest_property_map({
 })
 
 rest_post_only_properties %i{
-  resource_group_name
+  grouping_type resource_group_name
 }
