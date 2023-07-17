@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.1.187 (2023-07-17)
+
+
+- Add AWS::EC2::EIPAssociation
+- Add AWS::Lambda::Permission
+
 ## v0.1.186 (2023-07-14)
 
 
