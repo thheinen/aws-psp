@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## v0.1.188 (2023-07-18)
+
+
+- Add AWS::IAM::ManagedPolicy
+- Add AWS::SNS::TopicInlinePolicy
+- Update AWS::Transfer::Connector
+
 ## v0.1.187 (2023-07-17)
 
 

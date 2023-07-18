@@ -45,6 +45,8 @@ property :as2_config, Hash,
            "Subproperty `MdnSigningAlgorithm`is not one of `SHA256`, `SHA384`, `SHA512`, `SHA1`, `NONE`, `DEFAULT`" => lambda { |v| %w{SHA256 SHA384 SHA512 SHA1 NONE DEFAULT}.include? v[:MdnSigningAlgorithm] },
            "Subproperty `MdnResponse` is not a String" => lambda { |v| v[:MdnResponse].is_a? String },
            "Subproperty `MdnResponse`is not one of `SYNC`, `NONE`" => lambda { |v| %w{SYNC NONE}.include? v[:MdnResponse] },
+           "Subproperty `BasicAuthSecretId` is not a String" => lambda { |v| v[:BasicAuthSecretId].is_a? String },
+           "Subproperty `BasicAuthSecretId` needs to be 0..2048 characters" => lambda { |v| v[:BasicAuthSecretId].length >= 0 && v[:BasicAuthSecretId].length <= 2048 },
          },
          description: <<~'DESCRIPTION'
            Configuration for an AS2 connector.
