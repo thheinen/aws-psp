@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.189 (2023-07-19)
+
+
+- Add AWS::Logs::AccountPolicy
+
 ## v0.1.188 (2023-07-18)
 
 
