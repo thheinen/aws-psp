@@ -40,6 +40,11 @@ property :retention_properties, Hash,
            The retention duration of the memory store and the magnetic store.
          DESCRIPTION
 
+property :schema, Hash,
+         description: <<~'DESCRIPTION'
+           A Schema specifies the expected data model of the table.
+         DESCRIPTION
+
 property :table_name, String,
          callbacks: {
            "table_name is not a String" => lambda { |v| v.is_a? String },
@@ -65,6 +70,7 @@ rest_property_map({
   database_name:                   "DatabaseName",
   magnetic_store_write_properties: "MagneticStoreWriteProperties",
   retention_properties:            "RetentionProperties",
+  schema:                          "Schema",
   table_name:                      "TableName",
   tags:                            "Tags",
 })

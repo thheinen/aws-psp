@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.190 (2023-07-20)
+
+
+- Update AWS::Timestream::Table
+
 ## v0.1.189 (2023-07-19)
 
 
