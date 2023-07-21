@@ -69,6 +69,15 @@ property :multi_region, [TrueClass, FalseClass],
            Specifies whether the AWS KMS key should be Multi-Region. You can't change the MultiRegion value after the AWS KMS key is created.
          DESCRIPTION
 
+property :origin, String,
+         callbacks: {
+           "origin is not a String" => lambda { |v| v.is_a? String },
+           "originis not one of `AWS_KMS`, `EXTERNAL`" => lambda { |v| %w{AWS_KMS EXTERNAL}.include? v },
+         },
+         description: <<~'DESCRIPTION'
+           The source of the key material for the KMS key. You cannot change the origin after you create the KMS key. The default is AWS_KMS, which means that AWS KMS creates the key material.
+         DESCRIPTION
+
 property :pending_window_in_days, Integer,
          callbacks: {
            "pending_window_in_days is not a Integer" => lambda { |v| v.is_a? Integer },
@@ -97,6 +106,7 @@ rest_property_map({
   key_spec:               "KeySpec",
   key_usage:              "KeyUsage",
   multi_region:           "MultiRegion",
+  origin:                 "Origin",
   pending_window_in_days: "PendingWindowInDays",
   tags:                   "Tags",
 })
