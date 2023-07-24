@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.192 (2023-07-24)
+
+
+- Add AWS::Config::ConfigRule
+
 ## v0.1.191 (2023-07-21)
 
 
