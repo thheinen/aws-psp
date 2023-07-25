@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## v0.1.193 (2023-07-25)
+
+
+- Update AWS::EC2::Host
+- Add AWS::EC2::Route
+- Add AWS::GuardDuty::Detector
+- Update AWS::SageMaker::ImageVersion
+
 ## v0.1.192 (2023-07-24)
 
 

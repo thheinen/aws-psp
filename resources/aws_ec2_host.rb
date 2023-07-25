@@ -12,6 +12,14 @@ property :name, String,
          name_property: true,
          description: "Name of the resource, not desired state"
 
+property :asset_id, String,
+         callbacks: {
+           "asset_id is not a String" => lambda { |v| v.is_a? String },
+         },
+         description: <<~'DESCRIPTION'
+           The ID of the Outpost hardware asset.
+         DESCRIPTION
+
 property :auto_placement, String,
          callbacks: {
            "auto_placement is not a String" => lambda { |v| v.is_a? String },
@@ -74,6 +82,7 @@ rest_api_collection "/AWS::EC2::Host"
 rest_api_document "/AWS::EC2::Host"
 
 rest_property_map({
+  asset_id:          "AssetId",
   auto_placement:    "AutoPlacement",
   availability_zone: "AvailabilityZone",
   host_maintenance:  "HostMaintenance",
@@ -84,5 +93,5 @@ rest_property_map({
 })
 
 rest_post_only_properties %i{
-  availability_zone instance_family instance_type outpost_arn
+  asset_id availability_zone instance_family instance_type outpost_arn
 }
