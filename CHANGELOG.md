@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.1.194 (2023-07-26)
+
+
+- Add AWS::DMS::ReplicationConfig
+- Add AWS::SQS::QueueInlinePolicy
+
 ## v0.1.193 (2023-07-25)
 
 
