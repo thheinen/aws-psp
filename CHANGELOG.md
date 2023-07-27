@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## v0.1.195 (2023-07-27)
+
+
+- Update AWS::OpenSearchServerless::Collection
+- Update AWS::SageMaker::DataQualityJobDefinition
+- Update AWS::SageMaker::ModelBiasJobDefinition
+- Update AWS::SageMaker::ModelExplainabilityJobDefinition
+- Update AWS::SageMaker::ModelQualityJobDefinition
+
 ## v0.1.194 (2023-07-26)
 
 

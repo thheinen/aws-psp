@@ -108,5 +108,5 @@ rest_property_map({
 })
 
 rest_post_only_properties %i{
-  job_definition_name job_resources model_quality_app_specification model_quality_baseline_config model_quality_job_input model_quality_job_output_config network_config role_arn stopping_condition tags
+  endpoint_name job_definition_name job_resources model_quality_app_specification model_quality_baseline_config model_quality_job_input model_quality_job_output_config network_config role_arn stopping_condition tags
 }

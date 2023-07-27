@@ -49,7 +49,7 @@ property :tags, Array,
 property :type, Hash,
          callbacks: {
            "type is not a String" => lambda { |v| v.is_a? String },
-           "typeis not one of `SEARCH`, `TIMESERIES`" => lambda { |v| %w{SEARCH TIMESERIES}.include? v },
+           "typeis not one of `SEARCH`, `TIMESERIES`, `VECTORSEARCH`" => lambda { |v| %w{SEARCH TIMESERIES VECTORSEARCH}.include? v },
          },
          description: ""
 
