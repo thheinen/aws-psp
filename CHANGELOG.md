@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.1.196 (2023-07-28)
+
+
+- Update AWS::Neptune::DBCluster
+- Update AWS::Transfer::Connector
+
 ## v0.1.195 (2023-07-27)
 
 

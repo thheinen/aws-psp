@@ -24,7 +24,6 @@ property :access_role, String,
          DESCRIPTION
 
 property :as2_config, Hash,
-         required: true,
          callbacks: {
            "Subproperty `LocalProfileId` is not a String" => lambda { |v| v[:LocalProfileId].is_a? String },
            "Subproperty `LocalProfileId` needs to be 19..19 characters" => lambda { |v| v[:LocalProfileId].length >= 19 && v[:LocalProfileId].length <= 19 },
@@ -62,12 +61,22 @@ property :logging_role, String,
            Specifies the logging role for the connector.
          DESCRIPTION
 
+property :sftp_config, Hash,
+         callbacks: {
+           "Subproperty `UserSecretId` is not a String" => lambda { |v| v[:UserSecretId].is_a? String },
+           "Subproperty `UserSecretId` needs to be 1..2048 characters" => lambda { |v| v[:UserSecretId].length >= 1 && v[:UserSecretId].length <= 2048 },
+           "Subproperty `TrustedHostKeys` is not a Array" => lambda { |v| v[:TrustedHostKeys].is_a? Array },
+         },
+         description: <<~'DESCRIPTION'
+           Configuration for an SFTP connector.
+         DESCRIPTION
+
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
          },
          description: <<~'DESCRIPTION'
-           Key-value pairs that can be used to group and search for workflows. Tags are metadata attached to workflows for any purpose.
+           Key-value pairs that can be used to group and search for connectors. Tags are metadata attached to connectors for any purpose.
          DESCRIPTION
 
 property :url, String,
@@ -87,6 +96,7 @@ rest_property_map({
   access_role:  "AccessRole",
   as2_config:   "As2Config",
   logging_role: "LoggingRole",
+  sftp_config:  "SftpConfig",
   tags:         "Tags",
   url:          "Url",
 })

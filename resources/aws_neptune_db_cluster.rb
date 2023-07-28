@@ -70,6 +70,16 @@ property :db_instance_parameter_group_name, String,
            The name of the DB parameter group to apply to all instances of the DB cluster. Used only in case of a major EngineVersion upgrade request.
          DESCRIPTION
 
+property :db_port, Integer,
+         callbacks: {
+           "db_port is not a Integer" => lambda { |v| v.is_a? Integer },
+         },
+         description: <<~'DESCRIPTION'
+           The port number on which the DB instances in the DB cluster accept connections.
+            If not specified, the default port used is `8182`.
+            Note: `Port` property will soon be deprecated from this resource. Please update existing templates to rename it with new property `DBPort` having same functionalities.
+         DESCRIPTION
+
 property :db_subnet_group_name, String,
          callbacks: {
            "db_subnet_group_name is not a String" => lambda { |v| v.is_a? String },
@@ -231,6 +241,7 @@ rest_property_map({
   db_cluster_identifier:            "DBClusterIdentifier",
   db_cluster_parameter_group_name:  "DBClusterParameterGroupName",
   db_instance_parameter_group_name: "DBInstanceParameterGroupName",
+  db_port:                          "DBPort",
   db_subnet_group_name:             "DBSubnetGroupName",
   deletion_protection:              "DeletionProtection",
   enable_cloudwatch_logs_exports:   "EnableCloudwatchLogsExports",
