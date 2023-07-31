@@ -125,5 +125,5 @@ rest_property_map({
 })
 
 rest_post_only_properties %i{
-  execution_role_arn logging_config public_type_arn publisher_id type type_name type_name_alias
+  logging_config
 }

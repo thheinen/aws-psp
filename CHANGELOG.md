@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.197 (2023-07-31)
+
+
+- Update AWS::CloudFormation::TypeActivation
+
 ## v0.1.196 (2023-07-28)
 
 
