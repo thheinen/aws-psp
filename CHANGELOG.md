@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.198 (2023-08-01)
+
+
+- Add AWS::EC2::NetworkInterfaceAttachment
+
 ## v0.1.197 (2023-07-31)
 
 
