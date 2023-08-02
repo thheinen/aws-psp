@@ -24,6 +24,12 @@ property :max_duration, Number,
          },
          description: ""
 
+property :max_gpus, Number,
+         callbacks: {
+           "max_gpus is not a Number" => lambda { |v| v.is_a? Number },
+         },
+         description: ""
+
 property :max_runs, Number,
          callbacks: {
            "max_runs is not a Number" => lambda { |v| v.is_a? Number },
@@ -52,6 +58,7 @@ rest_api_document "/AWS::Omics::RunGroup"
 rest_property_map({
   max_cpus:     "MaxCpus",
   max_duration: "MaxDuration",
+  max_gpus:     "MaxGpus",
   max_runs:     "MaxRuns",
   name:         "Name",
   tags:         "Tags",

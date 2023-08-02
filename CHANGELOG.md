@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.1.199 (2023-08-02)
+
+
+- Update AWS::Omics::RunGroup
+- Update AWS::Omics::Workflow
+
 ## v0.1.198 (2023-08-01)
 
 

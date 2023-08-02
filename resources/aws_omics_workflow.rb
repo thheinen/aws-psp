@@ -12,6 +12,14 @@ property :name, String,
          name_property: true,
          description: "Name of the resource, not desired state"
 
+property :accelerators, Hash,
+         callbacks: {
+           "accelerators is not a String" => lambda { |v| v.is_a? String },
+           "accelerators needs to be 1..64 characters" => lambda { |v| v.length >= 1 && v.length <= 64 },
+           "acceleratorsis not one of `GPU`" => lambda { |v| %w{GPU}.include? v },
+         },
+         description: ""
+
 property :definition_uri, String,
          callbacks: {
            "definition_uri is not a String" => lambda { |v| v.is_a? String },
@@ -32,7 +40,7 @@ property :engine, Hash,
          callbacks: {
            "engine is not a String" => lambda { |v| v.is_a? String },
            "engine needs to be 1..64 characters" => lambda { |v| v.length >= 1 && v.length <= 64 },
-           "engineis not one of `WDL`, `NEXTFLOW`" => lambda { |v| %w{WDL NEXTFLOW}.include? v },
+           "engineis not one of `WDL`, `NEXTFLOW`, `CWL`" => lambda { |v| %w{WDL NEXTFLOW CWL}.include? v },
          },
          description: ""
 
@@ -76,6 +84,7 @@ rest_api_collection "/AWS::Omics::Workflow"
 rest_api_document "/AWS::Omics::Workflow"
 
 rest_property_map({
+  accelerators:       "Accelerators",
   definition_uri:     "DefinitionUri",
   description:        "Description",
   engine:             "Engine",
@@ -87,5 +96,5 @@ rest_property_map({
 })
 
 rest_post_only_properties %i{
-  definition_uri engine main parameter_template storage_capacity
+  accelerators definition_uri engine main parameter_template storage_capacity
 }
