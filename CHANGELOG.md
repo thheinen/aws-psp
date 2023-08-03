@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## v0.1.200 (2023-08-03)
+
+
+- Add AWS::MediaTailor::Channel
+- Add AWS::MediaTailor::ChannelPolicy
+- Add AWS::MediaTailor::LiveSource
+- Add AWS::MediaTailor::SourceLocation
+- Add AWS::MediaTailor::VodSource
+
 ## v0.1.199 (2023-08-02)
 
 
