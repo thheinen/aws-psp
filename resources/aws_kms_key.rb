@@ -12,6 +12,14 @@ property :name, String,
          name_property: true,
          description: "Name of the resource, not desired state"
 
+property :bypass_policy_lockout_safety_check, [TrueClass, FalseClass],
+         callbacks: {
+           "bypass_policy_lockout_safety_check is not a Boolean" => lambda { |v| v.is_a? Boolean },
+         },
+         description: <<~'DESCRIPTION'
+           Skips ("bypasses") the key policy lockout safety check. The default value is false.
+         DESCRIPTION
+
 property :description, String,
          callbacks: {
            "description is not a String" => lambda { |v| v.is_a? String },
@@ -38,7 +46,6 @@ property :enabled, [TrueClass, FalseClass],
          DESCRIPTION
 
 property :key_policy, [Hash, String],
-         required: true,
          description: <<~'DESCRIPTION'
            The key policy that authorizes use of the AWS KMS key. The key policy must observe the following rules.
          DESCRIPTION
@@ -99,15 +106,16 @@ rest_api_collection "/AWS::KMS::Key"
 rest_api_document "/AWS::KMS::Key"
 
 rest_property_map({
-  description:            "Description",
-  enable_key_rotation:    "EnableKeyRotation",
-  enabled:                "Enabled",
-  key_policy:             "KeyPolicy",
-  key_spec:               "KeySpec",
-  key_usage:              "KeyUsage",
-  multi_region:           "MultiRegion",
-  origin:                 "Origin",
-  pending_window_in_days: "PendingWindowInDays",
-  tags:                   "Tags",
+  bypass_policy_lockout_safety_check: "BypassPolicyLockoutSafetyCheck",
+  description:                        "Description",
+  enable_key_rotation:                "EnableKeyRotation",
+  enabled:                            "Enabled",
+  key_policy:                         "KeyPolicy",
+  key_spec:                           "KeySpec",
+  key_usage:                          "KeyUsage",
+  multi_region:                       "MultiRegion",
+  origin:                             "Origin",
+  pending_window_in_days:             "PendingWindowInDays",
+  tags:                               "Tags",
 })
 

@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## v0.1.201 (2023-08-04)
+
+
+- Update AWS::KMS::Key
+- Add AWS::VpcLattice::Service
+- Add AWS::VpcLattice::ServiceNetwork
+- Add AWS::VpcLattice::TargetGroup
+
 ## v0.1.200 (2023-08-03)
 
 
