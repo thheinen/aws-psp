@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## v0.1.202 (2023-08-05)
+
+
+- Add AWS::VpcLattice::AuthPolicy
+- Add AWS::VpcLattice::Listener
+- Add AWS::VpcLattice::ResourcePolicy
+- Add AWS::VpcLattice::Rule
+- Add AWS::VpcLattice::ServiceNetworkServiceAssociation
+- Add AWS::VpcLattice::ServiceNetworkVpcAssociation
+
 ## v0.1.201 (2023-08-04)
 
 
