@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.203 (2023-08-07)
+
+
+- Update AWS::ECR::Repository
+
 ## v0.1.202 (2023-08-05)
 
 

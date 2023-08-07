@@ -12,6 +12,12 @@ property :name, String,
          name_property: true,
          description: "Name of the resource, not desired state"
 
+property :empty_on_delete, Hash,
+         callbacks: {
+           "empty_on_delete is not a Boolean" => lambda { |v| v.is_a? Boolean },
+         },
+         description: ""
+
 property :encryption_configuration, Hash,
          description: ""
 
@@ -58,6 +64,7 @@ rest_api_collection "/AWS::ECR::Repository"
 rest_api_document "/AWS::ECR::Repository"
 
 rest_property_map({
+  empty_on_delete:              "EmptyOnDelete",
   encryption_configuration:     "EncryptionConfiguration",
   image_scanning_configuration: "ImageScanningConfiguration",
   image_tag_mutability:         "ImageTagMutability",
