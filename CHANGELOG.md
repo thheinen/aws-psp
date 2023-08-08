@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.1.204 (2023-08-08)
+
+
+- Update AWS::EC2::NetworkInterface
+- Update AWS::IVS::RecordingConfiguration
+
 ## v0.1.203 (2023-08-07)
 
 

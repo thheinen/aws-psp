@@ -20,14 +20,6 @@ property :description, String,
            A description for the network interface.
          DESCRIPTION
 
-property :enable_primary_ipv6, [TrueClass, FalseClass],
-         callbacks: {
-           "enable_primary_ipv6 is not a Boolean" => lambda { |v| v.is_a? Boolean },
-         },
-         description: <<~'DESCRIPTION'
-           If you have instances or ENIs that rely on the IPv6 address not changing, to avoid disrupting traffic to instances or ENIs, you can enable a primary IPv6 address. Enable this option to automatically assign an IPv6 associated with the ENI attached to your instance to be the primary IPv6 address. When you enable an IPv6 address to be a primary IPv6, you cannot disable it. Traffic will be routed to the primary IPv6 address until the instance is terminated or the ENI is detached. If you have multiple IPv6 addresses associated with an ENI and you enable a primary IPv6 address, the first IPv6 address associated with the ENI becomes the primary IPv6 address.
-         DESCRIPTION
-
 property :group_set, Array,
          callbacks: {
            "group_set is not a Array" => lambda { |v| v.is_a? Array },
@@ -44,6 +36,22 @@ property :interface_type, String,
            Indicates the type of network interface.
          DESCRIPTION
 
+property :ipv4_prefix_count, Integer,
+         callbacks: {
+           "ipv4_prefix_count is not a Integer" => lambda { |v| v.is_a? Integer },
+         },
+         description: <<~'DESCRIPTION'
+           The number of IPv4 prefixes to assign to a network interface. When you specify a number of IPv4 prefixes, Amazon EC2 selects these prefixes from your existing subnet CIDR reservations, if available, or from free spaces in the subnet. By default, these will be /28 prefixes. You can't specify a count of IPv4 prefixes if you've specified one of the following: specific IPv4 prefixes, specific private IPv4 addresses, or a count of private IPv4 addresses.
+         DESCRIPTION
+
+property :ipv4_prefixes, Array,
+         callbacks: {
+           "ipv4_prefixes is not a Array" => lambda { |v| v.is_a? Array },
+         },
+         description: <<~'DESCRIPTION'
+           Assigns a list of IPv4 prefixes to the network interface. If you want EC2 to automatically assign IPv4 prefixes, use the Ipv4PrefixCount property and do not specify this property. Presently, only /28 prefixes are supported. You can't specify IPv4 prefixes if you've specified one of the following: a count of IPv4 prefixes, specific private IPv4 addresses, or a count of private IPv4 addresses.
+         DESCRIPTION
+
 property :ipv6_address_count, Integer,
          callbacks: {
            "ipv6_address_count is not a Integer" => lambda { |v| v.is_a? Integer },
@@ -58,6 +66,22 @@ property :ipv6_addresses, Array,
          },
          description: <<~'DESCRIPTION'
            One or more specific IPv6 addresses from the IPv6 CIDR block range of your subnet to associate with the network interface. If you're specifying a number of IPv6 addresses, use the Ipv6AddressCount property and don't specify this property.
+         DESCRIPTION
+
+property :ipv6_prefix_count, Integer,
+         callbacks: {
+           "ipv6_prefix_count is not a Integer" => lambda { |v| v.is_a? Integer },
+         },
+         description: <<~'DESCRIPTION'
+           The number of IPv6 prefixes to assign to a network interface. When you specify a number of IPv6 prefixes, Amazon EC2 selects these prefixes from your existing subnet CIDR reservations, if available, or from free spaces in the subnet. By default, these will be /80 prefixes. You can't specify a count of IPv6 prefixes if you've specified one of the following: specific IPv6 prefixes, specific IPv6 addresses, or a count of IPv6 addresses.
+         DESCRIPTION
+
+property :ipv6_prefixes, Array,
+         callbacks: {
+           "ipv6_prefixes is not a Array" => lambda { |v| v.is_a? Array },
+         },
+         description: <<~'DESCRIPTION'
+           Assigns a list of IPv6 prefixes to the network interface. If you want EC2 to automatically assign IPv6 prefixes, use the Ipv6PrefixCount property and do not specify this property. Presently, only /80 prefixes are supported. You can't specify IPv6 prefixes if you've specified one of the following: a count of IPv6 prefixes, specific IPv6 addresses, or a count of IPv6 addresses.
          DESCRIPTION
 
 property :private_ip_address, String,
@@ -115,11 +139,14 @@ rest_api_document "/AWS::EC2::NetworkInterface"
 
 rest_property_map({
   description:                        "Description",
-  enable_primary_ipv6:                "EnablePrimaryIpv6",
   group_set:                          "GroupSet",
   interface_type:                     "InterfaceType",
+  ipv4_prefix_count:                  "Ipv4PrefixCount",
+  ipv4_prefixes:                      "Ipv4Prefixes",
   ipv6_address_count:                 "Ipv6AddressCount",
   ipv6_addresses:                     "Ipv6Addresses",
+  ipv6_prefix_count:                  "Ipv6PrefixCount",
+  ipv6_prefixes:                      "Ipv6Prefixes",
   private_ip_address:                 "PrivateIpAddress",
   private_ip_addresses:               "PrivateIpAddresses",
   secondary_private_ip_address_count: "SecondaryPrivateIpAddressCount",
