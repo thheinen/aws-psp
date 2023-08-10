@@ -51,6 +51,7 @@ property :default_instance_warmup, Integer,
 property :desired_capacity, String,
          callbacks: {
            "desired_capacity is not a String" => lambda { |v| v.is_a? String },
+           "desired_capacity must match pattern ^[0-9]+$" => lambda { |v| v =~ Regexp.new("/^[0-9]+$/") },
          },
          description: ""
 
@@ -114,6 +115,7 @@ property :max_size, String,
          required: true,
          callbacks: {
            "max_size is not a String" => lambda { |v| v.is_a? String },
+           "max_size must match pattern ^[0-9]+$" => lambda { |v| v =~ Regexp.new("/^[0-9]+$/") },
          },
          description: ""
 
@@ -127,6 +129,7 @@ property :min_size, String,
          required: true,
          callbacks: {
            "min_size is not a String" => lambda { |v| v.is_a? String },
+           "min_size must match pattern ^[0-9]+$" => lambda { |v| v =~ Regexp.new("/^[0-9]+$/") },
          },
          description: ""
 
@@ -141,7 +144,6 @@ property :new_instances_protected_from_scale_in, [TrueClass, FalseClass],
 
 property :notification_configuration, Hash,
          callbacks: {
-           "Subproperty `TopicARN` is not a String" => lambda { |v| v[:TopicARN].is_a? String },
            "Subproperty `NotificationTypes` is not a Array" => lambda { |v| v[:NotificationTypes].is_a? Array },
          },
          description: ""

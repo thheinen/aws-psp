@@ -44,7 +44,7 @@ property :flow_name, String,
 property :flow_status, String,
          callbacks: {
            "flow_status is not a String" => lambda { |v| v.is_a? String },
-           "flow_statusis not one of `Active`, `Suspended`" => lambda { |v| %w{Active Suspended}.include? v },
+           "flow_statusis not one of `Active`, `Suspended`, `Draft`" => lambda { |v| %w{Active Suspended Draft}.include? v },
          },
          description: <<~'DESCRIPTION'
            Flow activation status for Scheduled- and Event-triggered flows

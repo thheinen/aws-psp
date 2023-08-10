@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## v0.1.205 (2023-08-10)
+
+
+- Update AWS::AppFlow::Flow
+- Update AWS::AutoScaling::AutoScalingGroup
+- Add AWS::DataSync::LocationAzureBlob
+
 ## v0.1.204 (2023-08-08)
 
 
