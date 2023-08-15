@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.206 (2023-08-15)
+
+
+- Add AWS::ElasticLoadBalancingV2::LoadBalancer
+
 ## v0.1.205 (2023-08-10)
 
 
