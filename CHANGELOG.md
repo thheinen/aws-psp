@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## v0.1.207 (2023-08-16)
+
+
+- Add AWS::CloudFormation::Stack
+- Update AWS::EC2::EIPAssociation
+- Add AWS::Route53Resolver::OutpostResolver
+
 ## v0.1.206 (2023-08-15)
 
 

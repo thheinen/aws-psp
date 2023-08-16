@@ -65,5 +65,5 @@ rest_property_map({
 })
 
 rest_post_only_properties %i{
-  allocation_id instance_id network_interface_id private_ip_address
+  allocation_id eip instance_id network_interface_id private_ip_address
 }
