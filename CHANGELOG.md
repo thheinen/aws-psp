@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.208 (2023-08-17)
+
+
+- Add AWS::EntityResolution::SchemaMapping
+
 ## v0.1.207 (2023-08-16)
 
 
