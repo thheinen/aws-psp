@@ -12,11 +12,8 @@ property :name, String,
          name_property: true,
          description: "Name of the resource, not desired state"
 
-property :policy_document, Hash,
+property :policy_document, [Hash, String],
          required: true,
-         callbacks: {
-           "policy_document is not a Object" => lambda { |v| v.is_a? Object },
-         },
          description: ""
 
 property :policy_name, String,

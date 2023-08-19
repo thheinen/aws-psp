@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.1.209 (2023-08-19)
+
+
+- Add AWS::EMR::WALWorkspace
+- Update AWS::IoT::Policy
+
 ## v0.1.208 (2023-08-17)
 
 
