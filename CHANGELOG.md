@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.1.210 (2023-08-21)
+
+
+- Update AWS::Lambda::Function
+- Update AWS::MSK::Cluster
+
 ## v0.1.209 (2023-08-19)
 
 

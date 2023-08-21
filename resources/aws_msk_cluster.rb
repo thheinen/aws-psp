@@ -120,5 +120,5 @@ rest_property_map({
 })
 
 rest_post_only_properties %i{
-  broker_node_group_info/broker_az_distribution broker_node_group_info/client_subnets broker_node_group_info/security_groups cluster_name encryption_info/encryption_at_rest encryption_info/encryption_in_transit/in_cluster tags
+  broker_node_group_info/broker_az_distribution broker_node_group_info/client_subnets broker_node_group_info/security_groups cluster_name encryption_info/encryption_at_rest encryption_info/encryption_in_transit/in_cluster
 }
