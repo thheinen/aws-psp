@@ -21,14 +21,14 @@ property :architectures, Array,
 property :code, Hash,
          required: true,
          callbacks: {
+           "Subproperty `S3ObjectVersion` is not a String" => lambda { |v| v[:S3ObjectVersion].is_a? String },
+           "Subproperty `S3ObjectVersion` needs to be 1..1024 characters" => lambda { |v| v[:S3ObjectVersion].length >= 1 && v[:S3ObjectVersion].length <= 1024 },
            "Subproperty `S3Bucket` is not a String" => lambda { |v| v[:S3Bucket].is_a? String },
            "Subproperty `S3Bucket` needs to be 3..63 characters" => lambda { |v| v[:S3Bucket].length >= 3 && v[:S3Bucket].length <= 63 },
            "Subproperty `S3Bucket` must match pattern ^[0-9A-Za-z\.\-_]*(?<!\.)$" => lambda { |v| v[:S3Bucket] =~ Regexp.new("/^[0-9A-Za-z\.\-_]*(?<!\.)$/") },
+           "Subproperty `ZipFile` is not a String" => lambda { |v| v[:ZipFile].is_a? String },
            "Subproperty `S3Key` is not a String" => lambda { |v| v[:S3Key].is_a? String },
            "Subproperty `S3Key` needs to be 1..1024 characters" => lambda { |v| v[:S3Key].length >= 1 && v[:S3Key].length <= 1024 },
-           "Subproperty `S3ObjectVersion` is not a String" => lambda { |v| v[:S3ObjectVersion].is_a? String },
-           "Subproperty `S3ObjectVersion` needs to be 1..1024 characters" => lambda { |v| v[:S3ObjectVersion].length >= 1 && v[:S3ObjectVersion].length <= 1024 },
-           "Subproperty `ZipFile` is not a String" => lambda { |v| v[:ZipFile].is_a? String },
            "Subproperty `ImageUri` is not a String" => lambda { |v| v[:ImageUri].is_a? String },
          },
          description: <<~'DESCRIPTION'
@@ -105,9 +105,9 @@ property :handler, String,
 
 property :image_config, Hash,
          callbacks: {
-           "Subproperty `EntryPoint` is not a Array" => lambda { |v| v[:EntryPoint].is_a? Array },
-           "Subproperty `Command` is not a Array" => lambda { |v| v[:Command].is_a? Array },
            "Subproperty `WorkingDirectory` is not a String" => lambda { |v| v[:WorkingDirectory].is_a? String },
+           "Subproperty `Command` is not a Array" => lambda { |v| v[:Command].is_a? Array },
+           "Subproperty `EntryPoint` is not a Array" => lambda { |v| v[:EntryPoint].is_a? Array },
          },
          description: <<~'DESCRIPTION'
            ImageConfig

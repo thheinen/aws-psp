@@ -131,5 +131,5 @@ rest_property_map({
 })
 
 rest_post_only_properties %i{
-  name release_label type
+  name type
 }

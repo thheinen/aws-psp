@@ -53,6 +53,14 @@ property :position, Integer,
            Findings filter position.
          DESCRIPTION
 
+property :tags, Array,
+         callbacks: {
+           "tags is not a Array" => lambda { |v| v.is_a? Array },
+         },
+         description: <<~'DESCRIPTION'
+           A collection of tags associated with a resource
+         DESCRIPTION
+
 # API URLs and mappings
 rest_api_collection "/AWS::Macie::FindingsFilter"
 rest_api_document "/AWS::Macie::FindingsFilter"
@@ -63,5 +71,6 @@ rest_property_map({
   finding_criteria: "FindingCriteria",
   name:             "Name",
   position:         "Position",
+  tags:             "Tags",
 })
 

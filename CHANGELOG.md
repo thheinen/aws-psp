@@ -1,5 +1,20 @@
 # CHANGELOG
 
+## v0.1.211 (2023-08-22)
+
+
+- Update AWS::EMRServerless::Application
+- Update AWS::Lambda::Function
+- Update AWS::Macie::FindingsFilter
+- Add AWS::WorkSpacesWeb::BrowserSettings
+- Add AWS::WorkSpacesWeb::IdentityProvider
+- Add AWS::WorkSpacesWeb::IpAccessSettings
+- Add AWS::WorkSpacesWeb::NetworkSettings
+- Add AWS::WorkSpacesWeb::Portal
+- Add AWS::WorkSpacesWeb::TrustStore
+- Add AWS::WorkSpacesWeb::UserAccessLoggingSettings
+- Add AWS::WorkSpacesWeb::UserSettings
+
 ## v0.1.210 (2023-08-21)
 
 
