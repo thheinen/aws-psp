@@ -25,7 +25,7 @@ property :app_template_body, String,
          required: true,
          callbacks: {
            "app_template_body is not a String" => lambda { |v| v.is_a? String },
-           "app_template_body needs to be 0..5000 characters" => lambda { |v| v.length >= 0 && v.length <= 5000 },
+           "app_template_body needs to be 0..409600 characters" => lambda { |v| v.length >= 0 && v.length <= 409600 },
            "app_template_body must match pattern ^[\w\s:,-\.'\/{}\[\]:"]+$" => lambda { |v| v =~ Regexp.new("/^[\w\s:,-\.'\/{}\[\]:"]+$/") },
          },
          description: <<~'DESCRIPTION'
@@ -41,6 +41,14 @@ property :description, String,
            App description.
          DESCRIPTION
 
+property :event_subscriptions, Array,
+         callbacks: {
+           "event_subscriptions is not a Array" => lambda { |v| v.is_a? Array },
+         },
+         description: <<~'DESCRIPTION'
+           The list of events you would like to subscribe and get notification for.
+         DESCRIPTION
+
 property :name, String,
          name_property: true,
          required: true,
@@ -51,6 +59,16 @@ property :name, String,
          description: <<~'DESCRIPTION'
            Name of the app.
          DESCRIPTION
+
+property :permission_model, Hash,
+         callbacks: {
+           "Subproperty `Type` is not a String" => lambda { |v| v[:Type].is_a? String },
+           "Subproperty `Type`is not one of `LegacyIAMUser`, `RoleBased`" => lambda { |v| %w{LegacyIAMUser RoleBased}.include? v[:Type] },
+           "Subproperty `InvokerRoleName` is not a String" => lambda { |v| v[:InvokerRoleName].is_a? String },
+           "Subproperty `InvokerRoleName` must match pattern ((\u002F[\u0021-\u007E]+\u002F){1,511})?[A-Za-z0-9+=,.@_/-]{1,64}" => lambda { |v| v[:InvokerRoleName] =~ Regexp.new("/((\u002F[\u0021-\u007E]+\u002F){1,511})?[A-Za-z0-9+=,.@_/-]{1,64}/") },
+           "Subproperty `CrossAccountRoleArns` is not a Array" => lambda { |v| v[:CrossAccountRoleArns].is_a? Array },
+         },
+         description: ""
 
 property :resiliency_policy_arn, String,
          callbacks: {
@@ -84,7 +102,9 @@ rest_property_map({
   app_assessment_schedule: "AppAssessmentSchedule",
   app_template_body:       "AppTemplateBody",
   description:             "Description",
+  event_subscriptions:     "EventSubscriptions",
   name:                    "Name",
+  permission_model:        "PermissionModel",
   resiliency_policy_arn:   "ResiliencyPolicyArn",
   resource_mappings:       "ResourceMappings",
   tags:                    "Tags",

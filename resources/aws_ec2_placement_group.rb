@@ -56,5 +56,5 @@ rest_property_map({
 })
 
 rest_post_only_properties %i{
-  partition_count spread_level strategy
+  partition_count spread_level strategy tags
 }

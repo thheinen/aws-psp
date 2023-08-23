@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## v0.1.212 (2023-08-23)
+
+
+- Update AWS::EC2::PlacementGroup
+- Add AWS::EntityResolution::MatchingWorkflow
+- Update AWS::ResilienceHub::App
+- Add AWS::S3::BucketPolicy
+
 ## v0.1.211 (2023-08-22)
 
 
