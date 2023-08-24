@@ -79,6 +79,13 @@ property :instance_id, String,
          },
          description: ""
 
+property :instance_maintenance_policy, Hash,
+         callbacks: {
+           "Subproperty `MaxHealthyPercentage` is not a Integer" => lambda { |v| v[:MaxHealthyPercentage].is_a? Integer },
+           "Subproperty `MinHealthyPercentage` is not a Integer" => lambda { |v| v[:MinHealthyPercentage].is_a? Integer },
+         },
+         description: ""
+
 property :launch_configuration_name, String,
          callbacks: {
            "launch_configuration_name is not a String" => lambda { |v| v.is_a? String },
@@ -206,6 +213,7 @@ rest_property_map({
   health_check_grace_period:             "HealthCheckGracePeriod",
   health_check_type:                     "HealthCheckType",
   instance_id:                           "InstanceId",
+  instance_maintenance_policy:           "InstanceMaintenancePolicy",
   launch_configuration_name:             "LaunchConfigurationName",
   launch_template:                       "LaunchTemplate",
   lifecycle_hook_specification_list:     "LifecycleHookSpecificationList",

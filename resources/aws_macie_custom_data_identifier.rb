@@ -63,6 +63,14 @@ property :regex, String,
            Regular expression for custom data identifier.
          DESCRIPTION
 
+property :tags, Array,
+         callbacks: {
+           "tags is not a Array" => lambda { |v| v.is_a? Array },
+         },
+         description: <<~'DESCRIPTION'
+           A collection of tags associated with a resource
+         DESCRIPTION
+
 # API URLs and mappings
 rest_api_collection "/AWS::Macie::CustomDataIdentifier"
 rest_api_document "/AWS::Macie::CustomDataIdentifier"
@@ -74,6 +82,7 @@ rest_property_map({
   maximum_match_distance: "MaximumMatchDistance",
   name:                   "Name",
   regex:                  "Regex",
+  tags:                   "Tags",
 })
 
 rest_post_only_properties %i{

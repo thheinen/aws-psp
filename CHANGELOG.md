@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## v0.1.213 (2023-08-24)
+
+
+- Update AWS::AutoScaling::AutoScalingGroup
+- Update AWS::EMRServerless::Application
+- Update AWS::Macie::CustomDataIdentifier
+
 ## v0.1.212 (2023-08-23)
 
 
