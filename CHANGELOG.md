@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.214 (2023-08-25)
+
+
+- Update AWS::RolesAnywhere::TrustAnchor
+
 ## v0.1.213 (2023-08-24)
 
 

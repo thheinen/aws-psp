@@ -26,6 +26,12 @@ property :name, String,
          },
          description: ""
 
+property :notification_settings, Array,
+         callbacks: {
+           "notification_settings is not a Array" => lambda { |v| v.is_a? Array },
+         },
+         description: ""
+
 property :source, Hash,
          required: true,
          description: ""
@@ -41,9 +47,10 @@ rest_api_collection "/AWS::RolesAnywhere::TrustAnchor"
 rest_api_document "/AWS::RolesAnywhere::TrustAnchor"
 
 rest_property_map({
-  enabled: "Enabled",
-  name:    "Name",
-  source:  "Source",
-  tags:    "Tags",
+  enabled:               "Enabled",
+  name:                  "Name",
+  notification_settings: "NotificationSettings",
+  source:                "Source",
+  tags:                  "Tags",
 })
 
