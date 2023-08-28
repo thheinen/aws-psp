@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## v0.1.215 (2023-08-28)
+
+
+- Update AWS::Connect::RoutingProfile
+- Add AWS::PCAConnectorAD::Connector
+- Add AWS::PCAConnectorAD::DirectoryRegistration
+- Add AWS::PCAConnectorAD::ServicePrincipalName
+- Add AWS::PCAConnectorAD::Template
+- Add AWS::PCAConnectorAD::TemplateGroupAccessControlEntry
+
 ## v0.1.214 (2023-08-25)
 
 

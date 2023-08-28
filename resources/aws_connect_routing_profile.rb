@@ -12,6 +12,15 @@ property :name, String,
          name_property: true,
          description: "Name of the resource, not desired state"
 
+property :agent_availability_timer, String,
+         callbacks: {
+           "agent_availability_timer is not a String" => lambda { |v| v.is_a? String },
+           "agent_availability_timeris not one of `TIME_SINCE_LAST_ACTIVITY`, `TIME_SINCE_LAST_INBOUND`" => lambda { |v| %w{TIME_SINCE_LAST_ACTIVITY TIME_SINCE_LAST_INBOUND}.include? v },
+         },
+         description: <<~'DESCRIPTION'
+           Whether agents with this routing profile will have their routing order calculated based on longest idle time or time since their last inbound contact.
+         DESCRIPTION
+
 property :default_outbound_queue_arn, String,
          required: true,
          callbacks: {
@@ -83,6 +92,7 @@ rest_api_collection "/AWS::Connect::RoutingProfile"
 rest_api_document "/AWS::Connect::RoutingProfile"
 
 rest_property_map({
+  agent_availability_timer:   "AgentAvailabilityTimer",
   default_outbound_queue_arn: "DefaultOutboundQueueArn",
   description:                "Description",
   instance_arn:               "InstanceArn",
