@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## v0.1.216 (2023-08-29)
+
+
+- Update AWS::Grafana::Workspace
+- Add AWS::VpcLattice::AccessLogSubscription
+- Update AWS::VpcLattice::TargetGroup
+
 ## v0.1.215 (2023-08-28)
 
 

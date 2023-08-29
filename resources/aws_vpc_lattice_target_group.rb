@@ -21,6 +21,8 @@ property :config, Hash,
            "Subproperty `ProtocolVersion`is not one of `HTTP1`, `HTTP2`, `GRPC`" => lambda { |v| %w{HTTP1 HTTP2 GRPC}.include? v[:ProtocolVersion] },
            "Subproperty `IpAddressType` is not a String" => lambda { |v| v[:IpAddressType].is_a? String },
            "Subproperty `IpAddressType`is not one of `IPV4`, `IPV6`" => lambda { |v| %w{IPV4 IPV6}.include? v[:IpAddressType] },
+           "Subproperty `LambdaEventStructureVersion` is not a String" => lambda { |v| v[:LambdaEventStructureVersion].is_a? String },
+           "Subproperty `LambdaEventStructureVersion`is not one of `V1`, `V2`" => lambda { |v| %w{V1 V2}.include? v[:LambdaEventStructureVersion] },
            "Subproperty `VpcIdentifier` is not a String" => lambda { |v| v[:VpcIdentifier].is_a? String },
            "Subproperty `VpcIdentifier` needs to be 5..2048 characters" => lambda { |v| v[:VpcIdentifier].length >= 5 && v[:VpcIdentifier].length <= 2048 },
            "Subproperty `VpcIdentifier` must match pattern ^vpc-(([0-9a-z]{8})|([0-9a-z]{17}))$" => lambda { |v| v[:VpcIdentifier] =~ Regexp.new("/^vpc-(([0-9a-z]{8})|([0-9a-z]{17}))$/") },
@@ -69,5 +71,5 @@ rest_property_map({
 })
 
 rest_post_only_properties %i{
-  config/ip_address_type config/port config/protocol config/protocol_version config/vpc_identifier name type
+  config/ip_address_type config/lambda_event_structure_version config/port config/protocol config/protocol_version config/vpc_identifier name type
 }

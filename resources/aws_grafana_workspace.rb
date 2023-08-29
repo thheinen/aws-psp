@@ -61,7 +61,7 @@ property :grafana_version, String,
            "grafana_version needs to be 1..255 characters" => lambda { |v| v.length >= 1 && v.length <= 255 },
          },
          description: <<~'DESCRIPTION'
-           The version of Grafana to support in your workspace. For region ap-northeast-2, only version 8.4 is supported.
+           The version of Grafana to support in your workspace.
          DESCRIPTION
 
 property :name, String,
@@ -169,5 +169,5 @@ rest_property_map({
 })
 
 rest_post_only_properties %i{
-  client_token
+  client_token grafana_version
 }
