@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## v0.1.217 (2023-08-31)
+
+
+- Add AWS::CleanRooms::AnalysisTemplate
+- Add AWS::Connect::View
+- Add AWS::Connect::ViewVersion
+
 ## v0.1.216 (2023-08-29)
 
 
