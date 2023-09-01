@@ -113,6 +113,19 @@ property :tags, Array,
            An array of key-value pairs to apply to this resource.
          DESCRIPTION
 
+property :task_report_config, Hash,
+         callbacks: {
+           "Subproperty `Destination` is not a Object" => lambda { |v| v[:Destination].is_a? Object },
+           "Subproperty `OutputType` is not a String" => lambda { |v| v[:OutputType].is_a? String },
+           "Subproperty `OutputType`is not one of `SUMMARY_ONLY`, `STANDARD`" => lambda { |v| %w{SUMMARY_ONLY STANDARD}.include? v[:OutputType] },
+           "Subproperty `ReportLevel` is not a String" => lambda { |v| v[:ReportLevel].is_a? String },
+           "Subproperty `ReportLevel`is not one of `ERRORS_ONLY`, `SUCCESSES_AND_ERRORS`" => lambda { |v| %w{ERRORS_ONLY SUCCESSES_AND_ERRORS}.include? v[:ReportLevel] },
+           "Subproperty `ObjectVersionIds` is not a String" => lambda { |v| v[:ObjectVersionIds].is_a? String },
+           "Subproperty `ObjectVersionIds`is not one of `INCLUDE`, `NONE`" => lambda { |v| %w{INCLUDE NONE}.include? v[:ObjectVersionIds] },
+           "Subproperty `Overrides` is not a Object" => lambda { |v| v[:Overrides].is_a? Object },
+         },
+         description: ""
+
 # API URLs and mappings
 rest_api_collection "/AWS::DataSync::Task"
 rest_api_document "/AWS::DataSync::Task"
@@ -127,6 +140,7 @@ rest_property_map({
   schedule:                 "Schedule",
   source_location_arn:      "SourceLocationArn",
   tags:                     "Tags",
+  task_report_config:       "TaskReportConfig",
 })
 
 rest_post_only_properties %i{

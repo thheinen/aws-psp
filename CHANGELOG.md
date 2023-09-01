@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.218 (2023-09-01)
+
+
+- Update AWS::DataSync::Task
+
 ## v0.1.217 (2023-08-31)
 
 
