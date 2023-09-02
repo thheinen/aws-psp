@@ -12,6 +12,14 @@ property :name, String,
          name_property: true,
          description: "Name of the resource, not desired state"
 
+property :deliver_cross_account_role, String,
+         callbacks: {
+           "deliver_cross_account_role is not a String" => lambda { |v| v.is_a? String },
+         },
+         description: <<~'DESCRIPTION'
+           The ARN of the IAM role that allows Amazon EC2 to publish flow logs across accounts.
+         DESCRIPTION
+
 property :deliver_logs_permission_arn, String,
          callbacks: {
            "deliver_logs_permission_arn is not a String" => lambda { |v| v.is_a? String },
@@ -111,6 +119,7 @@ rest_api_collection "/AWS::EC2::FlowLog"
 rest_api_document "/AWS::EC2::FlowLog"
 
 rest_property_map({
+  deliver_cross_account_role:  "DeliverCrossAccountRole",
   deliver_logs_permission_arn: "DeliverLogsPermissionArn",
   destination_options:         "DestinationOptions",
   log_destination:             "LogDestination",
@@ -125,5 +134,5 @@ rest_property_map({
 })
 
 rest_post_only_properties %i{
-  deliver_logs_permission_arn destination_options log_destination log_destination_type log_format log_group_name max_aggregation_interval resource_id resource_type traffic_type
+  deliver_cross_account_role deliver_logs_permission_arn destination_options log_destination log_destination_type log_format log_group_name max_aggregation_interval resource_id resource_type traffic_type
 }
