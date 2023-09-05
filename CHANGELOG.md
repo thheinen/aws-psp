@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.220 (2023-09-05)
+
+
+- Add AWS::SSM::Parameter
+
 ## v0.1.219 (2023-09-02)
 
 
