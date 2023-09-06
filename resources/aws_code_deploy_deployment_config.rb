@@ -30,8 +30,8 @@ property :deployment_config_name, String,
 
 property :minimum_healthy_hosts, Hash,
          callbacks: {
-           "Subproperty `Value` is not a Integer" => lambda { |v| v[:Value].is_a? Integer },
            "Subproperty `Type` is not a String" => lambda { |v| v[:Type].is_a? String },
+           "Subproperty `Value` is not a Integer" => lambda { |v| v[:Value].is_a? Integer },
          },
          description: <<~'DESCRIPTION'
            The minimum number of healthy instances that should be available at any time during the deployment. There are two parameters expected in the input: type and value.

@@ -33,7 +33,7 @@ property :expression_type, String,
          required: true,
          callbacks: {
            "expression_type is not a String" => lambda { |v| v.is_a? String },
-           "expression_typeis not one of `RuleName`, `MqttTopic`" => lambda { |v| %w{RuleName MqttTopic}.include? v },
+           "expression_typeis not one of `RuleName`, `MqttTopic`, `SnsTopic`" => lambda { |v| %w{RuleName MqttTopic SnsTopic}.include? v },
          },
          description: <<~'DESCRIPTION'
            Must be RuleName
@@ -51,7 +51,6 @@ property :name, String,
          DESCRIPTION
 
 property :role_arn, String,
-         required: true,
          callbacks: {
            "role_arn is not a String" => lambda { |v| v.is_a? String },
            "role_arn needs to be 20..2048 characters" => lambda { |v| v.length >= 20 && v.length <= 2048 },

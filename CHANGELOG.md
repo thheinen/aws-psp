@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## v0.1.221 (2023-09-06)
+
+
+- Update AWS::CodeDeploy::DeploymentConfig
+- Add AWS::ConnectCampaigns::Campaign
+- Add AWS::EC2::TransitGatewayRouteTable
+- Update AWS::IoTWireless::Destination
+
 ## v0.1.220 (2023-09-05)
 
 
