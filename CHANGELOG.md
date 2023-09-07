@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.222 (2023-09-07)
+
+
+- Update AWS::RDS::DBInstance
+
 ## v0.1.221 (2023-09-06)
 
 

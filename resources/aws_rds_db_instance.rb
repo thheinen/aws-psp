@@ -224,12 +224,44 @@ property :domain, String,
            The Active Directory directory ID to create the DB instance in. Currently, only MySQL, Microsoft SQL Server, Oracle, and PostgreSQL DB instances can be created in an Active Directory Domain.
          DESCRIPTION
 
+property :domain_auth_secret_arn, String,
+         callbacks: {
+           "domain_auth_secret_arn is not a String" => lambda { |v| v.is_a? String },
+         },
+         description: <<~'DESCRIPTION'
+           The ARN for the Secrets Manager secret with the credentials for the user joining the domain.
+         DESCRIPTION
+
+property :domain_dns_ips, Array,
+         callbacks: {
+           "domain_dns_ips is not a Array" => lambda { |v| v.is_a? Array },
+         },
+         description: <<~'DESCRIPTION'
+           The IPv4 DNS IP addresses of your primary and secondary Active Directory domain controllers.
+         DESCRIPTION
+
+property :domain_fqdn, String,
+         callbacks: {
+           "domain_fqdn is not a String" => lambda { |v| v.is_a? String },
+         },
+         description: <<~'DESCRIPTION'
+           The fully qualified domain name (FQDN) of an Active Directory domain.
+         DESCRIPTION
+
 property :domain_iam_role_name, String,
          callbacks: {
            "domain_iam_role_name is not a String" => lambda { |v| v.is_a? String },
          },
          description: <<~'DESCRIPTION'
            Specify the name of the IAM role to be used when making API calls to the Directory Service.
+         DESCRIPTION
+
+property :domain_ou, String,
+         callbacks: {
+           "domain_ou is not a String" => lambda { |v| v.is_a? String },
+         },
+         description: <<~'DESCRIPTION'
+           The Active Directory organizational unit for your DB instance to join.
          DESCRIPTION
 
 property :enable_cloudwatch_logs_exports, Array,
@@ -628,7 +660,11 @@ rest_property_map({
   delete_automated_backups:                 "DeleteAutomatedBackups",
   deletion_protection:                      "DeletionProtection",
   domain:                                   "Domain",
+  domain_auth_secret_arn:                   "DomainAuthSecretArn",
+  domain_dns_ips:                           "DomainDnsIps",
+  domain_fqdn:                              "DomainFqdn",
   domain_iam_role_name:                     "DomainIAMRoleName",
+  domain_ou:                                "DomainOu",
   enable_cloudwatch_logs_exports:           "EnableCloudwatchLogsExports",
   enable_iam_database_authentication:       "EnableIAMDatabaseAuthentication",
   enable_performance_insights:              "EnablePerformanceInsights",
