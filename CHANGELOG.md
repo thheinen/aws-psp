@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.1.223 (2023-09-08)
+
+
+- Update AWS::CustomerProfiles::ObjectType
+- Update AWS::Grafana::Workspace
+
 ## v0.1.222 (2023-09-07)
 
 

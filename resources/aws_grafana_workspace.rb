@@ -169,5 +169,5 @@ rest_property_map({
 })
 
 rest_post_only_properties %i{
-  client_token grafana_version
+  client_token
 }

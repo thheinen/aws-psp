@@ -83,6 +83,15 @@ property :object_type_name, String,
            The name of the profile object type.
          DESCRIPTION
 
+property :source_last_updated_timestamp_format, String,
+         callbacks: {
+           "source_last_updated_timestamp_format is not a String" => lambda { |v| v.is_a? String },
+           "source_last_updated_timestamp_format needs to be 1..255 characters" => lambda { |v| v.length >= 1 && v.length <= 255 },
+         },
+         description: <<~'DESCRIPTION'
+           The format of your sourceLastUpdatedTimestamp that was previously set up.
+         DESCRIPTION
+
 property :tags, Array,
          callbacks: {
            "tags is not a Array" => lambda { |v| v.is_a? Array },
@@ -106,16 +115,17 @@ rest_api_collection "/AWS::CustomerProfiles::ObjectType"
 rest_api_document "/AWS::CustomerProfiles::ObjectType"
 
 rest_property_map({
-  allow_profile_creation: "AllowProfileCreation",
-  description:            "Description",
-  domain_name:            "DomainName",
-  encryption_key:         "EncryptionKey",
-  expiration_days:        "ExpirationDays",
-  fields:                 "Fields",
-  keys:                   "Keys",
-  object_type_name:       "ObjectTypeName",
-  tags:                   "Tags",
-  template_id:            "TemplateId",
+  allow_profile_creation:               "AllowProfileCreation",
+  description:                          "Description",
+  domain_name:                          "DomainName",
+  encryption_key:                       "EncryptionKey",
+  expiration_days:                      "ExpirationDays",
+  fields:                               "Fields",
+  keys:                                 "Keys",
+  object_type_name:                     "ObjectTypeName",
+  source_last_updated_timestamp_format: "SourceLastUpdatedTimestampFormat",
+  tags:                                 "Tags",
+  template_id:                          "TemplateId",
 })
 
 rest_post_only_properties %i{
