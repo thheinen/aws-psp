@@ -21,6 +21,14 @@ property :collaboration_identifier, String,
          },
          description: ""
 
+property :default_result_configuration, Hash,
+         callbacks: {
+           "Subproperty `RoleArn` is not a String" => lambda { |v| v[:RoleArn].is_a? String },
+           "Subproperty `RoleArn` needs to be 32..512 characters" => lambda { |v| v[:RoleArn].length >= 32 && v[:RoleArn].length <= 512 },
+           "Subproperty `RoleArn`is not a valid ARN" => lambda { |v| v[:RoleArn] =~ Regexp.new("^arn:aws(?:-cn|-us-gov)?:([^:]*:){3,}") },
+         },
+         description: ""
+
 property :query_log_status, Hash,
          required: true,
          callbacks: {
@@ -42,9 +50,10 @@ rest_api_collection "/AWS::CleanRooms::Membership"
 rest_api_document "/AWS::CleanRooms::Membership"
 
 rest_property_map({
-  collaboration_identifier: "CollaborationIdentifier",
-  query_log_status:         "QueryLogStatus",
-  tags:                     "Tags",
+  collaboration_identifier:     "CollaborationIdentifier",
+  default_result_configuration: "DefaultResultConfiguration",
+  query_log_status:             "QueryLogStatus",
+  tags:                         "Tags",
 })
 
 rest_post_only_properties %i{

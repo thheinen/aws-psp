@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.224 (2023-09-09)
+
+
+- Update AWS::CleanRooms::Membership
+
 ## v0.1.223 (2023-09-08)
 
 
