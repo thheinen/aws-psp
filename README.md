@@ -2,8 +2,8 @@
 
 Chef Platform Support Pack (PSP) for managing AWS.
 
-![AWS Support](https://img.shields.io/badge/AWS%20Resources-793-orange)
-![Last Build](https://img.shields.io/badge/Last%20build-20230909-grey)
+![AWS Support](https://img.shields.io/badge/AWS%20Resources-799-orange)
+![Last Build](https://img.shields.io/badge/Last%20build-20230911-grey)
 [![Views](http://hits.dwyl.com/tecracer-theinen/aws-psp.svg)](http://hits.dwyl.com/tecracer-theinen/aws-psp})
 
 ## Usage

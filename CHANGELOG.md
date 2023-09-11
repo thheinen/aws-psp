@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## v0.1.225 (2023-09-11)
+
+
+- Add AWS::EC2::VPCEndpointConnectionNotification
+- Add AWS::MediaPackageV2::Channel
+- Add AWS::MediaPackageV2::ChannelGroup
+- Add AWS::MediaPackageV2::ChannelPolicy
+- Add AWS::MediaPackageV2::OriginEndpoint
+- Add AWS::MediaPackageV2::OriginEndpointPolicy
+- Update AWS::WorkSpacesWeb::UserSettings
+
 ## v0.1.224 (2023-09-09)
 
 

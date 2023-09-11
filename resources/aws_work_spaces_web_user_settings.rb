@@ -12,11 +12,32 @@ property :name, String,
          name_property: true,
          description: "Name of the resource, not desired state"
 
+property :additional_encryption_context, Hash,
+         callbacks: {
+           "additional_encryption_context is not a Object" => lambda { |v| v.is_a? Object },
+         },
+         description: ""
+
+property :cookie_synchronization_configuration, Hash,
+         callbacks: {
+           "Subproperty `Allowlist` is not a Array" => lambda { |v| v[:Allowlist].is_a? Array },
+           "Subproperty `Blocklist` is not a Array" => lambda { |v| v[:Blocklist].is_a? Array },
+         },
+         description: ""
+
 property :copy_allowed, Hash,
          required: true,
          callbacks: {
            "copy_allowed is not a String" => lambda { |v| v.is_a? String },
            "copy_allowedis not one of `Disabled`, `Enabled`" => lambda { |v| %w{Disabled Enabled}.include? v },
+         },
+         description: ""
+
+property :customer_managed_key, String,
+         callbacks: {
+           "customer_managed_key is not a String" => lambda { |v| v.is_a? String },
+           "customer_managed_key needs to be 20..2048 characters" => lambda { |v| v.length >= 20 && v.length <= 2048 },
+           "customer_managed_key must match pattern ^arn:[\w+=\/,.@-]+:kms:[a-zA-Z0-9\-]*:[a-zA-Z0-9]{1,12}:key\/[a-zA-Z0-9-]+$" => lambda { |v| v =~ Regexp.new("/^arn:[\w+=\/,.@-]+:kms:[a-zA-Z0-9\-]*:[a-zA-Z0-9]{1,12}:key\/[a-zA-Z0-9-]+$/") },
          },
          description: ""
 
@@ -75,13 +96,19 @@ rest_api_collection "/AWS::WorkSpacesWeb::UserSettings"
 rest_api_document "/AWS::WorkSpacesWeb::UserSettings"
 
 rest_property_map({
-  copy_allowed:                       "CopyAllowed",
-  disconnect_timeout_in_minutes:      "DisconnectTimeoutInMinutes",
-  download_allowed:                   "DownloadAllowed",
-  idle_disconnect_timeout_in_minutes: "IdleDisconnectTimeoutInMinutes",
-  paste_allowed:                      "PasteAllowed",
-  print_allowed:                      "PrintAllowed",
-  tags:                               "Tags",
-  upload_allowed:                     "UploadAllowed",
+  additional_encryption_context:        "AdditionalEncryptionContext",
+  cookie_synchronization_configuration: "CookieSynchronizationConfiguration",
+  copy_allowed:                         "CopyAllowed",
+  customer_managed_key:                 "CustomerManagedKey",
+  disconnect_timeout_in_minutes:        "DisconnectTimeoutInMinutes",
+  download_allowed:                     "DownloadAllowed",
+  idle_disconnect_timeout_in_minutes:   "IdleDisconnectTimeoutInMinutes",
+  paste_allowed:                        "PasteAllowed",
+  print_allowed:                        "PrintAllowed",
+  tags:                                 "Tags",
+  upload_allowed:                       "UploadAllowed",
 })
 
+rest_post_only_properties %i{
+  additional_encryption_context customer_managed_key
+}
