@@ -24,6 +24,14 @@ property :kafka_versions_list, Hash,
          },
          description: ""
 
+property :latest_revision, Hash,
+         callbacks: {
+           "Subproperty `CreationTime` is not a String" => lambda { |v| v[:CreationTime].is_a? String },
+           "Subproperty `Description` is not a String" => lambda { |v| v[:Description].is_a? String },
+           "Subproperty `Revision` is not a Integer" => lambda { |v| v[:Revision].is_a? Integer },
+         },
+         description: ""
+
 property :name, String,
          name_property: true,
          required: true,
@@ -46,6 +54,7 @@ rest_api_document "/AWS::MSK::Configuration"
 rest_property_map({
   description:         "Description",
   kafka_versions_list: "KafkaVersionsList",
+  latest_revision:     "LatestRevision",
   name:                "Name",
   server_properties:   "ServerProperties",
 })

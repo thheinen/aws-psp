@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.226 (2023-09-12)
+
+
+- Update AWS::MSK::Configuration
+
 ## v0.1.225 (2023-09-11)
 
 
