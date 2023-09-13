@@ -37,6 +37,14 @@ property :power, String,
            The power specification for the container service.
          DESCRIPTION
 
+property :private_registry_access, Hash,
+         callbacks: {
+           "Subproperty `EcrImagePullerRole` is not a Object" => lambda { |v| v[:EcrImagePullerRole].is_a? Object },
+         },
+         description: <<~'DESCRIPTION'
+           A Boolean value to indicate whether the container service has access to private container image repositories, such as Amazon Elastic Container Registry (Amazon ECR) private repositories.
+         DESCRIPTION
+
 property :public_domain_names, Array,
          callbacks: {
            "public_domain_names is not a Array" => lambda { |v| v.is_a? Array },
@@ -81,6 +89,7 @@ rest_property_map({
   container_service_deployment: "ContainerServiceDeployment",
   is_disabled:                  "IsDisabled",
   power:                        "Power",
+  private_registry_access:      "PrivateRegistryAccess",
   public_domain_names:          "PublicDomainNames",
   scale:                        "Scale",
   service_name:                 "ServiceName",

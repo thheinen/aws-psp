@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.227 (2023-09-13)
+
+
+- Update AWS::Lightsail::Container
+
 ## v0.1.226 (2023-09-12)
 
 
