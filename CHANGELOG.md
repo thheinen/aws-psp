@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.1.228 (2023-09-14)
+
+
+- Update AWS::CloudFront::OriginAccessControl
+- Update AWS::EC2::Route
+
 ## v0.1.227 (2023-09-13)
 
 

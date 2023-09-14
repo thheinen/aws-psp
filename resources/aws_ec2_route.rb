@@ -36,6 +36,14 @@ property :destination_ipv6_cidr_block, String,
            The IPv6 CIDR block used for the destination match.
          DESCRIPTION
 
+property :destination_prefix_list_id, String,
+         callbacks: {
+           "destination_prefix_list_id is not a String" => lambda { |v| v.is_a? String },
+         },
+         description: <<~'DESCRIPTION'
+           The ID of managed prefix list, it's a set of one or more CIDR blocks.
+         DESCRIPTION
+
 property :egress_only_internet_gateway_id, String,
          callbacks: {
            "egress_only_internet_gateway_id is not a String" => lambda { |v| v.is_a? String },
@@ -125,6 +133,7 @@ rest_property_map({
   carrier_gateway_id:              "CarrierGatewayId",
   destination_cidr_block:          "DestinationCidrBlock",
   destination_ipv6_cidr_block:     "DestinationIpv6CidrBlock",
+  destination_prefix_list_id:      "DestinationPrefixListId",
   egress_only_internet_gateway_id: "EgressOnlyInternetGatewayId",
   gateway_id:                      "GatewayId",
   instance_id:                     "InstanceId",
@@ -138,5 +147,5 @@ rest_property_map({
 })
 
 rest_post_only_properties %i{
-  destination_cidr_block destination_ipv6_cidr_block route_table_id
+  destination_cidr_block destination_ipv6_cidr_block destination_prefix_list_id route_table_id
 }
