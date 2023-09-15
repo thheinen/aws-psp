@@ -74,6 +74,12 @@ property :provisioned_throughput_in_mibps, Number,
          },
          description: ""
 
+property :replication_configuration, Hash,
+         callbacks: {
+           "Subproperty `Destinations` is not a Array" => lambda { |v| v[:Destinations].is_a? Array },
+         },
+         description: ""
+
 property :throughput_mode, String,
          callbacks: {
            "throughput_mode is not a String" => lambda { |v| v.is_a? String },
@@ -95,6 +101,7 @@ rest_property_map({
   lifecycle_policies:                 "LifecyclePolicies",
   performance_mode:                   "PerformanceMode",
   provisioned_throughput_in_mibps:    "ProvisionedThroughputInMibps",
+  replication_configuration:          "ReplicationConfiguration",
   throughput_mode:                    "ThroughputMode",
 })
 

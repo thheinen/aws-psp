@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.229 (2023-09-15)
+
+
+- Update AWS::EFS::FileSystem
+
 ## v0.1.228 (2023-09-14)
 
 
