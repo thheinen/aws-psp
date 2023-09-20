@@ -31,12 +31,14 @@ property :enrichment, String,
          callbacks: {
            "enrichment is not a String" => lambda { |v| v.is_a? String },
            "enrichment needs to be 0..1600 characters" => lambda { |v| v.length >= 0 && v.length <= 1600 },
+           "enrichment must match pattern ^$|arn:(aws[a-zA-Z0-9-]*):([a-zA-Z0-9\-]+):([a-z]{2}((-gov)|(-iso(b?)))?-[a-z]+-\d{1})?:(\d{12})?:(.+)$" => lambda { |v| v =~ Regexp.new("/^$|arn:(aws[a-zA-Z0-9-]*):([a-zA-Z0-9\-]+):([a-z]{2}((-gov)|(-iso(b?)))?-[a-z]+-\d{1})?:(\d{12})?:(.+)$/") },
          },
          description: ""
 
 property :enrichment_parameters, Hash,
          callbacks: {
            "Subproperty `InputTemplate` is not a String" => lambda { |v| v[:InputTemplate].is_a? String },
+           "Subproperty `InputTemplate` needs to be 0..8192 characters" => lambda { |v| v[:InputTemplate].length >= 0 && v[:InputTemplate].length <= 8192 },
          },
          description: ""
 
@@ -54,6 +56,7 @@ property :role_arn, String,
          callbacks: {
            "role_arn is not a String" => lambda { |v| v.is_a? String },
            "role_arn needs to be 1..1600 characters" => lambda { |v| v.length >= 1 && v.length <= 1600 },
+           "role_arn must match pattern ^arn:(aws[a-zA-Z-]*)?:iam::\d{12}:role/?[a-zA-Z0-9+=,.@\-_/]+$" => lambda { |v| v =~ Regexp.new("/^arn:(aws[a-zA-Z-]*)?:iam::\d{12}:role/?[a-zA-Z0-9+=,.@\-_/]+$/") },
          },
          description: ""
 
@@ -62,6 +65,7 @@ property :source, String,
          callbacks: {
            "source is not a String" => lambda { |v| v.is_a? String },
            "source needs to be 1..1600 characters" => lambda { |v| v.length >= 1 && v.length <= 1600 },
+           "source must match pattern ^smk://(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9]):[0-9]{1,5}|arn:(aws[a-zA-Z0-9-]*):([a-zA-Z0-9\-]+):([a-z]{2}((-gov)|(-iso(b?)))?-[a-z]+-\d{1})?:(\d{12})?:(.+)$" => lambda { |v| v =~ Regexp.new("/^smk://(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9]):[0-9]{1,5}|arn:(aws[a-zA-Z0-9-]*):([a-zA-Z0-9\-]+):([a-z]{2}((-gov)|(-iso(b?)))?-[a-z]+-\d{1})?:(\d{12})?:(.+)$/") },
          },
          description: ""
 
@@ -79,12 +83,14 @@ property :target, String,
          callbacks: {
            "target is not a String" => lambda { |v| v.is_a? String },
            "target needs to be 1..1600 characters" => lambda { |v| v.length >= 1 && v.length <= 1600 },
+           "target must match pattern ^arn:(aws[a-zA-Z0-9-]*):([a-zA-Z0-9\-]+):([a-z]{2}((-gov)|(-iso(b?)))?-[a-z]+-\d{1})?:(\d{12})?:(.+)$" => lambda { |v| v =~ Regexp.new("/^arn:(aws[a-zA-Z0-9-]*):([a-zA-Z0-9\-]+):([a-z]{2}((-gov)|(-iso(b?)))?-[a-z]+-\d{1})?:(\d{12})?:(.+)$/") },
          },
          description: ""
 
 property :target_parameters, Hash,
          callbacks: {
            "Subproperty `InputTemplate` is not a String" => lambda { |v| v[:InputTemplate].is_a? String },
+           "Subproperty `InputTemplate` needs to be 0..8192 characters" => lambda { |v| v[:InputTemplate].length >= 0 && v[:InputTemplate].length <= 8192 },
          },
          description: ""
 

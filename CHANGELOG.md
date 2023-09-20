@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## v0.1.230 (2023-09-20)
+
+
+- Update AWS::Pipes::Pipe
+
 ## v0.1.229 (2023-09-15)
 
 
