@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.1.231 (2023-09-21)
+
+
+- Add AWS::Connect::SecurityProfile
+- Update AWS::SageMaker::App
+
 ## v0.1.230 (2023-09-20)
 
 
