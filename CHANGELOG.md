@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.1.232 (2023-09-22)
+
+
+- Add AWS::Events::EventBus
+- Add AWS::Events::Rule
+
 ## v0.1.231 (2023-09-21)
 
 
