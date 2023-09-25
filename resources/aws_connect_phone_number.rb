@@ -82,5 +82,5 @@ rest_property_map({
 })
 
 rest_post_only_properties %i{
-  country_code description prefix type
+  country_code prefix type
 }

@@ -118,9 +118,9 @@ property :scheduling_strategy, String,
 
 property :service_connect_configuration, Hash,
          callbacks: {
+           "Subproperty `Services` is not a Array" => lambda { |v| v[:Services].is_a? Array },
            "Subproperty `Enabled` is not a Boolean" => lambda { |v| v[:Enabled].is_a? Boolean },
            "Subproperty `Namespace` is not a String" => lambda { |v| v[:Namespace].is_a? String },
-           "Subproperty `Services` is not a Array" => lambda { |v| v[:Services].is_a? Array },
          },
          description: ""
 

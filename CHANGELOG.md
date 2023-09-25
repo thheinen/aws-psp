@@ -1,5 +1,20 @@
 # CHANGELOG
 
+## v0.1.233 (2023-09-25)
+
+
+- Update AWS::ApiGatewayV2::Api
+- Update AWS::ApiGatewayV2::ApiMapping
+- Update AWS::ApiGatewayV2::Authorizer
+- Update AWS::ApiGatewayV2::Deployment
+- Update AWS::ApiGatewayV2::IntegrationResponse
+- Update AWS::ApiGatewayV2::Model
+- Update AWS::ApiGatewayV2::Route
+- Update AWS::ApiGatewayV2::RouteResponse
+- Update AWS::Connect::PhoneNumber
+- Update AWS::Connect::Rule
+- Update AWS::ECS::Service
+
 ## v0.1.232 (2023-09-22)
 
 

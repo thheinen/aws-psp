@@ -5,7 +5,7 @@ resource_name :aws_apigateway_v2_api_mapping
 provides :aws_apigateway_v2_api_mapping, target_mode: true, platform: "aws"
 
 description <<~DESCRIPTION
-  Schema for AWS::ApiGatewayV2::ApiMapping
+  The ``AWS::ApiGatewayV2::ApiMapping`` resource contains an API mapping. An API mapping relates a path of your custom domain name to a stage of your API. A custom domain name can have multiple API mappings, but the paths can't overlap. A custom domain can map only to APIs of the same protocol type. For more information, see [CreateApiMapping](https://docs.aws.amazon.com/apigatewayv2/latest/api-reference/domainnames-domainname-apimappings.html#CreateApiMapping) in the *Amazon API Gateway V2 API Reference*.
 DESCRIPTION
 
 property :name, String,
@@ -18,7 +18,7 @@ property :api_id, String,
            "api_id is not a String" => lambda { |v| v.is_a? String },
          },
          description: <<~'DESCRIPTION'
-           The API identifier
+           The identifier of the API.
          DESCRIPTION
 
 property :api_mapping_key, String,
@@ -26,7 +26,7 @@ property :api_mapping_key, String,
            "api_mapping_key is not a String" => lambda { |v| v.is_a? String },
          },
          description: <<~'DESCRIPTION'
-           The API mapping key
+           The API mapping key.
          DESCRIPTION
 
 property :domain_name, String,
@@ -35,7 +35,7 @@ property :domain_name, String,
            "domain_name is not a String" => lambda { |v| v.is_a? String },
          },
          description: <<~'DESCRIPTION'
-           The domain name
+           The domain name.
          DESCRIPTION
 
 property :stage, String,
@@ -44,7 +44,7 @@ property :stage, String,
            "stage is not a String" => lambda { |v| v.is_a? String },
          },
          description: <<~'DESCRIPTION'
-           The API stage
+           The API stage.
          DESCRIPTION
 
 # API URLs and mappings
