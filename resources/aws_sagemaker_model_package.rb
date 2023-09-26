@@ -139,6 +139,13 @@ property :sample_payload_url, Hash,
          },
          description: ""
 
+property :skip_model_validation, Hash,
+         callbacks: {
+           "skip_model_validation is not a String" => lambda { |v| v.is_a? String },
+           "skip_model_validationis not one of `None`, `All`" => lambda { |v| %w{None All}.include? v },
+         },
+         description: ""
+
 property :source_algorithm_specification, Hash,
          callbacks: {
            "Subproperty `SourceAlgorithms` is not a Array" => lambda { |v| v[:SourceAlgorithms].is_a? Array },
@@ -192,6 +199,7 @@ rest_property_map({
   model_package_status_details:               "ModelPackageStatusDetails",
   model_package_version:                      "ModelPackageVersion",
   sample_payload_url:                         "SamplePayloadUrl",
+  skip_model_validation:                      "SkipModelValidation",
   source_algorithm_specification:             "SourceAlgorithmSpecification",
   tags:                                       "Tags",
   task:                                       "Task",

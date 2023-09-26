@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## v0.1.234 (2023-09-26)
+
+
+- Update AWS::CloudFront::ContinuousDeploymentPolicy
+- Add AWS::Cognito::UserPoolUser
+- Update AWS::SageMaker::ModelPackage
+
 ## v0.1.233 (2023-09-25)
 
 
