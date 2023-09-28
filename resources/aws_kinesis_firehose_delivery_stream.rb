@@ -70,7 +70,7 @@ property :delivery_stream_name, String,
 property :delivery_stream_type, String,
          callbacks: {
            "delivery_stream_type is not a String" => lambda { |v| v.is_a? String },
-           "delivery_stream_typeis not one of `DirectPut`, `KinesisStreamAsSource`" => lambda { |v| %w{DirectPut KinesisStreamAsSource}.include? v },
+           "delivery_stream_typeis not one of `DirectPut`, `KinesisStreamAsSource`, `MSKAsSource`" => lambda { |v| %w{DirectPut KinesisStreamAsSource MSKAsSource}.include? v },
          },
          description: ""
 
@@ -132,6 +132,17 @@ property :kinesis_stream_source_configuration, Hash,
            "Subproperty `RoleARN` is not a String" => lambda { |v| v[:RoleARN].is_a? String },
            "Subproperty `RoleARN` needs to be 1..512 characters" => lambda { |v| v[:RoleARN].length >= 1 && v[:RoleARN].length <= 512 },
            "Subproperty `RoleARN` must match pattern arn:.*" => lambda { |v| v[:RoleARN] =~ Regexp.new("/arn:.*/") },
+         },
+         description: ""
+
+property :msk_source_configuration, Hash,
+         callbacks: {
+           "Subproperty `MSKClusterARN` is not a String" => lambda { |v| v[:MSKClusterARN].is_a? String },
+           "Subproperty `MSKClusterARN` needs to be 1..512 characters" => lambda { |v| v[:MSKClusterARN].length >= 1 && v[:MSKClusterARN].length <= 512 },
+           "Subproperty `MSKClusterARN` must match pattern arn:.*" => lambda { |v| v[:MSKClusterARN] =~ Regexp.new("/arn:.*/") },
+           "Subproperty `TopicName` is not a String" => lambda { |v| v[:TopicName].is_a? String },
+           "Subproperty `TopicName` needs to be 1..255 characters" => lambda { |v| v[:TopicName].length >= 1 && v[:TopicName].length <= 255 },
+           "Subproperty `TopicName` must match pattern [a-zA-Z0-9\._\-]+" => lambda { |v| v[:TopicName] =~ Regexp.new("/[a-zA-Z0-9\._\-]+/") },
          },
          description: ""
 
@@ -201,6 +212,7 @@ rest_property_map({
   extended_s3_destination_configuration:                   "ExtendedS3DestinationConfiguration",
   http_endpoint_destination_configuration:                 "HttpEndpointDestinationConfiguration",
   kinesis_stream_source_configuration:                     "KinesisStreamSourceConfiguration",
+  msk_source_configuration:                                "MSKSourceConfiguration",
   redshift_destination_configuration:                      "RedshiftDestinationConfiguration",
   s3_destination_configuration:                            "S3DestinationConfiguration",
   splunk_destination_configuration:                        "SplunkDestinationConfiguration",
@@ -208,5 +220,5 @@ rest_property_map({
 })
 
 rest_post_only_properties %i{
-  amazon_open_search_serverless_destination_configuration/vpc_configuration amazonopensearchservice_destination_configuration/vpc_configuration delivery_stream_name delivery_stream_type elasticsearch_destination_configuration/vpc_configuration kinesis_stream_source_configuration
+  amazon_open_search_serverless_destination_configuration/vpc_configuration amazonopensearchservice_destination_configuration/vpc_configuration delivery_stream_name delivery_stream_type elasticsearch_destination_configuration/vpc_configuration kinesis_stream_source_configuration msk_source_configuration
 }

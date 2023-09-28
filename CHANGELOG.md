@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v0.1.235 (2023-09-28)
+
+
+- Update AWS::ApiGatewayV2::DomainName
+- Update AWS::KinesisFirehose::DeliveryStream
+
 ## v0.1.234 (2023-09-26)
 
 
